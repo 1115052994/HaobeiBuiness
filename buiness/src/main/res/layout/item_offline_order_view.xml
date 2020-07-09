@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <!--订单Item页面-->
+    <data>
+
+        <import type="com.netmi.baselibrary.utils.Strings" />
+
+        <import type="android.view.View" />
+        <!--点击事件-->
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+
+        <!--订单信息-->
+        <variable
+            name="item"
+            type="com.netmi.workerbusiness.data.entity.home.offlineorder.OfflineOrderListEntity" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <!--订单编号和订单状态-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="15dp">
+
+            <TextView
+                android:id="@+id/tv_store_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="9dp"
+                android:gravity="center"
+                android:paddingVertical="14dp"
+                android:text="订单信息"
+                android:textColor="#ff1d1e1f"
+                android:textSize="14sp" />
+
+            <!--订单状态-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="@{item.statusStr}"
+                android:textColor="#E40113"
+                android:textSize="14sp"
+                tools:text="待付款" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray_EE" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/ll_good"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:onClick="@{doClick}"
+                android:orientation="horizontal"
+                android:padding="16dp">
+                <!--商品图片-->
+                <com.netmi.baselibrary.widget.RoundImageView
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:layout_marginRight="12dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/baselib_bg_default_pic"
+                    bind:ivPathN="@{item.img_url}" />
+                <!--商品详情-->
+                <RelativeLayout
+                    android:id="@+id/rl_good_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <!--商品名称-->
+                    <TextView
+                        android:id="@+id/tv_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="50dp"
+                        android:ellipsize="end"
+                        android:maxLines="2"
+                        android:text="@{item.spu_name}"
+                        android:textColor="#1D1E1F"
+                        android:textSize="14sp"
+                        tools:text="商品名称" />
+
+                    <!--商品规格-->
+                    <TextView
+                        android:id="@+id/tv_good_specification"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_name"
+                        android:layout_marginTop="5dp"
+                        android:ellipsize="end"
+                        android:gravity="center_vertical"
+                        android:lines="1"
+                        android:text="@{item.create_time}"
+                        android:textColor="@color/gray_99"
+                        android:textSize="12sp"
+                        tools:text="2018-03-12 14:32" />
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray_EE" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="实付:"
+                android:textColor="#ff333333"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{@string/pay(item.amount)}"
+                android:textColor="#E40113"
+                android:textSize="14sp"
+                tools:text="¥74.00" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/tv_comment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_radius_2dp_d3d3d3d3"
+                android:onClick="@{doClick}"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="5dp"
+                android:text="订单评价"
+                android:textColor="#ff555555"
+                android:textSize="12sp"
+                android:visibility="gone" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+</layout>

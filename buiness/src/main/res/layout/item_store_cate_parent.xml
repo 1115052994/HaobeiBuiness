@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.netmi.workerbusiness.data.entity.home.store.StoreCateEntity" />
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/rl_all"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@color/grayF2"
+        android:onClick="@{doClick}">
+
+        <TextView
+            android:id="@+id/tv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="1dp"
+            android:background="@color/white"
+            android:button="@null"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="36dp"
+            android:text="@{item.prop_name}"
+            android:textColor="@{item.check? @color/themeRed : @color/theme_text_black}"
+            android:textSize="@{item.check ? @dimen/sp_16 : @dimen/sp_14}" />
+
+        <ImageView
+            android:id="@+id/iv"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="1dp"
+            android:background="@color/white"
+            android:button="@null"
+            android:clickable="false"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="15dp"
+            android:src="@mipmap/ic_uncheck_white"
+            tools:text="haha" />
+
+
+    </RelativeLayout>
+</layout>

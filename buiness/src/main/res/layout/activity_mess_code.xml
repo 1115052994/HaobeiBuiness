@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/layout_title_shadow" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:gravity="center"
+                android:text="输入短信验证码"
+                android:textColor="#ff333333"
+                android:textSize="30sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:gravity="center"
+                android:text="我们已发送短信验证码到你的手机号"
+                android:textColor="#ff888888"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/tv_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="#ff333333"
+                android:textSize="24sp"
+                tools:text="186****3064" />
+
+            <com.jyn.vcview.VerificationCodeView
+                android:id="@+id/vc_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:vcv_et_bg="@drawable/et_code_test1"
+                app:vcv_et_cursor="@drawable/et_cursor"
+                app:vcv_et_cursor_visible="true"
+                app:vcv_et_inputType="number"
+                app:vcv_et_number="4"
+                app:vcv_et_spacing="6dp"
+                app:vcv_et_text_color="#FF333333"
+                app:vcv_et_text_size="6sp" />
+
+
+            <TextView
+                android:id="@+id/tv_get_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:onClick="doClick"
+                android:paddingVertical="15dp"
+                android:text="60秒后可点此重新发送"
+                android:textColor="#ff777777"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/tv_confirm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="25dp"
+                android:layout_marginTop="100dp"
+                android:background="@drawable/baselib_bg_color77b52902"
+                android:gravity="center"
+                android:onClick="doClick"
+                android:paddingVertical="15dp"
+                android:text="确认"
+                android:textColor="#ffffffff"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

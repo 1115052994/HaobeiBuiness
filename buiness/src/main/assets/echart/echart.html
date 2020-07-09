@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <!-- 引入 ECharts 文件 -->
+    <script src="echarts.min.js"></script>
+</head>
+<body>
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+<div id="main" style="width: 100%;height:220px;"></div>
+<script type="text/javascript">
+    // var myChart = echarts.init(document.getElementById('main'));
+
+     var option = {
+    title: {
+        show:false,
+    },
+    tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+            type: 'cross',
+            label: {
+                backgroundColor: '#6a7985'
+            }
+        }
+    },
+    legend: {
+        show:false,
+    },
+    toolbox: {
+        feature: {
+            saveAsImage: {}
+        }
+    },
+    grid: {
+        top:'0%',
+        left: '0%',
+        right: '0%',
+        bottom: '6%',
+        containLabel: false
+    },
+    xAxis: [
+        {
+            type: 'category',
+            boundaryGap: false,
+            data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+        }
+    ],
+    yAxis: [
+        {
+            type: 'value'
+        }
+    ],
+};
+
+ //myChart.setOption(option);
+
+        //创建折线图
+        function createLineChart(dataArrayY,dataArrayX){
+        options = {
+         grid: {
+        top:'3%',
+        left: '3%',
+        right: '7%',
+        bottom: '10%',
+        containLabel: true,
+    },
+        xAxis : [
+            {
+                type : 'category',
+                boundaryGap : false,
+                data : dataArrayX,
+
+                "axisLine":{       //x轴
+                    "show":true,
+                    "lineStyle":{
+                        "type": 'dashed',
+                        "color": '#CCCCCC',
+                    },
+                    interval: 0,
+                },
+                "axisTick":{       //x轴刻度线
+                    "show":false
+                },
+                "splitLine": {     //网格线
+                    "show": false
+                },
+                axisLabel: {
+                        interval: 0, //隔多少点显示一个X轴刻度,0就是全部显示
+                    },
+
+            }
+        ],
+        yAxis : [
+            {
+                type : 'value',
+                "axisLine":{       //y轴
+                    "show":false,
+                        "lineStyle":{
+                        "color": '#CCCCCC',
+                    },
+                },
+                "axisTick":{       //y轴刻度线
+                    "show":false
+                },
+                "splitLine": {     //网格线
+                    "show": true,
+                    "lineStyle":{
+                        "type": 'dashed',
+
+                    }
+                }
+            }
+        ],
+        dataZoom:[
+            {
+               type: 'inside',
+               //xAxisIndex: [0],
+               startValue: 0,
+               endValue: 6,
+               //rangeMode:'3',
+               //zoomLock:true,
+               //  start: 10,      // 左边在 10% 的位置。
+               //  end: 60,
+               //moveOnMouseMove:true,
+             }
+        ],
+        series : [
+            {
+            name: '海贝指数',
+            type: 'line',
+            stack: '指数',
+            smooth: true,
+            symbol: 'circle',
+            symbolSize: 5,
+            sampling: 'average',
+            showSymbol: false,
+            //showAllSymbol:true,
+            areaStyle: {},
+            lineStyle: {
+                color: '#d23500',
+                width: 1
+            },
+            stack: 'a',
+            areaStyle: {
+                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                    offset: 0,
+                    color: '#d23500'
+                }, {
+                    offset: 1,
+                    color: 'rgba(255,146,65,0.1)'
+                }])
+            },
+            data: dataArrayY
+        }
+            ]
+        };
+    }
+
+    function createChart(chartKind,dataArrayY,dataArrayX){
+            if (chartKind=='line') {
+                doCreatChart(createLineChart(eval(dataArrayY),eval(dataArrayX)));
+            };
+        }
+
+    function doCreatChart(specificChartFunction){
+
+            ['echarts','echarts/chart/line'],
+            function (echarts){
+
+            myChart =echarts.init(document.getElementById('main'));
+            //完成自适应，就是把window的onresize事件赋值为echart的resize事件
+            window.onresize = myChart.resize;
+
+            myChart.showLoading({
+                text : "图表数据正在努力加载..."
+            });
+            specificChartFunction;
+            myChart.setOption(options); //先把可选项注入myChart中
+            myChart.hideLoading();
+
+            }(echarts)
+        }
+
+ //       createChart('line',[180, 12, 401],['2-1','2-2','2-3'])
+</script>
+</body>
+</html>

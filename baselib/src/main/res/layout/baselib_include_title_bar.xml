@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="String" />
+
+        <variable
+            name="position"
+            type="Integer" />
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/rl_title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:background="#FFFFFFFF"
+        android:paddingTop="24dp">
+
+        <LinearLayout
+            android:id="@+id/ll_back"
+            android:layout_width="@dimen/d_50"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:onClick="doClick"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/d_14">
+
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@null"
+                android:src="@mipmap/baselib_ic_back" />
+        </LinearLayout>
+
+        <TextView
+
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/d_68"
+            android:layout_marginRight="@dimen/d_68"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:lines="1"
+            android:textColor="@color/theme_text_black"
+            android:textSize="@dimen/s_16"
+            android:transitionName="@string/transition_title_name" />
+
+        <TextView
+            android:id="@+id/tv_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/d_15"
+            android:gravity="center"
+            android:onClick="doClick"
+            android:textColor="#353535"
+            android:textSize="@dimen/s_15" />
+
+        <ImageView
+            android:id="@+id/iv_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:contentDescription="@null"
+            android:onClick="doClick"
+            android:paddingRight="@dimen/d_15"
+            android:visibility="gone" />
+
+        <!--<View-->
+        <!--android:id="@+id/v_title_line"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="@dimen/d_1"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:background="@color/theme_bg" />-->
+
+    </RelativeLayout>
+</layout>

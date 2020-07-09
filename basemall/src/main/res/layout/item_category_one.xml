@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.liemi.basemall.data.entity.category.GoodsOneCateEntity" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:background="@{item.check ? @color/color_33e4eaee : @color/white}"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/v_divider"
+            android:layout_width="3dp"
+            android:layout_height="36dp"
+            android:background="#FFFFCF5D"
+            android:visibility="@{item.check ? View.VISIBLE : View.INVISIBLE}" />
+
+        <TextView
+            android:id="@+id/tv_goods_cate_name"
+            setTextBold="@{item.check}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_toRightOf="@id/v_divider"
+            android:gravity="center"
+            android:text="@{item.name}"
+            android:textColor="#1B252D"
+            android:textSize="13sp" />
+
+    </RelativeLayout>
+
+</layout>

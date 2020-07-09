@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="nickName"
+            type="String" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray_F2"
+        android:orientation="vertical">
+
+        <include layout="@layout/layout_title_shadow" />
+
+        <EditText
+            android:id="@+id/et_input_new_nick_name"
+            style="@style/textViewLine1"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
+            android:hint="@string/input_new_nick_name"
+            android:paddingLeft="20dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:text="@{nickName}"
+            android:textColor="@color/gray_1B252D"
+            android:textColorHint="@color/gray_B9"
+            android:maxLength="10"
+            android:textSize="14sp" />
+
+        <!--保存按钮-->
+        <TextView
+            android:id="@+id/tv_save"
+            style="@style/textViewLine1Center"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="52dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/bg_radius_4_solid_b52902"
+            android:onClick="doClick"
+            android:paddingTop="14dp"
+            android:paddingBottom="15dp"
+            android:text="@string/save"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+    </LinearLayout>
+</layout>

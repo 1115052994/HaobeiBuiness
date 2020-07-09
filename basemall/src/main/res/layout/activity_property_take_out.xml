@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray_F2"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <include layout="@layout/layout_title_shadow" />
+
+            <ImageView
+                android:id="@+id/iv_scan_qrcode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/icon_qrcode_scan"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dp"
+                android:onClick="doClick"
+                />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:paddingLeft="20dp"
+            android:paddingTop="15dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="15dp">
+
+            <TextView
+                style="@style/textViewLine1"
+                android:text="@string/take_out_to_wallet"
+                android:textColor="#1f1f1f"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/et_input_wallet_address"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/bg_radius_4dp_solid_f2"
+                android:gravity="left"
+                android:hint="@string/please_input_wallet_address"
+                android:padding="15dp"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingTop="15dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="15dp">
+
+            <EditText
+                android:id="@+id/et_input_take_out_num"
+                style="@style/textWidthWight1"
+                android:background="@color/white"
+                android:hint="@string/please_input_take_out_num"
+                android:inputType="numberDecimal"
+                android:lines="1"
+                android:textColorHint="@color/gray_B9"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_all"
+                style="@style/normalTextView"
+                android:onClick="doClick"
+                android:text="@string/all"
+                android:textColor="#088cff"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_save"
+            style="@style/maxWidthCenterTextView"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="52dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/bg_radius_8dp_gradient_10bbff_088cff"
+            android:onClick="doClick"
+            android:text="确认"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:lineSpacingExtra="5dp"
+            android:text="@string/take_out_remind_info"
+            android:textColor="@color/gray_B9"
+            android:gravity="center"
+            android:textSize="12sp" />
+    </LinearLayout>
+</layout>

@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?><!--运费及其它优惠信息-->
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="entity"
+            type="com.netmi.workerbusiness.data.entity.home.lineorder.LineOrderDetailEntity" />
+
+        <import type="com.netmi.baselibrary.utils.FloatUtils" />
+
+        <import type="android.view.View" />
+
+        <import type="com.netmi.baselibrary.utils.Strings" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@color/gray_EE"
+        android:orientation="vertical">
+        <!--商品总额-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/tv_good_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sharemall_order_goods_total_amount"
+                android:textColor="@color/black_1d1e1f"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_amount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="end"
+                android:lines="1"
+                android:text="@{FloatUtils.formatMoney(entity.goods_amount)}"
+                android:textColor="@color/gray_99"
+                android:textSize="14sp"
+                tools:text="￥21312" />
+
+        </LinearLayout>
+
+        <!--运费信息-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:visibility="@{Strings.toDouble(entity.order_logistics_freight) > 0 ? View.VISIBLE : View.GONE}">
+
+            <TextView
+                android:id="@+id/tv_carriage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sharemall_order_carriage"
+                android:textColor="@color/black_1d1e1f"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="end"
+                android:lines="1"
+                android:singleLine="true"
+                android:text="@{FloatUtils.formatMoney(entity.order_logistics_freight)}"
+                android:textColor="@color/gray_99"
+                android:textSize="14sp"
+                tools:text="包邮" />
+
+        </LinearLayout>
+
+
+        <!--优惠券-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:visibility="@{entity.order_coupon_amount > 0 ? View.VISIBLE : View.GONE}">
+
+            <TextView
+                android:id="@+id/tv_coupon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sharemall_order_use_coupon"
+                android:textColor="@color/black_1d1e1f"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="end"
+                android:lines="1"
+                android:singleLine="true"
+                android:text="@{FloatUtils.formatMoneydel(entity.order_coupon_amount)}"
+                android:textColor="@color/gray_99"
+                android:textSize="14sp"
+                tools:text="满300减50" />
+
+        </LinearLayout>
+
+        <!--实付款-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/tv_real_pay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sharemall_real_pay"
+                android:textColor="@color/black_1d1e1f"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="end"
+                android:lines="1"
+                android:singleLine="true"
+                android:text="@{FloatUtils.formatMoney(entity.order_amount)}"
+                android:textColor="@color/red_B52902"
+                android:textSize="14sp"
+                tools:text="￥53.12" />
+        </LinearLayout>
+
+        <!--余额-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:visibility="@{entity.order_pay_amount > 0 ? View.VISIBLE : View.GONE}">
+
+            <!--余额-->
+            <TextView
+                android:id="@+id/tv_balance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sharemall_order_use_balance"
+                android:textColor="@color/black_1d1e1f"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="end"
+                android:lines="1"
+                android:singleLine="true"
+                android:text="@{FloatUtils.formatMoney(entity.order_pay_amount)}"
+                android:textColor="@color/gray_99"
+                android:textSize="14sp"
+                tools:text="￥53.12" />
+        </LinearLayout>
+
+
+        <!--积分抵扣-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:visibility="@{Strings.toDouble(entity.order_pay_score) > 0 ? View.VISIBLE: View.GONE}">
+
+            <TextView
+                android:id="@+id/tv_yubi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sharemall_order_use_integral"
+                android:textColor="@color/black_1d1e1f"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="end"
+                android:lines="1"
+                android:singleLine="true"
+                android:text="@{entity.orderPayScoreReal}"
+                android:textColor="@color/gray_99"
+                android:textSize="14sp"
+                tools:text="￥2132" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</layout>

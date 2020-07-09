@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.liemi.basemall.data.entity.order.OrderDetailsEntity.MeOrdersBean" />
+
+        <import type="com.netmi.baselibrary.utils.Strings" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@color/white"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/ll_good"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingBottom="10dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingTop="10dp">
+
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginRight="10dp"
+                android:scaleType="centerCrop"
+                bind:ivPathN="@{item.img_url}"
+                android:contentDescription="@null" />
+            <com.liemi.basemall.widget.RatingBarView
+                android:id="@+id/rb_star_server"
+                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:starCount="5"
+                app:starEmpty="@mipmap/star_border_hide"
+                app:starFill="@mipmap/star_border_show"
+                app:padding_right="20dp"
+                app:starImageSize="20dp" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/v_line"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@color/theme_bg" />
+
+        <EditText
+            android:padding="19dp"
+            android:id="@+id/et_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:gravity="top"
+            android:hint="请输入您的评价"
+            android:inputType="textMultiLine"
+            android:maxLength="100"
+            android:minLines="3"
+            android:textColor="@color/theme_text_black"
+            android:textColorHint="#878787"
+            android:textSize="14sp" />
+
+        <android.support.v7.widget.RecyclerView
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:id="@+id/rv_pic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp" />
+    </LinearLayout>
+
+
+
+</layout>

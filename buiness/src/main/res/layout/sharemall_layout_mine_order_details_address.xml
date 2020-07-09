@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="address"
+            type="com.liemi.basemall.data.entity.AddressEntity" />
+    </data>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingVertical="16dp">
+
+        <ImageView
+            android:id="@+id/iv_location"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="13dp"
+            android:src="@mipmap/ic_order_detail_location" />
+        <!--姓名-->
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="13dp"
+            android:layout_toRightOf="@+id/iv_location"
+            android:ellipsize="end"
+            android:lines="1"
+            android:singleLine="true"
+            android:text="@{address.name}"
+            android:textColor="#333333"
+            android:textSize="18sp"
+            tools:text="吴娟" />
+        <!--手机号-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_toRightOf="@+id/tv_name"
+            android:ellipsize="end"
+            android:lines="1"
+            android:singleLine="true"
+            android:text="@{address.tel}"
+            android:textColor="#333333"
+            android:textSize="18sp"
+            tools:text="12323323145" />
+        <!--详细地址-->
+        <TextView
+            android:id="@+id/tv_details_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_name"
+            android:layout_alignLeft="@+id/tv_name"
+            android:layout_marginTop="9dp"
+            android:layout_toRightOf="@+id/iv_location"
+            android:ellipsize="end"
+            android:lines="1"
+            android:singleLine="true"
+            android:text="@{address.full_name}"
+            android:textColor="#999999"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            tools:text="浙江省 杭州市 余杭区" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/sharemall_ic_line_address" />
+    </RelativeLayout>
+
+</layout>

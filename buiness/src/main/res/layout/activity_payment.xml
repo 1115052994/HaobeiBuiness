@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F1F1F1"
+        android:orientation="vertical">
+
+        <include layout="@layout/layout_title_shadow" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:background="#FFFFFF"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="支付剩余时间"
+                android:textColor="#ff1d1e1f"
+                android:textSize="14sp" />
+
+            <cn.iwgang.countdownview.CountdownView
+                android:id="@+id/tv_time_limit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                app:isHideTimeBackground="true"
+                app:isShowDay="false"
+                app:isShowHour="true"
+                app:isShowMillisecond="false"
+                app:isShowMinute="true"
+                app:isShowSecond="true"
+                app:isTimeTextBold="false"
+                app:suffixGravity="bottom"
+                app:suffixHour=":"
+                app:suffixMillisecond="毫秒"
+                app:suffixMinute=":"
+                app:suffixSecond=""
+                app:suffixTextColor="#A9A9A9"
+                app:suffixTextSize="12sp"
+                app:timeTextColor="#A9A9A9"
+                app:timeTextSize="12sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="17dp"
+                android:layout_marginBottom="30dp"
+                android:text="￥507.00"
+                android:textColor="#ffd81e06"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="#ffffff"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/cb_wechat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="doClick">
+
+                <CheckBox
+                    android:id="@+id/wechat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:button="@null"
+                    android:checked="true"
+                    android:clickable="false"
+                    android:drawableLeft="@mipmap/ic_pay_with_wechat"
+                    android:drawableRight="@drawable/bg_checkbox"
+                    android:drawablePadding="12dp"
+                    android:paddingHorizontal="26dp"
+                    android:paddingVertical="18dp"
+                    android:text="微信支付" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/cb_alipay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="doClick">
+
+                <CheckBox
+                    android:id="@+id/alipay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:button="@null"
+                    android:checked="false"
+                    android:clickable="false"
+                    android:drawableLeft="@mipmap/ic_pay_with_alipay"
+                    android:drawableRight="@drawable/bg_checkbox"
+                    android:drawablePadding="12dp"
+                    android:paddingHorizontal="26dp"
+                    android:paddingVertical="18dp"
+                    android:text="支付宝支付" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/cb_bank"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="doClick">
+
+                <CheckBox
+                    android:id="@+id/bank"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:button="@null"
+                    android:checked="false"
+                    android:clickable="false"
+                    android:drawableLeft="@mipmap/ic_bank_pay"
+                    android:drawableRight="@drawable/bg_checkbox"
+                    android:drawablePadding="12dp"
+                    android:paddingHorizontal="26dp"
+                    android:paddingVertical="18dp"
+                    android:text="支付宝支付" />
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#D81E06"
+            android:gravity="center"
+            android:paddingVertical="15dp"
+            android:text="确认支付￥525"
+            android:textColor="#ffffffff"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+</layout>

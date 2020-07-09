@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp">
+
+        <ImageView
+            android:id="@+id/iv_pic"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:padding="5dp"
+            android:contentDescription="@null"
+            android:onClick="@{doClick}"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_upload_img" />
+        <LinearLayout
+            android:onClick="@{doClick}"
+            android:id="@+id/ll_upload"
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_gravity="center_horizontal"
+                android:src="@mipmap/ic_mall_upload"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:contentDescription="@null" />
+            <TextView
+                android:layout_marginTop="6dp"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:text="上传图片"
+                android:textColor="#ff888888"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+</layout>

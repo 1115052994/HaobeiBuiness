@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:id="@+id/global_search_root"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <include
+            android:id="@+id/title_bar"
+            layout="@layout/baselib_include_title_bar"/>
+
+
+        <EditText
+            android:id="@+id/message_serach"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
+            android:layout_below="@+id/title_bar"
+            android:drawablePadding="7dp"
+            android:hint="搜索"
+            android:imeOptions="actionSearch"
+            android:inputType="number"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="10dp"
+            android:textColor="@color/color_black_333333"
+            android:textColorHint="@color/gray_99"
+            android:textSize="14sp" />
+
+
+        <com.netease.nim.uikit.common.ui.listview.AutoRefreshListView
+            android:id="@+id/searchResultList"
+            style="@style/list_view"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/message_serach"
+            android:cacheColorHint="#00000000"
+            android:clipToPadding="false"
+            android:divider="@null"
+            android:fadingEdge="none"
+            android:fastScrollEnabled="false"
+            android:footerDividersEnabled="false"
+            android:headerDividersEnabled="false"
+            android:background="@color/white"
+            android:smoothScrollbar="true"
+            android:paddingBottom="68dp"/>
+
+    </RelativeLayout>
+
+</layout>

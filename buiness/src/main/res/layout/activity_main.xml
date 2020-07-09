@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <data>
+
+        <variable
+            name="checkListener"
+            type="android.widget.CompoundButton.OnCheckedChangeListener" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- 底部Tab-->
+        <LinearLayout
+            android:id="@+id/rl_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="#FFFFFFFF"
+            android:elevation="4dp"
+            android:orientation="horizontal"
+            android:paddingTop="7dp"
+            android:paddingBottom="4dp">
+
+            <RadioButton
+                android:id="@+id/rb_home"
+                style="@style/home_rb_style_mall"
+                android:drawableTop="@drawable/selector_tab_home"
+                android:onCheckedChanged="@{checkListener::onCheckedChanged}"
+                android:text="运营台" />
+
+            <RadioButton
+                android:id="@+id/rb_collection"
+                style="@style/home_rb_style_mall"
+                android:drawableTop="@drawable/selector_tab_collection"
+                android:onCheckedChanged="@{checkListener::onCheckedChanged}"
+                android:text="收款码"
+                android:visibility="gone" />
+
+            <RadioButton
+                android:id="@+id/rb_message"
+                style="@style/home_rb_style_mall"
+                android:drawableTop="@drawable/selector_tab_mess"
+                android:onCheckedChanged="@{checkListener::onCheckedChanged}"
+                android:text="消息" />
+
+            <RadioButton
+                android:id="@+id/rb_mine"
+                style="@style/home_rb_style_mall"
+                android:drawableTop="@drawable/selector_tab_mine"
+                android:onCheckedChanged="@{checkListener::onCheckedChanged}"
+                android:text="我的" />
+
+        </LinearLayout>
+
+
+        <!-- 中间内容-->
+        <FrameLayout
+            android:id="@+id/fl_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/rl_bottom"
+            android:background="@color/white" />
+
+    </RelativeLayout>
+
+</layout>

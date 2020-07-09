@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/et_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/baselib_bg_white_radius_5"
+        android:gravity="top"
+        android:hint="请输入"
+        android:inputType="textMultiLine"
+        android:minLines="2"
+        android:minEms="15"
+        android:padding="10dp" />
+
+    <Button
+        android:id="@+id/bt_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/baselib_bg_red_radius_4"
+        android:gravity="center"
+        android:onClick="doClick"
+        android:text="@string/confirm"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+
+</LinearLayout>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="white">#FFFFFF</color>
+    <color name="default_background">#ff000000</color>
+    <color name="theme_text_black">#333333</color>
+    <color name="edit_text_white">#FFFFFFFF</color>
+    <color name="theme_text_gray">#a8a8a8</color>
+    <color name="divider_color">#f4f4f4</color>
+    <color name="gray_half">#8ed3d3d3</color>
+    <color name="transparent">#00000000</color>
+    <color name="theme_background_color">#f4f4f4</color>
+
+    <color name="theme_red">#b52902</color>
+    <color name="theme_red_press">#e36039</color>
+
+    <color name="themeRed">#e60012</color>
+    <color name="gray_F6F6F7">#F6F6F7</color>
+    <color name="sharemall_black_18293a">#18293a</color>
+    <color name="black_1d1e1f">#1d1e1f</color>
+    <color name="black_1D1E1F">#1D1E1F</color>
+    <color name="color_B52902">#B52902</color>
+    <color name="themeRedP">#d60012</color>
+    <color name="grayF2">#f2f2f2</color>
+    <color name="theme_deep_blue">#FF202533</color>
+
+    <color name="theme_brown">#998255</color>
+    <color name="theme_brown_press">#a58255</color>
+
+    <color name="theme_blue">#33b3ff</color>
+    <color name="theme_blue_press">#23b3ff</color>
+
+    <color name="theme_bg">#f4f4f4</color>
+
+    <color name="line_gray">#f4f4f4</color>
+    <color name="green_25c68a">#25c68a</color>
+    <color name="green_8025c68a">#8025c68a</color>
+    <color name="color_33e4eaee">#33E4EAEE</color>
+    <color name="color_FFF9F9F9">#FFF9F9F9</color>
+    <color name="color_FFFA8709">#FFFA8709</color>
+    <color name="color_FFB6B6B6">#FFB6B6B6</color>
+    <color name="red_B52902">#B52902</color>
+    <color name="red_D81E06">#D81E06</color>
+    <color name="color_676F89">#676F89</color>
+    <color name="color_fffbb8ac">#fffbb8ac</color>
+    <color name="color_3B3D88">#3B3D88</color>
+    <color name="color_E64012">#E64012</color>
+    <color name="color_ACB9D7">#ACB9D7</color>
+</resources>

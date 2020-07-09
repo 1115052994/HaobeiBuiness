@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.liemi.basemall.data.entity.order.OrderDetailsEntity.MeOrdersBean" />
+
+        <import type="com.netmi.baselibrary.utils.Strings" />
+
+        <import type="android.view.View"/>
+
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/theme_bg"
+        tools:context="com.liemi.basemall.ui.personal.refund.ApplyRefundActivity">
+        <include
+            android:id="@+id/rl_title_bar"
+            layout="@layout/baselib_include_title_bar"/>
+        <ScrollView
+            android:layout_below="@+id/rl_title_bar"
+            android:layout_above="@+id/tv_confirm"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:paddingBottom="10dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/ll_refund_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/tv_refund_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/white"
+                    android:id="@+id/ll_good"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingBottom="19dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="19dp">
+
+                    <com.netmi.baselibrary.widget.RoundImageView
+                        android:layout_width="58dp"
+                        android:layout_height="58dp"
+                        android:layout_marginRight="14dp"
+                        android:scaleType="centerCrop"
+                        ivPathN="@{item.img_url}" />
+
+                    <RelativeLayout
+                        android:id="@+id/rl_good_detail"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_marginRight="15dp"
+                            android:layout_toLeftOf="@+id/tv_price"
+                            android:layout_marginTop="4dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:maxLines="2"
+                            android:text="@{item.title}"
+                            android:textColor="#1D1E1F"
+                            android:textSize="13sp" />
+                        <TextView
+                            android:layout_marginRight="10dp"
+                            android:layout_alignParentBottom="true"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="4dp"
+                            android:ellipsize="end"
+                            android:lines="1"
+                            android:text="@{Strings.formatStr(@string/format_goods_specs_tip,item.color_name)}"
+                            android:textColor="#878787"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:textStyle="bold"
+                            android:id="@+id/tv_price"
+                            android:singleLine="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{item.price}"
+                            android:textColor="#FF3700"
+                            android:textSize="19sp"
+                            android:layout_alignParentEnd="true" />
+                        <TextView
+                            android:id="@+id/tv_num"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginBottom="4dp"
+                            android:layout_alignParentBottom="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{@string/format_x_num(Strings.twoDecimal(item.num))}"
+                            android:textColor="#878787"
+                            android:textSize="12sp"
+                            android:layout_alignParentEnd="true" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_marginTop="25dp"
+                        android:layout_marginBottom="25dp"
+                        android:layout_marginLeft="15dp"
+                        android:text="联系方式："
+                        android:textSize="13sp"
+                        android:textColor="#353535"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <EditText
+                        android:id="@+id/et_phone"
+                        android:layout_marginLeft="8dp"
+                        android:background="@null"
+                        android:padding="5dp"
+                        android:inputType="number"
+                        android:hint="请输入联系方式"
+                        android:textSize="12sp"
+                        android:textColor="#353535"
+                        android:textColorHint="#AAA9A9"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/et_content"
+                    android:background="@null"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="请您在此描述换货问题"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="5dp"
+                    android:inputType="textMultiLine"
+                    android:text="@{item.remark}"
+                    android:maxLength="100"
+                    android:minLines="5"
+                    android:gravity="top"
+                    android:textColor="@color/theme_text_black"
+                    android:textColorHint="#c4c4c4"
+                    android:textSize="15sp" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_pic"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+            </LinearLayout>
+        </ScrollView>
+        <TextView
+            android:layout_alignParentBottom="true"
+            android:id="@+id/tv_confirm"
+            android:layout_width="match_parent"
+            android:layout_height="47dp"
+            android:background="#B52902"
+            android:gravity="center"
+            android:onClick="doClick"
+            android:text="确定"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+</layout>

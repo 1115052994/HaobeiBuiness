@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="item"
+            type="com.liemi.basemall.data.entity.floor.NewFloorEntity.FloorDataBean"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <com.netmi.baselibrary.widget.ResizableImageView
+            android:id="@+id/iv_floor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            ivPathN="@{item.img_url}"/>
+
+    </LinearLayout>
+
+</layout>

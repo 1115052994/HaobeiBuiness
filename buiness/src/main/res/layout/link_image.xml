@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <!-- 图文消息的标题 -->
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:adjustViewBounds="true"
+            android:gravity="center_vertical"
+            android:maxLines="2"
+            android:textColor="@color/color_blue_0888ff"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <!-- 图文消息中的图片，设置个默认图片 -->
+        <ImageView
+            android:id="@+id/link_image"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_gravity="center_vertical"
+            android:adjustViewBounds="true"
+            android:background="@drawable/baselib_bg_default_pic"
+            android:src="@drawable/baselib_bg_default_pic" />
+
+        <!-- 图文消息中的描述 -->
+        <TextView
+            android:id="@+id/describe"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:adjustViewBounds="true"
+            android:lineSpacingExtra="2dp"
+            android:maxLines="3"
+            android:paddingTop="5dp"
+            android:textColor="@color/color_blue_3a9efb"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+</merge>

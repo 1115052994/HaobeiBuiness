@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.liemi.basemall.data.entity.good.GoodsDetailedEntity" />
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+        <import type="com.netmi.baselibrary.utils.Strings" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/view_bg"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="#00000000"
+            android:onClick="@{doClick}" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_topround19dp_colorffffff"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="15dp"
+                android:paddingTop="15dp"
+                android:paddingRight="15dp">
+
+                <com.netmi.baselibrary.widget.RoundImageView
+                    android:id="@+id/iv_good_pic"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_marginRight="15dp"
+                    android:scaleType="centerCrop"
+                    bind:ivPath="@{item.img_url}" />
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:layout_toEndOf="@id/iv_good_pic"
+                    android:layout_toRightOf="@+id/iv_good_pic"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:text="@{item.title}"
+                    android:textColor="#ff1d1e1f"
+                    android:textSize="14sp" />
+
+                <com.liemi.basemall.widget.MoneyTextView
+                    android:id="@+id/tv_choice_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_name"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@id/iv_good_pic"
+                    android:layout_toRightOf="@+id/iv_good_pic"
+                    android:text="@{item.getShowPrice()}"
+                    android:textColor="#FF3700"
+                    android:textSize="19sp"
+                    tools:text="123.00YMS"/>
+
+                <TextView
+                    android:id="@+id/tv_stock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/tv_choice_price"
+                    android:layout_alignParentRight="true"
+                    android:text="@{@string/format_stock(item.stock)}"
+                    android:textColor="#878787"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
+            <com.liemi.basemall.widget.MaxHeightRecyclerView
+                android:id="@+id/rv_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="10dp"
+                app:maxHeight="350dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:text="购买数量"
+                android:textColor="#1D1E1F"
+                android:textSize="14sp" />
+
+
+            <!-- 增加减少按钮-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="17dp"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <ImageView
+                    android:id="@+id/tv_minus"
+                    android:layout_width="39dp"
+                    android:layout_height="39dp"
+                    android:contentDescription="@null"
+                    android:enabled="@{Strings.toFloat(item.num) > 1}"
+                    android:onClick="@{doClick}"
+                    android:padding="10dp"
+                    android:src="@drawable/selector_good_minus" />
+
+                <TextView
+                    android:id="@+id/tv_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="23dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/tv_minus"
+                    android:background="@drawable/shape_colorf2f2f2_radius2dp"
+                    android:gravity="center"
+                    android:minWidth="30dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:text="1"
+                    android:textColor="#ff1b252d"
+                    android:textSize="13sp" />
+
+                <ImageView
+                    android:id="@+id/tv_plus"
+                    android:layout_width="39dp"
+                    android:layout_height="39dp"
+                    android:layout_toRightOf="@+id/tv_num"
+                    android:contentDescription="@null"
+                    android:enabled="true"
+                    android:onClick="@{doClick}"
+                    android:padding="10dp"
+                    android:src="@drawable/selector_good_plus" />
+
+                <TextView
+                    android:id="@+id/tv_confirm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="19dp"
+                    android:background="@drawable/baselib_bg_colorb52902_radius15dp"
+                    android:onClick="@{doClick}"
+                    android:paddingLeft="19dp"
+                    android:paddingTop="7dp"
+                    android:paddingRight="19dp"
+                    android:paddingBottom="7dp"
+                    android:text="立即购买"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
+
+        </LinearLayout>
+    </LinearLayout>
+</layout>

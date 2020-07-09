@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="item"
+            type="com.liemi.basemall.data.entity.good.GoodsDetailedEntity.ColorListBean" />
+
+    </data>
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:foreground="@{item.checked ? @drawable/ic_color_choice : @drawable/ic_color_normal}">
+
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:onClick="@{doClick}"
+            android:padding="1dp"
+            android:src="@drawable/baselib_bg_default_circle_pic"
+            bind:civPath="@{item.img_url}" />
+
+    </FrameLayout>
+</layout>

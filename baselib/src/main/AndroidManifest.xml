@@ -1,0 +1,16 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.netmi.baselibrary">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <!--状态栏权限-->
+    <uses-permission android:name="android.permission.EXPAND_STATUS_BAR"/>
+
+    <application>
+
+        <activity android:name=".ui.BaseWebviewActivity" />
+
+    </application>
+
+</manifest>

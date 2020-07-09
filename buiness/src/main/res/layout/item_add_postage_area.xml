@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.netmi.baselibrary.data.entity.CityChoiceEntity" />
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+
+    <LinearLayout
+        android:id="@+id/ll_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:paddingHorizontal="14dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@{item.name}"
+            android:textColor="@color/ff333333"
+            android:textSize="14sp"
+            tools:text="浙江" />
+
+
+        <!--android:checked="@={item.checked}"-->
+        <!--android:onCheckedChanged="@{checkedListener}"-->
+        <!--android:onClick="@{doClick}"
+        android:visibility="@{isEdit?View.VISIBLE:View.GONE}"-->
+        <CheckBox
+            android:id="@+id/cb_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:button="@null"
+            android:drawableRight="@drawable/check_white_red_btn"
+            android:padding="15dp" />
+
+    </LinearLayout>
+
+</layout>

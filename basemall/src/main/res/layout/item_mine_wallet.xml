@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="com.netmi.baselibrary.utils.FloatUtils" />
+
+        <variable
+            name="item"
+            type="com.liemi.basemall.data.entity.user.CoinEntity"
+            />
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_radius_8dp_solid_f3f5f6"
+        android:padding="20dp"
+        android:gravity="center_vertical"
+        >
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:contentDescription="@null"
+            ivPathResource="@{item.coinIcon}"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="ETH"
+            android:textSize="12sp"
+            android:textColor="#1d1e1f"
+            android:layout_marginLeft="10dp"
+            android:lines="1"
+            android:ellipsize="end"
+            android:maxLength="10"
+            android:text="@{item.coinName}"
+            />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="0.23213123"
+                android:lines="1"
+                android:ellipsize="end"
+                android:textColor="#1d1e1f"
+                android:textSize="14sp"
+                android:text="@{FloatUtils.eightDecimal(item.usedNum,false)}"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="0.2321312312"
+                android:lines="1"
+                android:ellipsize="end"
+                android:textColor="#838383"
+                android:textSize="12sp"
+                android:layout_marginTop="3dp"
+                android:text="@{@string/about_cny_num(FloatUtils.twoDecimal(item.usedCny,false))}"
+                />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

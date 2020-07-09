@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="isVerified"
+            type="Boolean" />
+
+        <variable
+            name="canChange"
+            type="Boolean" />
+
+        <variable
+            name="haveAlipay"
+            type="Boolean" />
+
+        <variable
+            name="haveWechatPay"
+            type="Boolean" />
+
+        <import type="android.view.View" />
+
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray_F2"
+        android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:id="@+id/rl_title_bar"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:background="@drawable/bg_title_shadow"
+            android:paddingTop="20dp">
+
+            <LinearLayout
+                android:id="@+id/ll_back"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:onClick="doClick"
+                android:orientation="horizontal"
+                android:paddingLeft="14dp">
+
+                <ImageView
+                    android:id="@+id/iv_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@null"
+                    android:src="@mipmap/icon_back_new" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="68dp"
+                android:layout_marginRight="68dp"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:lines="1"
+                android:textColor="@color/gray_1B252D"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:transitionName="@string/transition_title_name"
+
+                />
+
+            <TextView
+                android:id="@+id/tv_setting"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:clickable="@{isVerified?true:false}"
+                android:gravity="center"
+                android:onClick="doClick"
+                android:paddingHorizontal="15dp"
+                android:textColor="#999999"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingVertical="10dp"
+                    android:text="@string/remained"
+                    android:textColor="#3A7BEB"
+                    android:textSize="12sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="30dp"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <EditText
+                        android:id="@+id/etInputName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/radius_2dp_f7"
+                        android:ellipsize="end"
+                        android:enabled="@{canChange?true:false}"
+                        android:hint="真实姓名"
+                        android:inputType="text"
+                        android:lines="1"
+                        android:maxLength="15"
+                        android:paddingHorizontal="15dp"
+                        android:paddingVertical="10dp"
+                        android:text=""
+                        android:textColorHint="#C0C0C0"
+                        android:textSize="14sp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginVertical="20dp"
+                        android:background="@color/gray_EE" />
+
+
+                    <EditText
+                        android:id="@+id/etInputIdCard"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/radius_2dp_f7"
+                        android:digits="0123456789XxYy"
+                        android:ellipsize="end"
+                        android:enabled="@{canChange?true:false}"
+                        android:hint="身份证号码"
+                        android:lines="1"
+                        android:paddingVertical="10dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:textColorHint="#C0C0C0"
+                        android:textSize="14sp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginVertical="20dp"
+                        android:background="@color/gray_EE" />
+
+                    <EditText
+                        android:id="@+id/etInputPhone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/radius_2dp_f7"
+                        android:ellipsize="end"
+                        android:enabled="@{canChange?true:false}"
+                        android:hint="手机号码"
+                        android:inputType="phone"
+                        android:lines="1"
+                        android:paddingVertical="10dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:textColorHint="#C0C0C0"
+                        android:textSize="14sp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginVertical="20dp"
+                        android:background="@color/gray_EE" />
+
+                    <EditText
+                        android:id="@+id/etInputAlipay"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/radius_2dp_f7"
+                        android:ellipsize="end"
+                        android:enabled="@{canChange?true:false}"
+                        android:hint="支付宝账号"
+                        android:inputType="textVisiblePassword"
+                        android:lines="1"
+                        android:paddingVertical="10dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:textColorHint="#C0C0C0"
+                        android:textSize="14sp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginVertical="20dp"
+                        android:background="@color/gray_EE" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="支付宝收款二维码"
+                            android:textColor="#ff1e2234"
+                            android:textSize="14sp" />
+
+                        <ImageView
+                            android:id="@+id/bt_alipay_qrcode"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:onClick="doClick"
+                            android:src="@mipmap/icon_qrcode"
+                            android:visibility="@{haveAlipay?View.VISIBLE:View.INVISIBLE}" />
+
+                        <TextView
+                            android:id="@+id/bt_alipay_update"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="12dp"
+                            android:background="@{haveAlipay?@drawable/radius_4dp_12b38d:@drawable/radius_4dp_2552d9}"
+                            android:onClick="doClick"
+                            android:paddingLeft="12dp"
+                            android:paddingTop="6dp"
+                            android:paddingRight="12dp"
+                            android:paddingBottom="6dp"
+                            android:text="@{haveAlipay?@string/reupdate:@string/click_update}"
+                            android:visibility="@{canChange?View.VISIBLE:View.GONE}" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginVertical="20dp"
+                        android:background="@color/gray_EE" />
+
+                    <EditText
+                        android:id="@+id/etInputWx"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/radius_2dp_f7"
+                        android:ellipsize="end"
+                        android:enabled="@{canChange?true:false}"
+                        android:hint="微信号"
+                        android:inputType="textVisiblePassword"
+                        android:lines="1"
+                        android:paddingVertical="10dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:textColorHint="#C0C0C0"
+                        android:textSize="14sp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginVertical="20dp"
+                        android:background="@color/gray_EE" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="微信收款二维码"
+                            android:textColor="#ff1e2234"
+                            android:textSize="14sp"
+
+                            />
+
+                        <ImageView
+                            android:id="@+id/bt_wxpay_qrcode"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:onClick="doClick"
+                            android:src="@mipmap/icon_qrcode"
+                            android:visibility="@{haveWechatPay?View.VISIBLE:View.INVISIBLE}" />
+
+                        <TextView
+                            android:id="@+id/bt_wxpay_update"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="12dp"
+                            android:background="@{haveWechatPay?@drawable/radius_4dp_12b38d:@drawable/radius_4dp_2552d9}"
+                            android:onClick="doClick"
+                            android:paddingLeft="12dp"
+                            android:paddingTop="6dp"
+                            android:paddingRight="12dp"
+                            android:paddingBottom="6dp"
+                            android:text="@{haveWechatPay?@string/reupdate:@string/click_update}"
+                            android:visibility="@{canChange?View.VISIBLE:View.GONE}" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginVertical="20dp"
+                        android:background="@color/gray_EE" />
+
+
+                    <EditText
+                        android:id="@+id/etInputBankName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/radius_2dp_f7"
+                        android:ellipsize="end"
+                        android:enabled="@{canChange?true:false}"
+                        android:hint="银行卡名称"
+                        android:inputType="text"
+                        android:lines="1"
+                        android:maxLength="15"
+                        android:paddingVertical="10dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:textColorHint="#C0C0C0"
+                        android:textSize="14sp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginVertical="20dp"
+                        android:background="@color/gray_EE" />
+
+                    <EditText
+                        android:id="@+id/etInputBankAccount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/radius_2dp_f7"
+                        android:ellipsize="end"
+                        android:enabled="@{canChange?true:false}"
+                        android:hint="银行卡账号"
+                        android:inputType="number"
+                        android:lines="1"
+                        android:maxLength="20"
+                        android:paddingVertical="10dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:textColorHint="#C0C0C0"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
+        <TextView
+            android:id="@+id/tv_save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_normal_25dp"
+            android:gravity="center"
+            android:onClick="doClick"
+            android:paddingVertical="14dp"
+            android:text="提交认证"
+            android:textColor="#ffffffff"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+</layout>

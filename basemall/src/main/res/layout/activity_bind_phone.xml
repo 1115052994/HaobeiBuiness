@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?><!--用户绑定手机号页面-->
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="textChange"
+            type="android.databinding.adapters.TextViewBindingAdapter.OnTextChanged"
+            />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
+        <LinearLayout
+            android:id="@+id/ll_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/iv_close"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:onClick="doClick"
+                android:src="@mipmap/baselib_ic_back" />
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/icon_company"
+                />
+
+            <!--输入手机号-->
+            <EditText
+                android:id="@+id/et_input_phone"
+                style="@style/maxWidthTextView"
+                android:layout_marginTop="25dp"
+                android:hint="@string/please_input_phone_number"
+                android:inputType="phone"
+                android:digits="0123456789"
+                android:maxLength="11"
+                android:paddingLeft="20dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:textColorHint="@color/gray_B8"
+                android:background="@null"
+                android:textSize="14sp"
+                android:onTextChanged="@{textChange}"
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray_F2"
+                />
+
+            <!--输入验证码-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                >
+
+                <EditText
+                    android:id="@+id/et_input_verification_code"
+                    style="@style/maxWidthTextView"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:hint="@string/please_input_verification_code"
+                    android:inputType="number"
+                    android:maxLength="6"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:textColorHint="@color/gray_B8"
+                    android:onTextChanged="@{textChange}"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_get_verification_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/d_7"
+                    android:background="@drawable/shape_stroke1dp999999_solid_white"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/d_10"
+                    android:paddingTop="@dimen/d_5"
+                    android:paddingRight="@dimen/d_10"
+                    android:paddingBottom="@dimen/d_5"
+                    android:text="@string/modlogin_get_identifying_code"
+                    android:textColor="#ff999999"
+                    android:onClick="doClick"
+                    android:textSize="12sp" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray_F2"
+                />
+
+        </LinearLayout>
+
+        <!--完成绑定-->
+        <Button
+            android:id="@+id/btn_bind_phone_finish"
+            style="@style/maxWidthCenterTextView"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/ll_top"
+            android:background="@drawable/baselib_bg_color77b52902"
+            android:onClick="doClick"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:text="@string/bind_phone_finish"
+            android:layout_marginTop="65dp"
+            android:textColor="@color/white"
+            android:enabled="false"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+
+    </RelativeLayout>
+
+</layout>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/theme_bg"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/include_title"
+            layout="@layout/baselib_include_title_bar" />
+
+
+        <ImageView
+            android:id="@+id/iv_status"
+            android:layout_below="@+id/include_title"
+            android:layout_centerHorizontal="true"
+            android:layout_width="67dp"
+            android:layout_height="67dp"
+            android:layout_marginTop="50dp"
+            android:src="@mipmap/ic_order_success" />
+
+        <TextView
+            android:layout_below="@+id/iv_status"
+            android:id="@+id/tv_tip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:text="您的退款申请已提交给商家"
+            android:textColor="#1F1F1F"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_below="@+id/tv_tip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:gravity="center"
+            android:text="请耐心等待商家处理"
+            android:textColor="#636363"
+            android:textSize="12sp" />
+
+        <TextView
+            android:gravity="center"
+            android:background="#B52902"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/tv_confirm"
+            android:layout_width="match_parent"
+            android:layout_height="47dp"
+            android:layout_gravity="center_horizontal"
+            android:onClick="doClick"
+            android:text="完成"
+            android:textColor="#ffffffff"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
+</layout>

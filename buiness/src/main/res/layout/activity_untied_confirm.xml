@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <include layout="@layout/layout_title_shadow" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_phone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="请输入银行卡预留手机号"
+                android:inputType="number"
+                android:paddingVertical="15dp"
+                android:textColor="#ffa9a9a9"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_get_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_radius_2dp_d81e06"
+                android:onClick="doClick"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="7dp"
+                android:text="获取验证码"
+                android:textColor="#ffd81e06"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="25dp"
+            android:background="#F2F2F2" />
+
+        <EditText
+            android:id="@+id/et_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginTop="8dp"
+            android:background="@null"
+            android:hint="请输入验证码"
+            android:inputType="number"
+            android:paddingVertical="15dp"
+            android:textColor="#ffa9a9a9"
+            android:textSize="14sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="25dp"
+            android:background="#F2F2F2" />
+
+        <TextView
+            android:id="@+id/tv_confirm"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d_45"
+            android:layout_marginLeft="@dimen/d_25"
+            android:layout_marginTop="200dp"
+            android:layout_marginRight="@dimen/d_25"
+            android:background="@drawable/baselib_bg_color77b52902"
+            android:enabled="false"
+            android:gravity="center"
+            android:onClick="doClick"
+            android:text="@string/confirm"
+            android:textColor="@color/white"
+            android:textSize="@dimen/s_14" />
+    </LinearLayout>
+
+</layout>

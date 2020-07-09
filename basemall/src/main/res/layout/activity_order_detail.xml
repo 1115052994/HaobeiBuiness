@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.liemi.basemall.data.entity.order.OrderDetailsEntity" />
+
+        <import type="android.view.View" />
+
+        <import type="com.netmi.baselibrary.utils.Strings" />
+
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/theme_bg"
+        android:fitsSystemWindows="true">
+
+        <include
+            android:id="@+id/include_title"
+            layout="@layout/baselib_include_title_bar" />
+        <RelativeLayout
+            android:focusableInTouchMode="true"
+            android:focusable="true"
+            android:layout_below="@id/include_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/ll_footer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical|end"
+                android:layout_alignParentBottom="true">
+
+                <RelativeLayout
+                    android:background="@color/white"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:onClick="doClick"
+                        android:id="@+id/tv_contact_service"
+                        android:layout_centerInParent="true"
+                        android:drawablePadding="10dp"
+                        android:layout_width="wrap_content"
+                        android:drawableLeft="@mipmap/ic_message"
+                        android:text="联系卖家"
+                        android:gravity="center"
+                        android:textColor="#1D1E1F"
+                        android:layout_height="match_parent" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_order_see"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_stroke1dpb52902_colorwhite"
+                    android:gravity="center"
+                    android:paddingLeft="27dp"
+                    android:paddingRight="27dp"
+                    android:paddingTop="13dp"
+                    android:paddingBottom="13dp"
+                    android:onClick="doClick"
+                    android:text="@{item.getLeftBtnText()}"
+                    android:visibility="@{Strings.isEmpty(item.getLeftBtnText())? View.GONE : View.VISIBLE }"
+                    android:textColor="#B52902"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:paddingLeft="27dp"
+                    android:paddingRight="27dp"
+                    android:paddingTop="13dp"
+                    android:paddingBottom="13dp"
+                    android:id="@+id/tv_order_function"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#B52902"
+                    android:gravity="center"
+                    android:onClick="doClick"
+                    android:text="@{item.getRightBtnText()}"
+                    android:visibility="@{Strings.isEmpty(item.getRightBtnText())? View.GONE : View.VISIBLE }"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+
+
+            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_goods"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@id/ll_footer"
+                android:focusable="false"
+                android:overScrollMode="never" />
+        </RelativeLayout>
+
+        <!--退款成功的订单-->
+        <RelativeLayout
+            android:visibility="gone"
+            android:background="@color/theme_bg"
+            android:layout_below="@id/include_title"
+            android:id="@+id/rl_refund_order"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_marginTop="57dp"
+                android:layout_centerHorizontal="true"
+                android:src="@mipmap/ic_order_refund"
+                android:layout_width="80dp"
+                android:layout_height="70dp" />
+            <TextView
+                android:layout_centerHorizontal="true"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="158dp"
+                android:layout_width="192dp"
+                android:layout_height="wrap_content"
+                android:text="您的订单已退款成功，查看可点击下方按钮"
+                android:textColor="#ff1f1f1f"
+                android:textSize="16sp" />
+            <TextView
+                android:text="去看看"
+                android:layout_alignParentBottom="true"
+                android:paddingLeft="27dp"
+                android:paddingRight="27dp"
+                android:paddingTop="13dp"
+                android:paddingBottom="13dp"
+                android:id="@+id/tv_refund_function"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#B52902"
+                android:gravity="center"
+                android:onClick="doClick"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>

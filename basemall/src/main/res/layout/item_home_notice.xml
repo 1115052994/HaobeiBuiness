@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+    </data>
+
+
+    <LinearLayout
+        android:id="@+id/ll_text_banner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:background="@drawable/bg_color1f1f1e_radius20"
+        android:gravity="center_vertical"
+        android:onClick="@{doClick}"
+        android:orientation="horizontal"
+        android:padding="6dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_home_notice" />
+
+        <com.liemi.basemall.widget.MyTextBannerView
+            android:id="@+id/tv_banner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            app:setDirection="bottom_to_top"
+            app:setSingleLine="true"
+            app:setTextColor="@color/white"
+            app:setTextSize="14sp" />
+
+    </LinearLayout>
+</layout>

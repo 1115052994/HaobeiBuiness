@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.netmi.workerbusiness.data.entity.home.postage.ServiceDesEntity" />
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/ll_all"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginBottom="1dp"
+        android:background="@color/white"
+        android:onClick="@{doClick}">
+
+        <TextView
+            android:id="@+id/tv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="1dp"
+            android:background="@color/white"
+            android:button="@null"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="36dp"
+            android:text="@{item.name}"
+            android:textColor="#FF333333"
+            android:textSize="@dimen/sp_14"
+            tools:text="合适吗" />
+
+        <ImageView
+            android:id="@+id/iv"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="15dp"
+            android:src="@mipmap/ic_uncheck_white"
+            tools:text="haha" />
+
+
+    </RelativeLayout>
+</layout>

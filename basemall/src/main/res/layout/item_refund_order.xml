@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="hiddenFooter"
+            type="boolean" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="item"
+            type="com.liemi.basemall.data.entity.order.ReplaceListEntity" />
+
+        <import type="com.netmi.baselibrary.utils.Strings" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_store_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="5dp"
+                android:drawableRight="@mipmap/ic_right_gray"
+                android:gravity="center"
+                android:onClick="@{doClick}"
+                android:padding="@dimen/d_14"
+                android:text="@{item.change.shop.name}"
+                android:textColor="#1D1E1F"
+                android:textSize="13sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="12dp"
+                android:gravity="end"
+                android:textColor="#FF3700"
+                android:text="@{item.getStatusToString()}"
+                android:textSize="14sp" />
+
+
+        </LinearLayout>
+
+        <com.liemi.basemall.widget.MyRecyclerView
+            android:id="@+id/rv_goods"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="@{hiddenFooter ? View.GONE : View.VISIBLE}">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/theme_bg" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical|end"
+                android:orientation="horizontal"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp">
+
+                <TextView
+                    android:id="@+id/tv_contact_service"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_round2_stroke1dp555555_colorwhite"
+                    android:gravity="center"
+                    android:onClick="@{doClick}"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:text="@{item.getLeftBtnText()}"
+                    android:textColor="@color/theme_text_black"
+                    android:textSize="13sp"
+                    android:visibility="@{Strings.isEmpty(item.getLeftBtnText())? View.GONE : View.VISIBLE }" />
+
+                <TextView
+                    android:id="@+id/tv_order_see"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:background="@drawable/shape_round2_stroke1dpb52902_colorwhite"
+                    android:gravity="center"
+                    android:onClick="@{doClick}"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:text="@{item.getRightBtnText()}"
+                    android:textColor="#B52902"
+                    android:textSize="13sp"
+                    android:visibility="@{Strings.isEmpty(item.getRightBtnText())? View.GONE : View.VISIBLE  }" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

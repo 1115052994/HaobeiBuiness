@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.netmi.workerbusiness.data.entity.home.store.StoreDetailFirstListEntity"/>
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener"/>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/ll_content"
+            android:paddingHorizontal="14dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:textColor="@color/ff333333"
+                android:textSize="14sp"
+                android:text="@{item.group_name}"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                tools:text="新鲜果蔬"/>
+
+
+            <!--android:checked="@={item.checked}"-->
+            <!--android:onCheckedChanged="@{checkedListener}"-->
+            <!--android:onClick="@{doClick}"
+            android:visibility="@{isEdit?View.VISIBLE:View.GONE}"-->
+            <CheckBox
+                android:id="@+id/cb_check"
+                android:onClick="@{doClick}"
+                android:layout_width="wrap_content"
+                android:checked="@{item.check}"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:button="@null"
+                android:drawableRight="@drawable/check_white_red_btn"
+                android:padding="15dp" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_below="@+id/ll_content"
+            android:background="@color/theme_bg"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
+
+
+    </RelativeLayout>
+
+
+</layout>

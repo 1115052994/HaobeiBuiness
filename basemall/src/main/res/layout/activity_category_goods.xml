@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        tools:context="com.liemi.basemall.ui.category.CategoryGoodsActivity">
+
+        <include layout="@layout/baselib_include_title_bar" />
+
+        <TextView
+            android:id="@+id/tv_sort"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:drawableRight="@mipmap/ic_filter_good"
+            android:gravity="center_vertical"
+            android:onClick="doClick"
+            android:paddingLeft="14dp"
+            android:paddingRight="14dp"
+            android:text="综合排序"
+            android:textColor="#ff484848"
+            android:textSize="13sp" />
+
+        <View
+            android:id="@+id/v_line"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/d_1"
+            android:background="@color/theme_bg" />
+
+        <com.netmi.baselibrary.widget.MyXRecyclerView
+            android:id="@+id/xrv_goods"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never"
+            android:paddingTop="5dp" />
+    </LinearLayout>
+</layout>

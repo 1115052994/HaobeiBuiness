@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.view.View" />
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="showUnReadMessage"
+            type="boolean"
+            />
+
+
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/rl_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusableInTouchMode="true">
+
+        <com.netmi.baselibrary.widget.MyXRecyclerView
+            android:id="@+id/xrv_data"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never"
+            android:background="#f1f1f1" />
+
+        <RelativeLayout
+            android:id="@+id/ll_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/gradient_home_title"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingTop="30dp"
+            android:paddingBottom="15dp"
+            android:visibility="visible">
+
+            <LinearLayout
+                android:id="@+id/ll_seach_arrow"
+                android:onClick="@{doClick}"
+                android:background="@drawable/bg_color4dffffff_radius18dp"
+                android:layout_alignParentLeft="true"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:layout_marginLeft="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="33dp">
+                <ImageView
+                    android:src="@mipmap/basemall_ic_arrow_main_search"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_search"
+                android:layout_toLeftOf="@+id/rl_message"
+                android:layout_width="match_parent"
+                android:layout_height="33dp"
+                android:layout_marginLeft="60dp"
+                android:background="@drawable/bg_color4dffffff_radius18dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:transitionName="@string/transition_name">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp">
+
+                    <ImageView
+                        android:id="@+id/iv_search_black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:alpha="0"
+                        android:onClick="@{doClick}"
+                        android:src="@mipmap/mall_ic_home_search" />
+
+                    <ImageView
+                        android:id="@+id/iv_search"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{doClick}"
+                        android:src="@mipmap/ic_home_search_white" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{doClick}"
+                    android:text="输入宝贝关键字"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/rl_message"
+                android:layout_alignParentRight="true"
+                android:paddingTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="33dp">
+
+                <FrameLayout
+                    android:id="@+id/fl_message_white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="20dp"
+                    >
+                    <ImageView
+                        android:id="@+id/iv_message_black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:alpha="0"
+                        android:onClick="@{doClick}"
+                        android:src="@mipmap/ic_home_message_black" />
+
+                    <ImageView
+                        android:id="@+id/iv_message"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{doClick::onClick}"
+                        android:src="@mipmap/icon_message"
+                        />
+
+                    <View
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_gravity="right"
+                        android:background="@drawable/bg_view_select"
+                        android:visibility="@{showUnReadMessage ? View.VISIBLE : View.GONE}" />
+
+                </FrameLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>

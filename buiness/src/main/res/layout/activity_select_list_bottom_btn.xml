@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+
+    <RelativeLayout
+        android:id="@+id/ll_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/theme_bg"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/layout_title"
+            layout="@layout/baselib_include_title_bar" />
+
+        <com.netmi.baselibrary.widget.FRecyclerView
+            android:id="@+id/xrv_data"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/btn_add"
+            android:layout_below="@+id/layout_title"
+            android:overScrollMode="never" />
+
+        <TextView
+            android:id="@+id/btn_add"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="#E40113"
+            android:gravity="center"
+            android:onClick="doClick"
+            android:paddingVertical="14dp"
+            android:text="添加分组"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            tools:text="添加分组" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="0dp"
+            android:layout_height="0dp" />
+    </RelativeLayout>
+
+</layout>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?><!--绑定手机号的dialog-->
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <data>
+
+        <variable
+            name="click"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/bg_radius_8dp_solid_white"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingBottom="20dp"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:paddingTop="27dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/icon_phone_gray" />
+
+            <TextView
+                style="@style/maxWidthCenterTextView"
+                android:layout_marginTop="25dp"
+                android:text="@string/no_bind_phone"
+                android:textColor="@color/gray_4B545C"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                style="@style/maxWidthTextView"
+                android:layout_marginTop="15dp"
+                android:lineSpacingExtra="18dp"
+                android:text="@string/bind_phone_info"
+                android:textColor="@color/gray_84929E"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn_i_know"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/bg_radius_25dp_solid_b52902"
+                android:paddingBottom="15dp"
+                android:paddingLeft="62dp"
+                android:paddingRight="61dp"
+                android:paddingTop="14dp"
+                android:text="@string/i_know"
+                android:textColor="@color/white"
+                android:onClick="@{click::onClick}"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</layout>

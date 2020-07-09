@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.personal.collection.MineCollectionActivity">
+
+    <data>
+
+        <import type="android.view.View" />
+        <!--点击编辑-->
+        <variable
+            name="clickEdit"
+            type="boolean" />
+        <!--点击全选-->
+        <variable
+            name="clickSelectAll"
+            type="boolean" />
+    </data>
+
+    <!--我的收藏页面-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray_F2">
+
+        <include
+            android:id="@+id/layout_title"
+            layout="@layout/layout_title_shadow" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/ll_bottom"
+            android:layout_below="@+id/layout_title"
+            android:orientation="vertical">
+
+            <com.netmi.baselibrary.widget.SlidingTextTabLayout
+                android:id="@+id/tl_content"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="@color/white"
+                android:textSize="12sp"
+                app:tl_indicator_color="#FF1F1F1E"
+                app:tl_indicator_height="2dp"
+                app:tl_indicator_width="28dp"
+                app:tl_indicator_width_equal_title="true"
+                app:tl_tab_space_equal="true"
+                app:tl_textSelectColor="#1f1f1e"
+                app:tl_textUnselectColor="#cad5de" />
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/vp_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+        <!--底部-->
+        <LinearLayout
+            android:id="@+id/ll_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:visibility="@{clickEdit ? View.VISIBLE : View.GONE}">
+
+            <LinearLayout
+                android:id="@+id/ll_select_status"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:onClick="doClick"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:background="@{clickSelectAll ? @drawable/bg_view_select :@drawable/bg_view_unselect}" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="@{clickSelectAll ? @string/unselect_all : @string/select_all}"
+                    android:textColor="#B4B4B4"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#B52902"
+                android:onClick="doClick"
+                android:paddingLeft="44dp"
+                android:paddingTop="16dp"
+                android:paddingRight="44dp"
+                android:paddingBottom="16dp"
+                android:text="删除"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</layout>

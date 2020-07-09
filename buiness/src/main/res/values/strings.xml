@@ -1,0 +1,452 @@
+<resources>
+    <string name="app_name">客商e宝商家</string>
+
+
+    <!--activity_login.xml-->
+    <string name="input_hint_account">请输入账号</string>
+    <string name="input_hint_phone">输入手机号</string>
+    <string name="please_input_hint_phone">请输入手机号</string>
+    <string name="input_hint_password">请输入密码</string>
+    <string name="forget_password">忘记密码</string>
+    <string name="go_register">没有账号，去注册</string>
+    <string name="login">登录</string>
+    <string name="confirm">确定</string>
+    <string name="confirm_1">确认</string>
+    <string name="confirm_send">确认发送</string>
+    <string name="confirm_financial_put_in">确认理财投入</string>
+    <string name="financial_quot_out">理财本金退出</string>
+    <string name="copy_success">复制成功</string>
+    <string name="login_feedback">无法登录，反馈客服</string>
+    <string name="verified">实名认证</string>
+    <string name="please_enter_correct_mobile">请输入正确的手机号</string>
+
+    <string name="sharemall_hai_day">日</string>
+    <string name="sharemall_hai_week">周</string>
+    <string name="sharemall_hai_month">月</string>
+
+    <!--activity_forget_pass.xml>-->
+    <string name="input_hint_password_again">请再次输入密码</string>
+    <string name="input_hint_code">请输入验证码</string>
+    <string name="input_img_code">请输入图文验证</string>
+    <string name="obtain">获取</string>
+    <string name="obtain_check_code">获取验证码</string>
+    <string name="password_reset_success">密码重置成功，请牢记！</string>
+
+    <!--activity_register.xml-->
+    <string name="register">注册</string>
+    <string name="commit_verified">提交认证</string>
+    <string name="register_account">账号注册</string>
+    <string name="please_enter_phone_number">请输入手机号</string>
+    <string name="input_hint_invitation_code">请填写邀请码（选填）</string>
+    <string name="terms_of_service">我已阅读并同意《服务条款》</string>
+    <string name="terms_service">服务条款</string>
+    <string name="please_enter_mobile_first">请先输入手机号码</string>
+    <string name="please_enter_verification_code_first">请先输入验证码</string>
+    <string name="please_enter_password_first">请先输入密码</string>
+    <string name="please_enter_confirmation_password_first">请先输入确认密码</string>
+    <string name="please_re_acquire_code">手机号变更，请重新获取验证码</string>
+    <string name="two_password_inconsistent">两次密码输入不一致</string>
+    <string name="sharemall_please_input_image_code_first">请输入图文验证</string>
+    <string name="please_enter_account_first">请先输入账号</string>
+    <string name="please_check_terms_service_first">请先勾选服务条款</string>
+    <string name="register_success">注册成功</string>
+    <string name="pickerview_seconds">秒</string>
+    <string name="pickerview_seconds_more">秒后可点此重新发送</string>
+    <string name="please_enter_the_correct_phone_number">请输入正确的手机号</string>
+
+    <!--activity_set_charge_password.xml-->
+    <string name="set_my_charge_password">设置资产密码</string>
+    <string name="input_charge_password">请输入交易密码（6位及6位以上）</string>
+    <string name="confirm_charge_password">请确认交易密码（6位及6位以上）</string>
+    <string name="set_charge_password">设置交易密码(6位及6位以上)</string>
+    <string name="set_charge_password_remind">为保护您的资产交易安全，需要设置交易密码</string>
+    <string name="new_password_not_empty">新密码不能为空</string>
+    <string name="confirm_password_not_empty">确认密码不能为空</string>
+    <string name="password_format_fail">密码格式为6到16位，请检查</string>
+    <string name="password_not_equals_confirm_password">两次输入的密码不一致，请检查</string>
+    <!--activity_main_new.xml-->
+    <string name="home">资讯媒体</string>
+    <string name="seeder">矿机</string>
+    <string name="mall">资产</string>
+    <string name="yms">个人</string>
+    <string name="details">详情</string>
+    <string name="withdrawal">提取</string>
+    <string name="transfer">转赠</string>
+    <string name="change">转换</string>
+    <!--activity my account-->
+    <string name="username">用户名</string>
+    <string name="myinfo">个人信息</string>
+    <string name="change_nickname">修改昵称</string>
+    <string name="clear_cache">清除缓存</string>
+    <string name="clear_cache_success">缓存清除成功</string>
+    <string name="clear_cache_fail">缓存清理失败，请重试</string>
+    <!--activity_user_info.xml-->
+    <string name="permission_request">权限请求</string>
+    <string name="permission_request_tip">APP需要您授权之后才能进行相关操作，请在接下来的权限申请中选择允许</string>
+    <string name="not_granted_permission">您没有授予权限，请授权后继续操作</string>
+    <!--activity_suggestion_feedback.xml-->
+    <string name="please_input_suggestion">请填写您的意见或建议...</string>
+    <string name="please_input_suggestion_first">请先输入您的意见或建议...</string>
+    <string name="phone_number_format_not_incorrect">请输入正确的手机号</string>
+    <string name="is_identitfy">已认证</string>
+    <string name="not_identitfy">未认证</string>
+    <string name="click_update">点击上传</string>
+    <string name="reupdate">重新上传</string>
+    <!--yms-->
+    <string name="bought_num">购买数量：%1$s</string>
+    <string name="unit_price">单价：¥%1$s</string>
+    <string name="total_price">总价：¥%1$s</string>
+    <string name="now_price">现价(%1$s</string>
+
+    <string name="sharemall_vip_invite_friend">邀请好友</string>
+    <string name="sharemall_vip_invite_shop">邀请店铺</string>
+    <string name="sharemall_vip_invite_code">您的邀请码</string>
+    <string name="sharemall_remaining_vip_gift_pack">剩余VIP礼包</string>
+    <string name="sharemall_choose_image_you_want_to_save_first">请先选择要保存的图片</string>
+
+    <!--职工家二期-->
+    <string name="stock">库存：%1$s</string>
+    <string name="sale">销量：%1$s</string>
+    <string name="RMB">¥%1$s</string>
+    <string name="apply_time">申请时间：%1$s</string>
+    <string name="refund_no">退货编号：%1$s</string>
+
+    <string name="service_time">%1$s年</string>
+
+    <string name="service_account">服务费账户：%1$s</string>
+    <string name="deposit_account">押金账户：%1$s</string>
+
+    <string name="expenditure">支出：¥%1$s</string>
+    <string name="income">收入：¥%1$s</string>
+    <string name="pay">¥%1$s</string>
+    <string name="use_rule">使用规则：%1$s</string>
+    <string name="order_id">订单号：%1$s</string>
+    <string name="create_time">创建时间：%1$s</string>
+    <string name="pay_time">付款时间：%1$s</string>
+    <string name="check_time">核销时间：%1$s</string>
+    <string name="refund_time">退款时间：%1$s</string>
+    <string name="apply_refund_time">发起退款退款时间：%1$s</string>
+    <string name="get_score">获得积分：+%1$s</string>
+
+    <string name="refuse_reason">拒绝原因：%1$s</string>
+    <string name="refuse_num">退款金额：%1$s</string>
+    <string name="refuse_explain">退款说明：%1$s</string>
+
+
+    <!--item_wallet_detail-->
+    <string name="format_add">+%1$s</string>
+    <string name="format_minus">-%1$s</string>
+    <string name="order_wait_pay">待付款</string>
+    <string name="order_cancelled">已取消</string>
+    <string name="order_completed">已完成</string>
+    <string name="hasNotOpenGps">GPS定位失败</string>
+    <string name="order_release">待放行</string>
+    <string name="order_wait_pay_tip">您已成功下单，请及时付款</string>
+    <string name="please_transfer_money_following_account">请向以下账户转赠</string>
+    <string name="format_quantity">数量%1$s</string>
+    <string name="click_select">点击选择</string>
+    <string name="payee">收款人</string>
+    <string name="receipt_qrcode">收款二维码</string>
+    <string name="reference_no">参考号</string>
+    <string name="otc_transfer_tips">请务必登录收款账户确认到账明细，避免因错误点击放行造成财产损失</string>
+    <string name="hava_paid">我已付款</string>
+    <string name="trading_tips">交易提示</string>
+    <string name="trading_tips_content">参考号作为支付凭证，请在转赠备注时填写</string>
+    <string name="payment_ali">支付宝支付</string>
+    <string name="payment_wechat">微信支付</string>
+    <string name="payment">支付方式</string>
+    <string name="bhb">NEHI</string>
+    <string name="send">发送</string>
+
+    <string name="code">邀请码(ID)：%1$s</string>
+    <string name="phone">手机号码：%1$s</string>
+    <string name="email_account">邮箱：%1$s</string>
+    <string name="phone_now">当前手机号：%1$s</string>
+    <string name="email_now">当前邮箱：%1$s</string>
+
+
+    <!--myAccount-->
+    <string name="take_new_photo">拍摄新照片</string>
+    <string name="select_from_photo_gallery">从照片库中选择</string>
+    <string name="uploading">上传中</string>
+    <string name="not_granted_permission_notification">您没有授予通知栏权限，请授权后继续操作</string>
+    <!--myteam-->
+    <string name="zhitui_num">直推：%1$s</string>
+    <string name="lianmeng_num">团队：%1$s</string>
+    <string name="team_level">团队级别：LV%1$s</string>
+    <string name="team_amount">团队理财：$ %1$s</string>
+    <string name="user_id">ID： %1$s</string>
+    <string name="power_num">算力：%1$s</string>
+    <string name="please_input_reason_appeal">请输入申诉理由</string>
+    <string name="representation_success_tips">已提起申述，请等待工作人员介入处理本次交易。</string>
+
+    <!--wallet_extract-->
+    <string name="changeout_text">注：请核对以太坊钱包地址，提取到以太坊钱包地址，如有错误，一经发出，无法挽回</string>
+
+    <string name="wallet_list_balance">余额：%1$s</string>
+    <string name="total_num">库存：%1$s</string>
+    <string name="use">使用：%1$s</string>
+    <string name="order_time">下单时间：%1$s</string>
+    <string name="type">类型：%1$s</string>
+    <string name="num">数量：%1$s</string>
+
+    <string name="quickly_click_twice_to_exit_the_app">连续点击两次退出应用</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!--待付款订单页面-->
+    <!--店铺-->
+    <string name="transition_store">storeImage</string>
+    <string name="transition_store_name">storeName</string>
+    <string name="sharemall_format_total_good">共%1$d件商品</string>
+    <string name="sharemall_format_x_num">x%1$s</string>
+    <string name="sharemall_format_goods_specs_tip">规格：%1$s</string>
+    <string name="sharemall_order_goods_total_amount">商品金额</string>
+    <string name="sharemall_order_carriage">运费</string>
+    <string name="sharemall_order_carriage2">运费:</string>
+    <string name="sharemall_real_pay">实付款</string>
+    <string name="sharemall_order_use_coupon">优惠券</string>
+    <string name="sharemall_order_use_balance">已使用余额</string>
+    <string name="sharemall_order_use_integral">积分抵扣</string>
+    <string name="sharemall_order_details">订单详情</string>
+    <string name="sharemall_order_error_aguments">需要传入订单id</string>
+    <string name="sharemall_lack_order_parameters">缺少订单相关参数</string>
+    <string name="sharemall_order_cancel">取消订单</string>
+    <string name="sharemall_look_order">前往我的订单</string>
+    <string name="sharemall_order_delete">删除订单</string>
+    <string name="sharemall_order_remind">立即发货</string>
+    <string name="sharemall_order_logistics">查看物流</string>
+    <string name="sharemall_order_go_pay">去付款</string>
+    <string name="sharemall_order_confirm_accept">查看物流</string>
+    <string name="sharemall_order_receive_good">收货</string>
+    <string name="sharemall_order_go_comment">去评价</string>
+    <string name="sharemall_no_comment_now">暂无评价</string>
+    <string name="sharemall_order_details_good_apply_sales">申请售后</string>
+    <string name="sharemall_order_comment">订单评价</string>
+    <string name="sharemall_order_comment_input_hint">宝贝满足您的期待吗？说说你的使用心得，分享给想买的他们吧</string>
+    <string-array name="sharemall_comment_array">
+        <item>很差</item>
+        <item>较差</item>
+        <item>一般</item>
+        <item>很好</item>
+        <item>非常好</item>
+    </string-array>
+    <string name="sharemall_upload_pic">上传图片</string>
+    <string name="sharemall_format_money">¥%1$s</string>
+    <!--订单-->
+    <string name="sharemall_format_order_goods_num">共%1$s件商品</string>
+    <string name="sharemall_commodity_settlement">商品结算</string>
+    <string name="sharemall_already_reduced">已减</string>
+    <string name="sharemall_order_details_pay_amount">需支付:</string>
+    <string name="sharemall_goods_info">商品信息</string>
+    <string name="sharemall_pay_type">支付方式：</string>
+    <string name="sharemall_format_pay_type">支付方式：%1$s</string>
+    <string name="sharemall_mode_of_distribution">配送方式：</string>
+    <string name="sharemall_not_watch_order_with_price">不希望看到带有价格的发货：</string>
+    <string name="sharemall_please_pay_pwd">请输入余额支付密码</string>
+    <string name="sharemall_forget_pay_pwd">忘记密码</string>
+    <string name="sharemall_points">积分</string>
+    <string name="sharemall_credit_deduction_amount">可使用%1$d积分抵扣%2$d元</string>
+    <string name="sharemall_cny_unit">元</string>
+    <string name="sharemall_custom_service">客服</string>
+    <!--发票-->
+    <string name="sharemall_invoice">发票</string>
+    <string name="sharemall_explain">说明</string>
+    <string name="sharemall_invoice_information">发票信息</string>
+    <string name="sharemall_invoice_notice">发票须知</string>
+    <string name="sharemall_electronic_invoice">电子发票</string>
+    <string name="sharemall_please_input_taxpayer_identity_number">请填写纳税人识别号</string>
+    <string name="sharemall_please_input_company_name">请填写公司名称</string>
+    <string name="sharemall_invoice_type">发票类型：</string>
+    <string name="sharemall_invoice_title">发票抬头：</string>
+    <string name="sharemall_invoice_content">发票内容：</string>
+    <string name="sharemall_invoice_content2">发票内容</string>
+    <string name="sharemall_invoice_content_describe">发票内容选项已根据税法调整，具体请以展示为准</string>
+    <string name="sharemall_invoice_describe">发票内容将显示详细商品名称与价格信息</string>
+    <string name="sharemall_invoice_type2">发票类型</string>
+    <string name="sharemall_electronic_invoice_describe">电子普通发票与纸质普通发票具备同等法律效力，可支持报销入账</string>
+    <string name="sharemall_invoice_title2">发票抬头</string>
+    <string name="sharemall_personal">个人</string>
+    <string name="sharemall_company">单位</string>
+    <string name="sharemall_unknown_type">未知类型</string>
+    <string name="company_name">单位名称:</string>
+    <string name="taxpayer_identification_number">纳税人识别号:</string>
+    <string name="sharemall_please_input_company">请输入单位名称（必填）</string>
+    <string name="sharemall_please_input_taxpayer_identification_number">请输入纳税人识别号（必填）</string>
+    <string name="sharemall_receiver_information">收票人信息</string>
+    <string name="sharemall_input_receiver_phone">请输入收票人手机号码（必填）</string>
+    <string name="sharemall_input_receiver_email">请输入收票人邮箱（必填）</string>
+    <string name="sharemall_receiver_phone">收票人手机号码</string>
+    <string name="sharemall_receiver_email">收票人邮箱</string>
+    <string name="sharemall_no_invoice">不开发票</string>
+    <string name="sharemall_i_know">我知道了</string>
+    <string name="sharemall_pay_pwd_error">密码错误，忘记密码？</string>
+    <string name="sharemall_buy_time">下单时间：</string>
+    <string name="sharemall_order_no">订单编号：</string>
+    <string name="sharemall_format_sum_money">¥%1$s</string>
+    <string name="sharemall_format_goods_sum">共%1$s件商品</string>
+    <string name="sharemall_format_follow">%1$d人关注</string>
+    <string name="sharemall_buy_now">立即购买</string>
+    <string name="sharemall_buy">购买</string>
+    <string name="sharemall_format_num">×%1$s</string>
+    <string name="sharemall_subtotal">小计：</string>
+    <string name="sharemall_buyer_remark">买家留言</string>
+    <string name="sharemall_buyer_remark2">买家留言…</string>
+    <string name="sharemall_buyer_remark_num">0/140</string>
+    <string name="sharemall_wx_pay">微信支付</string>
+    <string name="sharemall_ali_pay">支付宝支付</string>
+    <string name="sharemall_apple_pay">Apple Pay</string>
+    <string name="sharemall_integral_pay">积分支付</string>
+    <string name="sharemall_union_pay">银联支付</string>
+    <string name="sharemall_balance_payment">余额支付</string>
+    <string name="sharemall_eth">ETH</string>
+    <string name="sharemall_total">合计：</string>
+    <string name="sharemall_pay_time_hint">请在30分钟内完成付款</string>
+    <string name="sharemall_payment_of_remaining_time">支付剩余时间</string>
+    <string name="sharemall_payment_of_remaining_time2">剩余支付时间</string>
+    <string name="sharemall_select_pay_type">选择付款方式</string>
+    <string name="sharemall_back_home">回首页</string>
+    <string name="sharemall_to_shopping">继续购买商品</string>
+    <string name="sharemall_back_home2">返回首页</string>
+    <string name="sharemall_safety_reminder">安全提醒</string>
+    <string name="sharemall_yes">是</string>
+    <string name="sharemall_not">否</string>
+    <string name="sharemall_lack_info">相关信息为空</string>
+
+    <!--我的页面字符资源-->
+    <string name="sharemall_remind_set_pay_password2">为保证账户安全，请设置余额支付密码！</string>
+    <string name="sharemall_my_order">我的订单</string>
+    <string name="sharemall_order_wait_pay">待付款</string>
+    <string name="sharemall_order_wait_send">待发货</string>
+    <string name="sharemall_order_wait_receive">待收货</string>
+    <string name="sharemall_order_wait_appraise">待评价</string>
+    <string name="sharemall_order_back">售后/退款</string>
+    <string name="sharemall_mine_address">我的地址</string>
+    <string name="sharemall_about_us">关于我们</string>
+    <string name="sharemall_update_login_pwd">修改登录密码</string>
+    <string name="sharemall_forget_login_pwd">忘记登录密码</string>
+    <string name="sharemall_update_pay_pwd">修改交易密码</string>
+    <string name="sharemall_forget_pay_pwd2">忘记交易密码</string>
+    <string name="sharemall_pwd_manager">密码管理</string>
+    <string name="sharemall_input_old_pwd">请输入原密码</string>
+    <string name="sharemall_setting_now">立即设置</string>
+    <!--购物车-->
+    <string name="sharemall_my_shop_cart">我的购物车</string>
+    <string name="sharemall_to_create_order">去下单</string>
+    <string name="sharemall_shop_cart_is_empty">购物车为空</string>
+    <string name="sharemall_all_select">全选</string>
+    <string name="sharemall_watch_today_sell">逛逛今日特卖</string>
+    <string name="sharemall_second_kill_is_empty">秒杀商品为空</string>
+    <string name="sharemall_please_select_goods">请先选择商品</string>
+    <string name="sharemall_goods_is_second_kill">该商品正在参加秒杀</string>
+    <string name="sharemall_collection">收藏</string>
+    <string name="sharemall_click_view">点击查看</string>
+    <string name="sharemall_goods_not_activity">商品未关联活动</string>
+    <string name="sharemall_not_service_describe">暂无服务描述</string>
+    <string name="sharemall_thank_support">感谢您的支持</string>
+    <string name="sharemall_share_error_tips">分享出现问题了，请再尝试一下吧</string>
+    <string name="sharemall_commit_apply">提交申请</string>
+    <string name="sharemall_order_refund_apply">退款申请</string>
+    <string name="sharemall_order_refund_apply_fail">退款申请驳回</string>
+    <string name="sharemall_order_refund_ing">退款中</string>
+    <string name="sharemall_order_refund_complete">已退款</string>
+    <string name="sharemall_cancel_transaction">取消交易</string>
+    <string name="sharemall_seckill_overtime">距结束仅</string>
+    <string name="sharemall_seckill_not_start">秒杀活动尚未开始</string>
+    <string name="sharemall_version_update">版本更新</string>
+    <string name="sharemall_version_new">新版本</string>
+    <string name="sharemall_transaction_cancel">交易取消</string>
+    <string name="sharemall_transaction_complete">交易完成</string>
+    <string name="sharemall_receiving_address_tips">收货地址：</string>
+    <string name="sharemall_refund_cancel">退款已取消</string>
+    <string name="sharemall_waiting_dealers">等待商家处理</string>
+    <string name="sharemall_businessmen_refuse_refunds">商家拒绝退款</string>
+    <string name="sharemall_businessmen_agree_system_refund">·商家同意，系统将退款给您</string>
+    <string name="sharemall_merchant_refuses_tips">· 如果商家拒绝，您可以修改退款申请后再次发起，商家会重新处理</string>
+    <string name="sharemall_refund_failed_tips">退款失败：因微信功能受限，为确保您的退款金额，请您与卖家线下沟通</string>
+    <string name="sharemall_logistics_filled_tips">您已填写物流信息，请耐心等待商家处理</string>
+    <string name="sharemall_order_confirm_accept_tips">确认收货吗？</string>
+    <string name="sharemall_withdraw_result">提现结果</string>
+    <string name="sharemall_successful_application">提现申请成功</string>
+    <string name="sharemall_withdraw_is_submit">您的提现已提交申请，请耐心等待</string>
+    <string name="sharemall_format_plus_num">+%1$s</string>
+    <string name="sharemall_discount_price">-¥%1$s</string>
+    <string name="sharemall_category">分类</string>
+    <string name="sharemall_follow">关注</string>
+    <string name="sharemall_followed">已关注</string>
+    <string name="sharemall_store_all_goods">全部商品</string>
+    <string name="sharemall_store_home">店铺首页</string>
+    <string name="sharemall_store_not_param">请先传入店铺参数</string>
+    <string name="sharemall_my_follow">我的关注</string>
+    <string name="sharemall_confirm_cancel_follow">确定取消关注吗？</string>
+    <string name="sharemall_get_coupon_center">领券中心</string>
+    <string name="sharemall_get_coupon_platform">领取平台优惠券</string>
+    <string name="sharemall_please_input_max_font">请输入，最多140字</string>
+    <string name="sharemall_confirm_pay2">确认支付</string>
+    <string name="sharemall_confirm_pay">确认支付 %1$s</string>
+    <string name="sharemall_lack_order_info">订单数据不存在</string>
+    <string name="sharemall_lack_good_info">商品数据不存在</string>
+    <string name="sharemall_order_payment_overtime">订单支付超时</string>
+    <string name="sharemall_please_first_login">请先登录</string>
+    <string name="sharemall_pay_success">支付成功</string>
+    <string name="sharemall_pay_failure2">支付失败，请稍候再试</string>
+    <string name="sharemall_pay_failure">支付失败</string>
+    <string name="sharemall_please_input_pay_pwd">请输入交易密码</string>
+    <string name="sharemall_please_input_password">请输入密码</string>
+
+    <string name="sharemall_refund_type_money">申请退款</string>
+    <string name="sharemall_refund_type_money_good">退款退货</string>
+    <string name="sharemall_refund_type_money_good_hint">已收到货，需要更换已收到的货物</string>
+
+
+    <!--登录-->
+    <string name="privacy_tips">隐私保护提示</string>
+    <string name="privacy_tips_content">\u3000\u3000欢迎使用客商e宝！我们非常重视您的个人信息和隐私保护。在您使用“客商e宝”服务前，请仔细阅读《服务协议》和《隐私政策》，我们将严格经您同意的各项条款使用您的个人信息，以便为您提供更好的服务。</string>
+    <string name="sharemall_login">登录</string>
+    <string name="sharemall_wechat_login">微信登录</string>
+    <string name="sharemall_wechat_account_login">微信号登录</string>
+    <string name="sharemall_login_no_wechat_client">请先安装微信客户端</string>
+    <string name="sharemall_login_get_wechat_auth_error">获取授权信息失败</string>
+    <string name="sharemall_login_cancel_wechat_auth">您取消了授权</string>
+
+    <string name="other_amout">转赠额度</string>
+    <string name="my_fee">手续费</string>
+    <string name="other_id">对方id</string>
+    <!--个推-->
+    <string name="bind_alias">绑定别名</string>
+    <string name="bind_alias_unknown_exception">绑定别名失败，未知异常</string>
+    <string name="bind_alias_success">绑定别名成功</string>
+    <string name="bind_alias_error_frequency">绑定别名失败，请求频次超限</string>
+    <string name="bind_alias_error_param_error">绑定别名失败，参数错误</string>
+    <string name="bind_alias_error_request_filter">绑定别名失败，请求被过滤</string>
+    <string name="bind_alias_error_cid_lost">绑定别名失败，未获取到cid</string>
+    <string name="bind_alias_error_connect_lost">绑定别名失败，网络错误</string>
+    <string name="bind_alias_error_alias_invalid">绑定别名失败，别名无效</string>
+    <string name="bind_alias_error_sn_invalid">绑定别名失败，sn无效</string>
+    <string name="unbind_alias">解绑别名</string>
+    <string name="unbind_alias_unknown_exception">取消绑定别名失败，未知异常</string>
+    <string name="unbind_alias_success">取消绑定别名成功</string>
+    <string name="unbind_alias_error_frequency">取消绑定别名失败，请求频次超限</string>
+    <string name="unbind_alias_error_param_error">取消绑定别名失败，参数错误</string>
+    <string name="unbind_alias_error_request_filter">取消绑定别名失败，请求被过滤</string>
+    <string name="unbind_alias_error_cid_lost">取消绑定别名失败，未获取到cid</string>
+    <string name="unbind_alias_error_connect_lost">取消绑定别名失败，网络错误</string>
+    <string name="unbind_alias_error_alias_invalid">取消绑定别名失败，别名无效</string>
+    <string name="unbind_alias_error_sn_invalid">取消绑定别名失败，sn无效</string>
+    <string name="add_tag">添加Tag</string>
+    <string name="add_tag_unknown_exception">设置标签失败，未知异常</string>
+    <string name="add_tag_success">接口调用成功</string>
+    <string name="add_tag_error_count">接口调用失败, tag数量过大, 最大不能超过200个</string>
+    <string name="add_tag_error_frequency">设置标签失败，超出频次限制</string>
+    <string name="add_tag_error_null">接口调用失败, tag 为空</string>
+    <string name="add_tag_sn_null">接口调用失败, sn 为空</string>
+    <string name="add_tag_error_tagIllegal">接口调用失败，TAG不合法!</string>
+    <string name="add_tag_error_repeat">设置标签失败, 标签重复</string>
+    <string name="add_tag_error_unbind">设置标签失败, 服务未初始化成功</string>
+    <string name="add_tag_error_not_online">还未登陆成功</string>
+    <string name="add_tag_error_black_list">该应用已经在黑名单中,请联系售后支持!</string>
+    <string name="add_tag_error_exceed">已存 tag 超过限制</string>
+    <string name="sharemall_new_version_tips">APP有新版本可以使用了</string>
+    <string name="zero">0.00</string>
+
+</resources>

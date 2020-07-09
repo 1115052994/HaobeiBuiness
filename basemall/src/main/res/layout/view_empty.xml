@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?><!--列表中没有数据时显示的view-->
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <LinearLayout
+        android:id="@+id/ll_empty_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="暂无数据" />
+
+    </LinearLayout>
+
+</layout>

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="type"
+            type="Integer" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F2F2F2"
+        android:orientation="vertical">
+
+        <include layout="@layout/layout_title_shadow" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:paddingHorizontal="16dp">
+
+            <TextView
+                android:id="@+id/tv_first_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="验证码"
+                android:textColor="#ff333333"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/et_code"
+                style="@style/EditTextDigitsLetter"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="@string/input_hint_code"
+                android:inputType="number"
+                android:paddingVertical="15dp"
+                android:textColor="#1D1E1F"
+                android:textColorHint="#A9A9A9"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_get_code"
+                android:layout_width="wrap_content"
+                android:layout_height="27dp"
+                android:gravity="center"
+                android:onClick="doClick"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="5dp"
+                android:text="@string/get_verification_code"
+                android:textColor="#007AFF"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:paddingHorizontal="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="新密码"
+                android:textColor="#ff333333"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/et_password"
+                style="@style/EditTextDigitsLetter"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="@string/input_hint_password"
+                android:inputType="textPassword"
+                android:paddingVertical="15dp"
+                android:textColor="#1D1E1F"
+                android:textColorHint="#A9A9A9"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:paddingHorizontal="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="新密码"
+                android:textColor="#ff333333"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/et_password_again"
+                style="@style/EditTextDigitsLetter"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="@string/input_hint_password_again"
+                android:inputType="textPassword"
+                android:paddingVertical="15dp"
+                android:textColor="#1D1E1F"
+                android:textColorHint="#A9A9A9"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_confirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginTop="100dp"
+            android:background="@drawable/baselib_bg_color77b52902"
+            android:gravity="center"
+            android:onClick="doClick"
+            android:paddingVertical="15dp"
+            android:text="@string/save"
+            android:textColor="#ffffffff"
+            android:textSize="14sp" />
+
+
+    </LinearLayout>
+
+</layout>

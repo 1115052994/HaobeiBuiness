@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.liemi.basemall.data.entity.order.OrderDetailsEntity" />
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+        <import type="com.netmi.baselibrary.utils.Strings"/>
+        <import type="android.view.View"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="18dp">
+
+            <TextView
+                android:id="@+id/tv_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textColor="#1D1E1F"
+                android:textSize="17sp" />
+
+            <ImageView
+                android:id="@+id/iv_status"
+                ivPathResource="@{item.getStatusResource()}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="16dp"/>
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:visibility="gone"
+            android:id="@+id/rl_logistic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:onClick="@{doClick}">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/theme_bg" />
+            <ImageView
+                android:id="@+id/iv_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="14dp"
+                android:layout_marginLeft="14dp"
+                android:src="@mipmap/ic_right_gray"
+                android:layout_alignParentEnd="true" />
+
+            <TextView
+                android:id="@+id/tv_receive_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="14dp"
+                android:layout_marginTop="14dp"
+                android:layout_toLeftOf="@id/iv_right"
+                android:ellipsize="end"
+                android:lines="1"
+                android:textColor="#1A1A1A"
+                android:textSize="17sp" />
+
+            <TextView
+                android:layout_marginBottom="14dp"
+                android:id="@+id/tv_logistic_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_receive_info"
+                android:layout_marginLeft="14dp"
+                android:layout_marginTop="10dp"
+                android:textColor="#929292"
+                android:textSize="12sp" />
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/theme_bg" />
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="14dp"
+                android:layout_marginTop="14dp"
+                android:text="@{item.name}"
+                android:textColor="#1A1A1A"
+                android:textSize="17sp" />
+
+            <TextView
+                android:layout_toRightOf="@+id/tv_name"
+                android:id="@+id/tv_tel"
+                android:layout_marginTop="14dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="14dp"
+                android:text="@{item.tel}"
+                android:textColor="#949494"
+                android:textSize="17sp"/>
+
+            <TextView
+                android:layout_marginBottom="15dp"
+                android:id="@+id/tv_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_name"
+                android:layout_marginLeft="14dp"
+                android:layout_marginTop="10dp"
+                android:text="@{item.address}"
+                android:textColor="#929292"
+                android:textSize="12sp" />
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:paddingRight="14dp"
+            android:paddingLeft="14dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/theme_bg" />
+            <TextView
+                android:id="@+id/tv_remark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:text="买家留言"
+                android:textColor="#1D1E1F"
+                android:textSize="17sp" />
+
+
+            <TextView
+                android:layout_marginBottom="14dp"
+                android:id="@+id/tv_sell_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_remark"
+                android:layout_marginTop="10dp"
+                android:text="@{item.remark}"
+                android:textColor="#999999"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+</layout>

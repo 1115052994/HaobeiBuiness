@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">BaseLibrary</string>
+
+    <string name="loading">Loading\u2026</string>
+    <string name="tip_network_error">No internet connection, please check</string>
+    <string name="cancel">Cancel</string>
+    <string name="search">Search</string>
+    <string name="delete">Delete</string>
+    <string name="confirm">Confirm</string>
+    <string name="language">English</string>
+    <string name="language_choice">Select language</string>
+
+    <string name="nothing"></string>
+
+    <!--编辑框小数点位数-->
+    <string name="five">5</string>
+
+    <!--修正三星手机可输入中文的问题-->
+    <string name="password_digits">0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ,.</string>
+
+    <string name="input_letter_number">0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
+
+
+    <!--分享-->
+    <string name="baselib_share">Share</string>
+    <string name="baselib_share_friend">Wechat Friend</string>
+    <string name="baselib_share_circle">Wechat Circle</string>
+    <string name="baselib_share_qq">QQ Friends</string>
+    <string name="baselib_share_qq_zone">QQ ZONE</string>
+    <string name="baselib_cancel">Cancel</string>
+
+
+    <!--搜索框专场动画-->
+    <string name="transition_name">searchView</string>
+    <string name="transition_title_name">titleName</string>
+    <string name="transition_video_player">videoPlayer</string>
+    <string name="transition_avatar">userAvatar</string>
+    <string name="transition_nickname">userName</string>
+
+    <string name="format_money">YMS%1$s</string>
+    <string name="format_string">%1$s</string>
+
+
+</resources>

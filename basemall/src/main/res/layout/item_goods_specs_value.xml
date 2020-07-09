@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="item"
+            type="com.liemi.basemall.data.entity.good.SpecsEntity.ChildrenBean" />
+
+    </data>
+
+    <LinearLayout
+        android:id="@+id/ll_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="15dp"
+        android:background="@{item.checked ? @drawable/bg_colorb52902_border_radius4dp: @drawable/bg_colorbbbbbb_border_radius4dp}"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="@{item.checked}"
+            android:paddingTop="7dp"
+            android:paddingBottom="8dp"
+            android:text="@{item.value_name}"
+            android:textColor="@drawable/tab_text_colorbcbcbc_selector"
+            android:textSize="12sp" />
+
+
+    </LinearLayout>
+</layout>

@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="item"
+            type="com.liemi.basemall.data.entity.order.OrderDetailsEntity.MeOrdersBean" />
+
+        <import type="com.netmi.baselibrary.utils.Strings" />
+
+        <variable
+            name="data"
+            type="com.liemi.basemall.data.entity.order.RefundDetailedEntity"/>
+
+        <import type="android.view.View"/>
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/theme_bg">
+        <include
+            android:id="@+id/rl_title_bar"
+            layout="@layout/baselib_include_title_bar"/>
+        <ScrollView
+            android:layout_below="@+id/rl_title_bar"
+            android:layout_above="@+id/tv_confirm"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:paddingBottom="10dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/white"
+                    android:id="@+id/ll_good"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:onClick="doClick"
+                    android:orientation="horizontal"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="10dp">
+
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_marginRight="10dp"
+                        android:scaleType="centerCrop"
+                        ivPath="@{data.imgs}"
+                        android:contentDescription="@null" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_good_detail"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:maxLines="2"
+                                android:text="@{item.title}"
+                                android:textColor="#1D1E1F"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_marginBottom="6dp"
+                                android:layout_weight="1"
+                                android:ellipsize="end"
+                                android:gravity="bottom"
+                                android:lines="1"
+                                android:text="@{@string/format_goods_specs_tip(item.color_name)}"
+                                android:textColor="#878787"
+                                android:textSize="12sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="end"
+                            android:orientation="vertical"
+                            android:paddingBottom="6dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="#c53539"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:gravity="center_vertical"
+                                android:text="@{@string/format_x_num(Strings.twoDecimal(item.num))}"
+                                android:textColor="#878787"
+                                android:textSize="12sp" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@{item.price}"
+                                    android:textColor="#1D1E1F"
+                                    android:textSize="19sp" />
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+                <RelativeLayout
+                    android:visibility="@{data.type==1?View.GONE:View.VISIBLE}"
+                    android:id="@+id/rl_logistic_status"
+                    android:layout_marginBottom="1dp"
+                    android:paddingRight="14dp"
+                    android:paddingLeft="14dp"
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+                    <TextView
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="货物状态"
+                        android:textColor="#ff1f1f1f"
+                        android:textSize="14sp" />
+                    <TextView
+                        android:onClick="doClick"
+                        android:id="@+id/tv_goods_status"
+                        android:gravity="center_vertical"
+                        android:drawablePadding="5dp"
+                        android:hint="请选择"
+                        android:textColorHint="#ffa9a9a9"
+                        android:textSize="14sp"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:drawableRight="@mipmap/ic_right_gray"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:background="@color/white"
+                    android:paddingLeft="14dp"
+                    android:paddingRight="14dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_marginTop="14dp"
+                        android:id="@+id/tv_refund_reason_hint"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="退款原因"
+                        android:textColor="#ff1f1f1f"
+                        android:textSize="14sp" />
+                    <TextView
+                        android:text="@{data.bec_type}"
+                        android:onClick="doClick"
+                        android:id="@+id/tv_refund_reason"
+                        android:paddingBottom="14dp"
+                        android:paddingTop="14dp"
+                        android:gravity="center_vertical"
+                        android:drawablePadding="5dp"
+                        android:hint="请选择"
+                        android:textColorHint="#ffa9a9a9"
+                        android:layout_alignParentRight="true"
+                        android:drawableRight="@mipmap/ic_right_gray"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:layout_marginRight="3dp"
+                        android:text="YMS"
+                        android:id="@+id/tv_money_symbol"
+                        android:layout_marginBottom="14dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_below="@+id/tv_refund_reason_hint"
+                        android:textSize="19sp"
+                        android:textColor="#ffff3700"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:background="@null"
+                        android:id="@+id/et_custom_price"
+                        android:layout_toRightOf="@+id/tv_money_symbol"
+                        android:text="@{data.price_total}"
+                        android:layout_marginBottom="14dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_below="@+id/tv_refund_reason_hint"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#ffff3700"
+                        android:textSize="19sp"
+                        android:digits="0123456789." />
+                </RelativeLayout>
+                <TextView
+                    android:id="@+id/tv_refund_price_describe"
+                    android:layout_margin="14dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:text="@{data.remark}"
+                    android:id="@+id/et_refund_remark"
+                    android:textSize="14sp"
+                    android:hint="退款说明（选填）"
+                    android:textColorHint="#ffa9a9a9"
+                    android:paddingRight="14dp"
+                    android:paddingLeft="14dp"
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp" />
+                <View
+                    android:background="@color/theme_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
+                <TextView
+                    android:visibility="@{data.type==1?View.GONE:View.VISIBLE}"
+                    android:text="上传凭证"
+                    android:textColor="#ff1f1f1f"
+                    android:textSize="14sp"
+                    android:background="@color/white"
+                    android:padding="14dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <com.liemi.basemall.widget.MyRecyclerView
+                    android:id="@+id/rv_img"
+                    android:visibility="@{data.type==1?View.GONE:View.VISIBLE}"
+                    android:paddingTop="14dp"
+                    android:paddingLeft="14dp"
+                    android:paddingRight="14dp"
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+        </ScrollView>
+        <TextView
+            android:layout_alignParentBottom="true"
+            android:id="@+id/tv_confirm"
+            android:layout_width="match_parent"
+            android:layout_height="47dp"
+            android:background="#B52902"
+            android:gravity="center"
+            android:onClick="doClick"
+            android:text="确定"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+</layout>

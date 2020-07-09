@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="showUnReadMessage"
+            type="boolean" />
+
+    </data>
+
+    <LinearLayout
+        android:id="@+id/ll_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingTop="25dp"
+        android:paddingRight="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_search"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:drawableLeft="@mipmap/baselib_ic_search"
+                android:drawablePadding="15dp"
+                android:gravity="center_vertical"
+                android:onClick="@{doClick}"
+                android:paddingLeft="3dp"
+                android:text="输入宝贝关键字"
+                android:textColor="#A6B8C7"
+                android:textSize="14sp"
+                android:transitionName="@string/transition_name" />
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
+
+
+                <ImageView
+                    android:id="@+id/iv_message"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{doClick::onClick}"
+                    android:src="@mipmap/ic_home_message_black" />
+
+                <View
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_gravity="right"
+                    android:background="@drawable/bg_view_select"
+                    android:visibility="@{showUnReadMessage ? View.VISIBLE : View.GONE}" />
+
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/tv_red_circle"
+                android:layout_width="6dp"
+                android:layout_height="6dp"
+                android:layout_gravity="top|end"
+                android:layout_marginLeft="-5dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/baselib_bg_red_circle"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="12dp"
+            android:background="#ffcad5de" />
+
+    </LinearLayout>
+
+</layout>

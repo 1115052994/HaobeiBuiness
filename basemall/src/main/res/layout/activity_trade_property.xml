@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="com.netmi.baselibrary.utils.FloatUtils" />
+        <variable
+            name="coinEntity"
+            type="com.liemi.basemall.data.entity.user.CoinEntity"
+            />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray_F2"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/baselib_include_title_bar"
+            />
+
+        <!--资产详情-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/bg_radius_8dp_gradient_10bbff_088cff"
+            android:orientation="vertical"
+            android:paddingTop="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="20dp">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    ivPathResource="@{coinEntity.coinIcon}"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{coinEntity.coinName}"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:layout_marginLeft="5dp"
+                    />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="24dp"
+                android:orientation="horizontal"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:lines="1"
+                        android:textColor="@color/white"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:text="@{FloatUtils.eightDecimal(coinEntity.usedNum,false)}"
+                        tools:text="98712.148" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:ellipsize="end"
+                        android:lines="1"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:text="ETH"
+                        tools:text="EHT" />
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="right|center_vertical"
+                    tools:text="≈123213.2321321CNY"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:lines="1"
+                    android:ellipsize="end"
+                    android:text="@{@string/about_cny_num(FloatUtils.twoDecimal(coinEntity.usedCny,false))}"
+                    />
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="15dp"
+                android:background="@color/white_alpha_15" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_recharge"
+                    style="@style/textWidthWight1"
+                    android:gravity="center"
+                    android:onClick="doClick"
+                    android:paddingTop="17dp"
+                    android:paddingBottom="17dp"
+                    android:text="接收"
+                    android:textColor="@color/white" />
+
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/white_alpha_15"
+
+                    />
+
+                <TextView
+                    android:id="@+id/tv_receive"
+                    style="@style/textWidthWight1"
+                    android:gravity="center"
+                    android:onClick="doClick"
+                    android:paddingTop="17dp"
+                    android:paddingBottom="17dp"
+                    android:text="提取"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <!--查看明细-->
+        <LinearLayout
+            android:id="@+id/ll_watch_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="center"
+            android:onClick="doClick"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingTop="16dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="16dp">
+
+            <TextView
+                style="@style/textWidthWight1"
+                android:text="@string/watch_details"
+                android:textColor="@color/gray_4B545C"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/icon_more_black" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/ll_take_to_public_bag"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:gravity="center"
+            android:onClick="doClick"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingTop="16dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="16dp"
+            android:visibility="gone">
+
+            <TextView
+                style="@style/textWidthWight1"
+                android:text="@string/take_to_public_bag"
+                android:textColor="@color/gray_4B545C"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/icon_more_black" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.liemi.basemall.data.entity.good.GoodsListEntity" />
+
+        <import type="com.netmi.baselibrary.utils.Strings" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginRight="@dimen/d_7"
+        android:orientation="vertical">
+
+        <com.liemi.basemall.widget.EquiRoundImageView
+            ivPathN="@{item.img_url}"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d_100"
+            android:scaleType="centerCrop" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+            <com.liemi.basemall.widget.MoneyTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:singleLine="true"
+                android:text="@{@string/format_money_unit_meter(item.price)}"
+                android:textColor="#FF3700"
+                android:textSize="@dimen/s_16"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:singleLine="true"
+                android:text="YMS"
+                android:textColor="#FF3700"
+                android:textSize="12dp"
+                />
+        </LinearLayout>
+
+
+    </LinearLayout>
+</layout>

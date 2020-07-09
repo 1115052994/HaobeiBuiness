@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.mine.vip.VIPShareActivity">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/theme_bg">
+
+        <include
+            android:id="@+id/layout_title"
+            layout="@layout/layout_title_shadow" />
+
+        <RelativeLayout
+            android:id="@+id/rl_invite_code"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_below="@+id/layout_title"
+            android:background="#EAEAEC"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="@string/sharemall_vip_invite_code"
+                android:textColor="#ff555555"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/tv_invite_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="68dp"
+                android:textColor="#ff1d1e1f"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_copy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/sharemall_radius_4dp_f8"
+                android:drawableStart="@mipmap/sharemall_hair_copy_img"
+                android:drawableLeft="@mipmap/sharemall_hair_copy_img"
+                android:drawablePadding="6dp"
+                android:onClick="doClick"
+                android:paddingLeft="8dp"
+                android:paddingTop="6dp"
+                android:paddingRight="8dp"
+                android:paddingBottom="6dp"
+                android:text="复制"
+                android:textColor="#ff777777"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
+
+        <com.netmi.baselibrary.widget.SlidingTextTabLayout
+            android:id="@+id/stl_title"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@id/rl_invite_code"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:textSize="14sp"
+            app:tl_divider_padding="12dp"
+            app:tl_indicator_color="@color/bgColor"
+            app:tl_indicator_height="2dp"
+            app:tl_indicator_width="30dp"
+            app:tl_tab_space_equal="true"
+            app:tl_textSelectColor="@color/black_36"
+            app:tl_textUnselectColor="#878787" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/ll_bottom"
+            android:layout_below="@id/stl_title" />
+        <!--<ScrollView
+            android:layout_below="@id/stl_title"
+            android:layout_marginBottom="86dp"
+            android:scrollbars="none"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="41dp"
+                android:paddingVertical="20dp">
+                <com.netmi.baselibrary.widget.ResizableImageView
+                    android:id="@+id/iv_share"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="doClick" />
+            </LinearLayout>
+        </ScrollView>-->
+        <LinearLayout
+            android:id="@+id/ll_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="86dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/white"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tv_share_wechat"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@mipmap/baselib_ic_share_wechat"
+                android:drawablePadding="10dp"
+                android:gravity="center_horizontal"
+                android:onClick="doClick"
+                android:text="分享给好友"
+                android:textColor="#ff666666"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_share_moment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@mipmap/baselib_ic_share_circle"
+                android:drawablePadding="10dp"
+                android:gravity="center_horizontal"
+                android:onClick="doClick"
+                android:text="分享朋友圈"
+                android:textColor="#ff666666"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_save_pic"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:layout_weight="1"
+                android:drawableTop="@mipmap/sharemall_ic_share_save_local"
+                android:drawablePadding="13dp"
+                android:gravity="center_horizontal"
+                android:onClick="doClick"
+                android:text="保存图片"
+                android:textColor="#ff666666"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

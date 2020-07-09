@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout xmlns:tl="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/theme_bg"
+        android:fitsSystemWindows="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
+
+        <include layout="@layout/baselib_include_title_bar" />
+
+        <com.netmi.baselibrary.widget.SlidingTextTabLayout
+            android:id="@+id/tl_group"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@color/white"
+            tl:tl_indicator_color="#FF3700"
+            tl:tl_indicator_corner_radius="0dp"
+            tl:tl_indicator_width_equal_title="true"
+            tl:tl_indicator_height="2dp"
+            tl:tl_indicator_width="28dp"
+            tl:tl_tab_space_equal="true"
+            tl:tl_textSelectColor="#FF3700"
+            tl:tl_textUnselectColor="#878787" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vp_group"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+</layout>

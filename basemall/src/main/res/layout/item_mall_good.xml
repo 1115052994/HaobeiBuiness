@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.liemi.basemall.data.entity.good.GoodsListEntity" />
+
+        <import type="com.netmi.baselibrary.utils.Strings" />
+
+        <variable
+            name="position"
+            type="Integer" />
+
+    </data>
+
+    <RelativeLayout
+        setMarginLeft="@{position % 2 == 0 ? @dimen/d_15 : @dimen/d_3}"
+        setMarginRight="@{position % 2 == 1 ? @dimen/d_15 : @dimen/d_3}"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/d_5"
+            app:cardCornerRadius="4dp"
+            app:cardElevation="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="#F9F9F9"
+                android:orientation="vertical">
+
+                <com.liemi.basemall.widget.EquiImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/d_168"
+                    android:contentDescription="@null"
+                    android:scaleType="centerCrop"
+                    bind:ivPathN="@{item.img_url}" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:padding="@dimen/d_8">
+
+                    <TextView
+                        android:id="@+id/tv_good_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:singleLine="true"
+                        android:text="@{item.title}"
+                        android:textColor="#ff1f1f1e"
+                        android:textSize="@dimen/s_13" />
+
+                    <com.liemi.basemall.widget.SpecsTagFlowLayout
+                        android:id="@+id/id_label"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        app:max_select="-1" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/tv_symbol"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBottom="@+id/tv_good_price"
+                            android:layout_marginBottom="@dimen/d_1"
+                            android:layout_toEndOf="@+id/tv_good_price"
+                            android:layout_toRightOf="@+id/tv_good_price"
+                            android:text="YMS"
+                            android:textColor="#FF3700"
+                            android:textSize="@dimen/s_10" />
+
+                        <TextView
+                            android:id="@+id/tv_good_price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{item.getShowPrice()}"
+                            android:textColor="#FF3700"
+                            android:textSize="@dimen/s_15"
+                            tool:text="213"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:text="@{Strings.formatStr(@string/format_sales_volume, item.deal_num)}"
+                            android:textColor="#ff878787"
+                            android:textSize="@dimen/s_10" />
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+
+    </RelativeLayout>
+
+</layout>

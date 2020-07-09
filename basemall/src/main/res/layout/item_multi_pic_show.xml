@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="item"
+            type="String" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp">
+
+        <com.netmi.baselibrary.widget.RoundImageView
+            android:id="@+id/iv_pic"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:contentDescription="@null"
+            android:onClick="@{doClick}"
+            android:scaleType="centerCrop"
+            bind:ivPathN="@{item}"
+            android:src="@drawable/baselib_bg_default_pic" />
+
+    </RelativeLayout>
+</layout>

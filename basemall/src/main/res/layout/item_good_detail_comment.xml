@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="item"
+            type="com.liemi.basemall.data.entity.comment.CommentEntity" />
+
+        <import type="android.view.View" />
+
+        <import type="android.text.TextUtils" />
+
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
+        <TextView
+            android:visibility="@{TextUtils.isEmpty(item.item_id) ? View.VISIBLE : View.GONE }"
+            android:text="暂无评价"
+            android:textColor="@color/theme_text_black"
+            android:textSize="13sp"
+            android:paddingBottom="15dp"
+            android:paddingTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:visibility="@{TextUtils.isEmpty(item.item_id) ? View.GONE : View.VISIBLE }"
+            android:id="@+id/ll_comment_all"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:onClick="@{doClick}"
+            android:orientation="horizontal"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:text="@{@string/format_comment_num(item.sum_commet)}"
+                android:textColor="@color/theme_text_black"
+                android:textSize="13sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="7dp"
+                android:gravity="end"
+                android:text="@{@string/mall_applause_rate(item.total_level)}"
+                android:textColor="@color/theme_text_black"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="5dp"
+            android:background="@color/theme_bg"
+            android:visibility="@{TextUtils.isEmpty(item.item_id) ? View.GONE : View.VISIBLE }" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:visibility="@{TextUtils.isEmpty(item.item_id) ? View.GONE : View.VISIBLE }">
+
+            <ImageView
+                android:id="@+id/iv_avatar"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/baselib_bg_default_circle_pic"
+                bind:civPath="@{item.u.head_url}" />
+
+
+            <TextView
+                android:id="@+id/tv_nickname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:ellipsize="end"
+                android:lines="1"
+                android:text="@{item.u.nickname}"
+                android:textColor="@color/theme_text_black"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:lines="1"
+                android:text="@{@string/format_goods_specs_tip(item.value_names)}"
+                android:textColor="#a8a8a8"
+                android:textSize="12sp" />
+
+            <com.liemi.basemall.widget.RatingBarView
+                android:id="@+id/rb_star_server"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                app:editable="false"
+                app:padding_left="5dp"
+                app:starCount="5"
+                app:starEmpty="@mipmap/star_border_hide"
+                app:starFill="@mipmap/star_border_show"
+                app:starImageSize="12dp"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:text="@{item.content}"
+            android:textColor="@color/theme_text_black"
+            android:textSize="14sp"
+            android:visibility="@{TextUtils.isEmpty(item.content) ? View.GONE : View.VISIBLE }" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_img"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:overScrollMode="never"
+            android:visibility="@{item.meCommetImgs == null || item.meCommetImgs.isEmpty() ? View.GONE : View.VISIBLE }" />
+
+    </LinearLayout>
+</layout>

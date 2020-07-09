@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="d_44">44dp</dimen>
+    <dimen name="d_14">14dp</dimen>
+    <dimen name="d_50">50dp</dimen>
+    <dimen name="d_68">68dp</dimen>
+    <dimen name="s_16">16sp</dimen>
+    <dimen name="d_15">15dp</dimen>
+    <dimen name="s_15">15sp</dimen>
+    <dimen name="d_point5" >0.5dp</dimen>
+    <dimen name="d_1">1dp</dimen>
+    <dimen name="d_3">3dp</dimen>
+</resources>

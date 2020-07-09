@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:singleLine="true"
+    android:id="@+id/tv_label_name"
+    android:maxLength="6"
+    android:layout_marginBottom="10dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_colorffffff_radius17dp"
+    android:gravity="center"
+    android:paddingTop="11dp"
+    android:layout_marginLeft="10dp"
+    android:paddingBottom="11dp"
+    android:paddingLeft="19dp"
+    android:paddingRight="19dp"
+    android:textColor="#707070"
+    android:textSize="10sp" />

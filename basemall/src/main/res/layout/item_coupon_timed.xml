@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="item"
+            type="com.liemi.basemall.data.entity.user.MineCouponListEntity.MineCouponEntity" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:layout_marginTop="15dp"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingBottom="15dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="15dp">
+
+            <!--满多少可用-->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/normalTextView"
+                        android:text="￥"
+                        android:textColor="@color/gray_55"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        style="@style/normalTextView"
+                        android:layout_marginLeft="5dp"
+                        android:text="@{item.reduce}"
+                        android:textColor="@color/gray_55"
+                        android:textSize="24sp" />
+
+                </LinearLayout>
+
+                <TextView
+                    style="@style/normalTextView"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:text="@{@string/format_coupon_limit(item.limit)}"
+                    android:textColor="@color/gray_55"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
+
+            <!--分割线-->
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="15dp"
+                android:background="@color/gray_F2" />
+
+
+            <!--来源-->
+            <LinearLayout
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.5"
+                android:gravity="center">
+
+                <TextView
+                    style="@style/textViewLine1"
+                    android:text="@{@string/format_coupon_name(item.name)}"
+                    android:textColor="@color/gray_55"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    style="@style/textViewLine1"
+                    android:text="@{item.end_time}"
+                    android:layout_marginTop="15dp"
+                    android:textColor="@color/gray_B9"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+
+            <!--使用规则-->
+            <LinearLayout
+                android:id="@+id/ll_rule_open"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_weight="0.7"
+                android:gravity="center"
+                android:onClick="doClick"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+
+    </RelativeLayout>
+
+</layout>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <!-->站内信界面<!-->
+    <data>
+
+
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray_F2"
+        >
+
+        <include layout="@layout/baselib_include_title_bar" />
+
+        <com.netmi.baselibrary.widget.MyXRecyclerView
+            android:id="@+id/xrv_message"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/rl_title_bar"
+            android:gravity="center"
+            android:overScrollMode="never"
+            android:layout_marginTop="5dp"
+            android:background="@color/white"
+            />
+
+
+        <RelativeLayout
+            android:id="@+id/view_no_record"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/rl_title_bar"
+            android:background="#F2F2F2"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/iv_no_record"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="88dp"
+                android:src="@mipmap/ic_no_deal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv_no_record"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="26dp"
+                android:text="暂无消息"
+                android:textColor="#ffa9a9a9"
+                android:textSize="16sp" />
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+
+</layout>

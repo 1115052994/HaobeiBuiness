@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="isEdit"
+            type="boolean" />
+
+        <variable
+            name="item"
+            type="com.liemi.basemall.data.entity.user.MineCollectionStoreEntity" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/bg_radius_4dp_solid_202533"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <ImageView
+            civPath="@{item.logo_url}"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:contentDescription="@null"
+            android:scaleType="centerCrop" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingTop="18dp"
+            android:paddingBottom="18dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:text="@{item.name}"
+                android:textColor="#1f1f1e"
+                android:textSize="14sp"
+                tools:text="蓝色蚂蚁支架" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:text="@{@string/store_goods_num(item.sum_item)}"
+                android:textColor="#878787"
+                android:textSize="10sp"
+                tools:text="100件商品" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:background="@{item.clickSelect ? @drawable/bg_view_select : @drawable/bg_view_unselect}"
+            android:visibility="@{isEdit ? View.VISIBLE : View.GONE}" />
+
+    </LinearLayout>
+
+</layout>

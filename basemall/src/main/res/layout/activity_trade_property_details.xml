@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray_F2"
+        android:orientation="vertical">
+        <!--title-->
+        <include layout="@layout/layout_title_shadow" />
+
+        <!--content-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp">
+
+            <include
+                android:id="@+id/layout_empty"
+                layout="@layout/view_empty" />
+
+            <com.netmi.baselibrary.widget.MyXRecyclerView
+                android:id="@+id/fr_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/gray_F2" />
+
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+</layout>

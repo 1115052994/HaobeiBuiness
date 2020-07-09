@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+
+        <variable
+            name="item"
+            type="com.liemi.basemall.data.entity.order.ReplaceInfoEntity.OrderSku" />
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+        <import type="com.netmi.baselibrary.utils.Strings" />
+
+        <variable
+            name="status"
+            type="int" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <include layout="@layout/baselib_include_title_bar" />
+
+            <LinearLayout
+                android:visibility="visible"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_replace_status"
+                    android:textSize="18sp"
+                    android:textColor="#1D1E1F"
+                    android:paddingLeft="20dp"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    tools:text="换货成功"/>
+
+                <ImageView
+                    android:id="@+id/iv_replace_status"
+                    android:padding="22dp"
+                    android:src="@mipmap/ic_examine_ing"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <include
+                android:id="@+id/layout_exchange_good"
+                layout="@layout/item_for_exchange_good"/>
+
+            <TextView
+                android:id="@+id/tv_refuse_remark"
+                android:visibility="visible"
+                android:padding="15dp"
+                android:textColor="#B52902"
+                android:textSize="14sp"
+                android:background="@color/white"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="换货失败：因微信功能受限，为确保您的退款金额，请您与卖家线下沟通"/>
+
+            <LinearLayout
+                android:layout_marginTop="5dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/et_phone"
+                    android:enabled="false"
+                    android:padding="15dp"
+                    android:inputType="number"
+                    android:hint="请输入联系方式"
+                    android:background="@null"
+                    android:textSize="14sp"
+                    android:textColor="#353535"
+                    android:textColorHint="#AAA9A9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <EditText
+                android:layout_marginTop="2dp"
+                android:id="@+id/et_content"
+                android:enabled="false"
+                android:padding="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:hint="请说明您的换货理由"
+                android:inputType="textMultiLine"
+                android:maxLength="100"
+                android:minLines="3"
+                android:gravity="top"
+                android:textColor="@color/theme_text_black"
+                android:textColorHint="#c4c4c4"
+                android:textSize="15sp" />
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_pic"
+                android:background="@color/white"
+                android:padding="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+
+
+        </LinearLayout>
+    </RelativeLayout>
+
+
+</layout>

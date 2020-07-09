@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:zhy="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="item"
+            type="com.liemi.basemall.data.entity.good.SpecsEntity" />
+
+    </data>
+
+    <LinearLayout
+        android:id="@+id/ll_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@{item.prop_name}"
+            android:textColor="#ff1f1f1f"
+            android:textSize="16sp" />
+
+
+        <com.liemi.basemall.widget.SpecsTagFlowLayout
+            android:id="@+id/tfl_specs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            zhy:max_select="1" />
+
+
+    </LinearLayout>
+</layout>

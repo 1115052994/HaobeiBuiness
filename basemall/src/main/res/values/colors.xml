@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="black">#000</color>
+    <color name="blue_007AFF">#007AFF</color>
+    <color name="gray_E3_alpha_4D">#4DE3E3E3</color>
+    <color name="edit_hint_color">#A9A9A9</color>
+    <color name="gray_line">#f4f4f4</color>
+    <color name="edit_text_color">#1D1E1F</color>
+    <color name="gray_1B252D">#1B252D</color>
+    <color name="gray_4B545C">#4B545C</color>
+    <color name="colorPrimary">#185ACE</color>
+    <color name="colorPrimaryDark">#105ACE</color>
+    <color name="colorAccent">#FC372C</color>
+    <color name="gray_84929E">#84929E</color>
+    <color name="gray_55">#555555</color>
+    <color name="gray_99">#999999</color>
+    <color name="gray_EE">#EEEEEE</color>
+    <color name="gray_A9">#A9A9A9</color>
+    <color name="gray_F2">#F2F2F2</color>
+    <color name="c9">#777777</color>
+    <color name="gray_B9">#B9B9B9</color>
+    <color name="green_25C68A">#25C68A</color>
+    <color name="gray_B8">#B8B8B8</color>
+    <color name="white_alpha_15">#26FFFFFF</color>
+    <color name="gray_C1C7D7">#C1D1D7</color>
+    <color name="black_242424">#242424</color>
+    <color name="green_1F9D75">#1F9D75</color>
+    <color name="red_F24047">#F24047</color>
+</resources>

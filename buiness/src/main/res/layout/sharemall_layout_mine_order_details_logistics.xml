@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?><!--商品详情页面，物流信息-->
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="logisticsInfo"
+            type="String" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/cl_order_details_logistics"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:onClick="doClick"
+        android:orientation="vertical">
+
+        <!--物流配送信息-->
+        <TextView
+            android:layout_margin="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/sharemall_ic_order_details_logistics"
+            android:drawableRight="@mipmap/ic_right_gray"
+            android:drawablePadding="12dp"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="2"
+            android:paddingRight="11dp"
+            android:text="@{logisticsInfo}"
+            android:textColor="@color/gray_55"
+            android:textSize="14sp"
+            tools:text="物流信息" />
+        <View
+            android:background="@color/gray_F6F6F7"
+            android:layout_width="match_parent"
+            android:layout_height="8dp"/>
+
+    </LinearLayout>
+
+</layout>

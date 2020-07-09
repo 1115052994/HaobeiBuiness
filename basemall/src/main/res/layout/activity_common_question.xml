@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray_F2"
+        android:orientation="vertical">
+
+        <include layout="@layout/layout_title_shadow" />
+        <!--常见问题列表是由后台进行配置的-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <include layout="@layout/view_empty" />
+
+            <com.netmi.baselibrary.widget.MyXRecyclerView
+                android:id="@+id/fr_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:background="@color/gray_F2" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</layout>

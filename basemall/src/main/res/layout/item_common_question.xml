@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="item"
+            type="com.liemi.basemall.data.entity.user.CommonQuestionListEntity.CommonQustionEntity"
+            />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/ll_question_of_blockchain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:background="@color/white"
+        android:layout_marginTop="1dp"
+        android:paddingBottom="16dp"
+        android:paddingTop="16dp"
+        android:gravity="center"
+        >
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@{item.title}"
+            android:textSize="14sp"
+            android:textColor="@color/gray_4B545C"
+            android:textStyle="bold"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/icon_more_black"
+            />
+    </LinearLayout>
+
+</layout>

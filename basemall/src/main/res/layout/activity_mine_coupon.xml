@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.mine.coupon.MineCouponActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/white"
+        >
+        <!--title-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="69dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            >
+
+            <ImageView
+                android:id="@+id/iv_close"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@mipmap/baselib_ic_back"
+                android:layout_centerVertical="true"
+                android:onClick="doClick"
+                />
+
+            <com.flyco.tablayout.SlidingTabLayout
+                android:id="@+id/tl_title"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                app:tl_indicator_color="@color/green_25C68A"
+                app:tl_indicator_height="4dp"
+                app:tl_indicator_width="18dp"
+                app:tl_textSelectColor="#1B252D"
+                app:tl_textUnselectColor="#FF999999"
+                app:tl_textsize="16sp"
+                app:tl_textBold="BOTH"
+                android:layout_marginBottom="15dp"
+                />
+
+        </RelativeLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vp_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+
+
+    </LinearLayout>
+
+</layout>

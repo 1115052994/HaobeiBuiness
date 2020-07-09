@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="item"
+            type="com.liemi.basemall.data.entity.comment.CommentEntity" />
+
+        <import type="android.view.View" />
+
+        <import type="com.netmi.baselibrary.utils.Strings" />
+
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/iv_head"
+            civPath="@{item.u.head_url}"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="14dp"
+            android:layout_marginTop="14dp" />
+
+        <TextView
+            android:id="@+id/tv_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="18dp"
+            android:layout_toLeftOf="@+id/rb_star_server"
+            android:layout_toRightOf="@+id/iv_head"
+            android:singleLine="true"
+            android:text="@{item.u.nickname}"
+            android:textColor="#ff1f1f1f"
+            android:textSize="14sp" />
+
+        <com.liemi.basemall.widget.RatingBarView
+            android:id="@+id/rb_star_server"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginRight="4dp"
+            app:editable="false"
+            app:padding_right="10dp"
+            app:starCount="5"
+            app:starEmpty="@mipmap/star_border_hide"
+            app:starFill="@mipmap/star_border_show"
+            app:starImageSize="17dp" />
+
+        <TextView
+            android:id="@+id/tv_comment_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iv_head"
+            android:layout_marginLeft="14dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="14dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="@{item.content}"
+            android:textColor="#ff555555"
+            android:textSize="14sp" />
+
+        <com.liemi.basemall.widget.MyRecyclerView
+            android:id="@+id/rv_img"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_comment_content"
+            android:layout_marginTop="10dp"
+            android:overScrollMode="never"
+            android:paddingLeft="14dp"
+            android:paddingRight="14dp" />
+
+        <View
+            android:id="@+id/v_line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/rv_img"
+            android:background="@color/theme_bg" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/v_line"
+            android:layout_marginLeft="14dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="@{@string/format_goods_specs_tip(item.value_names)}"
+            android:textColor="#ff999999"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tv_create_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/v_line"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="14dp"
+            android:layout_marginBottom="10dp"
+            android:text="@{item.create_time}"
+            android:textColor="#ff999999"
+            android:textSize="12sp" />
+        <RelativeLayout
+            android:visibility="@{item.to_commet==null || Strings.isEmpty(item.to_commet.content)?View.GONE:View.VISIBLE}"
+            android:paddingRight="14dp"
+            android:paddingLeft="14dp"
+            android:layout_below="@+id/tv_create_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <View
+                android:id="@+id/v_replay_line"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/theme_bg" />
+            <TextView
+                android:id="@+id/tv_replay_title"
+                android:layout_marginTop="14dp"
+                android:layout_below="@+id/v_replay_line"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="商家回复："
+                android:textColor="#ff1f1f1f"
+                android:textSize="14sp" />
+            <TextView
+                android:text="@{item.to_commet.content}"
+                android:ellipsize="end"
+                android:maxLength="200"
+                android:textColor="#555555"
+                android:layout_marginBottom="14dp"
+                android:layout_marginTop="14dp"
+                android:layout_toRightOf="@+id/tv_replay_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>

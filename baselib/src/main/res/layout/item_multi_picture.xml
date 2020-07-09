@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <com.netmi.baselibrary.widget.RoundImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/iv_pic"
+            android:layout_width="57dp"
+            android:layout_height="57dp"
+            android:contentDescription="@null"
+            android:onClick="@{doClick}"
+            android:scaleType="fitXY"
+            app:riv_corner_radius="4dp" />
+
+        <TextView
+            android:id="@+id/tv_string"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:text="上传图片"
+            android:textColor="#ff888888"
+            android:textSize="14sp" />
+    </LinearLayout>
+</layout>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="item"
+            type="com.liemi.basemall.data.entity.user.MineCouponListEntity.MineCouponEntity" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_radius_4dp_solid_202533"
+            android:gravity="center"
+            android:minHeight="79dp"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingTop="15dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="15dp">
+
+            <!--满多少可用-->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="0.3"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/normalTextView"
+                        android:text="￥"
+                        android:textColor="#FF7030"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        style="@style/normalTextView"
+                        android:layout_marginLeft="5dp"
+                        android:text="@{item.reduce}"
+                        android:textColor="#FF7030"
+                        android:textSize="24sp" />
+
+                </LinearLayout>
+
+                <TextView
+                    style="@style/normalTextView"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:text="@{@string/format_coupon_limit(item.limit)}"
+                    android:textColor="#FF7030"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
+
+            <!--分割线-->
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="15dp"
+                android:background="@color/gray_F2" />
+
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content">
+                <!--来源-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/textViewLine1"
+                        android:text="@{@string/format_coupon_name(item.name)}"
+                        android:textColor="@color/gray_1B252D"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        style="@style/textViewLine1"
+                        android:text="@{item.end_time}"
+                        android:layout_marginTop="15dp"
+                        android:textColor="@color/gray_B9"
+                        android:textSize="10sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+
+                <!--使用规则-->
+                <LinearLayout
+                    android:id="@+id/ll_rule_open"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:gravity="center"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:onClick="@{doClick}"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="6dp"
+                        android:gravity="center"
+                        android:text="使用规则"
+                        android:textColor="@color/gray_1B252D"
+                        android:textSize="10sp" />
+
+                    <ImageView
+                        android:id="@+id/iv_rule_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/icon_more_black" />
+                </LinearLayout>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/ll_coupon_rule"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fcfcfc"
+            android:orientation="vertical"
+            android:padding="15dp"
+            android:visibility="@{item.isOpenRule ? View.VISIBLE : View.GONE}">
+
+            <TextView
+                android:id="@+id/tv_coupon_rule"
+                style="@style/textViewLine1"
+                android:text="@{@string/coupon_rule_info(item.limit)}"
+                android:textColor="@color/gray_B9"
+                android:textSize="10sp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</layout>

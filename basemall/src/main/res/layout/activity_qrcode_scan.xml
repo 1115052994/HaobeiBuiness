@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.mine.property.QRCodeScanActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <cn.bingoogolapple.qrcode.zxing.ZXingView
+            android:id="@+id/zxv_scan"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:qrcv_isTipTextBelowRect="true"
+            app:qrcv_qrCodeTipText="将要识别的二维码放进上边的边框"
+            app:qrcv_tipTextColor="#99ffffff"
+            app:qrcv_tipTextSize="13sp"
+            app:qrcv_topOffset="150dp" />
+
+
+        <ImageView
+            android:layout_marginTop="24dp"
+            android:id="@+id/ll_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@null"
+            android:onClick="doClick"
+            android:padding="15dp"
+            android:src="@mipmap/icon_back_new" />
+
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:gravity="center"
+            android:text="扫码识别"
+            android:textColor="@color/white"
+            android:visibility="gone"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_title"
+            android:gravity="center"
+            android:text="SAOMASHIBIE"
+            android:textColor="#66ffffff"
+            android:textSize="13sp"
+            android:visibility="gone"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/bt_confirm"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="60dp"
+            android:elevation="2dp"
+            android:gravity="center"
+            android:onClick="doClick"
+            android:padding="11dp"
+            android:text="我的二维码"
+            android:textColor="@color/white"
+            android:visibility="gone"
+            android:textSize="14sp" />
+
+
+    </RelativeLayout>
+
+</layout>

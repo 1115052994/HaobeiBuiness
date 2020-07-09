@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/theme_bg">
+        <include layout="@layout/baselib_include_title_bar"/>
+        <TextView
+            android:onClick="doClick"
+            android:id="@+id/tv_all_good"
+            android:background="@color/white"
+            android:paddingRight="14dp"
+            android:paddingLeft="14dp"
+            android:gravity="center_vertical"
+            android:drawableRight="@mipmap/ic_store_right_gray"
+            android:layout_width="match_parent"
+            android:layout_height="47dp"
+            android:text="@string/all_good"
+            android:textColor="#ff484848"
+            android:textSize="14sp"
+            android:drawableEnd="@mipmap/ic_store_right_gray" />
+        <com.netmi.baselibrary.widget.MyXRecyclerView
+            android:layout_marginTop="5dp"
+            android:id="@+id/xrv_data"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+</layout>

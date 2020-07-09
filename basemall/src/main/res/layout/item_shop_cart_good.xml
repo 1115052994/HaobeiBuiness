@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="checkedListener"
+            type="android.widget.CompoundButton.OnCheckedChangeListener" />
+
+        <variable
+            name="isEdit"
+            type="boolean" />
+
+        <import type="android.view.View" />
+
+        <import type="android.text.InputType" />
+
+        <variable
+            name="item"
+            type="com.liemi.basemall.data.entity.good.GoodsDetailedEntity" />
+
+        <import type="com.netmi.baselibrary.utils.Strings" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+        <View
+            android:background="@color/theme_bg"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
+        <CheckBox
+            android:id="@+id/cb_good"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:button="@null"
+            android:checked="@={item.checked}"
+            android:drawableRight="@drawable/baselib_check_btn"
+            android:onCheckedChanged="@{checkedListener}"
+            android:onClick="@{doClick}"
+            android:padding="15dp"
+            android:visibility="@{isEdit?View.VISIBLE:View.GONE}" />
+
+        <LinearLayout
+            android:layout_centerVertical="true"
+            android:id="@+id/ll_good"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/cb_good"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="@{isEdit?@dimen/dp_0:@dimen/d_15}"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
+
+            <com.netmi.baselibrary.widget.RoundImageView
+                android:id="@+id/iv_good"
+                android:layout_width="77dp"
+                android:layout_height="77dp"
+                android:scaleType="centerCrop"
+                bind:ivPathN="@{item.img_url}"
+                android:contentDescription="@null" />
+
+            <LinearLayout
+                android:id="@+id/ll_good_detail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:onClick="@{doClick}"
+                android:orientation="vertical">
+                <TextView
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:layout_marginRight="50dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{item.title}"
+                    android:textColor="#1F1F1E"
+                    android:textSize="12sp" />
+                <TextView
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:text="@{Strings.formatStr(@string/format_goods_specs_tip,item.value_names)}"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ff878787"
+                    android:textSize="12sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="@{item.getShowPrice()}"
+                    android:textColor="#FF3700"
+                    android:textSize="16sp" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- 增加减少按钮-->
+        <LinearLayout
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="76dp"
+            android:layout_alignParentRight="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:gravity="end"
+            android:orientation="horizontal"
+            android:visibility="@{isEdit?View.VISIBLE:View.GONE}">
+
+            <ImageView
+                android:enabled="@{Strings.toFloat(item.num) > 1}"
+                android:id="@+id/tv_minus"
+                android:onClick="@{doClick}"
+                android:padding="10dp"
+                android:src="@drawable/selector_shop_cart_minus"
+                android:layout_width="33dp"
+                android:layout_height="33dp"
+                android:contentDescription="@null" />
+
+            <!--<TextView
+                android:id="@+id/tv_minus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_minus_border_btn"
+                android:ems="2"
+                android:gravity="center"
+                android:onClick="@{doClick}"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
+                android:text="-"
+                android:textColor="@drawable/text_selector_gray_black"
+                android:textSize="18sp" />-->
+
+            <!--<EditText
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="-0.3dp"
+                android:layout_marginRight="-0.3dp"
+                android:background="@drawable/bg_count_border_btn"
+                android:gravity="center"
+                android:inputType="number"
+                android:textColor="@color/theme_text_black"
+                android:textSize="15sp" />-->
+
+            <TextView
+                android:id="@+id/tv_calculate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:text="@{Strings.twoDecimal(Strings.toDouble(item.num))}"
+                android:textColor="#ff1b252d"
+                android:textSize="13sp" />
+
+            <!--<TextView
+                android:id="@+id/tv_plus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_plus_border_btn"
+                android:ems="2"
+                android:gravity="center"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
+                android:text="+"
+                android:textColor="@drawable/text_selector_gray_black"
+                android:textSize="18sp" />-->
+
+            <ImageView
+                android:id="@+id/tv_plus"
+                android:enabled="true"
+                android:onClick="@{doClick}"
+                android:padding="10dp"
+                android:src="@drawable/selector_shop_cart_plus"
+                android:layout_width="33dp"
+                android:layout_height="33dp"
+                android:contentDescription="@null" />
+        </LinearLayout>
+
+
+    </RelativeLayout>
+</layout>

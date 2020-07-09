@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.liemi.basemall.data.entity.order.OrderDetailsEntity" />
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+        <import type="com.netmi.baselibrary.utils.Strings" />
+
+        <import type="com.netmi.baselibrary.utils.FloatUtils" />
+
+        <import type="com.netmi.baselibrary.utils.DateUtil" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="48dp">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/theme_bg" />
+            <TextView
+                android:layout_marginLeft="14dp"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="商品金额"
+                android:textColor="#ff1f1f1f"
+                android:textSize="13sp" />
+            <TextView
+                android:layout_marginRight="14dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#ffff3700"
+                android:textSize="13sp" />
+<!--            android:text="@{@string/format_money(Strings.twoDecimal(Strings.toFloat(item.price_total) - Strings.toFloat(item.template_id)))}"-->
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:visibility="gone"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="48dp">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/theme_bg" />
+            <TextView
+                android:layout_marginLeft="14dp"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="店铺优惠"
+                android:textColor="#ff1f1f1f"
+                android:textSize="13sp" />
+            <TextView
+                android:layout_marginRight="14dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-yms18.00"
+                android:textColor="#ffff3700"
+                android:textSize="13sp" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="48dp">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/theme_bg" />
+            <TextView
+                android:layout_marginLeft="14dp"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="运费"
+                android:textColor="#ff1f1f1f"
+                android:textSize="13sp" />
+            <TextView
+                android:layout_marginRight="14dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#ffff3700"
+                android:textSize="13sp" />
+<!--            android:text="@{@string/format_money(item.template_id)}"-->
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/rl_real_price"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="48dp">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/theme_bg" />
+            <TextView
+                android:id="@+id/tv_price_title"
+                android:layout_marginLeft="14dp"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#ff1f1f1f"
+                android:textSize="13sp" />
+            <TextView
+                android:id="@+id/tv_count_price"
+                android:layout_marginRight="14dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#ffff3700"
+                android:textSize="13sp" />
+<!--            android:text="@{Strings.isEmpty(item.pay_channel)?item.getShowPrice():item.getDigitalPrice()}"-->
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:visibility="gone"
+            android:id="@+id/rl_digital_price"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="48dp">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/theme_bg" />
+            <TextView
+                android:layout_marginLeft="14dp"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="数字资产支付"
+                android:textColor="#ff1f1f1f"
+                android:textSize="13sp" />
+            <TextView
+                android:layout_marginRight="14dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{item.amount}"
+                android:textColor="#ffff3700"
+                android:textSize="13sp" />
+        </RelativeLayout>
+        <!--<LinearLayout
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="13dp">
+
+            <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+                <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="商品总价："
+            android:textColor="#929292"
+            android:textSize="12sp" />
+
+                <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:text="@{@string/format_money(Strings.twoDecimal(Strings.toFloat(item.price_total) - Strings.toFloat(item.template_id)))}"
+            android:textColor="#929292"
+            android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
+            android:orientation="horizontal"
+            android:visibility="@{item.type == 1 ? View.VISIBLE : View.GONE}">
+
+                <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="积分："
+            android:textColor="#929292"
+            android:textSize="12sp" />
+
+                <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:text="@{FloatUtils.formatScore(item.pay_score)}"
+            android:textColor="#929292"
+            android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
+            android:orientation="horizontal">
+
+                <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="运费："
+            android:textColor="#929292"
+            android:textSize="12sp" />
+
+                <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:text="@{@string/format_money(item.template_id)}"
+            android:textColor="#929292"
+            android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:gravity="bottom"
+            android:orientation="horizontal">
+
+                <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="合计付款："
+            android:textColor="@color/theme_text_black"
+            android:textSize="14sp" />
+
+                <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:text="@{item.getShowPrice()}"
+            android:textColor="#c53539"
+            android:textSize="16sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:paddingLeft="15dp"
+            android:paddingTop="13dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="10dp"
+            android:visibility="gone">
+
+            <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{item.remark == null ? @string/no : @string/format_remark(item.remark)}"
+            android:textColor="#929292"
+            android:textSize="12sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:paddingLeft="15dp"
+            android:paddingTop="13dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="10dp">
+
+            <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{@string/format_order_number(item.order_no)}"
+            android:textColor="#929292"
+            android:textSize="12sp" />
+
+            <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+                <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@{@string/format_order_time(item.create_time)}"
+            android:textColor="#929292"
+            android:textSize="12sp" />
+
+
+                <TextView
+            android:id="@+id/tv_contact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/ic_contact_seller"
+            android:drawablePadding="5dp"
+            android:gravity="center"
+            android:onClick="@{doClick}"
+            android:padding="5dp"
+            android:text="联系卖家"
+            android:textColor="@color/themeRed"
+            android:textSize="12sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>-->
+        <LinearLayout
+            android:background="@color/theme_bg"
+            android:padding="14dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{@string/format_order_number(item.order_no)}"
+                android:textColor="#ff555555"
+                android:textSize="12sp" />
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{@string/format_order_time(DateUtil.strToMMDDHHMMDate(item.create_time))}"
+                android:textColor="#ff555555"
+                android:textSize="12sp" />
+            <TextView
+                android:visibility="@{item.status != 0 ? View.VISIBLE : View.GONE}"
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{@string/basemall_pay_time(DateUtil.strToMMDDHHMMDate(item.pay_time))}"
+                android:textColor="#ff555555"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

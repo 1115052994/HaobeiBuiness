@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="useStatus"
+            type="String"
+            />
+        <variable
+            name="num"
+            type="String"
+            />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="15dp"
+        android:background="@color/gray_F2"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <TextView
+                style="@style/normalTextView"
+                android:textSize="12dp"
+                android:textColor="@color/gray_B9"
+                android:text="@{useStatus}"
+                />
+            <TextView
+                style="@style/normalTextView"
+                android:layout_alignParentRight="true"
+                android:text="@{@string/coupon_total_num(num)}"
+                />
+        </RelativeLayout>
+
+        <com.netmi.baselibrary.widget.MyXRecyclerView
+            android:id="@+id/fr_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+    </LinearLayout>
+
+</layout>

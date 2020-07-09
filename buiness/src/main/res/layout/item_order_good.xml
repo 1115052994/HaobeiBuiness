@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.netmi.workerbusiness.data.entity.home.lineorder.LineOrderListEntity.MainOrdersBean.OrderSkusBean" />
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+        <import type="com.netmi.baselibrary.utils.Strings" />
+
+        <variable
+            name="status"
+            type="int" />
+
+        <variable
+            name="showPriceType"
+            type="boolean" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/ll_good"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:onClick="@{doClick}"
+            android:orientation="horizontal"
+            android:padding="16dp">
+            <!--商品图片-->
+            <com.netmi.baselibrary.widget.RoundImageView
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_marginRight="12dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/baselib_bg_default_pic"
+                bind:ivPathN="@{item.img_url}" />
+            <!--商品详情-->
+            <RelativeLayout
+                android:id="@+id/rl_good_detail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <!--商品名称-->
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="50dp"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:text="@{item.spu_name}"
+                    android:textColor="#1D1E1F"
+                    android:textSize="14sp"
+                    tools:text="商品名称" />
+
+                <!--                <TextView-->
+                <!--                    android:id="@+id/tv_create_time"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_below="@+id/tv_name"-->
+                <!--                    android:layout_marginTop="5dp"-->
+                <!--                    android:text="@{item.create_time}"-->
+                <!--                    android:textColor="#ff999999"-->
+                <!--                    android:textSize="12sp"-->
+                <!--                    tools:text="2018-03-12 14:32" />-->
+
+                <!--不支持七天无理由退货-->
+                <TextView
+                    android:id="@+id/tv_format"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="4dp"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:text="@{Strings.formatStr(@string/sharemall_format_goods_specs_tip,item.value_names)}"
+                    android:textColor="#878787"
+                    android:textSize="12sp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="@{item.statusFormat}"
+                    android:textColor="#C40D00"
+                    android:visibility="@{item.status==4|item.status==5|item.status==6|item.status==7?View.VISIBLE : View.GONE}" />
+
+
+                <RelativeLayout
+                    android:id="@+id/rl_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true">
+                    <!--商品实际价格-->
+                    <TextView
+                        android:id="@+id/tv_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:lines="1"
+                        android:text="@{@string/sharemall_format_money(item.sku_price)}"
+                        android:textColor="@color/red_B52902"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:visibility="@{showPriceType ? View.VISIBLE : View.GONE}"
+                        tools:text="￥1500" />
+
+                    <!--商品原价-->
+                    <!--                    android:visibility="@{showPriceType &amp;&amp; !Strings.isEmpty(item.old_price)-->
+                    <!--                    ? View.VISIBLE : View.GONE}"-->
+
+                    <TextView
+                        android:id="@+id/tv_good_price_old"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="12dp"
+                        android:layout_toEndOf="@+id/tv_price"
+                        android:layout_toRightOf="@+id/tv_price"
+                        android:ellipsize="end"
+                        android:lines="1"
+                        android:text="@{@string/sharemall_format_money(item.old_price)}"
+                        android:textSize="12sp"
+                        android:visibility="gone"
+                        tools:text="￥400" />
+                    <!--购买数量-->
+                    <TextView
+                        android:id="@+id/tv_num"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="@{@string/sharemall_format_x_num(Strings.twoDecimal(item.num))}"
+                        android:textColor="@color/gray_99"
+                        android:textSize="12sp"
+                        tools:text="X1" />
+
+                </RelativeLayout>
+
+                <!--商品规格-->
+                <TextView
+                    android:id="@+id/tv_good_specification"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@id/rl_price"
+                    android:layout_below="@id/tv_name"
+                    android:ellipsize="end"
+                    android:gravity="center_vertical"
+                    android:lines="1"
+                    android:text="@{item.value_names}"
+                    android:textColor="@color/gray_99"
+                    android:textSize="12sp"
+                    android:visibility="@{showPriceType ? View.VISIBLE : View.GONE}"
+                    tools:text="100克" />
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray_EE" />
+    </LinearLayout>
+</layout>

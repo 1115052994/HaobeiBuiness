@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:zhy="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.netmi.baselibrary.utils.FloatUtils" />
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="item"
+            type="com.liemi.basemall.data.entity.good.GoodsDetailedEntity" />
+
+        <import type="com.netmi.baselibrary.utils.Strings" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:visibility="gone"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal"
+            android:id="@+id/ll_digital"
+            android:layout_width="match_parent"
+            android:layout_height="77dp"
+            android:baselineAligned="false">
+            <LinearLayout
+                android:visibility="visible"
+                android:paddingRight="41dp"
+                android:background="#B52902"
+                android:paddingLeft="19dp"
+                android:paddingTop="17dp"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="价格"
+                    android:textColor="#ffffffff"
+                    android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/tv_price"
+                    android:singleLine="true"
+                    android:maxWidth="100dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{item.getShowPrice()}"
+                    android:textColor="#ffffffff"
+                    android:textSize="18sp" />
+            </LinearLayout>
+            <RelativeLayout
+                android:visibility="visible"
+                android:paddingRight="13dp"
+                android:paddingLeft="13dp"
+                android:background="@drawable/gradient_startf4582c_endb52902"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/basemall_gray_eth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <!--
+                    android:drawableRight="@mipmap/ic_bottom_arrow"-->
+                <TextView
+                    android:id="@+id/tv_money_type"
+                    android:drawablePadding="4dp"
+                    android:layout_marginLeft="27dp"
+                    android:padding="5dp"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ETH"
+                    android:textColor="#ffffffff"
+                    android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/tv_need_eth"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="end"
+                    android:layout_toRightOf="@+id/tv_money_type"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="0.22321313"
+                    android:textColor="#ffffffff"
+                    android:lines="1"
+                    android:ellipsize="end"
+                    android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/tv_eth_rate"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="end"
+                    android:layout_toRightOf="@+id/tv_money_type"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="≈1323.231231 CNY"
+                    android:textColor="#ffffffff"
+                    android:lines="1"
+                    android:ellipsize="end"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="15dp"
+            android:text="@{item.title}"
+            android:textColor="#1F1F1E"
+            android:textSize="15sp" />
+
+        <com.liemi.basemall.widget.SpecsTagFlowLayout
+            android:id="@+id/tfl_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="#fff"
+            zhy:max_select="1" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@color/white"
+            android:gravity="bottom"
+            android:orientation="horizontal"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="15dp">
+
+            <com.liemi.basemall.widget.MoneyTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{item.getShowPriceGoodDetailPrice()}"
+                android:textColor="#FF3700"
+                android:textSize="19sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="YMS"
+                android:textColor="#FF3700"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_postage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:textColor="#929292"
+                android:textSize="12sp"
+                tools:text="运费：5.00"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{@string/format_sales_volume(item.deal_num)}"
+                android:textColor="#878787"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/tv_hb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:onClick="@{doClick}"
+            android:padding="15dp"
+            android:paddingLeft="5dp"
+            android:text="@{@string/format_earn_score(item.earn_score)}"
+            android:textColor="@color/theme_text_black"
+            android:textSize="13sp"
+            android:visibility="gone" />
+
+        <View
+            android:layout_width="20dp"
+            android:layout_height="1dp"
+            android:background="@color/white" />
+
+        <TextView
+            android:id="@+id/tv_good_param"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:drawableRight="@mipmap/ic_right_gray"
+            android:gravity="center_vertical"
+            android:onClick="@{doClick}"
+            android:padding="15dp"
+            android:paddingLeft="5dp"
+            android:text="服务描述"
+            android:textColor="@color/theme_text_black"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tv_rule_choice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:drawableRight="@mipmap/ic_right_gray"
+            android:gravity="center_vertical"
+            android:onClick="@{doClick}"
+            android:padding="15dp"
+            android:paddingLeft="5dp"
+            android:text="规格数量选择"
+            android:textColor="@color/theme_text_black"
+            android:textSize="13sp" />
+
+
+    </LinearLayout>
+</layout>

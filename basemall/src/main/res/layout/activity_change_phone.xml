@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="textAfter"
+            type="android.databinding.adapters.TextViewBindingAdapter.AfterTextChanged"
+            />
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray_F2"
+        android:orientation="vertical">
+
+        <include layout="@layout/layout_title_shadow"
+            android:id="@+id/layout_title"
+            />
+
+         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@+id/layout_title"
+            android:layout_above="@+id/btn_save"
+            >
+
+            <EditText
+                android:id="@+id/et_input_new_phone"
+                style="@style/textViewLine1"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:hint="@string/input_new_phone"
+                android:paddingLeft="20dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:textColor="@color/gray_1B252D"
+                android:textColorHint="@color/gray_B9"
+                android:textSize="14sp"
+                android:afterTextChanged="@{textAfter}"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingRight="20dp">
+
+                <EditText
+                    android:id="@+id/et_input_verification_code"
+                    style="@style/textWidthWight1"
+                    android:background="@color/white"
+                    android:hint="@string/please_input_verification_code"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp"
+                    android:textColor="@color/gray_1B252D"
+                    android:textColorHint="@color/gray_B9"
+                    android:afterTextChanged="@{textAfter}"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_get_verification_code"
+                    style="@style/normalTextView"
+                    android:background="@drawable/bg_radius_2dp_stroke_1dp_b52902"
+                    android:paddingLeft="8dp"
+                    android:paddingTop="7dp"
+                    android:paddingRight="8dp"
+                    android:paddingBottom="7dp"
+                    android:text="@string/get_verification_code"
+                    android:textColor="#b52902"
+                    android:onClick="doClick"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="30dp"
+            android:layout_gravity="bottom"
+            android:background="@drawable/baselib_bg_color77b52902"
+            android:text="保存"
+            android:onClick="doClick"
+            android:enabled="false"
+            android:textColor="@color/white" />
+
+    </RelativeLayout>
+
+</layout>

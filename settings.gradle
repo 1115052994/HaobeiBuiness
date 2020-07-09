@@ -1,0 +1,2 @@
+include ':app', ':sobotsdk', ':buiness', ':uikit', ':baselib', ':basemall'
+rootProject.name='HaobeiBuiness'

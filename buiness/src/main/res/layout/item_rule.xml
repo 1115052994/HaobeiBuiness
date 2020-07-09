@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <!--订单Item页面-->
+    <data>
+
+        <import type="com.netmi.baselibrary.utils.Strings" />
+
+        <import type="android.view.View" />
+        <!--点击事件-->
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+
+        <!--订单信息-->
+        <variable
+            name="item"
+            type="com.netmi.workerbusiness.data.entity.mine.ContentEntity" />
+
+    </data>
+
+    <TextView
+        android:id="@+id/tv_rule_service"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:background="@color/white"
+        android:drawableRight="@mipmap/ic_right_gray"
+        android:onClick="@{doClick}"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="16dp"
+        android:text="@{item.title}"
+        android:textColor="#ff4b545c"
+        android:textSize="14sp"
+        tools:text="1231545456" />
+</layout>

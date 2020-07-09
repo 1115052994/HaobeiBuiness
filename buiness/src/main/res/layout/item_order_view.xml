@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <!--订单Item页面-->
+    <data>
+
+        <import type="com.netmi.baselibrary.utils.Strings" />
+
+        <import type="android.view.View" />
+        <!--点击事件-->
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="hiddenFooter"
+            type="boolean" />
+
+        <!--订单信息-->
+        <variable
+            name="item"
+            type="com.netmi.workerbusiness.data.entity.home.lineorder.LineOrderListEntity" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <!--订单编号和订单状态-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="15dp">
+
+            <TextView
+                android:id="@+id/tv_store_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="9dp"
+                android:gravity="center"
+                android:onClick="@{doClick}"
+                android:paddingVertical="14dp"
+                android:text="@{@string/order_time(item.create_time)}"
+                android:textColor="#ff1d1e1f"
+                android:textSize="14sp"
+                tools:text="订单时间：2019-09-10" />
+
+            <!--订单状态-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="@{item.status_name}"
+                android:textColor="#1D1E1F"
+                android:textSize="14sp"
+                tools:text="待付款" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray_EE" />
+
+        <!--商品列表-->
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_goods"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!--商品合计和订单操作-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="16dp"
+            android:paddingTop="16dp">
+
+            <!--商品合计-->
+            <TextView
+                android:id="@+id/tv_order_goods_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:lines="1"
+                android:text="@{@string/sharemall_format_order_goods_num(item.goods_num)}"
+                android:textColor="#999999"
+                android:textSize="14sp"
+                tools:text="共1件商品" />
+
+            <LinearLayout
+                android:id="@+id/ll_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="小计"
+                    android:textColor="#1D1E1F"
+                    android:textSize="14sp" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:text="@{@string/sharemall_format_money(item.goods_amount)}"
+                    android:textColor="#C40D00"
+                    android:textSize="14sp"
+                    tools:text="￥66.5" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ll_total"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:gravity="end"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_order_function1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/sharemall_radius_15dp_stroke_1dp_99999"
+                    android:gravity="center"
+                    android:onClick="@{doClick}"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="5dp"
+                    android:text="@{item.leftButtonStr}"
+                    android:textColor="@color/gray_55"
+                    android:textSize="14sp"
+                    android:visibility="@{Strings.isEmpty(item.leftButtonStr)? View.GONE : View.VISIBLE }"
+                    tools:text="查看物流" />
+
+                <TextView
+                    android:id="@+id/tv_order_function2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:background="@drawable/sharemall_radius_15dp_gradient_d72b18_d71857"
+                    android:gravity="center"
+                    android:onClick="@{doClick}"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="5dp"
+                    android:text="@{item.rightButtonStr}"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:visibility="@{Strings.isEmpty(item.rightButtonStr)? View.GONE : View.VISIBLE  }"
+                    tools:text="确认收货" />
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</layout>

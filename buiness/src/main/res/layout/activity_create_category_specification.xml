@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="item"
+            type="com.netmi.workerbusiness.data.entity.home.store.SpecDetailEntity" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/layout_title"
+            layout="@layout/baselib_include_title_bar" />
+
+
+        <EditText
+            android:id="@+id/et_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@color/white"
+            android:hint="请输入规格名称"
+            android:paddingHorizontal="15dp"
+            android:paddingVertical="12dp"
+            android:text=""
+            android:textColor="#ff555555"
+            android:textSize="14sp"
+            android:maxLength="20"
+
+            />
+
+        <LinearLayout
+            android:onClick="doClick"
+            android:id="@+id/ll_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@color/white"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="12dp"
+                android:text="类型"
+                android:textColor="#ff333333"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_type"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:drawableRight="@mipmap/ic_right_gray"
+                android:drawablePadding="12dp"
+                android:gravity="right"
+                android:hint="请选择类型"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="12dp"
+                android:textColor="#ff555555" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/ll_pre_level"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:onClick="doClick"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="12dp"
+                android:text="上级规格"
+                android:textColor="#ff333333"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_pre_level"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:drawableRight="@mipmap/ic_right_gray"
+                android:drawablePadding="12dp"
+                android:gravity="right"
+                android:hint="请选择上级"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="12dp"
+                android:textColor="#ff555555" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

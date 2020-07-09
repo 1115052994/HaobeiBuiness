@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.mine.setting.AboutUsActivity">
+
+    <data>
+
+        <variable
+            name="versionName"
+            type="String" />
+
+        <variable
+            name="linkUsPhone"
+            type="String" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray_F2"
+        android:orientation="vertical">
+
+        <!--title-->
+        <include layout="@layout/layout_title_shadow" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/iv_app_logo"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="38dp"
+                android:src="@mipmap/app_logo"
+                android:visibility="gone" />
+
+            <TextView
+                style="@style/textViewLine1Center"
+                android:layout_marginTop="15dp"
+                android:ellipsize="end"
+                android:lines="1"
+                android:text="商城解决方案"
+                android:textColor="#1F1F1F"
+                android:textSize="16sp"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:id="@+id/ll_service_agreement"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:onClick="doClick"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="20dp"
+                    android:visibility="gone">
+
+                    <TextView
+                        style="@style/textWidthWight1"
+                        android:text="服务协议"
+                        android:textColor="@color/theme_text_black"
+
+                        />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/icon_more_black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_link_us"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/white"
+                    android:onClick="doClick"
+                    android:orientation="horizontal"
+                    android:paddingLeft="15dp"
+                    android:paddingTop="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingBottom="15dp"
+                    android:visibility="gone">
+
+                    <TextView
+                        style="@style/textWidthWight1"
+                        android:text="联系我们"
+                        android:textColor="@color/theme_text_black" />
+
+                    <TextView
+                        style="@style/textWidthWight1"
+                        android:gravity="right"
+                        android:text="@{linkUsPhone}"
+                        android:textColor="@color/gray_B9" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:src="@mipmap/icon_more_black" />
+                </LinearLayout>
+                <!--关于我们-->
+                <LinearLayout
+                    android:id="@+id/ll_about_us"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:onClick="doClick"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="20dp"
+                    android:visibility="visible">
+
+                    <TextView
+                        style="@style/textWidthWight1"
+                        android:text="关于我们"
+                        android:textColor="@color/theme_text_black" />
+
+                    <TextView
+                        style="@style/textWidthWight1"
+                        android:gravity="right"
+                        android:text="@{linkUsPhone}"
+                        android:textColor="@color/gray_B9" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:src="@mipmap/icon_more_black" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginHorizontal="20dp"
+                    android:background="@color/gray_F2" />
+                <!--检查更新-->
+                <LinearLayout
+                    android:id="@+id/ll_check_update"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:onClick="doClick"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="20dp"
+                    android:visibility="visible">
+
+                    <TextView
+                        style="@style/textWidthWight1"
+                        android:text="检查更新"
+                        android:textColor="@color/theme_text_black" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="12dp"
+                        android:gravity="center_vertical"
+                        android:text="@{@string/app_version_name(versionName)}"
+                        android:textColor="@color/gray_B9"
+                        android:textSize="12sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/icon_more_black" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginHorizontal="20dp"
+                    android:background="@color/gray_F2" />
+                <!--意见反馈-->
+                <LinearLayout
+                    android:id="@+id/ll_feedback"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:onClick="doClick"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="20dp"
+                    android:visibility="visible">
+
+                    <TextView
+                        style="@style/textWidthWight1"
+                        android:text="意见反馈"
+                        android:textColor="@color/theme_text_black" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/icon_more_black" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <WebView
+                android:id="@+id/wv_about_us"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</layout>

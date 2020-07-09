@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.liemi.basemall.data.entity.floor.FloorDataEntity" />
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+    </data>
+
+    <com.netmi.baselibrary.widget.ResizableImageView
+        android:id="@+id/img_floor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baselib_bg_default_pic"
+        android:onClick="@{doClick}"
+        bind:ivPathN="@{item.img_url}" />
+</layout>

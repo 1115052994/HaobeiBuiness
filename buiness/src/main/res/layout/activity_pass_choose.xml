@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F2F2F2"
+        android:orientation="vertical">
+
+        <include layout="@layout/layout_title_shadow" />
+
+        <TextView
+            android:id="@+id/tv_change"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
+            android:drawableRight="@mipmap/ic_right_gray"
+            android:onClick="doClick"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="16dp"
+            android:textColor="#ff4b545c"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_forget"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:drawableRight="@mipmap/ic_right_gray"
+            android:onClick="doClick"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="16dp"
+            android:textColor="#ff4b545c"
+            android:textSize="14sp" />
+
+
+    </LinearLayout>
+
+</layout>

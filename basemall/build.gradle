@@ -1,0 +1,100 @@
+apply plugin: 'com.android.library'
+apply plugin: "com.mob.sdk"
+
+android {
+    compileSdkVersion 28
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+
+        ndk {
+            //设置支持的SO库架构
+            abiFilters 'x86', 'armeabi-v7a'
+        }
+
+        manifestPlaceholders = [
+                //TODO 更换key
+                XG_ACCESS_ID : "2100338687",
+                XG_ACCESS_KEY: "A33RT81NJD6J",
+        ]
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    //noinspection GradleCompatible
+    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    implementation project(':baselib')
+    //微信支付
+    api 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
+    //信鸽jar
+    api 'com.tencent.xinge:xinge:3.2.7-Release'
+    //jg包
+    api 'com.tencent.jg:jg:1.1'
+    //wup包
+    api 'com.tencent.wup:wup:1.0.0.E-release'
+    //mid包
+    api 'com.tencent.mid:mid:4.0.6-release'
+    //若模块之间使用了ARouter路由跳转，则必须加上
+    annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
+    implementation 'com.alibaba:arouter-api:1.4.1'
+
+    //倒计时控件
+    api 'com.github.iwgang:countdownview:2.1.6'
+    //流式布局(类似热门标签)
+    implementation 'com.hyman:flowlayout-lib:1.1.2'
+    //文字轮播控件
+    api 'com.superluo:textbannerview:1.0.2'
+    //类似IOS的开关控件
+    api 'com.github.zcweng:switch-button:0.0.3@aar'
+    //二维码生成库
+    implementation 'com.google.zxing:core:3.3.0'
+
+}
+
+MobSDK {
+    appKey "2e26e6746fb30"
+    appSecret "6084d846bc589be3cdb3539b51126fc2"
+    ShareSDK {
+        //平台配置信息
+        devInfo {
+            //微信开放平台
+            Wechat {
+                appId "wx79e05e452118fc21"
+                appSecret "715623e68f0a92f27a64ce73578b933c"
+            }
+            WechatMoments {
+                appId "wx79e05e452118fc21"
+                appSecret "715623e68f0a92f27a64ce73578b933c"
+            }
+        }
+    }
+}

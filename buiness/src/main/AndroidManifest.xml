@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.netmi.workerbusiness">
+    <!-- 允许程序打开网络套接字 -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 允许程序设置内置sd卡的写权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 允许程序获取网络状态 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 允许程序访问WiFi网络信息 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 允许程序读写手机状态和身份 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- 允许程序访问CellID或WiFi热点来获取粗略的位置 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- 权限声明 -->
+    <!-- 控制呼吸灯，振动器等，用于新消息提醒 -->
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.VIBRATE" /> <!-- 外置存储存取权限 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" /> <!-- 多媒体相关 -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" /> <!-- 百度API所需权限 -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" /> <!-- 个推 -->
+    <!-- <uses-permission android:name="android.permission.INTERNET" /> -->
+    <!-- <uses-permission android:name="android.permission.READ_PHONE_STATE" /> -->
+    <!-- <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> -->
+    <!-- <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" /> <!-- <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> -->
+    <!-- <uses-permission android:name="android.permission.VIBRATE" /> -->
+    <uses-permission android:name="android.permission.GET_TASKS" /> <!-- <uses-permission android:name="android.permission.BLUETOOTH" /> -->
+    <!-- <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" /> -->
+    <!-- <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" /> -->
+    <!-- <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> -->
+    <!-- <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> -->
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" /> <!-- SDK 权限申明, 第三方 APP 接入时，请将 com.netease.nim.demo 替换为自己的包名 -->
+    <!-- 和下面的 uses-permission 一起加入到你的 AndroidManifest 文件中。 -->
+    <permission
+        android:name="com.netmi.workerbusiness.permission.RECEIVE_MSG"
+        android:protectionLevel="signature" /> <!-- 接收 SDK 消息广播权限， 第三方 APP 接入时，请将 com.netease.nim.demo 替换为自己的包名 -->
+    <uses-permission android:name="com.netmi.workerbusiness.permission.RECEIVE_MSG" /> <!-- GPS定位权限 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <application
+        android:name=".ui.MyApplication"
+        android:allowBackup="true"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+
+        <activity android:name=".ui.mine.wallet.HaibeiChangeActivity"></activity>
+        <activity android:name=".ui.home.vip.VIPShareActivity" />
+        <activity android:name=".ui.mine.wallet.InputAliWechatActivity" />
+        <activity
+            android:name=".ui.home.HaibeiSpareActivity"
+            android:hardwareAccelerated="false" />
+        <activity android:name=".ui.login.CategoryVerifyActivity" />
+        <activity android:name=".ui.home.MerchantLoanActivity" />
+        <activity android:name=".ui.mine.wallet.SetPayPassActivity" />
+        <activity android:name=".ui.mine.wallet.ETHWalletDetailActivity" />
+        <activity android:name=".ui.mine.wallet.BaiduMapActivity" />
+        <activity android:name=".ui.mine.wallet.MineWithdrawDetailActivity" />
+        <activity android:name=".ui.mine.wallet.payway.AddAlipayActivity" />
+        <activity android:name=".ui.mine.wallet.MineCollectionActivity" />
+        <activity android:name=".ui.mine.wallet.MineWithdrawActivity" />
+        <activity android:name=".ui.mine.wallet.WalletResultActivity" />
+        <activity android:name=".ui.mine.wallet.HaibeiTransferActivity" />
+        <activity android:name=".ui.mine.wallet.HaibeiWithdrawActivity" />
+        <activity android:name=".ui.mine.wallet.HaibeiRechargeActivity" />
+        <activity android:name=".ui.home.HaibeiHomeActivity" />
+        <activity android:name=".ui.home.TeamActivity" />
+        <activity android:name=".ui.mine.PasswordActivity" />
+        <activity android:name=".ui.mine.PassChooseActivity" />
+        <activity android:name=".ui.mine.AccountSecurityActivity" /> <!-- android:icon="@mipmap/app_logo" -->
+        <!-- android:label="@string/app_name" -->
+        <!-- android:roundIcon="@mipmap/ic_launcher_round" -->
+        <!-- <application android:largeHeap="true"> -->
+        <activity android:name=".ui.login.ForgetPasswordActivity" />
+        <activity
+            android:name=".ui.home.offline.OfflineEvaluationActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".ui.home.online.OrderEvaluationActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity android:name=".ui.home.offline.OfflineOrderDetailActivity" />
+        <activity android:name=".ui.home.offline.OfflineOrderActivity" />
+        <activity android:name=".ui.mine.TimeChooseActivity" />
+        <activity android:name=".ui.mine.TransactionDetailsActivity" />
+        <activity android:name=".ui.home.commodity.offline.PurchaseNotesActivity" />
+        <activity
+            android:name=".ui.home.commodity.offline.CreateOfflineCommodityActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:windowSoftInputMode="adjustPan|stateUnspecified" />
+        <activity
+            android:name=".ui.home.commodity.offline.OfflineCommodityListActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:windowSoftInputMode="adjustPan|stateUnspecified" />
+        <activity android:name=".ui.home.aftersales.AfterSaleDetailActivity" />
+        <activity android:name=".ui.home.FinancialStatementsActivity" />
+        <activity android:name=".ui.mine.LocationActivity" />
+        <activity android:name=".ui.message.PublicNoticeActivity" />
+        <activity android:name=".ui.home.online.SendOutActivity" />
+        <activity android:name=".ui.home.online.LineOrderDetailActivity" />
+        <activity android:name=".ui.home.aftersales.AfterSalesActivity" />
+        <activity android:name=".ui.home.commodity.coupon.ServiceDesciptionActivity" />
+        <activity android:name=".ui.mine.StoreRemarkActivity" />
+        <activity android:name=".ui.mine.MessCodeActivity" />
+        <activity android:name=".ui.home.commodity.postage.AddPostageActivity" />
+        <activity android:name=".ui.mine.FeedbackActivity" />
+        <activity android:name=".ui.mine.ChangePassActivity" />
+        <activity android:name=".ui.mine.SettingActivity" />
+        <activity android:name=".ui.mine.AppRuleActivity" />
+        <activity android:name=".ui.mine.StoreCreditScoreActivity" />
+        <activity android:name=".ui.mine.WithdrawActivity" />
+        <activity android:name=".ui.mine.UntiedConfirmActivity" />
+        <activity android:name=".ui.mine.UntiedBankActivity" />
+        <activity android:name=".ui.mine.AddBankActivity" />
+        <activity android:name=".ui.mine.BankListActivity" />
+        <activity android:name=".ui.mine.WalletActivity" />
+        <activity android:name=".ui.mine.PaymentActivity" />
+        <activity android:name=".ui.mine.StoreInfoActivity" />
+        <activity android:name=".ui.mine.RenewalFeeActivity" />
+        <activity android:name=".ui.home.commodity.category.spec.CategorySpecificationCompleteActivity" />
+        <activity android:name=".ui.home.commodity.category.spec.SelectCategorySpecificationActivity" />
+        <activity
+            android:name=".ui.home.commodity.online.GoodDetailRichTextActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".ui.home.commodity.category.SetTagActivity" />
+        <activity android:name=".ui.home.commodity.category.SelectGroupActivity" />
+        <activity android:name=".ui.home.commodity.category.SelectCategoryActivity" />
+        <activity
+            android:name=".ui.home.commodity.online.CreateCommodityActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:windowSoftInputMode="adjustPan|stateUnspecified" />
+        <activity android:name=".ui.home.commodity.postage.AddAreaActivity" />
+        <activity android:name=".ui.home.commodity.postage.PostageEditorActivity" />
+        <activity android:name=".ui.home.commodity.postage.PostageTempleDetailActivity" />
+        <activity android:name=".ui.home.commodity.category.spec.CreateCategorySpecificationActivity" />
+        <activity android:name=".ui.home.BusinessOverviewActivity" />
+        <activity
+            android:name=".ui.home.commodity.online.LineCommodityListActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:windowSoftInputMode="adjustPan|stateUnspecified" />
+        <activity android:name=".ui.home.commodity.coupon.AddCouponActivity" />
+        <activity android:name=".ui.home.commodity.coupon.CouponActivity" />
+        <activity android:name=".ui.home.online.LineOrderActivity" />
+        <activity android:name=".ui.login.BusinessTypeActivity" />
+        <activity android:name=".ui.login.RegisterActivity" />
+        <activity android:name=".ui.login.PersonalInfoActivity" />
+        <activity android:name=".ui.login.LoginActivity" />
+        <!--        <activity-->
+        <!--            android:name=".ui.SplashActivity"-->
+        <!--            android:launchMode="singleTask"-->
+        <!--            android:theme="@style/AppTheme">-->
+        <!--            <intent-filter>-->
+        <!--                <action android:name="android.intent.action.MAIN" />-->
+
+        <!--                <category android:name="android.intent.category.LAUNCHER" />-->
+        <!--            </intent-filter>-->
+        <!--            <intent-filter>-->
+        <!--                <action android:name="android.intent.action.VIEW" />-->
+
+        <!--                <category android:name="android.intent.category.DEFAULT" />-->
+        <!--                <category android:name="android.intent.category.BROWSABLE" />-->
+
+        <!--                <data-->
+        <!--                    android:host="com.netmi.workerbusiness"-->
+        <!--                    android:scheme="workerbusiness" />-->
+        <!--            </intent-filter>-->
+        <!--        </activity>-->
+        <activity
+            android:name=".ui.MainActivity"
+            android:launchMode="singleTask" /> <!-- im-Activity -->
+        <!-- map -->
+        <activity
+            android:name=".im.location.activity.LocationAmapActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:label="@string/location_map"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" /> <!-- 文件管理器 -->
+        <activity
+            android:name=".im.file.browser.FileBrowserActivity"
+            android:configChanges="orientation"
+            android:label="@string/file_browser"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+        <activity
+            android:name=".im.session.activity.MessageHistoryActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+        <activity
+            android:name=".im.session.search.SearchMessageActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+        <activity
+            android:name=".im.session.search.DisplayMessageActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+        <activity
+            android:name=".im.location.activity.NavigationAmapActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+        <activity
+            android:name=".im.session.activity.FileDownloadActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" /> <!-- im -->
+        <!-- 云信 start -->
+        <meta-data
+            android:name="com.netease.nim.appKey"
+            android:value="ff155f2f72e730e9cbe9cd72fbce883d" />
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="3b61014b25738e9de93c13581e6c83b0" /> <!-- 声明云信后台服务 -->
+        <service
+            android:name="com.netease.nimlib.service.NimService"
+            android:process=":core" /> <!-- 运行后台辅助服务 -->
+        <service
+            android:name="com.netease.nimlib.service.NimService$Aux"
+            android:process=":core" /> <!-- 声明云信后台辅助服务 -->
+        <service
+            android:name="com.netease.nimlib.job.NIMJobService"
+            android:exported="true"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:process=":core" /> <!-- 云信SDK的监视系统启动和网络变化的广播接收器，用户开机自启动以及网络变化时候重新登录 -->
+        <receiver
+            android:name="com.netease.nimlib.service.NimReceiver"
+            android:exported="false"
+            android:process=":core">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver> <!-- 云信进程间通信receiver -->
+        <receiver android:name="com.netease.nimlib.service.ResponseReceiver" /> <!-- 云信进程间通信service -->
+        <service android:name="com.netease.nimlib.service.ResponseService" /> <!-- 云信进程间通信provider -->
+        <!-- android:authorities="{包名}.ipc.provider", 请将com.netease.nim.demo替换为自己的包名 -->
+        <provider
+            android:name="com.netease.nimlib.ipc.NIMContentProvider"
+            android:authorities="com.netmi.haobeibuiness.ipc.provider"
+            android:exported="false"
+            android:process=":core" />
+
+        <service android:name="com.amap.api.location.APSService" />
+
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="4SRMSKT3OYip6EqDhvPca2NaITnuO560" /> <!-- 个推 SDK 配置开始 -->
+        <!-- Android9.0 以上默认不支持 http 通信，为保证 SDK 正常使用，请在 application 节点下新增该属性 -->
+        <!-- 配置的第三方参数属性 -->
+        <meta-data
+            android:name="PUSH_APPID"
+            android:value="${GETUI_APP_ID}" />
+        <meta-data
+            android:name="PUSH_APPKEY"
+            android:value="${GETUI_APP_KEY}" />
+        <meta-data
+            android:name="PUSH_APPSECRET"
+            android:value="${GETUI_APP_SECRET}" /> <!-- 配置 SDK 核心服务 -->
+        <!-- permission 属性在 2.13.1.0 版本后必须配置 -->
+        <service
+            android:name="com.igexin.sdk.PushService"
+            android:exported="false"
+            android:label="NotificationCenter"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:process=":pushservice" />
+
+        <receiver android:name="com.igexin.sdk.PushReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <!-- 以下三项为可选的 action 声明，有助于提高 service 存活率 -->
+                <action android:name="android.intent.action.MEDIA_MOUNTED" />
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name="com.igexin.sdk.PushActivity"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:process=":pushservice"
+            android:taskAffinity="com.igexin.sdk.PushActivityTask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.igexin.sdk.GActivity"
+            android:excludeFromRecents="true"
+            android:exported="true"
+            android:process=":pushservice"
+            android:taskAffinity="com.igexin.sdk.PushActivityTask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" /> <!-- 个推 SDK 配置结束 -->
+        <!-- 请根据您当前自定义的 XyPushService 名称路径进行配置 -->
+        <service
+            android:name=".service.XyPushService"
+            android:exported="true"
+            android:label="PushService"
+            android:process=":pushservice" /> <!-- 用户自定义服务继承自GTIntentService,作为SDK与APP桥梁服务,用来接收各种消息和命令回复 -->
+        <service
+            android:name=".service.XyPushIntentService"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+    </application>
+
+</manifest>

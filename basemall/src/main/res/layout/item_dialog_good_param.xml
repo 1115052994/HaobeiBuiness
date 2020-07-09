@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?><!--分享对话框-->
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.liemi.basemall.data.entity.good.GoodsDetailedEntity.MeNaturesBean" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{item.name}"
+                android:textColor="#555555"
+                android:textSize="14sp" />
+
+            <!--<TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="@{item.remark}"
+                android:textColor="@color/theme_text_black"
+                android:textSize="15sp" />-->
+
+        </LinearLayout>
+
+        <View
+            android:visibility="gone"
+            android:layout_width="15dp"
+            android:layout_height="0.5dp"
+            android:background="@color/white"/>
+
+    </LinearLayout>
+
+</layout>

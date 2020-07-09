@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.netmi.workerbusiness.data.entity.mine.BankListEntity" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <include layout="@layout/layout_title_shadow" />
+
+        <RelativeLayout
+            android:id="@+id/rl_bank_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginTop="10dp"
+            android:onClick="doClick"
+            android:paddingHorizontal="9dp"
+            android:paddingVertical="13dp">
+
+            <ImageView
+                android:id="@+id/iv_img"
+                civPath="@{model.bank_logo}"
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+
+            <TextView
+                android:id="@+id/tv_bank_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="9dp"
+                android:layout_toRightOf="@+id/iv_img"
+                android:text="@{model.bank_name}"
+                android:textColor="#ff4b545c"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_bank_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/iv_img"
+                android:layout_marginLeft="9dp"
+                android:layout_marginTop="8dp"
+                android:layout_toRightOf="@+id/iv_img"
+                android:text="@{model.bank_card}"
+                android:textColor="#ff838383"
+                android:textSize="10sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/ic_right_gray" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_remind"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginTop="10dp"
+            android:paddingVertical="13dp"
+            android:text="请先绑定银行卡,再进行提现操作。"
+            android:visibility="gone" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="25dp"
+            android:background="#F2F2F2" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginTop="18dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_amount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="请输入提现金额"
+                android:inputType="number"
+                android:paddingVertical="15dp"
+                android:textColor="#ffa9a9a9"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#ff525252"
+                android:textSize="12sp"
+                tools:text="可提现金额¥1231.00" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="25dp"
+            android:background="#F2F2F2" />
+
+        <TextView
+            android:id="@+id/tv_mess"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="20dp"
+            android:textColor="#ff999999"
+            android:textSize="12sp"
+            tools:text="提示：1、平台人工提现时间 8：00~17：00 （仅工作日受理）
+            2、最低提现金额为100元
+3、提现金额单位为”佰“" />
+
+        <TextView
+            android:id="@+id/tv_confirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginTop="120dp"
+            android:background="#D81E06"
+            android:gravity="center"
+            android:onClick="doClick"
+            android:paddingVertical="12dp"
+            android:text="提交"
+            android:textColor="#ffffffff"
+            android:textSize="14sp" />
+
+
+    </LinearLayout>
+
+</layout>

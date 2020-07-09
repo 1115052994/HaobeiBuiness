@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="click"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="firstItem"
+            type="String" />
+
+        <variable
+            name="secondItem"
+            type="String" />
+
+        <variable
+            name="cancelStr"
+            type="String" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_white_top_radius20dp"
+        android:orientation="vertical"
+        android:padding="@dimen/dp_0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:id="@+id/tv_first_item"
+                style="@style/textViewLine1Center"
+                android:onClick="@{click :: onClick}"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:text="@{firstItem}"
+                android:textColor="#333333"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/tv_second_item"
+                style="@style/textViewLine1Center"
+                android:onClick="@{click :: onClick}"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:text="@{secondItem}"
+                android:textColor="#333333"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#333333" />
+
+            <Button
+                android:id="@+id/btn_cancel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="18dp"
+                android:background="@color/white"
+                android:onClick="@{click::onClick}"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:text="@{cancelStr}"
+                android:textColor="#333333"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</layout>

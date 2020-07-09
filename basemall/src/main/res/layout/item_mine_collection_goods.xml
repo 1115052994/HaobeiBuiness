@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="java.lang.String" />
+
+        <import type="android.view.View" />
+
+        <import type="com.netmi.baselibrary.utils.FloatUtils" />
+
+        <variable
+            name="isEditStatus"
+            type="boolean" />
+
+        <variable
+            name="item"
+            type="com.liemi.basemall.data.entity.user.MineCollectionGoodsEntity" />
+
+        <variable
+            name="position"
+            type="Integer" />
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        setMarginLeft="@{position % 2 == 0 ? @dimen/d_15 : @dimen/d_3}"
+        setMarginRight="@{position % 2 == 1 ? @dimen/d_15 : @dimen/d_3}"
+        android:layout_marginTop="10dp">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="4dp"
+            app:cardElevation="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+                <!--图片-->
+
+                <com.liemi.basemall.widget.EquiImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/d_168"
+                    android:contentDescription="@null"
+                    android:scaleType="centerCrop"
+                    bind:ivPathN="@{item.img_url}" />
+
+                <!--商品名称-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:padding="8dp"
+                    android:text="@{item.title}"
+                    android:textColor="#1f1f1e"
+                    android:textSize="14sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:text="@{FloatUtils.formatMoney(item.price)}"
+                        android:textColor="#FF3700"
+                        android:textSize="@dimen/s_16" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:gravity="end"
+                        android:lines="1"
+                        android:textSize="@dimen/s_10"
+                        android:textColor="#FF878787"
+                        android:text="@{@string/format_sales_volume(item.deal_num)}" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <View
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_gravity="end"
+            android:background="@{item.clickSelect ? @drawable/bg_view_select : @drawable/bg_view_unselect}"
+            android:layout_margin="10dp"
+            android:visibility="@{isEditStatus ? View.VISIBLE : View.GONE}" />
+
+    </FrameLayout>
+
+</layout>

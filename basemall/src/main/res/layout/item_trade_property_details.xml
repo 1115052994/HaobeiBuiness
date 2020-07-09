@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="item"
+            type="com.liemi.basemall.data.entity.user.WalletDetailsEntity"
+            />
+        <variable
+            name="num"
+            type="String"
+            />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="16dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="15dp"
+        android:layout_marginTop="1dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_centerInParent="true"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray_4B545C"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:text="@{item.remark}"
+                android:singleLine="true"
+                android:ellipsize="middle"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="bottom"
+                android:orientation="horizontal"
+                android:layout_marginTop="15dp"
+                >
+
+                <TextView
+                    android:id="@+id/tv_details_coin"
+                    style="@style/normalTextView"
+                    android:layout_marginTop="1dp"
+                    android:textSize="18sp"
+                    android:lines="1"
+                    android:text="@{num}"
+                    android:textColor="#FF7030"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_details_coin_unit"
+                    style="@style/normalTextView"
+                    android:text="ETH"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="#FF7030"
+                    />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <!--time-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lines="1"
+            android:ellipsize="end"
+            android:gravity="right"
+            android:text="@{item.create_time}"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+
+    </RelativeLayout>
+
+</layout>

@@ -1,0 +1,139 @@
+apply plugin: 'com.android.library'
+apply plugin: "com.mob.sdk"
+
+android {
+    compileSdkVersion 28
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            //bugly配置，支持的SO库架构
+            abiFilters 'x86', 'armeabi-v7a'
+        }
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+    }
+
+    dataBinding {
+        enabled = true
+    }
+    signingConfigs {
+        key {
+            storeFile file('liemi.jks')
+            storePassword '123456'
+            keyAlias 'liemi'
+            keyPassword '123456'
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.key
+        }
+
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    lintOptions {
+        //解决新版本AndroidManifest标黄
+        disable 'GoogleAppIndexingWarning'
+        baseline file("lint-baseline.xml")
+
+        //执行lint检查，有任何的错误或者警告提示，都会终止构建，我们可以将其关掉
+        abortOnError false
+        checkReleaseBuilds false
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    //noinspection GradleCompatible
+    api 'com.android.support:appcompat-v7:28.0.0'
+    api 'com.android.support:recyclerview-v7:28.0.0'
+    api 'com.android.support:cardview-v7:28.0.0'
+    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+
+    api 'com.squareup.retrofit2:retrofit:2.4.0'
+    api 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-scalars:2.4.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.11.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.11.0'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.3'
+    api 'org.greenrobot:eventbus:3.1.1'
+    api 'com.trello.rxlifecycle2:rxlifecycle:2.1.0'
+    api 'com.trello.rxlifecycle2:rxlifecycle-components:2.1.0'
+
+    //基于RXJava的权限管理
+    api 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.5@aar'
+    //阿里云ARouter，模块间路由跳转
+    api 'com.alibaba:arouter-api:1.4.1'
+    annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
+
+    //bugly应用更新
+    api 'com.tencent.bugly:crashreport_upgrade:latest.release'
+    //下拉刷新，上拉加载控件
+    api('com.jcodecraeer:xrecyclerview:1.5.9') {
+        exclude(group: 'com.android.support')
+    }
+    //glide图片加载
+    api 'com.github.bumptech.glide:glide:4.9.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+    implementation "com.github.bumptech.glide:okhttp3-integration:4.9.0"
+    //阿里云OSS,图片上传
+    api 'com.aliyun.dpa:oss-android-sdk:+'
+    //广告栏控件
+    api 'com.bigkoo:ConvenientBanner:2.1.4'
+    //仿IOS的PickerView控件
+    api 'com.contrarywind:Android-PickerView:3.2.7'
+    //图片选择控件
+    api 'com.github.lsqt68:imagepicker:1.0.8'
+    //tab切换
+    api 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
+    //圆角图片控件
+    api 'com.makeramen:roundedimageview:2.3.0'
+    //二维码扫描
+    api 'cn.bingoogolapple:bga-qrcode-zxing:1.2.1'
+    //状态栏控件
+    api 'com.gyf.immersionbar:immersionbar:2.3.3-beta15'
+    api 'com.alibaba:fastjson:1.1.71.android'
+
+}
+
+MobSDK {
+    appKey "2e26e6746fb30"
+    appSecret "6084d846bc589be3cdb3539b51126fc2"
+    ShareSDK {
+        //平台配置信息
+        devInfo {
+            //微信开放平台
+            Wechat {
+                appId "wx79e05e452118fc21"
+                appSecret "715623e68f0a92f27a64ce73578b933c"
+            }
+            WechatMoments {
+                appId "wx79e05e452118fc21"
+                appSecret "715623e68f0a92f27a64ce73578b933c"
+            }
+        }
+    }
+}

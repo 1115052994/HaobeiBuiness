@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tl="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F2F2F2"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
+
+        <include layout="@layout/layout_title_shadow" />
+
+        <com.netmi.baselibrary.widget.SlidingTextTabLayout
+            android:id="@+id/tab"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            tl:tl_indicator_color="#333333"
+            tl:tl_indicator_corner_radius="0dp"
+            tl:tl_indicator_height="4dp"
+            tl:tl_indicator_width="28dp"
+            tl:tl_indicator_width_equal_title="true"
+            tl:tl_tab_space_equal="true"
+            tl:tl_textSelectColor="#333333"
+            tl:tl_textUnselectColor="#777777" />
+
+        <EditText
+            android:id="@+id/et_order_num"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:drawableLeft="@mipmap/baselib_ic_search"
+            android:drawablePadding="5dp"
+            android:hint="请输入订单编号"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="8dp"
+            android:textColor="#333333"
+            android:textColorHint="#777777"
+            android:textSize="14sp" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vp_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="14dp" />
+
+
+    </LinearLayout>
+
+</layout>

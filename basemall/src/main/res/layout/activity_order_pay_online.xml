@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="item"
+            type="com.liemi.basemall.data.entity.order.OrderPayEntity" />
+
+    </data>
+
+    <LinearLayout
+        android:id="@+id/ll_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/theme_bg"
+        android:orientation="vertical">
+
+        <include layout="@layout/baselib_include_title_bar" />
+
+        <TextView
+            android:id="@+id/tv_tip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="center"
+            android:paddingTop="15dp"
+            android:paddingBottom="5dp"
+            android:text="支付剩余时间"
+            android:textColor="@color/theme_text_black"
+            android:textSize="15sp" />
+
+
+        <cn.iwgang.countdownview.CountdownView
+            android:id="@+id/cv_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:isHideTimeBackground="true"
+            app:isShowMinute="true"
+            app:isShowSecond="true"
+            app:isShowHour="true"
+            app:isTimeTextBold="true"
+            app:timeTextColor="#A9A9A9"
+            app:timeTextSize="16sp" />
+        <LinearLayout
+            android:background="@color/white"
+            android:paddingBottom="15dp"
+            android:paddingTop="15dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tv_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@{item.getShowPrice()}"
+                android:textColor="#FF3700"
+                android:textSize="19sp"
+                android:textStyle="bold" />
+            <TextView
+                android:visibility="gone"
+                android:layout_marginTop="5dp"
+                android:id="@+id/tv_digital_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center"
+                android:textColor="#FF3700"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:padding="15dp"
+            android:text="选择付款方式"
+            android:textColor="@color/theme_text_black"
+            android:textSize="15sp" />
+
+
+        <CheckBox
+            android:visibility="gone"
+            android:id="@+id/cb_pay_wechat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:button="@null"
+            android:drawableLeft="@mipmap/ic_pay_wechat"
+            android:drawableRight="@drawable/spinner_item_img_selector"
+            android:drawablePadding="11dp"
+            android:onClick="doClick"
+            android:checked="true"
+            android:paddingLeft="20dp"
+            android:paddingTop="15dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="15dp"
+            android:text="微信支付"
+            android:textColor="#484848"
+            android:textSize="14sp" />
+
+
+        <CheckBox
+            android:visibility="gone"
+            android:id="@+id/cb_pay_ali"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:button="@null"
+            android:drawableLeft="@mipmap/ic_pay_ali"
+            android:drawableRight="@drawable/spinner_item_img_selector"
+            android:drawablePadding="11dp"
+            android:onClick="doClick"
+            android:checked="false"
+            android:paddingLeft="20dp"
+            android:paddingTop="15dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="15dp"
+            android:text="支付宝支付"
+            android:textColor="#484848"
+            android:textSize="14sp" />
+
+        <!--android:drawableRight="@drawable/spinner_item_img_selector"-->
+        <CheckBox
+            android:id="@+id/cb_pay_digital"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:button="@null"
+            android:drawableLeft="@mipmap/basemall_ic_pay_digital"
+            android:drawablePadding="11dp"
+            android:onClick="doClick"
+            android:checked="false"
+            android:paddingLeft="20dp"
+            android:paddingTop="15dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="15dp"
+            android:text="数字YMS支付"
+            android:textColor="#484848"
+            android:textSize="14sp" />
+
+        <TextView
+            android:gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="提示：如若支付使用数字钱包支付，请保证余额充足，支付将不会收取您的任何支付费用，只会自动扣取您的对应数字钱包余额。"
+            android:textColor="#878787"
+            android:textSize="10sp" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tv_confirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#B52902"
+            android:gravity="center"
+            android:onClick="doClick"
+            android:paddingTop="13dp"
+            android:paddingBottom="13dp"
+            android:text="@{@string/basemall_confirm_pay(item.getShowPrice())}"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+
+
+    </LinearLayout>
+</layout>

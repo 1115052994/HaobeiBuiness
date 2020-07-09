@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_radius_color84a0bd">
+
+    <com.netmi.baselibrary.widget.RoundImageView
+        android:id="@+id/iv_img"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_margin="8dp"
+        android:scaleType="centerCrop" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="14dp"
+        android:layout_toRightOf="@+id/iv_img"
+        android:ellipsize="end"
+        android:lineSpacingExtra="3dp"
+        android:maxWidth="119dp"
+        android:maxLines="2"
+        android:text="佳味螺丝粉305g*5袋（48小时发货）"
+        android:textColor="#ffffffff"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tv_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/iv_img"
+        android:layout_toRightOf="@+id/iv_img"
+        android:text="¥35"
+        android:textColor="#ffffffff"
+        android:textSize="14sp" />
+</RelativeLayout>

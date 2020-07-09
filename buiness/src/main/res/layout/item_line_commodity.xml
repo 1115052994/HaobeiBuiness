@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="item"
+            type="com.netmi.workerbusiness.data.entity.home.linecommodity.LineCommodityListEntity" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="15dp">
+
+            <ImageView
+                android:id="@+id/iv_img"
+                ivPath="@{item.img_url}"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginVertical="30dp" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@+id/iv_img"
+                android:text="@{item.title}"
+                android:textColor="#ff1d1e1f"
+                android:textSize="14sp"
+                tools:text="fsfhsifysi"/>
+
+            <TextView
+                android:id="@+id/tv_stock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_title"
+                android:layout_alignLeft="@id/tv_title"
+                android:layout_marginTop="15dp"
+                android:text="@{@string/stock(item.stock)}"
+                android:textColor="#ff999999"
+                android:textSize="12sp"
+                tools:text="库存：1000" />
+
+
+            <TextView
+                android:id="@+id/tv_sales"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/tv_stock"
+                android:layout_marginLeft="6dp"
+                android:layout_toRightOf="@+id/tv_stock"
+                android:text="@{@string/sale(item.deal_num)}"
+                android:textColor="#ff999999"
+                android:textSize="12sp"
+                tools:text="销量：1000" />
+
+            <TextView
+                android:id="@+id/tv_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/tv_stock"
+                android:layout_alignParentRight="true"
+                android:text="@{@string/RMB(item.price)}"
+                android:textColor="#ffe40113"
+                android:textSize="20sp"
+                tools:text="¥29" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#F2F2F2" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@mipmap/ic_edit"
+                android:drawablePadding="8dp"
+                android:onClick="@{doClick}"
+                android:paddingHorizontal="18dp"
+                android:paddingVertical="10dp"
+                android:text="编辑"
+                android:textColor="#ff555555"
+                android:textSize="12sp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/tv_shelf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@mipmap/ic_onshelf"
+                android:drawablePadding="8dp"
+                android:onClick="@{doClick}"
+                android:paddingHorizontal="18dp"
+                android:paddingVertical="10dp"
+                android:text="上架"
+                android:textColor="#ff555555"
+                android:textSize="12sp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/tv_del"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@mipmap/ic_delete"
+                android:drawablePadding="8dp"
+                android:onClick="@{doClick}"
+                android:paddingHorizontal="18dp"
+                android:paddingVertical="10dp"
+                android:text="删除"
+                android:textColor="#ff555555"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+    </LinearLayout>
+</layout>

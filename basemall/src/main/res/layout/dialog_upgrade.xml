@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_marginTop="60dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/baselib_bg_white_radius_4"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_centerHorizontal="true"
+            android:textColor="#262626"
+            android:textSize="17sp"
+            android:layout_marginTop="85dp"
+            android:text="@string/app_upgrade_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tv_version_name"
+            android:textColor="#999999"
+            android:textSize="12sp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="111dp"
+            android:text="V1.0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tv_upgrade_content"
+            android:layout_marginTop="145dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp"
+            android:gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tv_later_update"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="30dp"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:text="@string/app_later_update"
+            android:background="@drawable/shape_round15_color_cccccc"
+            android:layout_marginTop="27dp"
+            android:layout_below="@+id/tv_upgrade_content"
+            android:layout_width="100dp"
+            android:layout_height="30dp" />
+        <TextView
+            android:id="@+id/tv_now_update"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="150dp"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:text="@string/app_now_update"
+            android:background="@drawable/shape_round15_color_fc372c"
+            android:layout_marginTop="27dp"
+            android:layout_below="@+id/tv_upgrade_content"
+            android:layout_width="100dp"
+            android:layout_height="30dp" />
+    </RelativeLayout>
+    <ImageView
+        android:src="@mipmap/ic_upgrade"
+        android:layout_centerHorizontal="true"
+        android:layout_width="93dp"
+        android:layout_height="119.5dp" />
+</RelativeLayout>

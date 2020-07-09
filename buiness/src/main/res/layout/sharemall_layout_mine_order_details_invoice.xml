@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="orderInvoiceEntity"
+            type="com.netmi.workerbusiness.data.entity.home.lineorder.MineOrderInvoiceEntity" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@color/white"
+        android:visibility="@{orderInvoiceEntity == null ? View.GONE : View.VISIBLE}">
+
+        <!--发票类型-->
+        <TextView
+            android:id="@+id/tv_invoice_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:text="@string/sharemall_invoice_type"
+            android:textColor="@color/theme_text_black"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_type"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            android:ellipsize="end"
+            android:lines="1"
+            android:text="@{orderInvoiceEntity.invoice_type}"
+            android:textColor="@color/gray_99"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@id/tv_invoice_type"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_invoice_type"
+            tools:text="电子普通发票" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/gray_EE"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_invoice_type" />
+
+        <!--发票抬头-->
+        <TextView
+            android:id="@+id/tv_invoice_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:text="@string/sharemall_invoice_title"
+            android:textColor="@color/theme_text_black"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toLeftOf="@id/tv_invoice_type"
+            app:layout_constraintTop_toBottomOf="@+id/tv_invoice_type" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:lines="1"
+            android:text="@{orderInvoiceEntity.formatType}"
+            android:textColor="@color/gray_99"
+            android:textSize="14sp"
+            app:layout_constraintBaseline_toBaselineOf="@id/tv_invoice_title"
+            app:layout_constraintRight_toRightOf="@id/tv_type"
+            tools:text="个人" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/gray_EE"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_invoice_title" />
+        <!--发票内容-->
+        <TextView
+            android:id="@+id/tv_invoice_content"
+            setMarginTop="@{orderInvoiceEntity == null ? 0 : 30}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:text="@string/sharemall_invoice_content"
+            android:textColor="@color/theme_text_black"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toLeftOf="@id/tv_invoice_type"
+            app:layout_constraintTop_toBottomOf="@+id/tv_invoice_title" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:lines="1"
+            android:text="@{orderInvoiceEntity == null ? @string/sharemall_no_invoice : orderInvoiceEntity.invoice_content}"
+            android:textColor="@color/gray_99"
+            android:textSize="14sp"
+            app:layout_constraintBaseline_toBaselineOf="@id/tv_invoice_content"
+            app:layout_constraintRight_toRightOf="@id/tv_type"
+            tools:text="商品明细" />
+
+        <LinearLayout
+            android:id="@+id/ll_company"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_invoice_content">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray_EE" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:visibility="@{orderInvoiceEntity.type==1?View.GONE:View.VISIBLE}">
+                <!--单位名称-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp"
+                    android:text="@string/company_name"
+                    android:textColor="@color/theme_text_black"
+                    android:textSize="14sp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="16dp"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:text="@{orderInvoiceEntity.company_name}"
+                    android:textColor="@color/gray_99"
+                    android:textSize="14sp"
+                    app:layout_constraintBaseline_toBaselineOf="@id/tv_invoice_content"
+                    app:layout_constraintRight_toRightOf="@id/tv_type"
+                    tools:text="单位名称" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray_EE" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:visibility="@{orderInvoiceEntity.type==1?View.GONE:View.VISIBLE}">
+                <!--纳税人识别号-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp"
+                    android:text="@string/taxpayer_identification_number"
+                    android:textColor="@color/theme_text_black"
+                    android:textSize="14sp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="16dp"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:text="@{ orderInvoiceEntity.company_code}"
+                    android:textColor="@color/gray_99"
+                    android:textSize="14sp"
+                    app:layout_constraintBaseline_toBaselineOf="@id/tv_invoice_content"
+                    app:layout_constraintRight_toRightOf="@id/tv_type"
+                    tools:text="纳税人识别号" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray_EE" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp">
+                <!--单位名称-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp"
+                    android:text="@string/sharemall_receiver_phone"
+                    android:textColor="@color/theme_text_black"
+                    android:textSize="14sp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="16dp"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:text="@{orderInvoiceEntity.phone}"
+                    android:textColor="@color/gray_99"
+                    android:textSize="14sp"
+                    app:layout_constraintBaseline_toBaselineOf="@id/tv_invoice_content"
+                    app:layout_constraintRight_toRightOf="@id/tv_type"
+                    tools:text="13211111111" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray_EE" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp">
+                <!--纳税人识别号-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp"
+                    android:text="@string/sharemall_receiver_email"
+                    android:textColor="@color/theme_text_black"
+                    android:textSize="14sp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="16dp"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:text="@{ orderInvoiceEntity.mail}"
+                    android:textColor="@color/gray_99"
+                    android:textSize="14sp"
+                    app:layout_constraintBaseline_toBaselineOf="@id/tv_invoice_content"
+                    app:layout_constraintRight_toRightOf="@id/tv_type"
+                    tools:text="11111111111@qq.com" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.constraint.ConstraintLayout>
+
+
+</layout>

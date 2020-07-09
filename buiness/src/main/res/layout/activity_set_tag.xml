@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:background="@color/theme_bg"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/baselib_include_title_bar"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/et_tag"
+                    android:padding="13dp"
+                    android:textSize="14sp"
+                    android:singleLine="true"
+                    android:ellipsize="end"
+                    android:background="@color/white"
+                    android:textColorHint="@color/color_999999"
+                    android:hint="请输入标签签名，最多4个字"
+                    android:maxLength="4"
+                    android:layout_toLeftOf="@+id/iv_clear"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <ImageView
+                    android:id="@+id/iv_clear"
+                    android:onClick="doClick"
+                    android:padding="10dp"
+                    android:layout_marginRight="13dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/ic_cancel_black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/btn_save"
+                android:onClick="doClick"
+                android:text="保存"
+                android:layout_alignParentBottom="true"
+                android:gravity="center"
+                android:padding="13dp"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:background="@color/color_e60012"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+
+
+
+
+
+
+
+    </LinearLayout>
+
+</layout>

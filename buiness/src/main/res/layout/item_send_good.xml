@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.netmi.workerbusiness.data.entity.home.lineorder.LineOrderListEntity.MainOrdersBean.OrderSkusBean" />
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+        <import type="com.netmi.baselibrary.utils.Strings" />
+
+        <variable
+            name="status"
+            type="int" />
+
+        <variable
+            name="showPriceType"
+            type="boolean" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/ll_good"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:onClick="@{doClick}"
+            android:orientation="horizontal"
+            android:padding="16dp">
+            <!--商品图片-->
+            <com.netmi.baselibrary.widget.RoundImageView
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_marginRight="12dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/baselib_bg_default_pic"
+                bind:ivPathN="@{item.img_url}" />
+            <!--商品详情-->
+            <RelativeLayout
+                android:id="@+id/rl_good_detail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <!--商品名称-->
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="40dp"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:text="@{item.spu_name}"
+                    android:textColor="#1D1E1F"
+                    android:textSize="14sp"
+                    tools:text="商品名称" />
+
+                <!--商品数量-->
+                <TextView
+                    android:id="@+id/tv_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_name"
+                    android:layout_marginTop="7dp"
+                    android:ellipsize="end"
+                    android:text="@{@string/num(item.num)}"
+                    android:textColor="#1D1E1F"
+                    android:textSize="14sp"
+                    tools:text="数量：1" />
+
+                <!--商品规格-->
+                <TextView
+                    android:id="@+id/tv_good_specification"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_num"
+                    android:layout_marginTop="7dp"
+                    android:ellipsize="end"
+                    android:gravity="center_vertical"
+                    android:lines="1"
+                    android:text="@{@string/type(item.value_names)}"
+                    android:textColor="@color/gray_99"
+                    android:textSize="12sp"
+                    android:visibility="@{showPriceType ? View.VISIBLE : View.GONE}"
+                    tools:text="类型：100克" />
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray_EE" />
+    </LinearLayout>
+</layout>

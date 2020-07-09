@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/theme_bg"
+        android:fitsSystemWindows="true">
+
+        <include
+            android:id="@+id/include_title"
+            layout="@layout/baselib_include_title_bar" />
+
+        <LinearLayout
+            android:id="@+id/ll_payment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_payment_money"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:text="合计："
+                android:textColor="#a8a8a8"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_total_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:text="yms0.00"
+                android:textColor="#c53539"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_payment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#c53539"
+                android:ems="7"
+                android:gravity="center"
+                android:paddingRight="27dp"
+                android:paddingLeft="27dp"
+                android:paddingTop="13dp"
+                android:paddingBottom="13dp"
+                android:text="提交订单"
+                android:onClick="doClick"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_fill_order"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/ll_payment"
+            android:layout_below="@id/include_title"
+            android:focusable="false"
+            android:overScrollMode="never" />
+    </RelativeLayout>
+</layout>

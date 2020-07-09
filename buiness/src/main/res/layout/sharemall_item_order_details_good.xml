@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.netmi.baselibrary.data.Constant" />
+
+        <import type="com.netmi.baselibrary.utils.Strings" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="item"
+            type="com.netmi.workerbusiness.data.entity.home.lineorder.LineOrderListEntity.MainOrdersBean.OrderSkusBean" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="16dp">
+        <!--商品图片-->
+        <com.netmi.baselibrary.widget.RoundImageView
+            android:id="@+id/iv_good_pic"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:scaleType="centerCrop"
+            bind:ivPathN="@{item.img_url}"
+            bind:layout_constraintDimensionRatio="w,1:1"
+            bind:layout_constraintLeft_toLeftOf="parent"
+            bind:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/baselib_bg_default_pic" />
+
+        <!--商品名称-->
+        <LinearLayout
+            android:id="@+id/ll_good_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:ellipsize="end"
+            android:lines="1"
+            android:maxLines="1"
+            android:orientation="horizontal"
+            bind:layout_constraintLeft_toRightOf="@id/iv_good_pic"
+            bind:layout_constraintRight_toLeftOf="@id/tv_num"
+            bind:layout_constraintTop_toTopOf="@id/iv_good_pic">
+
+            <TextView
+                android:id="@+id/tv_good_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:lines="1"
+                android:maxLines="1"
+                android:text="@{item.spu_name}"
+                android:textColor="@color/black_1d1e1f"
+                android:textSize="14sp"
+                tools:text="商品名称" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="@{item.statusFormat}"
+                android:textColor="#C40D00"
+                android:visibility="@{item.status==4|item.status==5|item.status==6|item.status==7?View.VISIBLE : View.GONE}" />
+        </LinearLayout>
+
+
+        <!--商品规格-->
+        <TextView
+            android:id="@+id/tv_good_specification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:ellipsize="end"
+            android:lines="1"
+            android:singleLine="true"
+            android:text="@{item.value_names}"
+            android:textColor="@color/gray_99"
+            android:textSize="12sp"
+            bind:layout_constraintLeft_toLeftOf="@id/ll_good_name"
+            bind:layout_constraintLeft_toRightOf="@id/iv_good_pic"
+            bind:layout_constraintTop_toBottomOf="@id/ll_good_name"
+            tools:text="100克" />
+
+        <!--不支持七天无理由退货-->
+        <TextView
+            android:id="@+id/tv_goods_return_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/sharemall_radius_2dp_fff_stroke_1dp_e4241c"
+            android:paddingLeft="3dp"
+            android:paddingTop="2dp"
+            android:paddingRight="3dp"
+            android:paddingBottom="2dp"
+            android:textColor="@color/theme_text_black"
+            android:textSize="10sp"
+            android:visibility="gone"
+            bind:layout_constraintLeft_toLeftOf="@id/tv_good_specification"
+            bind:layout_constraintLeft_toRightOf="@id/iv_good_pic"
+            bind:layout_constraintTop_toBottomOf="@id/tv_good_specification"
+            tools:text="不支持七天无理由退货" />
+
+
+        <!--商品实际价格-->
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:lines="1"
+            android:text="@{@string/sharemall_format_money(item.sku_price)}"
+            android:textColor="@color/red_B52902"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            bind:layout_constraintBottom_toBottomOf="@id/iv_good_pic"
+            bind:layout_constraintLeft_toLeftOf="@id/tv_goods_return_info"
+            bind:layout_constraintLeft_toRightOf="@id/iv_good_pic"
+            bind:layout_constraintTop_toBottomOf="@id/tv_goods_return_info"
+            tools:text="￥1500" />
+
+        <!--购买数量-->
+        <TextView
+            android:id="@+id/tv_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{@string/sharemall_format_x_num(Strings.twoDecimal(item.num))}"
+            android:textColor="@color/gray_99"
+            android:textSize="12sp"
+            bind:layout_constraintBaseline_toBaselineOf="@id/tv_price"
+            bind:layout_constraintRight_toRightOf="parent"
+            tools:text="X1" />
+
+        <!--申请售后,待付款和待发货会显示这个按钮-->
+        <TextView
+            android:id="@+id/tv_apply_after_sales"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="24dp"
+            android:background="@drawable/sharemall_radius_15dp_stroke_1dp_99999"
+            android:onClick="@{doClick}"
+            android:paddingLeft="11dp"
+            android:paddingTop="6dp"
+            android:paddingRight="11dp"
+            android:paddingBottom="6dp"
+            android:text="@{item.status == Constant.ORDER_WAIT_SEND || item.status == Constant.ORDER_WAIT_RECEIVE ? (item.status == Constant.ORDER_WAIT_SEND ? @string/sharemall_refund_type_money : @string/sharemall_refund_type_money_good) : item.statusFormat}"
+            android:textColor="@color/gray_55"
+            android:textSize="14sp"
+            android:visibility="gone"
+            bind:layout_constraintBottom_toBottomOf="parent"
+            bind:layout_constraintRight_toLeftOf="@id/tv_num"
+            tools:text="申请售后" />
+        <!--        android:visibility="@{item.canApplyRefund ? View.VISIBLE : View.GONE}"-->
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

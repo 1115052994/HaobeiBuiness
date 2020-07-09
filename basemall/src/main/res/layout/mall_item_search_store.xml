@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.liemi.basemall.data.entity.StoreEntity" />
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+        <import type="com.netmi.baselibrary.utils.Strings" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="67dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/baselib_bg_white_radius_4"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <com.netmi.baselibrary.widget.RoundImageView
+            android:id="@+id/iv_store_pic"
+            ivPathN="@{item.logo_url}"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:layout_centerVertical="true"
+            android:contentDescription="@null"
+            android:scaleType="centerCrop"
+            android:transitionName="@string/transition_store" />
+
+        <TextView
+            android:id="@+id/tv_store_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="43dp"
+            android:layout_marginTop="17dp"
+            android:layout_toLeftOf="@+id/tv_enter"
+            android:singleLine="true"
+            android:text="@{item.name}"
+            android:textColor="#ff1f1f1e"
+            android:textSize="13sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="43dp"
+            android:layout_marginTop="36dp"
+            android:text="@{Strings.formatStr(@string/format_total_good, item.sum_item)}"
+            android:textColor="#ff878787"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/tv_enter"
+            android:layout_width="44dp"
+            android:layout_height="25dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/shape_round12_stroke1dp1f1f1e_colorcccccc"
+            android:gravity="center"
+            android:onClick="@{doClick}"
+            android:text="进入"
+            android:textColor="#ff1f1f1e"
+            android:textSize="12sp" />
+    </RelativeLayout>
+</layout>

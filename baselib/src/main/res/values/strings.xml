@@ -1,0 +1,53 @@
+<resources>
+    <string name="app_name">BaseLibrary</string>
+
+    <string name="loading">加载中\u2026</string>
+    <string name="tip_network_error">没有网络连接，请检查</string>
+    <string name="cancel">取消</string>
+    <string name="search">搜索</string>
+    <string name="delete">删除</string>
+    <string name="confirm">确定</string>
+    <string name="language">中文</string>
+    <string name="language_choice">选择语言</string>
+    <string name="permission_request">权限请求</string>
+    <string name="permission_request_tip">APP需要您授权之后才能进行相关操作，请在接下来的权限申请中选择允许</string>
+    <string name="not_granted_permission">您没有授予权限，请授权后继续操作</string>
+    <string name="nothing"></string>
+    <string name="baselib_not_data">没有数据</string>
+
+    <!--编辑框小数点位数-->
+    <string name="five">5</string>
+
+    <!--修正三星手机可输入中文的问题-->
+    <string name="password_digits">0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ,.</string>
+
+    <string name="input_letter_number">0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
+
+    <!--分享-->
+    <string name="baselib_share">分享</string>
+    <string name="baselib_share_friend">微信好友</string>
+    <string name="baselib_share_circle">微信朋友圈</string>
+    <string name="baselib_share_qq">QQ好友</string>
+    <string name="baselib_share_qq_zone">QQ空间</string>
+    <string name="baselib_cancel">取消</string>
+
+
+    <!--搜索框专场动画-->
+    <string name="transition_name">searchView</string>
+    <string name="transition_title_name">titleName</string>
+    <string name="transition_video_player">videoPlayer</string>
+    <string name="transition_avatar">userAvatar</string>
+    <string name="transition_nickname">userName</string>
+
+    <string name="format_money">YMS%1$s</string>
+    <string name="format_string">%1$s</string>
+    <string name="the_certificate_expires_please_relogin">凭证过期，请重新登陆</string>
+    <string name="your_account_is_logged_in_elsewhere_please_log_in_again">您的账号在其他地方登录，请重新登录</string>
+    <string name="please_input">请在此输入</string>
+    <string name="upload_failed">上传失败，请重试！</string>
+    <string name="upload_success">上传成功</string>
+    <string name="please_select_update_img">请选择要上传的图片</string>
+    <string name="identification_success">认证成功</string>
+    <string name="is_binding">已绑定</string>
+    <string name="not_set">未设置</string>
+</resources>

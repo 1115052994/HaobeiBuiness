@@ -1,0 +1,160 @@
+apply plugin: 'com.android.library'
+apply plugin: "com.mob.sdk"
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+//        applicationId "com.netmi.workerbusiness"
+        minSdkVersion 16
+        targetSdkVersion 28
+        versionCode 4
+        versionName "1.0.4"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        // 开启multidex
+        multiDexEnabled true
+        ndk {
+            //设置支持的SO库架构
+            abiFilters 'x86', 'armeabi-v7a'
+        }
+        manifestPlaceholders = [
+//                XG_ACCESS_ID : "2100341334",
+//                XG_ACCESS_KEY: "A71RA898IGFE",
+//个推应用参数，请填写您申请的 GETUI_APP_ID，GETUI_APP_KEY，GETUI_APP_SECRET 值
+GETUI_APP_ID    : "6S9nbnVMud8DfIyXiQR39",
+GETUI_APP_KEY   : "NwkFrcPXuI64jxSVNgqVy9",
+GETUI_APP_SECRET: "xYjfi6NHt88bSPNxlavN48",
+        ]
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+
+        aaptOptions.cruncherEnabled = false
+        aaptOptions.useNewCruncher = false
+
+        packagingOptions {
+            //jni包重复编译，那么在这里配置包包含 或者不包含
+            exclude 'lib/mips/libRSSupport.so'
+            exclude 'lib/mips/librsjni.so'
+            exclude 'lib/mips/librsjni_androidx.so'
+
+            exclude 'lib/arm64-v8a/librsjni.so'
+            exclude 'lib/arm64-v8a/libRSSupport.so'
+            exclude 'lib/arm64-v8a/librsjni_androidx.so'
+
+            exclude 'lib/armeabi-v7a/librsjni.so'
+            exclude 'lib/armeabi-v7a/librsjni_androidx.so'
+            exclude 'lib/armeabi-v7a/libRSSupport.so'
+
+            exclude 'lib/x86/libRSSupport.so'
+            exclude 'lib/x86/librsjni.so'
+            exclude 'lib/x86/librsjni_androidx.so'
+
+            exclude 'lib/x86_64/librsjni_androidx.so'
+            exclude 'lib/x86_64/librsjni.so'
+            exclude 'lib/x86_64/libRSSupport.so'
+        }
+    }
+    dataBinding {
+        enabled = true
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDir 'libs'
+            res.srcDirs += 'src/main/res-uikit'
+        }
+    }
+    signingConfigs {
+        releaseConfig {
+            storeFile file('liemi.jks')
+            storePassword '123456'
+            keyAlias 'liemi'
+            keyPassword '123456'
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        develop {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    lintOptions {
+        //解决新版本AndroidManifest标黄
+        disable 'GoogleAppIndexingWarning'
+        baseline file("lint-baseline.xml")
+        disable 'MissingTranslation'
+
+        //执行lint检查，有任何的错误或者警告提示，都会终止构建，我们可以将其关掉
+        abortOnError false
+        checkReleaseBuilds false
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    //noinspection GradleCompatible
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    implementation project(':baselib')
+    implementation project(':basemall')
+    //网易云信
+    implementation project(":uikit")
+    //智齿客服系统
+    implementation project(':sobotsdk')
+
+
+//    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    //富文本编辑器
+    implementation 'jp.wasabeef:richeditor-android:1.2.2'
+    //倒计时
+    implementation 'com.github.iwgang:countdownview:2.1.6'
+    //验证码输入框
+    implementation 'com.jyn.verificationcodeview:verificationcodeview:1.0.1'
+    //图表
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
+    //视频播放
+    implementation 'cn.jzvd:jiaozivideoplayer:6.4.1'
+    //屏幕适配
+    implementation 'org.jsoup:jsoup:1.10.1'
+
+
+}
+MobSDK {
+    appKey "2e26e6746fb30"
+    appSecret "6084d846bc589be3cdb3539b51126fc2"
+    ShareSDK {
+        //平台配置信息
+        devInfo {
+            //微信开放平台
+            Wechat {
+                appId "wx79e05e452118fc21"
+                appSecret "715623e68f0a92f27a64ce73578b933c"
+            }
+            WechatMoments {
+                appId "wx79e05e452118fc21"
+                appSecret "715623e68f0a92f27a64ce73578b933c"
+            }
+        }
+    }
+}

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="checkListener"
+            type="android.widget.CompoundButton.OnCheckedChangeListener" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- 底部Tab-->
+        <LinearLayout
+            android:id="@+id/rl_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:paddingTop="6dp"
+            android:paddingBottom="4dp">
+
+            <RadioButton
+                android:id="@+id/rb_home"
+                style="@style/home_rb_style_mall"
+                android:drawableTop="@drawable/selector_tab_home_mall"
+                android:onCheckedChanged="@{checkListener::onCheckedChanged}"
+                android:text="首页" />
+
+            <RadioButton
+                android:id="@+id/rb_category"
+                style="@style/home_rb_style_mall"
+                android:drawableTop="@drawable/selector_tab_category_mall"
+                android:onCheckedChanged="@{checkListener::onCheckedChanged}"
+                android:text="分类" />
+            <RadioButton
+                android:id="@+id/rb_store"
+                style="@style/home_rb_style_mall"
+                android:onCheckedChanged="@{checkListener::onCheckedChanged}"
+                android:drawableTop="@drawable/selector_tab_store_mall"
+                android:text="@string/store" />
+
+            <RadioButton
+                android:id="@+id/rb_shop"
+                style="@style/home_rb_style_mall"
+                android:drawableTop="@drawable/selector_tab_shop_car_mall"
+                android:onCheckedChanged="@{checkListener::onCheckedChanged}"
+                android:text="购物车" />
+
+            <RadioButton
+                android:id="@+id/rb_mine"
+                style="@style/home_rb_style_mall"
+                android:drawableTop="@drawable/selector_tab_mine_mall"
+                android:onCheckedChanged="@{checkListener::onCheckedChanged}"
+                android:text="我的" />
+
+        </LinearLayout>
+
+
+        <!-- 中间内容-->
+        <FrameLayout
+            android:id="@+id/fl_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/rl_bottom" />
+
+    </RelativeLayout>
+
+</layout>

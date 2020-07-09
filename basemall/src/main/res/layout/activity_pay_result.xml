@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="item"
+            type="com.liemi.basemall.data.entity.order.OrderDetailsEntity"/>
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:gravity="center_horizontal"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/white"
+        tools:context="com.liemi.basemall.ui.personal.order.PayResultActivity">
+        <include layout="@layout/baselib_include_title_bar"/>
+        <ImageView
+            android:layout_marginTop="24dp"
+            android:src="@mipmap/ic_pay_success"
+            android:layout_width="81dp"
+            android:layout_height="81dp" />
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="支付成功"
+            android:textColor="#ff1f1f1f"
+            android:textSize="15sp" />
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_marginTop="14dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#ffff3700"
+            android:textSize="15sp" />
+        <TextView
+            android:onClick="doClick"
+            android:id="@+id/tv_read_order"
+            android:gravity="center"
+            android:text="前往我的订单"
+            android:textColor="#ffffffff"
+            android:textSize="13sp"
+            android:layout_marginTop="41dp"
+            android:background="@drawable/baselib_bg_red_circle"
+            android:layout_width="@dimen/d_182"
+            android:layout_height="@dimen/d_39" />
+        <TextView
+            android:onClick="doClick"
+            android:id="@+id/tv_back_home"
+            android:gravity="center"
+            android:text="继续购买商品"
+            android:textColor="#B52902"
+            android:textSize="13sp"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/bg_stroke1dpb52902_solid_white_radius20"
+            android:layout_width="@dimen/d_182"
+            android:layout_height="@dimen/d_39" />
+    </LinearLayout>
+</layout>

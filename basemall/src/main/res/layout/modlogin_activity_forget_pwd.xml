@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <include layout="@layout/baselib_include_title_bar" />
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/d_10"
+            android:paddingLeft="@dimen/d_25"
+            android:paddingRight="@dimen/d_25">
+
+            <EditText
+                android:id="@+id/et_mobile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:drawablePadding="@dimen/d_10"
+                android:hint="@string/modlogin_input_phone_number"
+                android:inputType="number"
+                android:maxLength="11"
+                android:paddingTop="@dimen/d_10"
+                android:paddingBottom="@dimen/d_10"
+                android:textColor="@color/edit_text_color"
+                android:textColorHint="@color/edit_hint_color"
+                android:textSize="@dimen/s_15" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/d_1"
+                android:layout_below="@+id/et_mobile"
+                android:layout_alignStart="@+id/et_mobile"
+                android:layout_alignLeft="@+id/et_mobile"
+                android:layout_alignEnd="@+id/et_mobile"
+                android:layout_alignRight="@+id/et_mobile"
+                android:layout_marginTop="@dimen/d_5"
+                android:background="#F2F2F2" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/d_10"
+            android:paddingLeft="@dimen/d_25"
+            android:paddingRight="@dimen/d_25">
+
+            <EditText
+                android:id="@+id/et_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:drawablePadding="@dimen/d_10"
+                android:hint="@string/modlogin_input_validate_code"
+                android:inputType="textPassword"
+                android:maxLength="20"
+                android:paddingTop="@dimen/d_10"
+                android:paddingBottom="@dimen/d_10"
+                android:textColor="@color/edit_text_color"
+                android:textColorHint="@color/edit_hint_color"
+                android:textSize="@dimen/s_15" />
+
+            <View
+                android:id="@+id/divide"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/d_1"
+                android:layout_below="@+id/et_password"
+                android:layout_alignStart="@+id/et_password"
+                android:layout_alignLeft="@+id/et_password"
+                android:layout_alignEnd="@+id/et_password"
+                android:layout_alignRight="@+id/et_password"
+                android:layout_marginTop="@dimen/d_5"
+                android:background="#F2F2F2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="@dimen/d_7"
+                android:background="@drawable/shape_stroke1dp999999_solid_white"
+                android:gravity="center"
+                android:paddingLeft="@dimen/d_10"
+                android:paddingTop="@dimen/d_5"
+                android:paddingRight="@dimen/d_10"
+                android:paddingBottom="@dimen/d_5"
+                android:text="@string/modlogin_get_identifying_code"
+                android:textColor="#ff999999"
+                android:textSize="@dimen/s_12" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/d_10"
+            android:paddingLeft="@dimen/d_25"
+            android:paddingRight="@dimen/d_25">
+
+            <EditText
+                android:id="@+id/et_new_pwd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:drawablePadding="@dimen/d_10"
+                android:hint="@string/modlogin_please_input_password"
+                android:inputType="number"
+                android:maxLength="11"
+                android:paddingTop="@dimen/d_10"
+                android:paddingBottom="@dimen/d_10"
+                android:textColor="@color/edit_text_color"
+                android:textColorHint="@color/edit_hint_color"
+                android:textSize="@dimen/s_15" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/d_1"
+                android:layout_below="@+id/et_new_pwd"
+                android:layout_alignStart="@+id/et_new_pwd"
+                android:layout_alignLeft="@+id/et_new_pwd"
+                android:layout_alignEnd="@+id/et_new_pwd"
+                android:layout_alignRight="@+id/et_new_pwd"
+                android:layout_marginTop="@dimen/d_5"
+                android:background="#F2F2F2" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/d_10"
+            android:paddingLeft="@dimen/d_25"
+            android:paddingRight="@dimen/d_25">
+
+            <EditText
+                android:id="@+id/et_again_pwd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:drawablePadding="@dimen/d_10"
+                android:hint="@string/modlogin_please_input_password_again"
+                android:inputType="number"
+                android:maxLength="11"
+                android:paddingTop="@dimen/d_10"
+                android:paddingBottom="@dimen/d_10"
+                android:textColor="@color/edit_text_color"
+                android:textColorHint="@color/edit_hint_color"
+                android:textSize="@dimen/s_15" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/d_1"
+                android:layout_below="@+id/et_again_pwd"
+                android:layout_alignStart="@+id/et_again_pwd"
+                android:layout_alignLeft="@+id/et_again_pwd"
+                android:layout_alignEnd="@+id/et_again_pwd"
+                android:layout_alignRight="@+id/et_again_pwd"
+                android:layout_marginTop="@dimen/d_5"
+                android:background="#F2F2F2" />
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/bt_login"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/d_45"
+            android:layout_marginLeft="@dimen/d_25"
+            android:layout_marginTop="@dimen/d_25"
+            android:layout_marginRight="@dimen/d_25"
+            android:background="@drawable/baselib_bg_color77b52902"
+            android:gravity="center"
+            android:onClick="doClick"
+            android:text="@string/basemall_confirm"
+            android:textColor="@color/white"
+            android:textSize="@dimen/s_14" />
+
+
+    </LinearLayout>
+
+</layout>

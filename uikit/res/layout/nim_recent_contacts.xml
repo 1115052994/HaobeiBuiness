@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/messages_list_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F6F6F7"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rl_title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:background="@color/white"
+        android:paddingTop="24dp">
+
+        <LinearLayout
+            android:id="@+id/ll_back"
+            android:layout_width="@dimen/d_50"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/d_14">
+
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@null" />
+        </LinearLayout>
+
+        <TextView
+
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/d_68"
+            android:layout_marginRight="@dimen/d_68"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:lines="1"
+            android:text="消息"
+            android:textColor="@color/theme_text_black"
+            android:textSize="@dimen/s_16"
+            android:textStyle="bold"
+            android:transitionName="@string/transition_title_name" />
+
+        <TextView
+            android:id="@+id/tv_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/d_15"
+            android:gravity="center"
+            android:onClick="doClick"
+            android:text="一键已读"
+            android:textColor="@color/theme_text_black"
+            android:textSize="@dimen/s_15" />
+
+        <ImageView
+            android:id="@+id/iv_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:contentDescription="@null"
+            android:onClick="doClick"
+            android:paddingRight="@dimen/d_15"
+            android:visibility="gone" />
+
+        <!--<View-->
+        <!--android:id="@+id/v_title_line"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="@dimen/d_1"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:background="@color/theme_bg" />-->
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="2dp">
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:cacheColorHint="@android:color/transparent" />
+
+        <RelativeLayout
+            android:id="@+id/emptyBg"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
+            android:layout_marginBottom="50dp"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/emptyBg1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:contentDescription="@string/empty"
+                android:src="@drawable/nim_messages_list_empty_bg" />
+
+            <TextView
+                android:id="@+id/message_list_empty_hint"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/emptyBg1"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dip"
+                android:gravity="center" />
+        </RelativeLayout>
+
+    </FrameLayout>
+
+</LinearLayout>

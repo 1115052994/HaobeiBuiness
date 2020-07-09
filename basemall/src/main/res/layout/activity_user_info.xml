@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <!--用户头像-->
+        <variable
+            name="headImageUrl"
+            type="String" />
+        <!--用户昵称-->
+        <variable
+            name="nickName"
+            type="String" />
+        <!--用户性别-->
+        <variable
+            name="sex"
+            type="String" />
+        <!--用户生日-->
+        <variable
+            name="birthday"
+            type="String" />
+        <!--用户手机号-->
+        <variable
+            name="phone"
+            type="String" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray_F2"
+        android:orientation="vertical">
+
+        <include layout="@layout/layout_title_shadow" />
+
+        <!--头像-->
+        <LinearLayout
+            android:id="@+id/ll_head_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
+            android:gravity="center"
+            android:onClick="doClick"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+
+            <TextView
+                style="@style/textWidthWight1Bold144B"
+                android:text="@string/head_image" />
+
+            <ImageView
+                civPath="@{headImageUrl}"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:transitionName="@string/person_transition_avatar" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="13dp"
+                android:src="@mipmap/icon_more_black" />
+        </LinearLayout>
+
+        <!--昵称-->
+        <LinearLayout
+            android:id="@+id/ll_nick_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:gravity="center"
+            android:onClick="doClick"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingTop="16dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="16dp">
+
+            <TextView
+                style="@style/textWidthWight1Bold144B"
+                android:text="@string/nick_name" />
+
+            <TextView
+                style="@style/normalTextView"
+                android:text="@{nickName}"
+                android:transitionName="@string/person_transition_name" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="13dp"
+                android:src="@mipmap/icon_more_black" />
+
+        </LinearLayout>
+
+        <!--性别-->
+        <LinearLayout
+            android:id="@+id/ll_sex"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:gravity="center"
+            android:onClick="doClick"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingTop="16dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="16dp">
+
+            <TextView
+                style="@style/textWidthWight1Bold144B"
+                android:text="@string/sex" />
+
+            <TextView
+                style="@style/normalTextView"
+                android:text="@{sex}" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="13dp"
+                android:src="@mipmap/icon_more_black" />
+
+        </LinearLayout>
+
+        <!--生日-->
+        <LinearLayout
+            android:id="@+id/ll_birthday"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:gravity="center"
+            android:onClick="doClick"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingTop="16dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="16dp">
+
+            <TextView
+                style="@style/textWidthWight1Bold144B"
+                android:text="@string/birthday" />
+
+            <TextView
+                style="@style/normalTextView"
+                android:text="@{birthday}" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="13dp"
+                android:src="@mipmap/icon_more_black" />
+
+        </LinearLayout>
+
+        <!--手机号-->
+        <LinearLayout
+            android:id="@+id/ll_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingTop="16dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="16dp"
+            android:onClick="doClick"
+            >
+
+            <TextView
+                style="@style/textWidthWight1Bold144B"
+                android:text="@string/phone" />
+
+            <TextView
+                style="@style/normalTextView"
+                android:text="@{phone}" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="13dp"
+                android:src="@mipmap/icon_more_black" />
+
+        </LinearLayout>
+
+        <!--退出登录-->
+        <Button
+            android:id="@+id/btn_exit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="52dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/bg_radius_4dp_solid_4b545c"
+            android:onClick="doClick"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp"
+            android:text="@string/exit_launch"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:visibility="gone"
+            />
+
+    </LinearLayout>
+
+</layout>

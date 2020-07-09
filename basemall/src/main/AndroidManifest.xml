@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.liemi.basemall">
+
+    <application>
+        <activity android:name=".ui.MainActivity" />
+        <activity
+            android:name=".ui.login.PwdLoginActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity android:name=".ui.personal.MyInformationActivity" />
+        <activity android:name=".ui.shopcar.ShoppingActivity" />
+        <activity android:name=".ui.category.CategoryGoodsActivity" />
+        <activity
+            android:name=".ui.home.SearchActivity"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".ui.store.StoreDetailActivity"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity android:name=".ui.store.good.GoodDetailActivity" />
+        <activity
+            android:name=".ui.login.LoginHomeActivity"
+            android:launchMode="singleInstance" />
+        <activity android:name=".ui.login.RegisterActivity" />
+        <activity android:name=".ui.login.SmsLoginActivity" />
+        <activity android:name=".ui.login.ForgetPassActivity" />
+        <activity android:name=".ui.personal.MessageActivity" />
+        <activity android:name=".ui.personal.MessageDetailForTextActivity"/>
+        <activity android:name=".ui.personal.userinfo.UserInfoActivity" />
+        <activity android:name=".ui.personal.userinfo.ChangeNickNameActivity" />
+        <activity android:name=".ui.personal.setting.SettingActivity" />
+        <activity android:name=".ui.personal.setting.AboutUsActivity" />
+        <activity android:name=".ui.personal.setting.AboutUsWebActivity" />
+        <activity android:name=".ui.personal.setting.ChangePasswordActivity" />
+        <activity android:name=".ui.personal.setting.CommonQuestionActivity" />
+        <activity
+            android:name=".ui.personal.setting.SuggestionFeedbackActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity android:name=".ui.personal.collection.MineCollectionActivity" />
+        <activity android:name=".ui.personal.order.PayResultActivity" />
+        <activity
+            android:name=".ui.personal.refund.ApplyRefundActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".ui.personal.refund.RefundApplyLogisticActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity android:name=".ui.store.comment.CommentAllActivity" />
+        <activity
+            android:name=".ui.personal.order.MineCommentActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity android:name=".ui.personal.order.MineOrderActivity" />
+        <activity android:name=".ui.personal.refund.OrderRefundActivity" />
+        <activity android:name=".ui.personal.order.OrderDetailActivity" />
+        <activity android:name=".ui.personal.refund.RefundApplySuccessActivity" />
+        <activity android:name=".ui.personal.refund.RefundDetailedActivity" />
+        <activity android:name=".ui.personal.helperservice.HelperServiceListActivity" />
+        <activity android:name=".ui.personal.helperservice.LinkHelperActivity" />
+        <activity android:name=".ui.personal.coupon.MineCouponActivity" />
+        <activity android:name=".ui.store.StoreCategoryActivity" />
+        <activity android:name=".ui.store.good.ShareGoodActivity" />
+        <activity android:name=".ui.personal.address.AddressAddActivity" />
+        <activity android:name=".ui.personal.address.AddressManageActivity" />
+        <activity android:name=".ui.shopcar.FillOrderActivity" />
+        <activity android:name=".ui.login.BindPhoneActivity" />
+        <activity android:name=".ui.personal.digitalasset.PropertyTakeOutActivity" />
+        <activity android:name=".ui.personal.digitalasset.TradePropertyActivity" />
+        <activity android:name=".ui.personal.digitalasset.RechargeActivity" />
+        <activity android:name=".ui.personal.setting.PasswordManagerActivity" />
+        <activity android:name=".ui.personal.userinfo.ChangePhoneActivity" />
+        <activity android:name=".ui.shopcar.OrderPayOnlineActivity" />
+        <activity
+            android:name=".ui.store.StoreSearchActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity android:name=".ui.login.SetPayPasswordActivity" />
+        <activity android:name=".ui.personal.order.LogisticTrackActivity" />
+        <activity
+            android:name=".ui.personal.refund.UpdateApplyActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity android:name=".ui.personal.digitalasset.WalletDetailsActivity" />
+        <activity android:name=".ui.personal.digitalasset.TradePropertyDetailsActivity" />
+        <activity android:name=".ui.personal.digitalasset.QRCodeScanActivity" />
+        <activity android:name=".ui.personal.digitalasset.PropertyTakeOutResultActivity" />
+
+        <!-- alipay sdk begin -->
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity android:name=".ui.personal.refund.SelectRefundTypeActivity" />
+
+        <activity android:name=".ui.personal.refund.RequestReplaceActivty"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
+        <activity android:name=".ui.personal.refund.RequestReplaceDetailActivity"/>
+    </application>
+
+</manifest>
