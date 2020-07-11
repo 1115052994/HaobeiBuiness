@@ -1,16 +1,18 @@
 package com.netmi.workerbusiness.ui.login;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.support.annotation.DrawableRes;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.liemi.basemall.data.api.LoginApi;
+import com.liemi.basemall.ui.login.MessagesHintDialog;
 import com.netmi.baselibrary.data.Constant;
 import com.netmi.baselibrary.data.base.ApiException;
-import com.netmi.baselibrary.data.base.BaseObserver;
 import com.netmi.baselibrary.data.base.RetrofitApiFactory;
 import com.netmi.baselibrary.data.base.RxSchedulers;
 import com.netmi.baselibrary.data.base.XObserver;
@@ -49,9 +51,12 @@ public class LoginActivity extends BaseIMLoginActivity<ActivityLoginBinding> {
     public static final String LOGIN_DISPLAY = "loginDisplay";
     public static final String LOGIN_USER_AGREE = "loginUserAgree";
     private UserAgreeDialogFragment userAgreeDialogFragment;
+    MessagesHintDialog mMessageHintDialog;
 
     //登录方式  0为验证码登录  1位密码登录
     private int login_way = 1;
+    //密码隐藏  显示图片
+    Drawable gone,visi,pass;
 
     @Override
     protected int getContentView() {
@@ -83,6 +88,8 @@ public class LoginActivity extends BaseIMLoginActivity<ActivityLoginBinding> {
                 return true;
             }
         };
+
+        mBinding.etPassword.setOnDrawableRightListener(this::onDrawableRightClick);
         mBinding.rlParent.setFocusable(true);
         mBinding.rlParent.setFocusableInTouchMode(true);
     }
@@ -253,6 +260,11 @@ public class LoginActivity extends BaseIMLoginActivity<ActivityLoginBinding> {
                         hideProgress();
                         showError(ex.getMessage());
                     }
+
+                    @Override
+                    public void onFail(BaseData<UserInfoEntity> data) {
+                        showMessageHintDialog(data.getErrmsg());
+                    }
                 });
     }
 
@@ -309,4 +321,46 @@ public class LoginActivity extends BaseIMLoginActivity<ActivityLoginBinding> {
                     }
                 });
     }
+    //显示密码错误错误信息
+    private void showMessageHintDialog(final String message){
+        if(mMessageHintDialog == null){
+            mMessageHintDialog = new MessagesHintDialog(this,message);
+        }
+        if(!mMessageHintDialog.isShowing()){
+            mMessageHintDialog.show();
+        }
+        mMessageHintDialog.isIntercept=true;
+    }
+
+    //密码显示隐藏
+    public void onDrawableRightClick() {
+        int inputType = mBinding.etPassword.getInputType();
+        if (gone==null){
+            gone = getdra(R.mipmap.password_gone);
+        }
+        if (visi==null){
+            visi = getdra(R.mipmap.password_visible);
+        }
+        if (pass==null){
+            pass = getdra(R.mipmap.user_password);
+        }
+        if(inputType==0x81){
+            mBinding.etPassword.setCompoundDrawables(pass,null,visi,null);
+            mBinding.etPassword.setInputType(0x90);
+//            mBinding.etPassword.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD | InputType.TYPE_CLASS_TEXT);
+
+        }else{
+            mBinding.etPassword.setCompoundDrawables(pass,null,gone,null);
+            mBinding.etPassword.setInputType(0x81);
+//            mBinding.etPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+
+        }
+    }
+
+    public Drawable getdra(@DrawableRes int id){
+        Drawable rightVi = getResources().getDrawable(id);
+        rightVi.setBounds(0,0,rightVi.getMinimumWidth(),rightVi.getMinimumHeight());
+        return rightVi;
+    }
+
 }

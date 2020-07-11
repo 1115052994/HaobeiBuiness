@@ -10,7 +10,7 @@ android {
         targetSdkVersion 28
         versionCode 7
         versionName "1.0.7"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUgenerateBuildConfignitRunner"
 
         // 开启multidex
         multiDexEnabled true

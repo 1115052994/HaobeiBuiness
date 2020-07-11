@@ -20,6 +20,7 @@
         android:orientation="vertical">
 
         <RelativeLayout
+            android:visibility="gone"
             android:id="@+id/rl_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -34,23 +35,11 @@
                 android:src="@mipmap/baselib_ic_back"
                 android:visibility="gone" />
 
-            <TextView
-                android:id="@+id/change_login_way"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="30dp"
-                android:layout_marginRight="@dimen/d_10"
-                android:onClick="doClick"
-                android:padding="5dp"
-                android:text="去注册"
-                android:textColor="#555555"
-                android:textSize="@dimen/s_14" />
 
         </RelativeLayout>
 
         <LinearLayout
+            android:layout_marginTop="110dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@+id/ll_bottom"
@@ -59,8 +48,8 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="27dp"
                 android:contentDescription="@null"
@@ -74,6 +63,7 @@
                 android:paddingRight="@dimen/d_25">
 
                 <EditText
+                    android:drawableLeft="@mipmap/phone_number"
                     android:id="@+id/et_account"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -167,7 +157,9 @@
                 android:paddingLeft="@dimen/d_25"
                 android:paddingRight="@dimen/d_25">
 
-                <EditText
+                <com.liemi.basemall.ui.login.DrawableEditText
+                    android:drawableRight="@mipmap/password_gone"
+                    android:drawableLeft="@mipmap/user_password"
                     android:id="@+id/et_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -196,6 +188,22 @@
 
             </RelativeLayout>
 
+
+
+
+            <TextView
+                android:layout_marginRight="25dp"
+                android:id="@+id/tv_forget_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:onClick="doClick"
+                android:paddingHorizontal="15dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="16dp"
+                android:text="@string/forget_password"
+                android:textColor="@color/color_999999"
+                android:textSize="13sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -227,8 +235,14 @@
                     android:paddingTop="18dp"
                     android:paddingBottom="8dp"
                     android:text="《服务条款》"
-                    android:textColor="#555555"
+                    android:textColor="@color/color_D2350D"
                     android:visibility="visible" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="18dp"
+                    android:paddingBottom="8dp"
+                    android:text="及"/>
 
                 <TextView
                     android:id="@+id/tv_secret"
@@ -237,24 +251,10 @@
                     android:onClick="doClick"
                     android:paddingTop="18dp"
                     android:paddingBottom="8dp"
-                    android:text="及《隐私协议》"
-                    android:textColor="#555555" />
+                    android:text="《隐私协议》"
+                    android:textColor="@color/color_D2350D" />
 
             </LinearLayout>
-
-            <TextView
-                android:id="@+id/tv_forget_password"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:layout_marginLeft="9dp"
-                android:onClick="doClick"
-                android:paddingHorizontal="16dp"
-                android:paddingTop="8dp"
-                android:paddingBottom="16dp"
-                android:text="@string/forget_password"
-                android:textColor="#555555"
-                android:textSize="13sp" />
             <!--<LinearLayout-->
             <!--android:layout_width="match_parent"-->
             <!--android:layout_height="wrap_content"-->
@@ -308,6 +308,17 @@
                 android:onClick="doClick"
                 android:text="@string/login"
                 android:textColor="@color/white"
+                android:textSize="@dimen/s_14" />
+            <TextView
+                android:id="@+id/change_login_way"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:onClick="doClick"
+                android:padding="5dp"
+                android:text="去注册"
+                android:textColor="#555555"
                 android:textSize="@dimen/s_14" />
 
             <LinearLayout
