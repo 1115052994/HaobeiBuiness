@@ -330,6 +330,7 @@ public class LoginActivity extends BaseIMLoginActivity<ActivityLoginBinding> {
             mMessageHintDialog.show();
         }
         mMessageHintDialog.isIntercept=true;
+
     }
 
     //密码显示隐藏
