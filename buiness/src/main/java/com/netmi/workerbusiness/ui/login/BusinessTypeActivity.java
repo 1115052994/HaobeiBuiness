@@ -29,7 +29,7 @@ public class BusinessTypeActivity extends BaseIMLoginActivity<ActivityBusinessTy
 
     @Override
     protected void initUI() {
-        getTvTitle().setText("商家类型选择");
+        getTvTitle().setText("入驻类型");
 
         mBinding.rgType.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override

@@ -318,7 +318,7 @@
                 android:onClick="doClick"
                 android:padding="5dp"
                 android:text="去注册"
-                android:textColor="#555555"
+                android:textColor="#D2350D"
                 android:textSize="@dimen/s_14" />
 
             <LinearLayout

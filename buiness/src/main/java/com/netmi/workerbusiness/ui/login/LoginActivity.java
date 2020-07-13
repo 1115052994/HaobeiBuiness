@@ -10,7 +10,7 @@ import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.liemi.basemall.data.api.LoginApi;
-import com.liemi.basemall.ui.login.MessagesHintDialog;
+import com.netmi.baselibrary.utils.dialog.MessagesHintDialog;
 import com.netmi.baselibrary.data.Constant;
 import com.netmi.baselibrary.data.base.ApiException;
 import com.netmi.baselibrary.data.base.RetrofitApiFactory;
@@ -51,7 +51,7 @@ public class LoginActivity extends BaseIMLoginActivity<ActivityLoginBinding> {
     public static final String LOGIN_DISPLAY = "loginDisplay";
     public static final String LOGIN_USER_AGREE = "loginUserAgree";
     private UserAgreeDialogFragment userAgreeDialogFragment;
-    MessagesHintDialog mMessageHintDialog;
+
 
     //登录方式  0为验证码登录  1位密码登录
     private int login_way = 1;
@@ -321,18 +321,7 @@ public class LoginActivity extends BaseIMLoginActivity<ActivityLoginBinding> {
                     }
                 });
     }
-    //显示密码错误错误信息
-    private void showMessageHintDialog(final String message){
-        if(mMessageHintDialog == null){
-            mMessageHintDialog = new MessagesHintDialog(this,message);
-        }
-        if(!mMessageHintDialog.isShowing()){
-            mMessageHintDialog.show();
-        }
-        mMessageHintDialog.isIntercept=true;
 
-
-    }
 
     //密码显示隐藏
     public void onDrawableRightClick() {

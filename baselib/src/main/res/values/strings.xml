@@ -13,7 +13,10 @@
     <string name="permission_request_tip">APP需要您授权之后才能进行相关操作，请在接下来的权限申请中选择允许</string>
     <string name="not_granted_permission">您没有授予权限，请授权后继续操作</string>
     <string name="nothing"></string>
+    <string name="please_input_new_password_error">您输入的密码有误！\n 请再次输入</string>
     <string name="baselib_not_data">没有数据</string>
+    <string name="password_error_cancel">取消</string>
+    <string name="password_error_confirm">确定</string>
 
     <!--编辑框小数点位数-->
     <string name="five">5</string>

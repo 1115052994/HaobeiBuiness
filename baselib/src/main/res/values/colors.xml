@@ -49,4 +49,7 @@
     <color name="color_F2F2F2">#F2F2F2</color>
     <color name="color_333333">#333333</color>
 
+    <color name="gray_99">#999999</color>
+    <color name="red_108EE9">#108EE9</color>
+
 </resources>

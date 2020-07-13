@@ -33,8 +33,8 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="27dp"
                     android:contentDescription="@null"
@@ -58,11 +58,13 @@
                     android:visibility="gone" />
 
                 <EditText
+                    android:drawablePadding="10dp"
+                    android:drawableLeft="@mipmap/phone_number"
                     android:id="@+id/et_phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="25dp"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="40dp"
                     android:background="@null"
                     android:hint="输入手机号"
                     android:inputType="number"
@@ -87,6 +89,8 @@
                     android:orientation="horizontal">
 
                     <EditText
+                        android:drawablePadding="10dp"
+                        android:drawableLeft="@mipmap/phone_auth_code"
                         android:id="@+id/et_code"
                         style="@style/EditTextDigitsLetter"
                         android:layout_width="0dp"
@@ -111,7 +115,7 @@
                         android:paddingHorizontal="10dp"
                         android:paddingVertical="5dp"
                         android:text="@string/get_verification_code"
-                        android:textColor="#ff999999"
+                        android:textColor="#E4866E"
                         android:textSize="12sp" />
 
                 </LinearLayout>
@@ -123,6 +127,8 @@
                     android:background="#F2F2F2" />
 
                 <EditText
+                    android:drawablePadding="10dp"
+                    android:drawableLeft="@mipmap/user_password"
                     android:id="@+id/et_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -148,6 +154,8 @@
                 <!--android:src="@mipmap/app_logo" />-->
 
                 <EditText
+                    android:drawablePadding="10dp"
+                    android:drawableLeft="@mipmap/user_password"
                     android:id="@+id/et_password_again"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -168,6 +176,8 @@
                     android:background="#F2F2F2" />
 
                 <EditText
+                    android:drawablePadding="10dp"
+                    android:drawableLeft="@mipmap/invitation_code"
                     android:id="@+id/et_invite_code"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -187,6 +197,7 @@
                     android:background="#F2F2F2" />
 
                 <LinearLayout
+                    android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
@@ -213,16 +224,23 @@
                         android:onClick="doClick"
                         android:paddingVertical="18dp"
                         android:text="《服务条款》"
-                        android:textColor="#555555" />
-
+                        android:textColor="#D2350D" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="doClick"
+                        android:paddingVertical="18dp"
+                        android:text="及"
+                        android:textColor="#555555"
+                        android:visibility="visible" />
                     <TextView
                         android:id="@+id/tv_secret"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:onClick="doClick"
                         android:paddingVertical="18dp"
-                        android:text="及《隐私协议》"
-                        android:textColor="#555555"
+                        android:text="《隐私协议》"
+                        android:textColor="#D2350D"
                         android:visibility="visible" />
                 </LinearLayout>
 
@@ -230,16 +248,15 @@
                 <TextView
                     android:id="@+id/tv_confirm"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="44dp"
                     android:layout_marginHorizontal="25dp"
                     android:layout_marginTop="100dp"
                     android:background="@drawable/baselib_bg_color77b52902"
                     android:gravity="center"
                     android:onClick="doClick"
-                    android:paddingVertical="15dp"
                     android:text="@string/register"
                     android:textColor="#ffffffff"
-                    android:textSize="14sp" />
+                    android:textSize="18sp" />
 
             </LinearLayout>
 

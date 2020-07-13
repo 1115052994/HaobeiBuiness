@@ -28,6 +28,7 @@ import com.netmi.baselibrary.utils.JumpUtil;
 import com.netmi.baselibrary.utils.MD5;
 import com.netmi.baselibrary.utils.Strings;
 import com.netmi.baselibrary.utils.ToastUtils;
+import com.netmi.baselibrary.utils.dialog.MessagesHintDialog;
 import com.netmi.workerbusiness.R;
 import com.netmi.workerbusiness.databinding.ActivityForgetPasswordBinding;
 import com.trello.rxlifecycle2.android.ActivityEvent;
@@ -37,7 +38,7 @@ import static com.netmi.baselibrary.ui.BaseWebviewActivity.WEBVIEW_TITLE;
 import static com.netmi.baselibrary.ui.BaseWebviewActivity.WEBVIEW_TYPE;
 import static com.netmi.baselibrary.ui.BaseWebviewActivity.WEBVIEW_TYPE_CONTENT;
 
-public class ForgetPasswordActivity extends BaseActivity<ActivityForgetPasswordBinding> {
+public class ForgetPasswordActivity extends BaseActivity<ActivityForgetPasswordBinding> implements MessagesHintDialog.ClickBindPhoneListener {
 
 
     /**
@@ -140,7 +141,7 @@ public class ForgetPasswordActivity extends BaseActivity<ActivityForgetPasswordB
         } else if (password.length() < 6) {
             showError("密码必须大于6位，请重新输入");
         } else if (!password.equals(passwordAgain)) {
-            showError("两次输入的密码不同，请重新输入");
+            showMessageHintDialog("两次输入的密码不同，请重新输入");
         } else {
             ResetPassword(phone, code,  MD5.GetMD5Code(password, true));
 //            MD5.GetMD5Code(password, true)
@@ -183,8 +184,24 @@ public class ForgetPasswordActivity extends BaseActivity<ActivityForgetPasswordB
                 .subscribe(new XObserver<BaseData>() {
                     @Override
                     public void onSuccess(@NonNull BaseData data) {
-                        finish();
+                        showMessageHintDialog("密码修改成功");
+                        mMessageHintDialog.setClickBindMessageListener(ForgetPasswordActivity.this);
+                    }
+
+                    @Override
+                    public void onFail(BaseData data) {
+                        showMessageHintDialog(data.getErrmsg());
                     }
                 });
+    }
+
+    @Override
+    public void clickBindMessageCan() {
+        finish();
+    }
+
+    @Override
+    public void clickBindMessageCon() {
+        finish();
     }
 }

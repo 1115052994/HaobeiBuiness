@@ -13,6 +13,16 @@
         <item name="android:backgroundDimEnabled">true</item><!--模糊-->
     </style>
 
+    <!--横向布满文本-->
+    <style name="maxWidthTextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <!--横向布满文本且居中-->
+    <style name="maxWidthCenterTextView" parent="maxWidthTextView">
+        <item name="android:gravity">center</item>
+    </style>
     <style name="transparentDialog" parent="android:style/Theme.Dialog">
         <!--背景颜色及透明程度-->
         <item name="android:windowBackground">@android:color/transparent</item>

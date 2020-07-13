@@ -1,5 +1,6 @@
 package com.netmi.baselibrary.ui;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.databinding.DataBindingUtil;
@@ -14,8 +15,10 @@ import android.widget.TextView;
 import com.gyf.barlibrary.ImmersionBar;
 import com.netmi.baselibrary.R;
 import com.netmi.baselibrary.presenter.BasePresenter;
+import com.netmi.baselibrary.utils.AppManager;
 import com.netmi.baselibrary.utils.ImmersionBarUtils;
 import com.netmi.baselibrary.utils.ToastUtils;
+import com.netmi.baselibrary.utils.dialog.MessagesHintDialog;
 import com.netmi.baselibrary.utils.language.MultiLanguageUtil;
 import com.netmi.baselibrary.widget.MyXRecyclerView;
 import com.netmi.baselibrary.widget.MLoadingDialog;
@@ -47,10 +50,12 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends RxAppCompa
     /**
      * 需要在子类中初始化
      */
-    protected
-    MyXRecyclerView xRecyclerView;
+    protected MyXRecyclerView xRecyclerView;
 
     protected BaseActivity instance;
+
+    protected MessagesHintDialog mMessageHintDialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -140,6 +145,19 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends RxAppCompa
         super.onStop();
         if (basePresenter != null) {
             basePresenter.stop();
+        }
+    }
+
+    //显示对话框
+    protected void showMessageHintDialog(final String message){
+        hideProgress();
+        if(mMessageHintDialog == null){
+            mMessageHintDialog = new MessagesHintDialog(this,message);
+        }else {
+            mMessageHintDialog.showMessage(message);
+        }
+        if(!mMessageHintDialog.isShowing()){
+            mMessageHintDialog.show();
         }
     }
 
