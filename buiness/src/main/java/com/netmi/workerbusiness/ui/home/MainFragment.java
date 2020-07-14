@@ -33,6 +33,7 @@ import com.netmi.workerbusiness.ui.home.commodity.postage.PostageEditorActivity;
 import com.netmi.workerbusiness.ui.home.offline.OfflineOrderActivity;
 import com.netmi.workerbusiness.ui.home.online.LineOrderActivity;
 import com.netmi.workerbusiness.ui.home.vip.VIPShareActivity;
+import com.trello.rxlifecycle2.android.ActivityEvent;
 import com.trello.rxlifecycle2.android.FragmentEvent;
 
 import static com.netmi.workerbusiness.ui.home.aftersales.AfterSalesActivity.ALL;
@@ -120,10 +121,14 @@ public class MainFragment extends BaseFragment<FragmentMainBinding> {
             /**
              *商品管理
              * */
-        } else if (id == R.id.tv_line_commodity_list) { //线上商品列表
-            JumpUtil.overlay(getContext(), LineCommodityListActivity.class);
-        } else if (id == R.id.tv_outline_commodity_list) {  //线下商品列表
-            JumpUtil.overlay(getContext(), OfflineCommodityListActivity.class);
+        } else if (id == R.id.tv_line_commodity_list) {
+            if(shop_user_type==1){
+                //线上商品列表
+                JumpUtil.overlay(getContext(), LineCommodityListActivity.class);
+            }else if(shop_user_type==2){
+                //线下商品列表
+                JumpUtil.overlay(getContext(), OfflineCommodityListActivity.class);
+            }
         } else if (id == R.id.tv_postage_editor) {  //邮费模板
             Bundle bundle = new Bundle();
             bundle.putString(JUMP_FROM, FROM_TEMPLE);

@@ -125,77 +125,81 @@
                         <LinearLayout
                             android:id="@+id/ll_line"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
+                            android:layout_height="50dp"
                             android:orientation="horizontal"
                             android:paddingHorizontal="15dp">
 
                             <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:gravity="center_horizontal"
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
                                 android:orientation="vertical">
 
+                                <!--android:text="@{model.on_line_data.count_order.today}"-->
                                 <TextView
                                     android:id="@+id/tv_line_order_num"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="@{model.on_line_data.count_order.today}"
                                     android:textColor="#ff242424"
-                                    android:textSize="15sp"
-                                    tools:text="100" />
+                                    android:textSize="12sp"
+                                    tools:text="1000" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="4dp"
-                                    android:text="今日线上订单数"
+                                    android:text="今日浏览量"
                                     android:textColor="#ff666666"
                                     android:textSize="10sp" />
 
                             </LinearLayout>
 
                             <View
-                                android:layout_width="0dp"
-                                android:layout_height="0dp"
-                                android:layout_weight="1" />
+                                android:layout_width="1dp"
+                                android:layout_height="match_parent"
+                                android:background="@color/gray_EE" />
 
                             <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:gravity="center_horizontal"
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
                                 android:orientation="vertical">
 
+                                <!--android:text="@{model.on_line_data.order_money.today}"-->
                                 <TextView
                                     android:id="@+id/tv_line_turnover"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="@{model.on_line_data.order_money.today}"
                                     android:textColor="#ff242424"
                                     android:textSize="15sp"
-                                    tools:text="100.00" />
+                                    tools:text="50" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="4dp"
-                                    android:text="今日线上成交额"
+                                    android:text="今日支付买家数"
                                     android:textColor="#ff666666"
                                     android:textSize="10sp" />
 
                             </LinearLayout>
 
                             <View
-                                android:layout_width="0dp"
-                                android:layout_height="0dp"
-                                android:layout_weight="1" />
+                                android:background="@color/gray_EE"
+                                android:layout_width="1dp"
+                                android:layout_height="match_parent"
+                                 />
 
                             <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:gravity="center_horizontal"
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
                                 android:orientation="vertical">
 
+                                <!--android:text="@{model.on_line_data.pay_money.today}"-->
                                 <TextView
                                     android:id="@+id/tv_line_payment_amount"
                                     android:layout_width="wrap_content"
@@ -203,40 +207,44 @@
                                     android:text="@{model.on_line_data.pay_money.today}"
                                     android:textColor="#ff242424"
                                     android:textSize="15sp"
-                                    tools:text="100.00" />
+                                    tools:text="1052.00" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="4dp"
-                                    android:text="今日线上支付额"
+                                    android:text="今日支付金额"
                                     android:textColor="#ff666666"
                                     android:textSize="10sp" />
 
                             </LinearLayout>
 
                         </LinearLayout>
+                        <View
+                            android:layout_marginHorizontal="10dp"
+                            android:background="@color/gray_EE"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"/>
 
-                        <!--线下数据-->
                         <LinearLayout
                             android:id="@+id/ll_outline"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
+                            android:layout_height="50dp"
                             android:orientation="horizontal"
                             android:paddingHorizontal="15dp">
 
                             <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:gravity="center_horizontal"
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
                                 android:orientation="vertical">
 
                                 <TextView
                                     android:id="@+id/tv_outline_order_num"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="@{model.out_line_data.count_order.today}"
+                                    android:text="@{model.on_line_data.pay_money.yesterday}"
                                     android:textColor="#ff242424"
                                     android:textSize="15sp"
                                     tools:text="100" />
@@ -245,28 +253,29 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="4dp"
-                                    android:text="今日线下订单数"
+                                    android:text="昨日店铺支付金额"
                                     android:textColor="#ff666666"
                                     android:textSize="10sp" />
 
                             </LinearLayout>
 
                             <View
-                                android:layout_width="0dp"
-                                android:layout_height="0dp"
-                                android:layout_weight="1" />
+                                android:background="@color/gray_EE"
+                                android:layout_width="1dp"
+                                android:layout_height="match_parent" />
 
                             <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:gravity="center_horizontal"
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
                                 android:orientation="vertical">
 
+                                <!--android:text="@{model.out_line_data.order_money.today}"-->
                                 <TextView
                                     android:id="@+id/tv_outline_turnover"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="@{model.out_line_data.order_money.today}"
                                     android:textColor="#ff242424"
                                     android:textSize="15sp"
                                     tools:text="100.00" />
@@ -282,21 +291,23 @@
                             </LinearLayout>
 
                             <View
-                                android:layout_width="0dp"
-                                android:layout_height="0dp"
-                                android:layout_weight="1" />
+                                android:background="@color/gray_EE"
+                                android:layout_width="1dp"
+                                android:layout_height="match_parent"
+                                 />
 
                             <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:gravity="center_horizontal"
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
                                 android:orientation="vertical">
 
+                                <!--android:text="@{model.out_line_data.pay_money.today}"-->
                                 <TextView
                                     android:id="@+id/tv_outline_payment_amount"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="@{model.out_line_data.pay_money.today}"
                                     android:textColor="#ff242424"
                                     android:textSize="15sp"
                                     tools:text="100.00" />
@@ -312,78 +323,111 @@
                             </LinearLayout>
 
                         </LinearLayout>
-
                         <View
+                            android:layout_marginHorizontal="10dp"
+                            android:background="@color/gray_EE"
                             android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:layout_marginTop="16dp"
-                            android:background="#F2F2F2" />
+                            android:layout_height="1dp"/>
                         <!--商品数量-->
                         <LinearLayout
+                            android:layout_marginHorizontal="15dp"
                             android:id="@+id/ll_line_commodity"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
+                            android:layout_height="50dp"
                             android:gravity="center_horizontal"
                             android:orientation="horizontal">
 
                             <LinearLayout
                                 android:id="@+id/ll_line_commodity_num"
                                 android:layout_width="0dp"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:layout_weight="1"
-                                android:gravity="center_horizontal"
+                                android:gravity="center"
                                 android:orientation="vertical">
 
                                 <TextView
                                     android:id="@+id/tv_line_commodity"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="@{model.on_line_data.total_sale_item}"
+                                    android:text="@{model.on_line_data.on_sale_item}"
                                     android:textColor="#ff242424"
                                     android:textSize="15sp"
-                                    tools:text="100" />
+                                    tools:text="50" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="4dp"
-                                    android:text="线上商品"
+                                    android:text="上架商品数"
                                     android:textColor="#ff666666"
                                     android:textSize="10sp" />
 
                             </LinearLayout>
+                            <View
+                                android:background="@color/gray_EE"
+                                android:layout_width="1dp"
+                                android:layout_height="match_parent" />
 
                             <LinearLayout
                                 android:id="@+id/ll_outline_commodity_num"
                                 android:layout_width="0dp"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:layout_weight="1"
-                                android:gravity="center_horizontal"
+                                android:gravity="center"
                                 android:orientation="vertical">
 
                                 <TextView
                                     android:id="@+id/tv_outline_commodity"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="@{model.out_line_data.total_sale_item}"
+                                    android:text="@{model.on_line_data.out_sale_item}"
                                     android:textColor="#ff242424"
                                     android:textSize="15sp"
-                                    tools:text="100" />
+                                    tools:text="153" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="4dp"
-                                    android:text="线下商品"
+                                    android:text="下架商品数"
                                     android:textColor="#ff666666"
                                     android:textSize="10sp" />
 
                             </LinearLayout>
+                            <View
+                                android:background="@color/gray_EE"
+                                android:layout_width="1dp"
+                                android:layout_height="match_parent" />
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="center_horizontal"
+                                android:orientation="vertical">
 
+                                <!--android:text="@{model.out_line_data.total_sale_item}"-->
+                                <TextView
+                                    android:id="@+id/tv_outline_last_days"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+
+                                    android:textColor="#ff242424"
+                                    android:textSize="15sp"
+                                    tools:text="501266" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:text="最近30天的访客数"
+                                    android:textColor="#ff666666"
+                                    android:textSize="10sp" />
+
+                            </LinearLayout>
                         </LinearLayout>
                         <!--查看更多-->
                         <TextView
+                            android:visibility="gone"
                             android:id="@+id/tv_check_more"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -407,9 +451,10 @@
                             android:layout_height="wrap_content">
 
                             <TextView
+                                android:layout_marginVertical="10dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="线下订单管理"
+                                android:text="订单管理"
                                 android:textColor="#ff242424"
                                 android:textSize="12sp" />
 
@@ -419,6 +464,7 @@
                                 android:layout_weight="1" />
 
                             <TextView
+                                android:visibility="gone"
                                 android:id="@+id/tv_outline_check_more"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -567,6 +613,7 @@
                             android:layout_height="wrap_content">
 
                             <TextView
+                                android:visibility="invisible"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="线上订单管理"
@@ -579,6 +626,7 @@
                                 android:layout_weight="1" />
 
                             <TextView
+                                android:visibility="gone"
                                 android:id="@+id/tv_line_check_more"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -593,6 +641,201 @@
                                 android:textSize="12sp" />
                         </LinearLayout>
 
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_radius_4dp_ffffff"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:paddingTop="20dp"
+                                android:paddingBottom="20dp">
+
+                                <TextView
+                                    android:id="@+id/tv_line_commodity_list"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:drawableTop="@mipmap/ic_line_commodity"
+                                    android:drawablePadding="7dp"
+                                    android:gravity="center"
+                                    android:onClick="@{doClick}"
+                                    android:text="商品管理"
+                                    android:textColor="#ff666666"
+                                    android:textSize="10sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_financial_statements"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:drawableTop="@mipmap/ic_finance"
+                                    android:drawablePadding="7dp"
+                                    android:gravity="center"
+                                    android:onClick="@{doClick}"
+                                    android:text="财务报表"
+                                    android:textColor="#ff666666"
+                                    android:textSize="10sp" />
+                                <TextView
+                                    android:id="@+id/tv_coupon"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:drawableTop="@mipmap/ic_coupon"
+                                    android:drawablePadding="13dp"
+                                    android:gravity="center"
+                                    android:onClick="@{doClick}"
+                                    android:text="营销管理"
+                                    android:textColor="#ff666666"
+                                    android:textSize="10sp" />
+                                <TextView
+                                    android:id="@+id/tv_haibei_convert"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:drawableTop="@mipmap/ic_format"
+                                    android:drawablePadding="7dp"
+                                    android:gravity="center"
+                                    android:onClick="@{doClick}"
+                                    android:text="海贝兑换"
+                                    android:textColor="#ff666666"
+                                    android:textSize="10sp" />
+
+
+
+                                <View
+                                    android:id="@+id/view"
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="1"
+                                    android:visibility="gone" />
+
+                                <View
+                                    android:id="@+id/view2"
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="1"
+                                    android:visibility="gone" />
+
+                                <View
+                                    android:id="@+id/view3"
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="1"
+                                    android:visibility="gone" />
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:paddingBottom="20dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:orientation="horizontal"
+                            android:paddingTop="15dp">
+                            <TextView
+                                android:id="@+id/tv_haibei_home"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:drawableTop="@mipmap/ic_haibei_home"
+                                android:drawablePadding="7dp"
+                                android:gravity="center"
+                                android:onClick="@{doClick}"
+                                android:text="海贝之家"
+                                android:textColor="#ff666666"
+                                android:textSize="10sp" />
+                            <TextView
+                                android:id="@+id/tv_team_manage"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:drawableTop="@mipmap/ic_team_manage"
+                                android:drawablePadding="7dp"
+                                android:gravity="center"
+                                android:onClick="@{doClick}"
+                                android:text="团队管理"
+                                android:textColor="#ff666666"
+                                android:textSize="10sp" />
+                            <TextView
+                                android:id="@+id/tv_invite_friend"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:drawableTop="@mipmap/ic_invite_friend"
+                                android:drawablePadding="7dp"
+                                android:gravity="center"
+                                android:onClick="@{doClick}"
+                                android:text="邀请好友"
+                                android:textColor="#ff666666"
+                                android:textSize="10sp" />
+                            <TextView
+                                android:id="@+id/tv_merchant_loan"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:drawableTop="@mipmap/ic_merchant_loan"
+                                android:drawablePadding="7dp"
+                                android:gravity="center"
+                                android:onClick="@{doClick}"
+                                android:text="商家贷"
+                                android:textColor="#ff666666"
+                                android:textSize="10sp" />
+
+
+
+                            <TextView
+                                android:id="@+id/view4"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:drawableTop="@mipmap/ic_invite_friend"
+                                android:drawablePadding="7dp"
+                                android:gravity="center"
+                                android:onClick="@{doClick}"
+                                android:text="邀请好友"
+                                android:textColor="#ff666666"
+                                android:textSize="10sp"
+                                android:visibility="gone" />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="20dp"
+                            android:background="@color/white"
+                            android:orientation="horizontal"
+                            android:paddingTop="15dp"
+                            android:paddingBottom="20dp">
+                            <TextView
+                                android:id="@+id/tv_live"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:drawableTop="@mipmap/ic_live"
+                                android:drawablePadding="7dp"
+                                android:gravity="center"
+                                android:onClick="@{doClick}"
+                                android:text="商家直播"
+                                android:textColor="#ff666666"
+                                android:textSize="10sp" />
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
+                        </LinearLayout>
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -718,7 +961,7 @@
                                     android:layout_gravity="center"
                                     android:layout_marginTop="5dp"
                                     android:layout_marginBottom="3dp"
-                                    android:drawableTop="@mipmap/ic_evaluation"
+                                    android:drawableTop="@mipmap/ic_format"
                                     android:drawablePadding="7dp"
                                     android:gravity="center"
                                     android:onClick="@{doClick}"
@@ -757,6 +1000,7 @@
                             android:layout_height="wrap_content">
 
                             <TextView
+                                android:visibility="gone"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="售后管理"
@@ -769,6 +1013,7 @@
                                 android:layout_weight="1" />
 
                             <TextView
+                                android:visibility="gone"
                                 android:id="@+id/tv_after_sales"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -782,7 +1027,68 @@
                                 android:textColor="#ffa9a9a9"
                                 android:textSize="12sp" />
                         </LinearLayout>
+                        <LinearLayout
+                            android:layout_marginTop="20dp"
+                            android:background="@color/white"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingTop="20dp"
+                            android:paddingBottom="20dp">
 
+                            <TextView
+                                android:id="@+id/tv_line_commodity_list2"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:drawableTop="@mipmap/ic_line_commodity"
+                                android:drawablePadding="7dp"
+                                android:gravity="center"
+                                android:onClick="@{doClick}"
+                                android:text="商品管理"
+                                android:textColor="#ff666666"
+                                android:textSize="10sp" />
+
+                            <TextView
+                                android:id="@+id/tv_return"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:drawableTop="@mipmap/ic_finish"
+                                android:drawablePadding="7dp"
+                                android:gravity="center"
+                                android:onClick="@{doClick}"
+                                android:text="售后管理"
+                                android:textColor="#ff666666"
+                                android:textSize="10sp" />
+                            <TextView
+                                android:id="@+id/tv_postage_editor"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:drawableTop="@mipmap/postage_edit"
+                                android:drawablePadding="12dp"
+                                android:gravity="center"
+                                android:onClick="@{doClick}"
+                                android:text="邮费编辑"
+                                android:textColor="#ff666666"
+                                android:textSize="10sp" />
+                            <TextView
+                                android:id="@+id/tv_specification"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:drawableTop="@mipmap/specification_editor"
+                                android:drawablePadding="13dp"
+                                android:gravity="center"
+                                android:onClick="@{doClick}"
+                                android:text="规格编辑"
+                                android:textColor="#ff666666"
+                                android:textSize="10sp" />
+
+
+
+                        </LinearLayout>
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -791,261 +1097,108 @@
                             android:paddingTop="15dp"
                             android:paddingBottom="17dp">
 
-                            <FrameLayout
+                            <TextView
+                                android:id="@+id/tv_coupon2"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1">
-
-                                <TextView
-                                    android:id="@+id/tv_return"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-                                    android:layout_marginTop="5dp"
-                                    android:layout_marginBottom="3dp"
-                                    android:drawableTop="@mipmap/ic_return"
-                                    android:drawablePadding="7dp"
-                                    android:gravity="center"
-                                    android:onClick="@{doClick}"
-                                    android:text="退货"
-                                    android:textColor="#ff666666"
-                                    android:textSize="10sp" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_horizontal"
-                                    android:layout_marginLeft="15dp"
-                                    android:background="@drawable/bg_radius_9dp_d72b18"
-                                    android:gravity="center"
-                                    android:text="@{afterSaleData.refund_goods}"
-                                    android:textColor="@color/white"
-                                    android:textSize="12sp"
-                                    android:visibility="@{TextUtils.equals(afterSaleData.refund_goods,offlineOrderData.ZERO) ? View.GONE : View.VISIBLE}"
-                                    tools:text="49" />
-
-                            </FrameLayout>
-
-                            <FrameLayout
+                                android:layout_weight="1"
+                                android:drawableTop="@mipmap/ic_coupon"
+                                android:drawablePadding="15dp"
+                                android:gravity="center"
+                                android:onClick="@{doClick}"
+                                android:text="营销管理"
+                                android:textColor="#ff666666"
+                                android:textSize="10sp" />
+                            <TextView
+                                android:id="@+id/tv_financial_statements2"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1">
-
-                                <TextView
-                                    android:id="@+id/tv_refund"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-                                    android:layout_marginTop="5dp"
-                                    android:layout_marginBottom="3dp"
-                                    android:drawableTop="@mipmap/ic_refund"
-                                    android:drawablePadding="7dp"
-                                    android:gravity="center"
-                                    android:onClick="@{doClick}"
-                                    android:text="退款"
-                                    android:textColor="#ff666666"
-                                    android:textSize="10sp" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_horizontal"
-                                    android:layout_marginLeft="15dp"
-                                    android:background="@drawable/bg_radius_9dp_d72b18"
-                                    android:gravity="center"
-                                    android:text="@{afterSaleData.refund_price}"
-                                    android:textColor="@color/white"
-                                    android:textSize="12sp"
-                                    android:visibility="@{TextUtils.equals(afterSaleData.refund_price,offlineOrderData.ZERO) ? View.GONE : View.VISIBLE}"
-                                    tools:text="49" />
-
-                            </FrameLayout>
-
-                            <FrameLayout
+                                android:layout_weight="1"
+                                android:drawableTop="@mipmap/ic_finance"
+                                android:drawablePadding="7dp"
+                                android:gravity="center"
+                                android:onClick="@{doClick}"
+                                android:text="财务报表"
+                                android:textColor="#ff666666"
+                                android:textSize="10sp" />
+                            <TextView
+                                android:id="@+id/tv_invite_friend2"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1">
-
-                                <TextView
-                                    android:id="@+id/tv_finish"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-                                    android:layout_marginTop="5dp"
-                                    android:layout_marginBottom="3dp"
-                                    android:drawableTop="@mipmap/ic_finish"
-                                    android:drawablePadding="7dp"
-                                    android:gravity="center"
-                                    android:onClick="@{doClick}"
-                                    android:text="已完成"
-                                    android:textColor="#ff666666"
-                                    android:textSize="10sp" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_horizontal"
-                                    android:layout_marginLeft="15dp"
-                                    android:background="@drawable/bg_radius_9dp_d72b18"
-                                    android:gravity="center"
-                                    android:text="@{afterSaleData.complete}"
-                                    android:textColor="@color/white"
-                                    android:textSize="12sp"
-                                    android:visibility="gone"
-                                    tools:text="10" />
-                                <!--android:visibility="@{TextUtils.equals(afterSaleData.complete,offlineOrderData.ZERO) ? View.GONE : View.VISIBLE}"-->
-
-                            </FrameLayout>
-
+                                android:layout_weight="1"
+                                android:drawableTop="@mipmap/ic_invite_friend"
+                                android:drawablePadding="7dp"
+                                android:gravity="center"
+                                android:onClick="@{doClick}"
+                                android:text="邀请好友"
+                                android:textColor="#ff666666"
+                                android:textSize="10sp" />
 
                             <TextView
+                                android:id="@+id/tv_haibei_home2"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1" />
+                                android:layout_weight="1"
+                                android:drawableTop="@mipmap/ic_haibei_home"
+                                android:drawablePadding="7dp"
+                                android:gravity="center"
+                                android:onClick="@{doClick}"
+                                android:text="海贝之家"
+                                android:textColor="#ff666666"
+                                android:textSize="10sp" />
 
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <!--商品管理-->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:paddingTop="16dp"
-                                android:paddingBottom="12dp"
-                                android:text="商品管理"
-                                android:textColor="#ff242424"
-                                android:textSize="12sp" />
-
-                            <View
-                                android:layout_width="0dp"
-                                android:layout_height="0dp"
-                                android:layout_weight="1" />
-
-                            <TextView
-                                android:id="@+id/tv_commodity"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="7dp"
-                                android:drawableRight="@mipmap/ic_right_gray"
-                                android:paddingLeft="10dp"
-                                android:paddingTop="16dp"
-                                android:paddingBottom="12dp"
-                                android:text="查看全部"
-                                android:textColor="#ffa9a9a9"
-                                android:textSize="12sp"
-                                android:visibility="gone" />
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/bg_radius_4dp_ffffff"
-                            android:orientation="vertical">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
+                            android:orientation="horizontal"
+                            android:paddingTop="15dp"
+                            android:paddingBottom="17dp">
+                            <TextView
+                                android:id="@+id/tv_team_manage2"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:paddingTop="20dp"
-                                android:paddingBottom="20dp">
-
-                                <TextView
-                                    android:id="@+id/tv_line_commodity_list"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:drawableTop="@mipmap/ic_line_commodity"
-                                    android:drawablePadding="7dp"
-                                    android:gravity="center"
-                                    android:onClick="@{doClick}"
-                                    android:text="线上商品"
-                                    android:textColor="#ff666666"
-                                    android:textSize="10sp" />
-
-                                <TextView
-                                    android:id="@+id/tv_outline_commodity_list"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:drawableTop="@mipmap/ic_outline_commodity"
-                                    android:drawablePadding="7dp"
-                                    android:gravity="center"
-                                    android:onClick="@{doClick}"
-                                    android:text="线下商品"
-                                    android:textColor="#ff666666"
-                                    android:textSize="10sp" />
-
-                                <TextView
-                                    android:id="@+id/tv_postage_editor"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:drawableTop="@mipmap/ic_postage"
-                                    android:drawablePadding="7dp"
-                                    android:gravity="center"
-                                    android:onClick="@{doClick}"
-                                    android:text="邮费编辑"
-                                    android:textColor="#ff666666"
-                                    android:textSize="10sp" />
-
-                                <TextView
-                                    android:id="@+id/tv_specification"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:drawableTop="@mipmap/ic_format"
-                                    android:drawablePadding="7dp"
-                                    android:gravity="center"
-                                    android:onClick="@{doClick}"
-                                    android:text="规格编辑"
-                                    android:textColor="#ff666666"
-                                    android:textSize="10sp" />
-
-                                <View
-                                    android:id="@+id/view"
-                                    android:layout_width="0dp"
-                                    android:layout_height="0dp"
-                                    android:layout_weight="1"
-                                    android:visibility="gone" />
-
-                                <View
-                                    android:id="@+id/view2"
-                                    android:layout_width="0dp"
-                                    android:layout_height="0dp"
-                                    android:layout_weight="1"
-                                    android:visibility="gone" />
-
-                                <View
-                                    android:id="@+id/view3"
-                                    android:layout_width="0dp"
-                                    android:layout_height="0dp"
-                                    android:layout_weight="1"
-                                    android:visibility="gone" />
-                            </LinearLayout>
-
-
+                                android:layout_weight="1"
+                                android:drawableTop="@mipmap/ic_team_manage"
+                                android:drawablePadding="7dp"
+                                android:gravity="center"
+                                android:onClick="@{doClick}"
+                                android:text="团队管理"
+                                android:textColor="#ff666666"
+                                android:textSize="10sp" />
+                            <TextView
+                                android:id="@+id/tv_merchant_loan2"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:drawableTop="@mipmap/ic_merchant_loan"
+                                android:drawablePadding="7dp"
+                                android:gravity="center"
+                                android:onClick="@{doClick}"
+                                android:text="商家贷"
+                                android:textColor="#ff666666"
+                                android:textSize="10sp" />
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
                         </LinearLayout>
-
-
                     </LinearLayout>
-
-                    <!--其他-->
                     <LinearLayout
+                        android:visibility="gone"
                         android:id="@+id/ll_others"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
                         <LinearLayout
+                            android:visibility="gone"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
 
@@ -1072,80 +1225,7 @@
                                 android:textSize="12sp" />
                         </LinearLayout>
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@color/white"
-                            android:orientation="horizontal"
-                            android:paddingTop="15dp">
 
-                            <TextView
-                                android:id="@+id/tv_coupon"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:drawableTop="@mipmap/ic_coupon"
-                                android:drawablePadding="7dp"
-                                android:gravity="center"
-                                android:onClick="@{doClick}"
-                                android:text="优惠券"
-                                android:textColor="#ff666666"
-                                android:textSize="10sp" />
-
-                            <TextView
-                                android:id="@+id/tv_financial_statements"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:drawableTop="@mipmap/ic_finance"
-                                android:drawablePadding="7dp"
-                                android:gravity="center"
-                                android:onClick="@{doClick}"
-                                android:text="财务报表"
-                                android:textColor="#ff666666"
-                                android:textSize="10sp" />
-
-                            <TextView
-                                android:id="@+id/tv_team_manage"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:drawableTop="@mipmap/ic_team_manage"
-                                android:drawablePadding="7dp"
-                                android:gravity="center"
-                                android:onClick="@{doClick}"
-                                android:text="团队管理"
-                                android:textColor="#ff666666"
-                                android:textSize="10sp" />
-
-                            <TextView
-                                android:id="@+id/tv_haibei_home"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:drawableTop="@mipmap/ic_haibei_home"
-                                android:drawablePadding="7dp"
-                                android:gravity="center"
-                                android:onClick="@{doClick}"
-                                android:text="海贝之家"
-                                android:textColor="#ff666666"
-                                android:textSize="10sp" />
-
-                            <TextView
-                                android:id="@+id/view4"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:drawableTop="@mipmap/ic_invite_friend"
-                                android:drawablePadding="7dp"
-                                android:gravity="center"
-                                android:onClick="@{doClick}"
-                                android:text="邀请好友"
-                                android:textColor="#ff666666"
-                                android:textSize="10sp"
-                                android:visibility="gone" />
-
-                        </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -1156,44 +1236,8 @@
                             android:paddingTop="15dp"
                             android:paddingBottom="24dp">
 
-                            <TextView
-                                android:id="@+id/tv_invite_friend"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:drawableTop="@mipmap/ic_invite_friend"
-                                android:drawablePadding="7dp"
-                                android:gravity="center"
-                                android:onClick="@{doClick}"
-                                android:text="邀请好友"
-                                android:textColor="#ff666666"
-                                android:textSize="10sp" />
 
-                            <TextView
-                                android:id="@+id/tv_live"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:drawableTop="@mipmap/ic_live"
-                                android:drawablePadding="7dp"
-                                android:gravity="center"
-                                android:onClick="@{doClick}"
-                                android:text="商家直播"
-                                android:textColor="#ff666666"
-                                android:textSize="10sp" />
 
-                            <TextView
-                                android:id="@+id/tv_merchant_loan"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:drawableTop="@mipmap/ic_merchant_loan"
-                                android:drawablePadding="7dp"
-                                android:gravity="center"
-                                android:onClick="@{doClick}"
-                                android:text="商家贷"
-                                android:textColor="#ff666666"
-                                android:textSize="10sp" />
 
                             <View
                                 android:layout_width="0dp"

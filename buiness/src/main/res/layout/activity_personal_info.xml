@@ -20,6 +20,9 @@
         <variable
             name="shopPic"
             type="String" />
+        <variable
+            name="handPic"
+            type="String" />
 
         <variable
             name="environmentPic"
@@ -62,33 +65,34 @@
                     android:hint="请输入店铺名称"
                     android:paddingHorizontal="20dp"
                     android:paddingVertical="16dp"
-                    android:textColor="#1D1E1F"
+                    android:textColor="@color/gray_66"
                     android:textColorHint="#ffb9b9b9"
                     android:textSize="14sp" />
 
-                <LinearLayout
+                <RelativeLayout
                     android:id="@+id/ll_logo_pic"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:orientation="vertical">
+                    android:background="@color/white">
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="1dp"
                         android:background="@color/white"
                         android:paddingHorizontal="20dp"
                         android:paddingVertical="16dp"
                         android:text="请上传商家logo"
-                        android:textColor="#ffb9b9b9"
+                        android:textColor="@color/gray_66"
                         android:textSize="14sp" />
 
                     <RelativeLayout
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
                         android:id="@+id/rl_logo_pic"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
                         android:onClick="doClick">
 
                         <ImageView
@@ -109,6 +113,7 @@
                             app:riv_corner_radius="4dp" />
 
                         <TextView
+                            android:visibility="gone"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/iv_logo_pic"
@@ -118,26 +123,30 @@
                             android:textSize="12sp" />
                     </RelativeLayout>
 
-                </LinearLayout>
-
+                </RelativeLayout>
                 <LinearLayout
+                    android:paddingHorizontal="20dp"
                     android:id="@+id/ll_remark"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="1dp"
                     android:background="@color/white"
                     android:gravity="center_vertical"
                     android:onClick="doClick"
                     android:orientation="horizontal">
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <EditText
+                        android:textColorHint="@color/gray_66"
+                        android:hint="商家简介"
+                        android:background="@null"
+                        android:id="@+id/et_merchant_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginVertical="16dp"
-                        android:layout_marginLeft="20dp"
-                        android:text="商家简介"
-                        android:textColor="#ff4b545c"
-                        android:textSize="14sp" />
+                        android:layout_marginVertical="8dp"
+                        android:paddingVertical="8dp"
+                        android:textColor="@color/gray_66"
+                        android:textSize="14sp"
+                        />
+
 
                     <View
                         android:layout_width="0dp"
@@ -145,6 +154,7 @@
                         android:layout_weight="1" />
 
                     <TextView
+                        android:visibility="gone"
                         android:id="@+id/tv_remark"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -156,202 +166,13 @@
                         tools:text="这里是商家简介..." />
 
                     <ImageView
+                        android:visibility="gone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="12dp"
                         android:layout_marginRight="20dp"
                         android:src="@mipmap/ic_right_gray" />
                 </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/ll_time_choose"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="1dp"
-                    android:background="@color/white"
-                    android:gravity="center_vertical"
-                    android:onClick="doClick"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="16dp"
-                        android:layout_marginLeft="20dp"
-                        android:text="营业时间"
-                        android:textColor="#ff4b545c"
-                        android:textSize="14sp" />
-
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:layout_weight="1" />
-
-                    <TextView
-                        android:id="@+id/tv_time"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="#ffa9a9a9"
-                        android:textSize="14sp"
-                        tools:text="00:00   ～  00:00" />
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="12dp"
-                        android:layout_marginRight="20dp"
-                        android:src="@mipmap/ic_right_gray" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/ll_location"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="1dp"
-                    android:background="@color/white"
-                    android:gravity="center_vertical"
-                    android:onClick="doClick"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="16dp"
-                        android:layout_marginLeft="20dp"
-                        android:text="地理位置"
-                        android:textColor="#ff4b545c"
-                        android:textSize="14sp" />
-
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:layout_weight="1" />
-
-                    <TextView
-                        android:id="@+id/tv_address"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:maxLines="2"
-                        android:text="点击选择"
-                        android:textColor="#ffa9a9a9"
-                        android:textSize="14sp" />
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="12dp"
-                        android:layout_marginRight="20dp"
-                        android:src="@mipmap/ic_right_gray" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/ll_shop_pic"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="1dp"
-                        android:background="@color/white"
-                        android:paddingHorizontal="20dp"
-                        android:paddingVertical="16dp"
-                        android:text="请上传门店图片"
-                        android:textColor="#ffb9b9b9"
-                        android:textSize="14sp" />
-
-                    <RelativeLayout
-                        android:id="@+id/rl_shop_pic"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:onClick="doClick">
-
-                        <ImageView
-                            android:id="@+id/iv_shop"
-                            android:layout_width="40dp"
-                            android:layout_height="35dp"
-                            android:layout_marginLeft="5dp"
-                            android:src="@mipmap/ic_uppic" />
-
-                        <com.netmi.baselibrary.widget.RoundImageView
-                            android:id="@+id/iv_shop_pic"
-                            ivPath="@{shopPic}"
-                            android:layout_width="40dp"
-                            android:layout_height="35dp"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="5dp"
-                            android:scaleType="fitXY"
-                            app:riv_corner_radius="4dp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/iv_shop_pic"
-                            android:layout_marginTop="6dp"
-                            android:text="上传图片"
-                            android:textColor="#ffbdbdbd"
-                            android:textSize="12sp" />
-                    </RelativeLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/ll_environment_pic"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="1dp"
-                        android:background="@color/white"
-                        android:paddingHorizontal="20dp"
-                        android:paddingVertical="16dp"
-                        android:text="请上传店内环境图片"
-                        android:textColor="#ffb9b9b9"
-                        android:textSize="14sp" />
-
-                    <RelativeLayout
-                        android:id="@+id/rl_environment_pic"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:onClick="doClick">
-
-                        <ImageView
-                            android:id="@+id/iv_environment"
-                            android:layout_width="40dp"
-                            android:layout_height="35dp"
-                            android:layout_marginLeft="5dp"
-                            android:src="@mipmap/ic_uppic" />
-
-                        <com.netmi.baselibrary.widget.RoundImageView
-                            android:id="@+id/iv_environment_pic"
-                            ivPath="@{environmentPic}"
-                            android:layout_width="40dp"
-                            android:layout_height="35dp"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="5dp"
-                            android:scaleType="fitXY"
-                            app:riv_corner_radius="4dp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/iv_environment_pic"
-                            android:layout_marginTop="6dp"
-                            android:text="上传图片"
-                            android:textColor="#ffbdbdbd"
-                            android:textSize="12sp" />
-                    </RelativeLayout>
-
-                </LinearLayout>
-
                 <LinearLayout
                     android:id="@+id/ll_category"
                     android:layout_width="match_parent"
@@ -380,10 +201,95 @@
                         android:layout_height="wrap_content"
                         android:maxLines="2"
                         android:text="点击选择"
+                        android:layout_marginRight="20dp"
                         android:textColor="#ffa9a9a9"
                         android:textSize="14sp" />
 
                     <ImageView
+                        android:visibility="gone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginRight="20dp"
+                        android:src="@mipmap/ic_right_gray" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/ll_location_city"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:onClick="doClick"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="8dp"
+                        android:layout_marginLeft="20dp"
+                        android:text="省区市"
+                        android:textColor="@color/gray_66"
+                        android:textSize="14sp" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/tv_address_city"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:maxLines="2"
+                        android:text="点击选择"
+                        android:textColor="#ffa9a9a9"
+                        android:layout_marginRight="20dp"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:visibility="gone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginRight="20dp"
+                        android:src="@mipmap/ic_right_gray" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/ll_location"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:onClick="doClick"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="8dp"
+                        android:layout_marginLeft="20dp"
+                        android:text="地理位置"
+                        android:textColor="@color/gray_66"
+                        android:textSize="14sp" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/tv_address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:maxLines="2"
+                        android:text="点击选择"
+                        android:textColor="#ffa9a9a9"
+                        android:layout_marginRight="20dp"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:visibility="gone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="12dp"
@@ -391,58 +297,145 @@
                         android:src="@mipmap/ic_right_gray" />
                 </LinearLayout>
 
-
-                <EditText
-                    android:id="@+id/et_name"
+                <LinearLayout
+                    android:id="@+id/ll_time_choose"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:background="@color/white"
-                    android:hint="请输入法人姓名"
-                    android:paddingHorizontal="20dp"
-                    android:paddingVertical="16dp"
-                    android:textColor="#1D1E1F"
-                    android:textColorHint="#ffb9b9b9"
-                    android:textSize="14sp" />
+                    android:gravity="center_vertical"
+                    android:onClick="doClick"
+                    android:orientation="horizontal">
 
-                <EditText
-                    android:id="@+id/et_id_card"
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="8dp"
+                        android:layout_marginLeft="20dp"
+                        android:text="营业时间"
+                        android:textColor="@color/gray_66"
+                        android:textSize="14sp" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:layout_marginRight="20dp"
+                        android:id="@+id/tv_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#ffa9a9a9"
+                        android:textSize="14sp"
+                        tools:text="00:00   ～  00:00" />
+
+                    <ImageView
+                        android:visibility="gone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginRight="20dp"
+                        android:src="@mipmap/ic_right_gray" />
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:background="@color/white"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:text="法人姓名"
+                        android:paddingHorizontal="20dp"
+                        android:paddingVertical="8dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <EditText
+                        android:gravity="center_horizontal"
+                        android:layout_alignParentRight="true"
+                        android:id="@+id/et_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:hint="请输入姓名"
+                        android:paddingHorizontal="20dp"
+                        android:paddingVertical="8dp"
+                        android:textColor="#1D1E1F"
+                        android:textColorHint="#ffb9b9b9"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:text="身法证号码"
+                        android:paddingHorizontal="20dp"
+                        android:paddingVertical="8dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <EditText
+                        android:gravity="center_horizontal"
+                        android:layout_alignParentRight="true"
+                        android:id="@+id/et_id_card"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
+                        android:background="@color/white"
+                        android:hint="请输入身份证号"
+                        android:paddingHorizontal="20dp"
+                        android:paddingVertical="8dp"
+                        android:textColor="#1D1E1F"
+                        android:textColorHint="#ffb9b9b9"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:text="营业执照编号"
+                        android:paddingHorizontal="20dp"
+                        android:paddingVertical="8dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <EditText
+                        android:gravity="center_horizontal"
+                        android:layout_alignParentRight="true"
+                        android:id="@+id/et_business_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
+                        android:background="@color/white"
+                        android:hint="请输入营业执照编号"
+                        android:paddingHorizontal="20dp"
+                        android:paddingVertical="8dp"
+                        android:textColor="#1D1E1F"
+                        android:textColorHint="#ffb9b9b9"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="1dp"
                     android:background="@color/white"
-                    android:hint="请输入法人身份证号"
                     android:paddingHorizontal="20dp"
                     android:paddingVertical="16dp"
-                    android:textColor="#1D1E1F"
-                    android:textColorHint="#ffb9b9b9"
+                    android:text="身份证信息"
+                    android:textColor="@color/gray_66"
                     android:textSize="14sp" />
-
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="20dp"
                     android:background="@color/white"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="1dp"
-                        android:background="@color/white"
-                        android:paddingHorizontal="20dp"
-                        android:paddingVertical="16dp"
-                        android:text="法人手持身份证照片"
-                        android:textColor="#ff010001"
-                        android:textSize="14sp" />
-
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
                     <RelativeLayout
                         android:id="@+id/rlPositive"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
                         android:layout_height="160dp"
-                        android:layout_marginHorizontal="20dp"
                         android:background="@drawable/bg_camera"
                         android:onClick="doClick">
-
                         <TextView
                             android:id="@+id/ivPositive"
                             android:layout_width="wrap_content"
@@ -463,28 +456,16 @@
                             android:scaleType="fitXY"
                             app:riv_corner_radius="4dp" />
                     </RelativeLayout>
-
                     <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginHorizontal="20dp"
-                        android:layout_marginTop="16dp"
-                        android:background="#EEEEEE" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:orientation="vertical"
-                    android:paddingBottom="16dp">
+                        android:layout_marginHorizontal="2dp"
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"/>
 
                     <RelativeLayout
                         android:id="@+id/rlNegative"
-                        android:layout_width="match_parent"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
                         android:layout_height="160dp"
-                        android:layout_marginHorizontal="20dp"
                         android:background="@drawable/bg_camera"
                         android:onClick="doClick">
 
@@ -508,69 +489,136 @@
                             android:scaleType="fitXY"
                             app:riv_corner_radius="4dp" />
                     </RelativeLayout>
+
                 </LinearLayout>
-
-
                 <LinearLayout
+                    android:paddingHorizontal="20dp"
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <RelativeLayout
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="7dp"
+                        android:id="@+id/botPositive"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="160dp"
+                        android:background="@drawable/bg_camera"
+                        android:onClick="doClick">
+                        <TextView
+                            android:id="@+id/ivPositive_hand"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:drawableTop="@mipmap/ic_camera"
+                            android:drawablePadding="11dp"
+                            android:text="手持身份照"
+                            android:textColor="#ffbdbdbd"
+                            android:textSize="12sp" />
+
+                        <com.netmi.baselibrary.widget.RoundImageView
+                            android:id="@+id/ivPositiveBg_hand"
+                            ivPath="@{handPic}"
+                            android:layout_width="match_parent"
+                            android:layout_height="160dp"
+                            android:layout_gravity="center_vertical"
+                            android:scaleType="fitXY"
+                            app:riv_corner_radius="4dp" />
+                    </RelativeLayout>
+                    <View
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/white"
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="16dp"
+                    android:text="上传营业许可证"
+                    android:textColor="@color/gray_66"
+                    android:textSize="14sp" />
+                <LinearLayout
+                    android:paddingHorizontal="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="1dp"
-                        android:background="@color/white"
-                        android:paddingHorizontal="20dp"
-                        android:paddingVertical="16dp"
-                        android:text="请上传营业执照"
-                        android:textColor="#ffb9b9b9"
-                        android:textSize="14sp" />
+                    android:orientation="horizontal">
 
                     <RelativeLayout
                         android:id="@+id/rl_business_pic"
-                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
+                        android:background="@drawable/bg_camera"
                         android:onClick="doClick">
-
                         <ImageView
+                            android:visibility="gone"
                             android:id="@+id/iv_business"
                             android:layout_width="40dp"
                             android:layout_height="35dp"
                             android:layout_marginLeft="5dp"
                             android:src="@mipmap/ic_uppic" />
-
-                        <com.netmi.baselibrary.widget.RoundImageView
-                            android:id="@+id/iv_business_pic"
-                            ivPath="@{businessPic}"
-                            android:layout_width="40dp"
-                            android:layout_height="35dp"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="5dp"
-                            android:scaleType="fitXY"
-                            app:riv_corner_radius="4dp" />
-
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/iv_business_pic"
-                            android:layout_marginTop="6dp"
-                            android:text="上传图片"
+                            android:layout_centerInParent="true"
+                            android:drawableTop="@mipmap/ic_camera"
+                            android:drawablePadding="11dp"
+                            android:text="营业执照"
                             android:textColor="#ffbdbdbd"
                             android:textSize="12sp" />
+                        <com.netmi.baselibrary.widget.RoundImageView
+                            android:id="@+id/iv_business_pic"
+                            ivPath="@{businessPic}"
+                            android:layout_width="match_parent"
+                            android:layout_height="160dp"
+                            android:layout_gravity="center_vertical"
+                            android:scaleType="fitXY"
+                            app:riv_corner_radius="4dp" />
+                    </RelativeLayout>
+                    <View
+                        android:layout_marginHorizontal="2dp"
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"/>
+                    <RelativeLayout
+                        android:id="@+id/rl_business_two_pic"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_camera"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:onClick="doClick">
+
+                        <TextView
+                            android:id="@+id/iv_business_two"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:drawableTop="@mipmap/ic_camera"
+                            android:drawablePadding="11dp"
+                            android:text="经营许可证"
+                            android:textColor="#ffbdbdbd"
+                            android:textSize="12sp" />
+
+                        <com.netmi.baselibrary.widget.RoundImageView
+                            android:id="@+id/iv_business_two_pic"
+                            ivPath="@{businessTwoPic}"
+                            android:layout_width="match_parent"
+                            android:layout_height="160dp"
+                            android:layout_gravity="center_vertical"
+                            android:scaleType="fitXY"
+                            app:riv_corner_radius="4dp"/>
                     </RelativeLayout>
 
                 </LinearLayout>
-
-
                 <LinearLayout
+                    android:id="@+id/ll_environment_pic"
+                    android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:orientation="vertical">
-
+                    android:layout_height="wrap_content">
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -578,59 +626,106 @@
                         android:background="@color/white"
                         android:paddingHorizontal="20dp"
                         android:paddingVertical="16dp"
-                        android:text="请上传经营许可证"
-                        android:textColor="#ffb9b9b9"
+                        android:text="门店环境照片"
+                        android:textColor="@color/gray_66"
                         android:textSize="14sp" />
-
-                    <RelativeLayout
-                        android:id="@+id/rl_business_two_pic"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:paddingHorizontal="20dp"
+                        android:id="@+id/ll_shop_pic"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:onClick="doClick">
+                        android:background="@color/white"
+                        android:orientation="horizontal">
 
-                        <ImageView
-                            android:id="@+id/iv_business_two"
-                            android:layout_width="40dp"
-                            android:layout_height="35dp"
-                            android:layout_marginLeft="5dp"
-                            android:src="@mipmap/ic_uppic" />
-
-                        <com.netmi.baselibrary.widget.RoundImageView
-                            android:id="@+id/iv_business_two_pic"
-                            ivPath="@{businessTwoPic}"
-                            android:layout_width="40dp"
-                            android:layout_height="35dp"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="5dp"
-                            android:scaleType="fitXY"
-                            app:riv_corner_radius="4dp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
+                        <RelativeLayout
+                            android:id="@+id/rl_shop_pic"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/iv_business_two_pic"
-                            android:layout_marginTop="6dp"
-                            android:text="上传图片"
-                            android:textColor="#ffbdbdbd"
-                            android:textSize="12sp" />
-                    </RelativeLayout>
+                            android:background="@drawable/bg_camera"
+                            android:onClick="doClick">
 
+                            <TextView
+                                android:id="@+id/iv_shop"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:drawableTop="@mipmap/ic_camera"
+                                android:drawablePadding="11dp"
+                                android:text="门店照片"
+                                android:textColor="#ffbdbdbd"
+                                android:textSize="12sp" />
+
+                            <com.netmi.baselibrary.widget.RoundImageView
+                                android:id="@+id/iv_shop_pic"
+                                ivPath="@{shopPic}"
+                                android:layout_width="match_parent"
+                                android:layout_height="160dp"
+                                android:layout_gravity="center_vertical"
+                                android:scaleType="fitXY"
+                                app:riv_corner_radius="4dp" />
+
+                        </RelativeLayout>
+                        <View
+                            android:layout_marginHorizontal="2dp"
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"/>
+                        <RelativeLayout
+                            android:id="@+id/rl_environment_pic"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_camera"
+                            android:onClick="doClick">
+                            <TextView
+                                android:id="@+id/iv_environment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:drawableTop="@mipmap/ic_camera"
+                                android:drawablePadding="11dp"
+                                android:text="店内照片"
+                                android:textColor="#ffbdbdbd"
+                                android:textSize="12sp" />
+                            <com.netmi.baselibrary.widget.RoundImageView
+                                android:id="@+id/iv_environment_pic"
+                                ivPath="@{environmentPic}"
+                                android:layout_width="match_parent"
+                                android:layout_height="160dp"
+                                android:layout_gravity="center_vertical"
+                                android:scaleType="fitXY"
+                                app:riv_corner_radius="4dp" />
+                        </RelativeLayout>
+
+                    </LinearLayout>
                 </LinearLayout>
 
-                <TextView
-                    android:id="@+id/tv_confirm"
+
+
+
+
+
+                <LinearLayout
+                    android:background="@color/white"
+                    android:layout_gravity="center"
+                    android:paddingHorizontal="20dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="20dp"
-                    android:layout_marginVertical="30dp"
-                    android:background="@drawable/baselib_bg_color77b52902"
-                    android:gravity="center"
-                    android:onClick="doClick"
-                    android:paddingVertical="15dp"
-                    android:text="提交"
-                    android:textColor="#ffffffff"
-                    android:textSize="16sp" />
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/tv_confirm"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="20dp"
+                        android:layout_marginVertical="30dp"
+                        android:background="@drawable/baselib_bg_color77b52902"
+                        android:gravity="center"
+                        android:onClick="doClick"
+                        android:paddingVertical="15dp"
+                        android:text="提交"
+                        android:textColor="#ffffffff"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
 
             </LinearLayout>
         </ScrollView>

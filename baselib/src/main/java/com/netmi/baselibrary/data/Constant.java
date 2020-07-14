@@ -24,8 +24,8 @@ public class Constant {
     //正式
     public static final String BASE_API_RELEASE = "http://hb-api.haobeitech.com";
     //测试
-//    public static final String BASE_API_DEBUG = "http://hb-api.haobeitech.com";
-    public static final String BASE_API_DEBUG = "http://api-test.haobeitech.com";
+    public static final String BASE_API_DEBUG = "http://hb-api.haobeitech.com";
+//    public static final String BASE_API_DEBUG = "http://api-test.haobeitech.com";
 
     public static final String BASE_HTML_DEBUG = BASE_API_DEBUG;
 

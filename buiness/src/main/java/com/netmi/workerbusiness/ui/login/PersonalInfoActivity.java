@@ -21,6 +21,7 @@ import com.netmi.baselibrary.data.base.RxSchedulers;
 import com.netmi.baselibrary.data.base.XObserver;
 import com.netmi.baselibrary.data.cache.UserInfoCache;
 import com.netmi.baselibrary.data.entity.BaseData;
+import com.netmi.baselibrary.data.entity.CityChoiceEntity;
 import com.netmi.baselibrary.data.entity.OssConfigureEntity;
 import com.netmi.baselibrary.data.entity.UserInfoEntity;
 import com.netmi.baselibrary.ui.BaseActivity;
@@ -31,8 +32,11 @@ import com.netmi.baselibrary.utils.DateUtil;
 import com.netmi.baselibrary.utils.ImageUploadUtils;
 import com.netmi.baselibrary.utils.InputListenView;
 import com.netmi.baselibrary.utils.JumpUtil;
+import com.netmi.baselibrary.utils.KeyboardUtils;
 import com.netmi.baselibrary.utils.SystemUtil;
 import com.netmi.baselibrary.utils.oss.OssUtils;
+import com.netmi.baselibrary.widget.CityPickerView;
+import com.netmi.baselibrary.widget.MLoadingDialog;
 import com.netmi.workerbusiness.R;
 import com.netmi.workerbusiness.data.api.LoginApi;
 import com.netmi.workerbusiness.data.entity.mine.ShopInfoEntity;
@@ -67,7 +71,9 @@ public class PersonalInfoActivity extends BaseActivity<ActivityPersonalInfoBindi
     private static final int REQUEST_OPEN_ALBUM_POSITIVE = 1002;
     //身份证反面
     private static final int REQUEST_OPEN_ALBUM_NEGATIVE = 1003;
-    //门店图片
+    //手持身份证
+    private static final int REQUEST_OPEN_ALBUM_HAND = 1011;
+    //门店图片http://oss-cn-beijing.aliyuncs.com
     private static final int REQUEST_OPEN_ALBUM_SHOP_PIC = 1004;
     //环境图片
     private static final int REQUEST_OPEN_ALBUM_ENVIRONMENT_PIC = 1005;
@@ -98,6 +104,8 @@ public class PersonalInfoActivity extends BaseActivity<ActivityPersonalInfoBindi
     private String positiveUrl;
     //身份证反面图片
     private String negativeUrl;
+    //手持身份证图片
+    private String handtiveUrl;
     //门店图片
     private String shop_pic;
     //环境图片
@@ -116,6 +124,8 @@ public class PersonalInfoActivity extends BaseActivity<ActivityPersonalInfoBindi
     //线上线下店铺选择页面传进来的type
     private String user_type_event = "0"; //1线上  2线下
 
+    private CityPickerView cityPickerView;
+
     @Override
     protected int getContentView() {
         return R.layout.activity_personal_info;
@@ -123,7 +133,7 @@ public class PersonalInfoActivity extends BaseActivity<ActivityPersonalInfoBindi
 
     @Override
     protected void initUI() {
-        getTvTitle().setText("商家入驻");
+        getTvTitle().setText("实体商家");
         new InputListenView(mBinding.tvConfirm, mBinding.etShopName, mBinding.etName, mBinding.etIdCard) {
 
         };
@@ -167,7 +177,11 @@ public class PersonalInfoActivity extends BaseActivity<ActivityPersonalInfoBindi
 
     @Override
     protected void initData() {
+
+        cityPickerView = new CityPickerView(this);
         doInitOssConfigure();
+        //请求省市级
+        doGetProvince();
     }
 
     @Override
@@ -182,6 +196,8 @@ public class PersonalInfoActivity extends BaseActivity<ActivityPersonalInfoBindi
             code = REQUEST_OPEN_ALBUM_POSITIVE;
         } else if (id == R.id.rlNegative) {
             code = REQUEST_OPEN_ALBUM_NEGATIVE;
+        } else if (id == R.id.botPositive) {
+            code = REQUEST_OPEN_ALBUM_HAND;
         } else if (id == R.id.rl_shop_pic) {
             code = REQUEST_OPEN_ALBUM_SHOP_PIC;
         } else if (id == R.id.rl_environment_pic) {
@@ -196,14 +212,20 @@ public class PersonalInfoActivity extends BaseActivity<ActivityPersonalInfoBindi
             if (!SystemUtil.isFastDoubleClick()) {
                 check();
             }
-        } else if (id == R.id.ll_remark) {
+        }
+        else if (id == R.id.ll_remark) {
             JumpUtil.startForResult(this, StoreRemarkActivity.class, REQUEST_CHANGE_REMARK, args);
-        } else if (id == R.id.ll_time_choose) {
+        }
+        else if (id == R.id.ll_time_choose) {
             showTimePicker();
         } else if (id == R.id.ll_location) {
 //            JumpUtil.overlay(getContext(), LocationActivity.class, args);
             JumpUtil.overlay(getContext(), BaiduMapActivity.class);
-        } else if (id == R.id.ll_category) {
+        } else if(id == R.id.ll_location_city){
+            startSelect(view);
+        }
+
+        else if (id == R.id.ll_category) {
             args.putString(JumpUtil.TYPE, user_type_event);
             JumpUtil.startForResult(this, CategoryVerifyActivity.class, REQUEST_CATEGORY, args);
         }
@@ -237,6 +259,31 @@ public class PersonalInfoActivity extends BaseActivity<ActivityPersonalInfoBindi
         }
     }
 
+    //地区选择
+    public void startSelect(View view){
+        if (!cityPickerView.getProvinceList().isEmpty()) {
+            KeyboardUtils.hideKeyboard(view);
+            cityPickerView.show((int options1, int option2, int options3, View v) -> {
+                StringBuilder builder = new StringBuilder();
+                if (cityPickerView.getChoiceProvince() != null) {
+                    builder.append(cityPickerView.getChoiceProvince().getName());
+                }
+                if (cityPickerView.getChoiceCity() != null) {
+                    builder.append("-").append(cityPickerView.getChoiceCity().getName());
+                }
+                if (cityPickerView.getChoiceArea() != null) {
+                    builder.append("-").append(cityPickerView.getChoiceArea().getName());
+                }
+                mBinding.tvAddressCity.setText(builder.toString());
+            });
+        } else {
+            //城市加载中
+            showProgress("");
+            if (loadProvinceError)
+                doGetProvince();
+        }
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -253,7 +300,13 @@ public class PersonalInfoActivity extends BaseActivity<ActivityPersonalInfoBindi
 
                     mBinding.setIdBottom(negativeUrl);
                     mBinding.ivNegative.setVisibility(View.INVISIBLE);
-                } else if (currentCode == REQUEST_OPEN_ALBUM_SHOP_PIC) {
+                } else if (currentCode == REQUEST_OPEN_ALBUM_HAND) {
+                    handtiveUrl = urls.get(0);
+
+                    mBinding.setHandPic(handtiveUrl);
+                    mBinding.ivPositiveHand.setVisibility(View.INVISIBLE);
+                }
+                else if (currentCode == REQUEST_OPEN_ALBUM_SHOP_PIC) {
                     shop_pic = urls.get(0);
 
                     mBinding.setShopPic(shop_pic);
@@ -301,10 +354,13 @@ public class PersonalInfoActivity extends BaseActivity<ActivityPersonalInfoBindi
         shopName = mBinding.etShopName.getText().toString();
         real_name = mBinding.etName.getText().toString();
         idCard = mBinding.etIdCard.getText().toString();
+//        remark = mBinding.etMerchantContent().getText().toString();
 
         if (TextUtils.isEmpty(shopName)) {
             showError("请输入店铺名称");
-        } else if (TextUtils.isEmpty(real_name)) {
+        } else if(TextUtils.isEmpty(remark)){
+            showError("请输入商家简介");
+        }else if (TextUtils.isEmpty(real_name)) {
             showError("请输入法人姓名");
         } else if (TextUtils.isEmpty(idCard)) {
             showError("请输入法人身份证号");
@@ -396,16 +452,16 @@ public class PersonalInfoActivity extends BaseActivity<ActivityPersonalInfoBindi
                     public void onSuccess(BaseData<UserInfoEntity> data) {
                         Log.e("weng2", user_type_event);
                         if (user_type_event.equals("1")) {
-                            mBinding.llShopPic.setVisibility(View.GONE);
+//                            mBinding.llShopPic.setVisibility(View.GONE);
                             mBinding.llEnvironmentPic.setVisibility(View.GONE);
-                            mBinding.llRemark.setVisibility(View.GONE);
+//                            mBinding.llRemark.setVisibility(View.GONE);
                             mBinding.llTimeChoose.setVisibility(View.GONE);
                             mBinding.llLocation.setVisibility(View.GONE);
                         } else if (user_type_event.equals("0")) {
                             if (data.getData().getShop_user_type().equals("1")) {//	用户选择商户类型 0:未选择类型 1:线上 2:线下
-                                mBinding.llShopPic.setVisibility(View.GONE);
+//                                mBinding.llShopPic.setVisibility(View.GONE);
                                 mBinding.llEnvironmentPic.setVisibility(View.GONE);
-                                mBinding.llRemark.setVisibility(View.GONE);
+//                                mBinding.llRemark.setVisibility(View.GONE);
                                 mBinding.llTimeChoose.setVisibility(View.GONE);
                                 mBinding.llLocation.setVisibility(View.GONE);
                             }
@@ -472,6 +528,40 @@ public class PersonalInfoActivity extends BaseActivity<ActivityPersonalInfoBindi
         }
         pickerTimeViewTwo.setDate(DateUtil.getCalendar(date));
         pickerTimeViewTwo.show();
+    }
+    //加载失败后， 点击可再次加载
+    private boolean loadProvinceError = false;
+    //加载省市区
+    private void doGetProvince() {
+        RetrofitApiFactory.createApi(CommonApi.class)
+                .listCity(1)
+                .compose(RxSchedulers.compose())
+                .compose((this).bindUntilEvent(ActivityEvent.DESTROY))
+                .subscribe(new XObserver<BaseData<List<CityChoiceEntity>>>(this) {
+
+                    @Override
+                    public void onSuccess(BaseData<List<CityChoiceEntity>> data) {
+                        //组装数据
+                        cityPickerView.loadCityData(data);
+                        if (MLoadingDialog.isShow()) {
+                            hideProgress();
+                            mBinding.llLocationCity.performClick();
+                        }
+                    }
+
+                    @Override
+                    protected void onError(ApiException ex) {
+                        showError(ex.getMessage());
+                        loadProvinceError = true;
+                    }
+
+                    @Override
+                    public void onFail(BaseData<List<CityChoiceEntity>> data) {
+                        super.onFail(data);
+                        loadProvinceError = true;
+                    }
+
+                });
     }
 
 }
