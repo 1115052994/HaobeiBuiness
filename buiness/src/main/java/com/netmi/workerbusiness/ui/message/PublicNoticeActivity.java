@@ -179,7 +179,6 @@ public class PublicNoticeActivity extends BaseXRecyclerActivity<ActivityPublicNo
 
     @Override
     protected void doListData() {
-
         RetrofitApiFactory.createApi(MessApi.class)
                 .getNotice(new Integer[]{type}, String.valueOf(PageUtil.toPage(startPage)), "10")
                 .compose(RxSchedulers.compose())

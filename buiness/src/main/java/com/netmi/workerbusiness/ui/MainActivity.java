@@ -25,6 +25,7 @@ import com.netmi.baselibrary.data.entity.OssConfigureEntity;
 import com.netmi.baselibrary.ui.MApplication;
 import com.netmi.baselibrary.utils.Densitys;
 import com.netmi.baselibrary.utils.JumpUtil;
+import com.netmi.baselibrary.utils.dialog.MessagesHintDialog;
 import com.netmi.baselibrary.utils.oss.OssUtils;
 import com.netmi.workerbusiness.R;
 import com.netmi.workerbusiness.data.NotifyEvent;
@@ -120,8 +121,8 @@ public class MainActivity extends BaseMainActivity<ActivityMainBinding> {
         if (TextUtils.equals(tag, MainFragment.TAG)) {
             if (!UserInfoCache.get().getShop_apply_status().equals("2")) {
                 if (UserInfoCache.get().getShop_apply_status().equals("1")) {
-                    showTipsDialog("您的信息正在认证中，请通过认证后再次操作，如有问题请联系管理员" + TelCache.get(),
-                            "确定");
+                    showTipsDialog("你的信息正在审核中，请通过审核后再次操作，如有问题请联系\n平台客服" + TelCache.get(),
+                            "确定","提示");
                 }
                 return true;
 //            } else if (!UserInfoCache.get().getShop_pay_status().equals("2")) {
@@ -138,8 +139,8 @@ public class MainActivity extends BaseMainActivity<ActivityMainBinding> {
         } else if (TextUtils.equals(tag, CodeFragment.TAG)) {
             if (!UserInfoCache.get().getShop_apply_status().equals("2")) {
                 if (UserInfoCache.get().getShop_apply_status().equals("1")) {
-                    showTipsDialog("您的信息正在认证中，请通过认证后再次操作，如有问题请联系管理员" + TelCache.get(),
-                            "确定");
+                    showTipsDialog("你的信息正在审核中，请通过审核后再次操作，如有问题请联系\n平台客服" + TelCache.get(),
+                            "确定","提示");
                 }
                 return true;
 //            } else if (!UserInfoCache.get().getShop_pay_status().equals("2")) {
@@ -156,8 +157,8 @@ public class MainActivity extends BaseMainActivity<ActivityMainBinding> {
         } else if (TextUtils.equals(tag, MessageFragment.TAG)) {
             if (!UserInfoCache.get().getShop_apply_status().equals("2")) {
                 if (UserInfoCache.get().getShop_apply_status().equals("1")) {
-                    showTipsDialog("您的信息正在认证中，请通过认证后再次操作，如有问题请联系管理员" + TelCache.get(),
-                            "确定");
+                    showTipsDialog("你的信息正在审核中，请通过审核后再次操作，如有问题请联系\n平台客服" + TelCache.get(),
+                            "确定","提示");
                 }
                 return true;
 //            } else if (!UserInfoCache.get().getShop_pay_status().equals("2")) {
@@ -189,6 +190,7 @@ public class MainActivity extends BaseMainActivity<ActivityMainBinding> {
                         OssUtils.initConfigure(data.getData());
                     }
                 });
+
     }
 
     private void doGetShopInfo() {
@@ -220,10 +222,13 @@ public class MainActivity extends BaseMainActivity<ActivityMainBinding> {
     }
 
     //提示确认弹窗
-    private void showTipsDialog(String content, String confirmText) {
+    private void showTipsDialog(String content, String confirmText,String dialogTitle) {
         final DialogMineTipsBinding binding = DataBindingUtil.inflate(LayoutInflater.from(getContext()), R.layout.dialog_mine_tips, null, false);
         if (!TextUtils.isEmpty(confirmText)) {
             binding.tvConfirm.setText(confirmText);
+        }
+        if (!TextUtils.isEmpty(dialogTitle)) {
+            binding.tvHintDialogTips.setText(dialogTitle);
         }
         if (!TextUtils.isEmpty(content)) {
             binding.tvContent.setText(content);
@@ -244,8 +249,10 @@ public class MainActivity extends BaseMainActivity<ActivityMainBinding> {
                 args.putInt(JumpUtil.TYPE, 1);
                 JumpUtil.overlay(getContext(), RenewalFeeActivity.class, args);
             }
-            if (TextUtils.equals(confirmText, "去认证")) {
+            if (TextUtils.equals(confirmText, "去提交")) {
                 JumpUtil.overlay(getContext(), PersonalInfoActivity.class);
+            }else if (TextUtils.equals(confirmText, "前往运营台")) {
+                mBinding.rbHome.setChecked(true);
             }
         });
 

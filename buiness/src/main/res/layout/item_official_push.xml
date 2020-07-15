@@ -48,8 +48,8 @@
 
                 <ImageView
                     android:id="@+id/iv_logo"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp" />
+                    android:layout_width="@dimen/dp_36"
+                    android:layout_height="@dimen/dp_36" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -61,7 +61,7 @@
                     android:text="@{item.title}"
                     android:textColor="#333333"
                     android:textSize="16sp"
-                    tools:text="新公告" />
+                    tools:text="你有一笔新的订单" />
 
             </LinearLayout>
 
@@ -73,7 +73,7 @@
                 android:layout_marginLeft="14dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="15dp"
-                android:text="@{item.remark}"
+                android:text="@{item.title}"
                 android:textColor="#ff666666"
                 android:textSize="14sp"
                 tools:text="恭喜您，有一笔活动补贴入账99元。" />
@@ -97,8 +97,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="14dp"
                     android:text="查看详情"
-                    android:textColor="#ff999999"
-                    android:textSize="12sp" />
+                    android:textColor="#007AFF"
+                    android:textSize="14sp" />
 
                 <View
                     android:layout_width="0dp"

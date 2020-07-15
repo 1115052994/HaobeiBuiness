@@ -12,6 +12,7 @@
         <variable
             name="model"
             type="com.netmi.workerbusiness.data.entity.mine.ShopInfoEntity" />
+
     </data>
 
     <android.support.v4.widget.SwipeRefreshLayout
@@ -29,7 +30,7 @@
                 android:id="@+id/rl_title_bar"
                 android:layout_width="match_parent"
                 android:layout_height="68dp"
-                android:background="#F2F2F2"
+                android:background="@color/white"
                 android:paddingTop="24dp">
 
                 <LinearLayout
@@ -65,30 +66,32 @@
                     android:transitionName="@string/transition_title_name" />
 
                 <TextView
+                    android:text="客服"
                     android:id="@+id/tv_setting"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_alignParentRight="true"
-                    android:layout_marginRight="15dp"
+                    android:layout_marginRight="21dp"
                     android:gravity="center"
                     android:onClick="doClick"
-                    android:textColor="#353535"
+                    android:textColor="#1F1F1F"
                     android:textSize="15sp" />
 
 
             </RelativeLayout>
 
             <RelativeLayout
+                android:paddingBottom="7dp"
+                android:layout_marginTop="4dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="15dp"
                 android:background="@drawable/bg_radius_4dp_ffffff">
 
                 <ImageView
                     android:id="@+id/iv_img"
                     civPath="@{model.logo_url}"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
                     android:layout_marginVertical="15dp"
                     android:layout_marginLeft="20dp" />
 
@@ -119,30 +122,41 @@
                     android:textColor="#ffffffff"
                     android:textSize="8sp"
                     tools:text="认证中" />
-
                 <TextView
-                    android:id="@+id/tv_id"
+                    android:id="@+id/tv_phone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tv_name"
                     android:layout_marginLeft="8dp"
                     android:layout_marginTop="1dp"
                     android:layout_toRightOf="@id/iv_img"
-                    android:textColor="#ff1f1f1f"
+                    android:textColor="#ff6e6e6e"
                     android:textSize="12sp"
-                    tools:text="邀请码:111111" />
-
+                    tools:text="店铺账号 ：15088666483" />
                 <TextView
-                    android:id="@+id/tv_phone"
+                    android:id="@+id/tv_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/tv_id"
+                    android:layout_below="@id/tv_phone"
                     android:layout_marginLeft="8dp"
                     android:layout_marginTop="1dp"
                     android:layout_toRightOf="@id/iv_img"
                     android:textColor="#ff6e6e6e"
                     android:textSize="12sp"
-                    tools:text="绑定手机号:151*****211" />
+                    tools:text="邀请码:111111" />
+                <TextView
+                    android:id="@+id/tv_copy"
+                    android:background="@drawable/bg_radius_1dp_999999"
+                    android:layout_below="@id/tv_phone"
+                    android:layout_marginLeft="40dp"
+                    android:layout_toRightOf="@+id/tv_id"
+                    android:paddingVertical="2dp"
+                    android:paddingHorizontal="4dp"
+                    android:textSize="9dp"
+                    android:text="复制"
+                    android:onClick="@{doClick}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
 
                 <TextView
                     android:id="@+id/tv_expire_time"
@@ -158,15 +172,19 @@
                     android:visibility="gone"
                     tools:text="到期时间：2020/3/3" />
 
-                <ImageView
+                <TextView
+                    android:layout_marginRight="21dp"
                     android:id="@+id/iv_edit_info"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_radius_1dp_999999"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
+                    android:paddingVertical="2dp"
+                    android:paddingHorizontal="4dp"
+                    android:textSize="9dp"
+                    android:text="编辑"
                     android:onClick="@{doClick}"
-                    android:padding="20dp"
-                    android:src="@mipmap/ic_edit" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
             </RelativeLayout>
 
             <LinearLayout
@@ -209,21 +227,20 @@
                 android:id="@+id/ll_wallet"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="15dp"
                 android:layout_marginTop="12dp"
                 android:background="@color/white"
                 android:gravity="center_vertical"
                 android:onClick="@{doClick}"
                 android:orientation="horizontal"
                 android:paddingHorizontal="20dp"
-                android:paddingVertical="16dp">
+                android:paddingVertical="8dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
-                    android:text="钱包"
-                    android:textColor="#ff4b545c"
+                    android:text="我的钱包"
+                    android:textColor="#1D1E1F"
                     android:textSize="14sp" />
 
                 <View
@@ -231,10 +248,71 @@
                     android:layout_height="0dp"
                     android:layout_weight="1" />
 
-                <ImageView
+                <TextView
+                    android:text="进入我的钱包"
+                    android:drawableRight="@mipmap/ic_right_gray"
                     android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <View
+                android:background="@color/gray_EE"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+            <LinearLayout
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:paddingBottom="@dimen/dp_17"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/ic_right_gray" />
+                    android:layout_weight="1">
+                    <TextView
+                        android:layout_marginTop="16dp"
+                        android:textColor="#1F1F1F"
+                        android:text="余额"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/tv_mine_balance"
+                        android:layout_marginTop="9dp"
+                        android:textColor="#D81E06"
+                        android:text="￥1512.00"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/tv_wait_one"
+                        android:layout_marginTop="10dp"
+                        android:textSize="9dp"
+                        android:text="待结算：354.00"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_marginTop="16dp"
+                        android:textColor="#1F1F1F"
+                        android:text="海贝综合价值"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/tv_haibei_balance"
+                        android:layout_marginTop="10dp"
+                        android:textColor="#D81E06"
+                        android:text="151366≈150元"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -273,7 +351,6 @@
                 android:id="@+id/ll_rule"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="15dp"
                 android:layout_marginTop="12dp"
                 android:background="@color/white"
                 android:gravity="center_vertical"
@@ -304,7 +381,6 @@
                 android:id="@+id/ll_setting"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="15dp"
                 android:layout_marginTop="12dp"
                 android:background="@color/white"
                 android:gravity="center_vertical"
@@ -331,13 +407,16 @@
                     android:src="@mipmap/ic_right_gray" />
             </LinearLayout>
 
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="30dp"
                 android:gravity="center"
-                android:text="有问题请联系客服"
+                android:text="技术问题请联系平台客服"
                 android:textColor="#ff333333"
                 android:textSize="12sp" />
 
@@ -350,6 +429,7 @@
                 android:text="@{model.shop_admin_tel}"
                 android:textColor="#ff333333"
                 android:textSize="12sp"
+                android:layout_marginBottom="20dp"
                 tools:text="13211111115" />
         </LinearLayout>
     </android.support.v4.widget.SwipeRefreshLayout>

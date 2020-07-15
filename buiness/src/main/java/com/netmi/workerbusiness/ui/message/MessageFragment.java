@@ -1,6 +1,8 @@
 package com.netmi.workerbusiness.ui.message;
 
+import android.databinding.ViewDataBinding;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 import android.widget.TextView;
 
@@ -12,16 +14,33 @@ import com.netmi.baselibrary.data.base.XObserver;
 import com.netmi.baselibrary.data.entity.BaseData;
 import com.netmi.baselibrary.data.entity.PageEntity;
 import com.netmi.baselibrary.ui.BaseFragment;
+import com.netmi.baselibrary.ui.BaseRViewAdapter;
+import com.netmi.baselibrary.ui.BaseViewHolder;
+import com.netmi.baselibrary.ui.BaseWebviewActivity;
+import com.netmi.baselibrary.ui.BaseXRecyclerFragment;
 import com.netmi.baselibrary.ui.MApplication;
+import com.netmi.baselibrary.utils.AppUtils;
 import com.netmi.baselibrary.utils.JumpUtil;
+import com.netmi.baselibrary.utils.PageUtil;
 import com.netmi.baselibrary.utils.ToastUtils;
+import com.netmi.baselibrary.widget.MyXRecyclerView;
 import com.netmi.workerbusiness.R;
 import com.netmi.workerbusiness.data.api.MessApi;
 import com.netmi.workerbusiness.data.entity.mess.PublicNoticeEntity;
 import com.netmi.workerbusiness.databinding.FragmentMessageBinding;
+import com.netmi.workerbusiness.databinding.ItemOfficialPushBinding;
+import com.netmi.workerbusiness.ui.home.offline.OfflineOrderDetailActivity;
+import com.netmi.workerbusiness.ui.home.online.LineOrderDetailActivity;
+import com.trello.rxlifecycle2.android.ActivityEvent;
 import com.trello.rxlifecycle2.android.FragmentEvent;
 
 import io.reactivex.annotations.NonNull;
+
+import static com.netmi.baselibrary.ui.BaseWebviewActivity.WEBVIEW_CONTENT;
+import static com.netmi.baselibrary.ui.BaseWebviewActivity.WEBVIEW_TITLE;
+import static com.netmi.baselibrary.ui.BaseWebviewActivity.WEBVIEW_TYPE;
+import static com.netmi.baselibrary.ui.BaseWebviewActivity.WEBVIEW_TYPE_CONTENT;
+import static com.netmi.baselibrary.ui.BaseWebviewActivity.WEBVIEW_TYPE_URL;
 
 /**
  * 类描述：
@@ -29,9 +48,9 @@ import io.reactivex.annotations.NonNull;
  * 创建时间：2019/8/29
  * 修改备注：
  */
-public class MessageFragment extends BaseFragment<FragmentMessageBinding> {
+public class MessageFragment extends BaseXRecyclerFragment<FragmentMessageBinding,PublicNoticeEntity> {
     public static final String TAG = MessageFragment.class.getName();
-
+    protected MyXRecyclerView xRecyclerView;
 
     @Override
     protected int getContentView() {
@@ -43,16 +62,32 @@ public class MessageFragment extends BaseFragment<FragmentMessageBinding> {
         initImmersionBar();
         ((TextView) mBinding.getRoot().findViewById(R.id.tv_title)).setText("消息");
         mBinding.setDoClick(this);
-        mBinding.refreshView.setOnRefreshListener(this::onRefresh);
+        initRecyclerView();
     }
+
 
     @Override
     protected void initData() {
+        xRecyclerView.refresh();
     }
 
     public void onRefresh() {
         NoReadNum();
-        mBinding.refreshView.setRefreshing(false);
+        xRecyclerView.refreshComplete();
+    }
+
+    @Override
+    protected void doListData() {
+        RetrofitApiFactory.createApi(MessApi.class)
+                .getNotice(new Integer[]{2}, String.valueOf(PageUtil.toPage(startPage)), "10")
+                .compose(RxSchedulers.compose())
+                .compose((this).bindUntilEvent(FragmentEvent.DESTROY))
+                .subscribe(new XObserver<BaseData<PageEntity<PublicNoticeEntity>>>() {
+                    @Override
+                    public void onSuccess(@NonNull BaseData<PageEntity<PublicNoticeEntity>> data) {
+                        showData(data.getData());
+                    }
+                });
     }
 
     @Override
@@ -187,6 +222,65 @@ public class MessageFragment extends BaseFragment<FragmentMessageBinding> {
                     }
                 });
 
+    }
+    private void initRecyclerView() {
+        xRecyclerView = mBinding.xrvData;
+        xRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        xRecyclerView.setPullRefreshEnabled(true);
+        xRecyclerView.setLoadingMoreEnabled(true);
+        xRecyclerView.setLoadingListener(this);
+        adapter = new BaseRViewAdapter<PublicNoticeEntity, BaseViewHolder>(getContext()) {
+
+            @Override
+            public int layoutResId(int viewType) {
+                return R.layout.item_official_push;
+            }
+
+            @Override
+            public BaseViewHolder holderInstance(final ViewDataBinding binding) {
+                return new BaseViewHolder<PublicNoticeEntity>(binding) {
+                    @Override
+                    public void bindData(PublicNoticeEntity item) {
+                        PublicNoticeEntity entity = items.get(position);
+                        super.bindData(item);//不能删
+                        ItemOfficialPushBinding itemOfficialPushBinding = (ItemOfficialPushBinding) binding;
+                        itemOfficialPushBinding.ivLogo.setImageResource(R.mipmap.ic_system_notice);
+                    }
+
+                    @Override
+                    public void doClick(View view) {
+                        PublicNoticeEntity entity = items.get(position);
+                        read(entity.getNotice_id());
+                        super.doClick(view);
+                        if (entity.getLink_type().equals("4")) {
+                            Bundle bundle = new Bundle();
+                            if (entity.getOrder_type().equals("11")) {//* order_type :  "11", //0表示普通消息；11表示线下订单消息
+                                bundle.putString(JumpUtil.ID, entity.getParam());
+                                JumpUtil.overlay(getActivity(), OfflineOrderDetailActivity.class, bundle);
+                            } else {
+                                bundle.putInt(LineOrderDetailActivity.ORDER_DETAILS_ID, Integer.valueOf(entity.getParam()));
+                                JumpUtil.overlay(getActivity(), LineOrderDetailActivity.class, bundle);
+                            }
+                        }
+                        xRecyclerView.refresh();
+                    }
+                };
+            }
+        };
+        xRecyclerView.setAdapter(adapter);
+    }
+
+    private void read(String notice_id) {
+        RetrofitApiFactory.createApi(MessApi.class)
+                .read(notice_id)
+                .compose(RxSchedulers.compose())
+                .compose((this).bindUntilEvent(FragmentEvent.DESTROY))
+                .subscribe(new XObserver<BaseData>() {
+                    @Override
+                    public void onSuccess(@NonNull BaseData data) {
+                        xRecyclerView.refresh();
+                    }
+                });
     }
 
 

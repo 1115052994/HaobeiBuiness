@@ -10,14 +10,17 @@ import com.liemi.basemall.ui.personal.digitalasset.QRCodeScanActivity;
 import com.netmi.baselibrary.data.base.RetrofitApiFactory;
 import com.netmi.baselibrary.data.base.RxSchedulers;
 import com.netmi.baselibrary.data.base.XObserver;
+import com.netmi.baselibrary.data.cache.UserInfoCache;
 import com.netmi.baselibrary.data.entity.BaseData;
 import com.netmi.baselibrary.ui.BaseFragment;
 import com.netmi.baselibrary.utils.JumpUtil;
 import com.netmi.workerbusiness.R;
 import com.netmi.workerbusiness.data.api.AfterSaleApi;
 import com.netmi.workerbusiness.data.api.LoginApi;
+import com.netmi.workerbusiness.data.api.MineApi;
 import com.netmi.workerbusiness.data.api.OfflineGoodApi;
 import com.netmi.workerbusiness.data.api.VipParam;
+import com.netmi.workerbusiness.data.cache.TelCache;
 import com.netmi.workerbusiness.data.entity.home.AfterSaleDataEntity;
 import com.netmi.workerbusiness.data.entity.home.BusinessOverviewEntity;
 import com.netmi.workerbusiness.data.entity.home.LineOrderDataEntity;
@@ -115,13 +118,15 @@ public class MainFragment extends BaseFragment<FragmentMainBinding> {
         } else if (id == R.id.tv_return) {    //退货
             args.putInt(JumpUtil.TYPE, RETURN);
             JumpUtil.overlay(getContext(), AfterSalesActivity.class, args);
-        } else if (id == R.id.tv_refund) {    //退款
-            args.putInt(JumpUtil.TYPE, REFUND);
-            JumpUtil.overlay(getContext(), AfterSalesActivity.class, args);
-            /**
-             *商品管理
-             * */
-        } else if (id == R.id.tv_line_commodity_list) {
+        }
+//        else if (id == R.id.tv_refund) {    //退款
+//            args.putInt(JumpUtil.TYPE, REFUND);
+//            JumpUtil.overlay(getContext(), AfterSalesActivity.class, args);
+//            /**
+//             *商品管理
+//             * */
+//        }
+        else if (id == R.id.tv_line_commodity_list||id == R.id.tv_line_commodity_list2) {
             if(shop_user_type==1){
                 //线上商品列表
                 JumpUtil.overlay(getContext(), LineCommodityListActivity.class);
@@ -140,22 +145,22 @@ public class MainFragment extends BaseFragment<FragmentMainBinding> {
             /**
              *其他
              * */
-        } else if (id == R.id.tv_coupon) {    //优惠券
+        } else if (id == R.id.tv_coupon || id == R.id.tv_coupon2) {    //优惠券
             JumpUtil.overlay(getContext(), CouponActivity.class);
-        } else if (id == R.id.tv_financial_statements) {  //财务报表
+        } else if (id == R.id.tv_financial_statements || id == R.id.tv_financial_statements2) {  //财务报表
             args.putInt(JumpUtil.TYPE, shop_user_type);
             JumpUtil.overlay(getContext(), FinancialStatementsActivity.class, args);
-        } else if (id == R.id.tv_team_manage) {  //团队管理
+        } else if (id == R.id.tv_team_manage || id == R.id.tv_team_manage2) {  //团队管理
             JumpUtil.overlay(getContext(), TeamActivity.class);
-        } else if (id == R.id.tv_haibei_home) {  //海贝之家
+        } else if (id == R.id.tv_haibei_home || id == R.id.tv_haibei_home2) {  //海贝之家
 //            JumpUtil.overlay(getContext(), HaibeiHomeActivity.class);
             //该页面同步用户端图表数据
             JumpUtil.overlay(getContext(), HaibeiSpareActivity.class);
-        } else if (id == R.id.tv_merchant_loan) { //商家贷
+        } else if (id == R.id.tv_merchant_loan || id == R.id.tv_merchant_loan2) { //商家贷
             JumpUtil.overlay(getContext(), MerchantLoanActivity.class);
         } else if (id == R.id.tv_live) { //商家直播
             showError("敬请期待");
-        } else if (id == R.id.tv_invite_friend) { //邀请好友
+        } else if (id == R.id.tv_invite_friend || id == R.id.tv_invite_friend2) { //邀请好友
             //1:邀请好友海报接口 2:获取店铺分享海报 3:分享收益海报
             JumpUtil.overlay(getContext(), VIPShareActivity.class,
                     VipParam.shareType, "1", VipParam.title, getString(R.string.sharemall_vip_invite_friend));
@@ -203,27 +208,8 @@ public class MainFragment extends BaseFragment<FragmentMainBinding> {
         //1:线上 2:线下 3:线上+线下
         if (shop_user_type == 1) {
             mBinding.tvSetting.setVisibility(View.GONE);
-            mBinding.llOfflineOrder.setVisibility(View.GONE);
-            mBinding.tvOutlineCommodityList.setVisibility(View.GONE);
-            mBinding.view.setVisibility(View.VISIBLE);
-            mBinding.llOutline.setVisibility(View.GONE);
-            mBinding.llOutlineCommodityNum.setVisibility(View.GONE);
-        } else if (shop_user_type == 2) {
             mBinding.llLineOrder.setVisibility(View.GONE);
-            mBinding.tvLineCommodityList.setVisibility(View.GONE);
-            mBinding.view.setVisibility(View.VISIBLE);
-            mBinding.view2.setVisibility(View.VISIBLE);
-            mBinding.view3.setVisibility(View.VISIBLE);
-            mBinding.view4.setVisibility(View.VISIBLE);//邀请好友
-            mBinding.tvInviteFriend.setVisibility(View.GONE);
-            mBinding.empty.setVisibility(View.VISIBLE);
-
-            mBinding.llLine.setVisibility(View.GONE);
-            mBinding.llLineCommodityNum.setVisibility(View.GONE);
-
-            mBinding.tvPostageEditor.setVisibility(View.GONE);
-            mBinding.tvSpecification.setVisibility(View.GONE);
-            mBinding.tvCoupon.setVisibility(View.GONE);
+        } else if (shop_user_type == 2) {
             mBinding.llAfterSale.setVisibility(View.GONE);
         }
     }
@@ -298,6 +284,26 @@ public class MainFragment extends BaseFragment<FragmentMainBinding> {
                         setUI();
                         if (shop_apply_status != 1) {
                             doGetBusiness();
+                        }
+                    }
+                });
+
+
+        //只要一个头像的接口
+        RetrofitApiFactory.createApi(MineApi.class)
+                .shopInfo("")
+                .compose(RxSchedulers.compose())
+                .compose((this).bindUntilEvent(FragmentEvent.DESTROY))
+                .subscribe(new XObserver<BaseData<ShopInfoEntity>>() {
+                    @Override
+                    public void onSuccess(BaseData<ShopInfoEntity> data) {
+                        mBinding.setModel2(data.getData());
+                    }
+
+                    @Override
+                    public void onFail(BaseData<ShopInfoEntity> data) {
+                        if (data.getErrcode() == 20001) {
+                            showError(data.getErrmsg());
                         }
                     }
                 });

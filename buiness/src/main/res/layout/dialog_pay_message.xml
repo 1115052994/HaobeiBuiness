@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?><!--绑定手机号的dialog-->
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <data>
+
+        <variable
+            name="click"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="270dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/bg_radius_8dp_solid_white"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+
+            <LinearLayout
+                android:paddingVertical="16dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textSize="16dp"
+                    android:textColor="#333333"
+                    android:text="姓名"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:textSize="16dp"
+                    android:layout_marginLeft="7dp"
+                    android:hint="请输入姓名"
+                    android:background="@null"
+                    android:layout_width="135dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:paddingBottom="16dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textSize="16dp"
+                    android:textColor="#333333"
+                    android:text="账号"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:textSize="16dp"
+                    android:layout_marginLeft="7dp"
+                    android:hint="请输入支付宝账号"
+                    android:background="@null"
+                    android:layout_width="135dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <include layout="@layout/base_line"
+                android:layout_height="1dp"
+                android:layout_width="match_parent" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+                <TextView
+                    android:id="@+id/text_i_can"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/password_error_cancel"
+                    android:textColor="@color/gray_99"
+                    android:gravity="center"
+                    android:onClick="@{click::onClick}"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+                <include layout="@layout/base_line"
+                    android:layout_height="match_parent"
+                    android:layout_width="1dp" />
+                <TextView
+                    android:id="@+id/text_i_con"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/password_error_confirm"
+                    android:textColor="@color/red_108EE9"
+                    android:gravity="center"
+                    android:onClick="@{click::onClick}"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</layout>

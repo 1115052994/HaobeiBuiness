@@ -10,6 +10,7 @@
         android:paddingTop="22dp">
 
         <TextView
+            android:id="@+id/tv_hint_dialog_tips"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="提示"

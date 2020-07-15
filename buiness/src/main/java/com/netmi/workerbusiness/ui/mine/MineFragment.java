@@ -1,5 +1,10 @@
 package com.netmi.workerbusiness.ui.mine;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
+import android.databinding.BindingAdapter;
+import android.databinding.BindingConversion;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -17,17 +22,22 @@ import com.netmi.baselibrary.data.cache.UserInfoCache;
 import com.netmi.baselibrary.data.entity.BaseData;
 import com.netmi.baselibrary.data.entity.UserInfoEntity;
 import com.netmi.baselibrary.ui.BaseFragment;
+import com.netmi.baselibrary.utils.AppManager;
 import com.netmi.baselibrary.utils.Densitys;
 import com.netmi.baselibrary.utils.JumpUtil;
 import com.netmi.baselibrary.utils.SPs;
 import com.netmi.workerbusiness.R;
 import com.netmi.workerbusiness.data.api.MineApi;
+import com.netmi.workerbusiness.data.api.WalletApi;
 import com.netmi.workerbusiness.data.cache.TelCache;
 import com.netmi.workerbusiness.data.entity.mine.ShopInfoEntity;
+import com.netmi.workerbusiness.data.entity.mine.WalletEntity;
 import com.netmi.workerbusiness.databinding.DialogMineTipsBinding;
 import com.netmi.workerbusiness.databinding.FragmentMineBinding;
+import com.netmi.workerbusiness.ui.MainActivity;
 import com.netmi.workerbusiness.ui.login.PersonalInfoActivity;
 import com.netmi.workerbusiness.ui.mine.wallet.SetPayPassActivity;
+import com.trello.rxlifecycle2.android.ActivityEvent;
 import com.trello.rxlifecycle2.android.FragmentEvent;
 
 import java.util.ArrayList;
@@ -45,13 +55,16 @@ public class MineFragment extends BaseFragment<FragmentMineBinding> {
     public static final String TAG = MineFragment.class.getName();
     private static final int WAIT = 1000;
 
-    private String paySuccess = "您的商家认证已经通过，请缴纳服务费";
-    private String payWait = "您已经缴纳服务费，请等待审核通过";
-    private String payDefeat = "您的缴纳服务费审核失败，请重新提交";
-    private String pay_status = "恭喜您！您的商家入驻申请已通过，当前活动期间免费入驻。祝您生意兴隆！";
+//    private String paySuccess = "您的商家认证已经通过，请缴纳服务费";
+//    private String payWait = "您已经缴纳服务费，请等待审核通过";
+//    private String payDefeat = "您的缴纳服务费审核失败，请重新提交";
+    private String pay_status = "你的店铺已经审核通过\n祝商家生意兴隆";
     private int credit_score;
     private int code = 0;
     public static final String NEED_PAY = "need_pay";
+
+    private ClipboardManager cm;
+    private ClipData mClipData;
 
     @Override
     protected int getContentView() {
@@ -72,6 +85,7 @@ public class MineFragment extends BaseFragment<FragmentMineBinding> {
 
     public void onRefresh() {
         doGetUserInfo();
+        getWallet();
         mBinding.refreshView.setRefreshing(false);
     }
 
@@ -97,8 +111,8 @@ public class MineFragment extends BaseFragment<FragmentMineBinding> {
         } else if (id == R.id.iv_edit_info) {  //店铺信息修改
             if (code != 20001 && UserInfoCache.get().getShop_pay_status().equals("2")) {
                 if (mBinding.getModel().getShop_apply_status() == 1) {
-                    showTipsDialog("您的信息正在认证中，请通过认证后再次操作，如有问题请联系管理员" + mBinding.getModel().getShop_admin_tel(),
-                            "确定");
+                    showTipsDialog("你的信息正在审核中，请通过审核后再次操作，如有问题请联系\n平台客服" ,
+                            "确定","提示");
                 } else {
                     args.putString(JumpUtil.VALUE, mBinding.getModel().getId());
                     JumpUtil.overlay(getContext(), StoreInfoActivity.class, args);
@@ -129,9 +143,34 @@ public class MineFragment extends BaseFragment<FragmentMineBinding> {
             }
         } else if (id == R.id.ll_setting) { //设置
             JumpUtil.overlay(getContext(), SettingActivity.class);
+        } else if (id == R.id.tv_copy) { //拷贝邀请码
+            tvCopy();
         }
     }
+    private void getWallet() {
+        RetrofitApiFactory.createApi(MineApi.class)
+                .getWallet("")
+                .compose(RxSchedulers.compose())
+                .compose((this).bindUntilEvent(FragmentEvent.DESTROY))
+                .subscribe(new XObserver<BaseData<WalletEntity>>() {
+                    @Override
+                    public void onSuccess(BaseData<WalletEntity> data) {
+                        mBinding.tvMineBalance.setText("¥" + data.getData().getBalance());
+                    }
+                });
 
+        RetrofitApiFactory.createApi(WalletApi.class)
+                .getWalletInfo("")
+                .compose(RxSchedulers.compose())
+                .compose((this).bindUntilEvent(FragmentEvent.DESTROY))
+                .subscribe(new XObserver<BaseData<com.netmi.workerbusiness.data.entity.walllet.WalletEntity>>() {
+                    @Override
+                    public void onSuccess(BaseData<com.netmi.workerbusiness.data.entity.walllet.WalletEntity> data) {
+                        mBinding.tvHaibeiBalance.setText(data.getData().getHand_balance()+"≈" + data.getData().getMoney() + "元");
+                        mBinding.tvWaitOne.setText("待结算：" + data.getData().getShop_freeze_price());
+                    }
+                });
+    }
 
     private void doGetShopInfo() {
         RetrofitApiFactory.createApi(MineApi.class)
@@ -147,7 +186,7 @@ public class MineFragment extends BaseFragment<FragmentMineBinding> {
                         TelCache.put(data.getData().getShop_admin_tel());
                         code = data.getErrcode();
                         mBinding.setModel(data.getData());
-                        mBinding.tvPhone.setText("绑定手机号" + UserInfoCache.get().getPhone());
+                        mBinding.tvPhone.setText("店铺账号 ：" + UserInfoCache.get().getPhone());
                         mBinding.tvId.setText("邀请码:" + UserInfoCache.get().getShare_code());
                         if (data.getData().getEnd_time() == null) {
                             mBinding.tvExpireTime.setVisibility(View.GONE);
@@ -169,7 +208,7 @@ public class MineFragment extends BaseFragment<FragmentMineBinding> {
                         }
                         //用户申请入驻审核状态 0:未申请 1:审核中 2:审核成功 3:审核失败
                         if (mBinding.getModel().getShop_apply_status() == 1) {
-                            showTipsDialog("您的信息正在认证中，请通过认证后再次操作，如有问题请联系管理员" + mBinding.getModel().getShop_admin_tel(), "确定");
+                            showTipsDialog("你的信息正在审核中，请通过审核后再次操作，如有问题请联系\n平台客服" , "确定","提示");
                         } else if (mBinding.getModel().getShop_apply_status() == 2) {
 //                            //用户缴费审核状态 0:未申请 1:审核中 2:审核成功 3:审核失败
                             /**
@@ -184,14 +223,14 @@ public class MineFragment extends BaseFragment<FragmentMineBinding> {
 //                            } else
                             if (mBinding.getModel().getShop_pay_status() == 2 && mBinding.getModel().getIs_popup().equals("0")) {
                                 //is_popup是否第一次弹窗 0弹1不弹
-                                showTipsDialog(pay_status, "确定");
+                                showTipsDialog(pay_status, "前往运营台","审核通过");
                                 commit(data.getData().getId());
 //                                将数据保存在本地，用来判断是否显示弹窗
 //                                saveLocally();
                             }
                         } else if (mBinding.getModel().getShop_apply_status() == 3) {
-                            showTipsDialog("商家认证失败，请重新认证" + " 失败原因（" + data.getData().getReason() + ")",
-                                    "去认证");
+                            showTipsDialog("商家审核失败，请按提示重新提交" + " \n原因:" + data.getData().getReason() + "",
+                                    "去提交","审核失败");
 //                            Log.e("weng", data.getData().getReason());
 //                            + mBinding.getModel().getShop_admin_tel()
                         }
@@ -222,7 +261,7 @@ public class MineFragment extends BaseFragment<FragmentMineBinding> {
         Log.e("weng1", SPs.get(getActivity(), NEED_PAY, "") + "");
         if (SPs.get(getActivity(), NEED_PAY, "") == null) {
             SPs.put(getActivity(), NEED_PAY, UserInfoCache.get().getUid());
-            showTipsDialog(pay_status, "确定");
+            showTipsDialog(pay_status, "前往运营台","审核通过");
         } else {
             String str = (String) SPs.get(getActivity(), NEED_PAY, "");
             String[] arr = str.split(",");
@@ -235,7 +274,7 @@ public class MineFragment extends BaseFragment<FragmentMineBinding> {
             if (!isPresence) {
                 SPs.put(getActivity(), NEED_PAY, SPs.get(getActivity(), NEED_PAY, "") + "," + UserInfoCache.get().getUid());
                 Log.e("weng2", SPs.get(getActivity(), NEED_PAY, "") + "");
-                showTipsDialog(pay_status, "确定");
+                showTipsDialog(pay_status, "前往运营台","审核通过");
             }
             Log.e("weng3", SPs.get(getActivity(), NEED_PAY, "") + "");
         }
@@ -243,10 +282,13 @@ public class MineFragment extends BaseFragment<FragmentMineBinding> {
     }
 
     //提示确认弹窗
-    private void showTipsDialog(String content, String confirmText) {
+    private void showTipsDialog(String content, String confirmText,String contentTitle) {
         final DialogMineTipsBinding binding = DataBindingUtil.inflate(LayoutInflater.from(getContext()), R.layout.dialog_mine_tips, null, false);
         if (!TextUtils.isEmpty(confirmText)) {
             binding.tvConfirm.setText(confirmText);
+        }
+        if (!TextUtils.isEmpty(contentTitle)) {
+            binding.tvHintDialogTips.setText(contentTitle);
         }
         if (!TextUtils.isEmpty(content)) {
             binding.tvContent.setText(content);
@@ -263,17 +305,17 @@ public class MineFragment extends BaseFragment<FragmentMineBinding> {
         binding.tvConfirm.setOnClickListener((View v) -> {
             alertDialog.dismiss();
             Bundle args = new Bundle();
-            if (TextUtils.equals(content, paySuccess) || TextUtils.equals(content, payDefeat)) {
-                args.putInt(JumpUtil.TYPE, 1);
-                args.putInt(JumpUtil.CODE, mBinding.getModel().getShop_pay_status());
-                JumpUtil.overlay(getContext(), RenewalFeeActivity.class, args);
-            }
-            if (TextUtils.equals(content, payWait)) {
+//            if (TextUtils.equals(content, paySuccess) || TextUtils.equals(content, payDefeat)) {
+//                args.putInt(JumpUtil.TYPE, 1);
+//                args.putInt(JumpUtil.CODE, mBinding.getModel().getShop_pay_status());
+//                JumpUtil.overlay(getContext(), RenewalFeeActivity.class, args);
+//            }
+//            if (TextUtils.equals(content, payWait)) {
 //                args.putInt(JumpUtil.TYPE, WAIT);
 //                args.putSerializable(JumpUtil.VALUE, mBinding.getModel());
 //                JumpUtil.overlay(getContext(), RenewalFeeActivity.class, args);
-            }
-            if (TextUtils.equals(confirmText, "去认证")) {
+//            }
+            if (TextUtils.equals(confirmText, "去提交")) {
                 JumpUtil.overlay(getContext(), PersonalInfoActivity.class);
             }
         });
@@ -304,6 +346,17 @@ public class MineFragment extends BaseFragment<FragmentMineBinding> {
 
                     }
                 });
+    }
+
+    public void tvCopy(){
+        //获取剪贴板管理器：
+        cm = (ClipboardManager) AppManager.getApp().getSystemService(Context.CLIPBOARD_SERVICE);
+        // 创建普通字符型ClipData
+        mClipData = ClipData.newPlainText("Label", "AAAAA");
+        // 将ClipData内容放到系统剪贴板里。
+        cm.setPrimaryClip(mClipData);
+        showError("复制成功");
+
     }
 
 
