@@ -69,7 +69,9 @@ public interface LoginApi {
                                      @Field("c_id") String c_id,
                                      @Field("d_id") String d_id,
                                      @Field("address") String address,
-                                     @Field("category_id") String category_id);
+                                     @Field("category_id") String category_id,
+                                     @Field("license_num") String license_num,
+                                     @Field("hold_card_url") String hold_card_url);
 
 
     /**

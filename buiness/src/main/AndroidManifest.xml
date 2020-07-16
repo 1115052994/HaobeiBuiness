@@ -57,8 +57,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
-        <activity android:name=".ui.mine.wallet.HaibeiChangeActivity"></activity>
+        <activity android:name=".ui.home.haibei.HaiBeiExchangeActivity"></activity>
+        <activity android:name=".ui.mine.wallet.HaibeiChangeActivity" />
         <activity android:name=".ui.home.vip.VIPShareActivity" />
         <activity android:name=".ui.mine.wallet.InputAliWechatActivity" />
         <activity
@@ -157,27 +157,23 @@
         <activity android:name=".ui.login.BusinessTypeActivity" />
         <activity android:name=".ui.login.RegisterActivity" />
         <activity android:name=".ui.login.PersonalInfoActivity" />
-        <activity android:name=".ui.login.LoginActivity" />
-        <!--        <activity-->
-        <!--            android:name=".ui.SplashActivity"-->
-        <!--            android:launchMode="singleTask"-->
-        <!--            android:theme="@style/AppTheme">-->
-        <!--            <intent-filter>-->
-        <!--                <action android:name="android.intent.action.MAIN" />-->
-
-        <!--                <category android:name="android.intent.category.LAUNCHER" />-->
-        <!--            </intent-filter>-->
-        <!--            <intent-filter>-->
-        <!--                <action android:name="android.intent.action.VIEW" />-->
-
-        <!--                <category android:name="android.intent.category.DEFAULT" />-->
-        <!--                <category android:name="android.intent.category.BROWSABLE" />-->
-
-        <!--                <data-->
-        <!--                    android:host="com.netmi.workerbusiness"-->
-        <!--                    android:scheme="workerbusiness" />-->
-        <!--            </intent-filter>-->
-        <!--        </activity>-->
+        <activity android:name=".ui.login.LoginActivity" /> <!-- <activity -->
+        <!-- android:name=".ui.SplashActivity" -->
+        <!-- android:launchMode="singleTask" -->
+        <!-- android:theme="@style/AppTheme"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="android.intent.action.MAIN" /> -->
+        <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+        <!-- </intent-filter> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="android.intent.action.VIEW" /> -->
+        <!-- <category android:name="android.intent.category.DEFAULT" /> -->
+        <!-- <category android:name="android.intent.category.BROWSABLE" /> -->
+        <!-- <data -->
+        <!-- android:host="com.netmi.workerbusiness" -->
+        <!-- android:scheme="workerbusiness" /> -->
+        <!-- </intent-filter> -->
+        <!-- </activity> -->
         <activity
             android:name=".ui.MainActivity"
             android:launchMode="singleTask" /> <!-- im-Activity -->

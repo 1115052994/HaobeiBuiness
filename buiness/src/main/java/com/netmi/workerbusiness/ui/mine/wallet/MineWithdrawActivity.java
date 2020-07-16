@@ -60,7 +60,7 @@ public class MineWithdrawActivity extends BaseActivity<ActivityMineWithdrawBindi
                 args.putInt(JumpUtil.TYPE, FROM_WALLET);
                 JumpUtil.overlay(getContext(), BankListActivity.class, args);
             }
-        } else if (type == 0) { //0 提现操作
+        } else if (type == 0) { //0 提现操作;
             if (view.getId() == R.id.ll_alipay) {
                 args.putInt(JumpUtil.TYPE, 30);
                 JumpUtil.overlay(getContext(), MineWithdrawDetailActivity.class, args);

@@ -6,12 +6,15 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 
 
 import com.netmi.baselibrary.databinding.DialogMessageHintBinding;
+import com.netmi.baselibrary.utils.ToastUtils;
 import com.netmi.workerbusiness.R;
+import com.netmi.workerbusiness.databinding.DialogPayMessageBinding;
 
 
 /**
@@ -23,12 +26,10 @@ import com.netmi.workerbusiness.R;
 public class Pay_Message_Dialog extends Dialog implements View.OnClickListener {
 
     private ClickBindPhoneListener clickBindMessageListener;
-    private String message="数据为空";
-    private DialogMessageHintBinding dialogBindMessageBinding;
+    private DialogPayMessageBinding dialogPayMessageBinding;
 
-    public Pay_Message_Dialog(@NonNull Context context, String message) {
+    public Pay_Message_Dialog(@NonNull Context context) {
         super(context);
-        this.message=message;
     }
 
     public Pay_Message_Dialog(@NonNull Context context, int themeResId) {
@@ -46,15 +47,11 @@ public class Pay_Message_Dialog extends Dialog implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        dialogBindMessageBinding = DataBindingUtil.inflate(LayoutInflater.from(getContext()), R.layout.dialog_pay_message, null, false);
-        setContentView(dialogBindMessageBinding.getRoot());
-        showMessage(message);
-    }
-    public void showMessage(String message){
-        dialogBindMessageBinding.textLMessage.setText(message);
-        dialogBindMessageBinding.setClick(this);
-    }
+        dialogPayMessageBinding = DataBindingUtil.inflate(LayoutInflater.from(getContext()), R.layout.dialog_pay_message, null, false);
+        setContentView(dialogPayMessageBinding.getRoot());
+        dialogPayMessageBinding.setClick(this);
 
+    }
 
     @Override
     public void onClick(View v) {
@@ -66,9 +63,19 @@ public class Pay_Message_Dialog extends Dialog implements View.OnClickListener {
                 //取消按钮
                 clickBindMessageListener.clickBindMessageCan();
             }else if (v.getId() == R.id.text_i_con) {
+                String name = dialogPayMessageBinding.etPayName.getText().toString();
+                String phone = dialogPayMessageBinding.etPayPhone.getText().toString();
                 //确定按钮
-                clickBindMessageListener.clickBindMessageCon();
+                if(TextUtils.isEmpty(name)){
+                    ToastUtils.showLong("请输入姓名");
+                    return;
+                }else if(TextUtils.isEmpty(phone)){
+                    ToastUtils.showLong("请输入账号");
+                    return;
+                }
+                clickBindMessageListener.clickBindMessageCon(name,phone);
             }
+
         }
     }
 
@@ -76,6 +83,6 @@ public class Pay_Message_Dialog extends Dialog implements View.OnClickListener {
     //确定和取消事件
     public interface ClickBindPhoneListener {
         void clickBindMessageCan();
-        void clickBindMessageCon();
+        void clickBindMessageCon(String name,String phone);
     }
 }

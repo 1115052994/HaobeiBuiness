@@ -214,6 +214,7 @@
                         android:src="@mipmap/ic_right_gray" />
                 </LinearLayout>
                 <LinearLayout
+                    android:visibility="gone"
                     android:layout_marginTop="10dp"
                     android:id="@+id/ll_location_city"
                     android:layout_width="match_parent"
@@ -256,6 +257,7 @@
                         android:src="@mipmap/ic_right_gray" />
                 </LinearLayout>
                 <LinearLayout
+                    android:layout_marginTop="10dp"
                     android:id="@+id/ll_location"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -350,7 +352,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                     <EditText
-                        android:gravity="center_horizontal"
+                        android:gravity="center_vertical|right"
                         android:layout_alignParentRight="true"
                         android:id="@+id/et_name"
                         android:layout_width="wrap_content"
@@ -374,7 +376,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                     <EditText
-                        android:gravity="center_horizontal"
+                        android:gravity="center_vertical|right"
                         android:layout_alignParentRight="true"
                         android:id="@+id/et_id_card"
                         android:layout_width="wrap_content"
@@ -399,7 +401,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                     <EditText
-                        android:gravity="center_horizontal"
+                        android:gravity="center_vertical|right"
                         android:layout_alignParentRight="true"
                         android:id="@+id/et_business_number"
                         android:layout_width="wrap_content"

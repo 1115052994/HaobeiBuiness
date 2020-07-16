@@ -23,7 +23,7 @@ import com.netmi.workerbusiness.databinding.ItemBankBinding;
 import com.trello.rxlifecycle2.android.ActivityEvent;
 
 import java.util.List;
-
+//银行卡添加
 public class BankListActivity extends BaseXRecyclerActivity<ActivityBankListBinding, BankListEntity> {
     public static final String BANK_MESS = "bank_mess";
     public static final int FROM_WALLET = 10001;

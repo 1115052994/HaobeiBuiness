@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="model"
+            type="com.netmi.workerbusiness.data.entity.mine.ShopInfoEntity" />
     </data>
 
     <LinearLayout
@@ -24,14 +26,21 @@
             android:onClick="doClick"
             android:orientation="horizontal"
             android:paddingHorizontal="15dp">
+            <ImageView
+                android:layout_gravity="center"
+                android:id="@+id/iv_img"
+                civPath="@{model.logo_url}"
+                android:layout_width="35dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:paddingVertical="17dp"
-                android:text="提现到"
-                android:textColor="#ff333333"
-                android:textSize="14sp" />
+                android:layout_marginLeft="12dp"
+                android:id="@+id/tv_bank_name_left"
+                android:textSize="14sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
             <View
                 android:layout_width="0dp"
@@ -160,7 +169,7 @@
             android:gravity="center"
             android:onClick="doClick"
             android:paddingVertical="10dp"
-            android:text="提现"
+            android:text="确认提现"
             android:textColor="#ffffffff"
             android:textSize="17sp"
             android:textStyle="bold" />

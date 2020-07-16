@@ -7,11 +7,6 @@
 
     </data>
 
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/refresh_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -19,57 +14,41 @@
 
             <include layout="@layout/layout_title_shadow" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:orientation="vertical">
-
-                <EditText
-                    android:id="@+id/et_name"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:background="@color/white"
-                    android:hint="请输入姓名"
-                    android:paddingHorizontal="15dp"
-                    android:paddingVertical="15dp"
-                    android:textColor="#333333"
-                    android:textSize="14sp" />
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginHorizontal="15dp"
-                    android:background="#F7F7F7" />
+                    <com.netmi.baselibrary.widget.MyXRecyclerView
+                        android:id="@+id/xrv_data"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:overScrollMode="never" />
 
-                <EditText
-                    android:id="@+id/et_account"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:hint="请输入支付宝账号"
-                    android:paddingHorizontal="15dp"
-                    android:paddingVertical="15dp"
-                    android:textColor="#333333"
-                    android:textSize="14sp" />
-            </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/ll_add_bank"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="15dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@drawable/bg_radius_4dp_ffffff"
+                        android:gravity="center"
+                        android:onClick="doClick">
 
-            <TextView
-                android:id="@+id/tv_confirm"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/d_45"
-                android:layout_marginLeft="@dimen/d_25"
-                android:layout_marginTop="65dp"
-                android:layout_marginRight="@dimen/d_25"
-                android:background="@drawable/baselib_bg_color77b52902"
-                android:enabled="false"
-                android:gravity="center"
-                android:onClick="doClick"
-                android:text="@string/confirm"
-                android:textColor="@color/white"
-                android:textSize="@dimen/s_14" />
-
+                        <TextView
+                            android:id="@+id/tv_add_bank"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@mipmap/ic_add_black"
+                            android:drawablePadding="8dp"
+                            android:paddingVertical="15dp"
+                            android:text="添加账号"
+                            android:textColor="#ff666666"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+                </LinearLayout>
         </LinearLayout>
-    </android.support.v4.widget.SwipeRefreshLayout>
 </layout>

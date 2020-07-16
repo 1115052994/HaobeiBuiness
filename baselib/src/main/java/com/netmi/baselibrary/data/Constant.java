@@ -22,9 +22,10 @@ public class Constant {
     public static final String BASE_HTML = AppUtils.getBaseHtml();
 
     //正式
-    public static final String BASE_API_RELEASE = "http://hb-api.haobeitech.com";
+//    public static final String BASE_API_RELEASE = "http://hb-api.haobeitech.com";
+    public static final String BASE_API_RELEASE = "http://hb-api-test.haobeitech.com";
     //测试
-    public static final String BASE_API_DEBUG = "http://api-test.haobeitech.com";
+    public static final String BASE_API_DEBUG = "http://hb-api-test.haobeitech.com";
 
 //    public static final String BASE_API_DEBUG = "http://api-test.haobeitech.com";  明泽测试服：http://hb-api-test.haobeitech.com
 

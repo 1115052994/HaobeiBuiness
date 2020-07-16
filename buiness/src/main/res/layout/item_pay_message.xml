@@ -2,19 +2,29 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
-
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
     </data>
 
+
     <LinearLayout
+        android:id="@+id/pay_message_layout"
+        android:onClick="@{doClick}"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="5dp"/>
         <LinearLayout
+            android:background="@color/white"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
+                android:id="@+id/tv_pay_name"
                 android:paddingHorizontal="21dp"
                 android:paddingVertical="13dp"
                 android:text="登记人"
@@ -27,6 +37,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"/>
             <TextView
+                android:id="@+id/tv_pay_phone"
                 android:paddingHorizontal="20dp"
                 android:paddingVertical="13dp"
                 android:text="13645849696"
@@ -39,6 +50,7 @@
             android:layout_height="1dp"
             android:layout_width="match_parent" />
         <LinearLayout
+            android:background="@color/white"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -47,15 +59,19 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"/>
             <TextView
+                android:id="@+id/tv_message_edit"
                 android:paddingVertical="7dp"
                 android:paddingHorizontal="18dp"
                 android:text="编辑"
+                android:onClick="@{doClick}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
+                android:id="@+id/tv_message_dele"
                 android:paddingHorizontal="18dp"
                 android:paddingVertical="7dp"
                 android:text="删除"
+                android:onClick="@{doClick}"
                 android:textColor="#D2350D"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />

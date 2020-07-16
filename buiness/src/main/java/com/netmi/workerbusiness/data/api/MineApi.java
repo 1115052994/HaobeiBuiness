@@ -187,6 +187,30 @@ public interface MineApi {
     @POST("contact/contact-api/view")
     Observable<BaseData<List<AliWechatEntity>>> getAliInfo(@Field("param") String param);
 
+    /**
+     * 获取支付宝微信账号信息
+     */
+    @FormUrlEncoded
+    @POST("contact/contact-api/get-list")
+    Observable<BaseData<List<AliWechatEntity>>> getAliInfoList(@Field("type") String type);
+
+    /**
+     * 编辑支付宝微信账号信息
+     */
+    @FormUrlEncoded
+    @POST("contact/contact-api/edit-info")
+    Observable<BaseData<String>> setEditInfo(@Field("id") String id,
+                                             @Field("name") String name,
+                                             @Field("phone") String phone);
+
+    /**
+     * 删除支付宝微信账号信息
+     */
+    @FormUrlEncoded
+    @POST("contact/contact-api/delete-info")
+    Observable<BaseData<String>> deleteInfo(@Field("id") String id);
+
+
 
     /**
      * 海贝转化现金

@@ -11,16 +11,22 @@ import com.netmi.baselibrary.data.entity.BaseEntity;
 public class AliWechatEntity extends BaseEntity {
 
     /**
-     * uid : 545
+     * uid : 545   用户的id
      * phone : 111111
      * type : 1
      * name : 111
+     * id : 这条数据的ID
      */
 
     private int uid;
     private String phone;
     private String type;
     private String name;
+    private int id;
+
+    public int getId() { return id; }
+
+    public void setId(int id) { this.id = id; }
 
     public int getUid() {
         return uid;

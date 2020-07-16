@@ -90,6 +90,7 @@ public class PersonalInfoActivity extends BaseActivity<ActivityPersonalInfoBindi
     private String real_name;
     private String idCard;
     private String remark;
+    private String businessNumber;
     private String longitude;
     private String latitude;
     private String p_id;
@@ -354,16 +355,26 @@ public class PersonalInfoActivity extends BaseActivity<ActivityPersonalInfoBindi
         shopName = mBinding.etShopName.getText().toString();
         real_name = mBinding.etName.getText().toString();
         idCard = mBinding.etIdCard.getText().toString();
+        remark = mBinding.etMerchantContent.getText().toString();
+        businessNumber = mBinding.etBusinessNumber.getText().toString();
 //        remark = mBinding.etMerchantContent().getText().toString();
 
         if (TextUtils.isEmpty(shopName)) {
             showError("请输入店铺名称");
         } else if(TextUtils.isEmpty(remark)){
             showError("请输入商家简介");
+        }else if (TextUtils.isEmpty(idCard)) {
+            showError("请输入法人身份证号");
         }else if (TextUtils.isEmpty(real_name)) {
             showError("请输入法人姓名");
+        }else if (TextUtils.isEmpty(handtiveUrl)) {
+            showError("请上传手持身份证");
         } else if (TextUtils.isEmpty(idCard)) {
             showError("请输入法人身份证号");
+        }else if (TextUtils.isEmpty(businessNumber)) {
+            showError("请输入营业执照编号");
+        } else if (mBinding.ivPositiveHand.getVisibility() == View.VISIBLE) {
+            showError("请上传手持身份证");
         } else if (mBinding.ivPositive.getVisibility() == View.VISIBLE) {
             showError("请上传身份证正面照");
         } else if (mBinding.ivNegative.getVisibility() == View.VISIBLE) {
@@ -396,7 +407,7 @@ public class PersonalInfoActivity extends BaseActivity<ActivityPersonalInfoBindi
                 img_url.add(mBinding.getEnvironmentPic());
                 license_url = mBinding.getBusinessPic();
                 operation_url = mBinding.getBusinessTwoPic();
-                doVerified(shopName, logo_pic, remark, longitude, latitude, time, shop_url, img_url, positiveUrl, negativeUrl, license_url, real_name, idCard, operation_url, p_id, c_id, d_id, address, category_id);
+                doVerified(shopName, logo_pic, remark, longitude, latitude, time, shop_url, img_url, positiveUrl, negativeUrl, license_url, real_name, idCard, operation_url, p_id, c_id, d_id, address, category_id,businessNumber,handtiveUrl);
                 dialog.dismiss();
             });
             builder.setNegativeButton("取消", (dialog, which) -> dialog.dismiss());
@@ -406,9 +417,9 @@ public class PersonalInfoActivity extends BaseActivity<ActivityPersonalInfoBindi
 
     private void doVerified(String shopName, String logo_url, String content, String longitude, String latitude, String time
             , List<String> shop_url, List<String> img_url, String front_url, String back_url,
-                            String license_url, String real_name, String idCard, String operation_url, String p_id, String c_id, String d_id, String address, String category_id) {
+                            String license_url, String real_name, String idCard, String operation_url, String p_id, String c_id, String d_id, String address, String category_id,String license_num,String hold_card_url) {
         RetrofitApiFactory.createApi(LoginApi.class)
-                .shopSettled(shopName, logo_url, content, longitude, latitude, time, shop_url, img_url.get(0), front_url, back_url, license_url, real_name, idCard, operation_url, p_id, c_id, d_id, address, category_id)
+                .shopSettled(shopName, logo_url, content, longitude, latitude, time, shop_url, img_url.get(0), front_url, back_url, license_url, real_name, idCard, operation_url, p_id, c_id, d_id, address, category_id,license_num,hold_card_url)
                 .compose(this.bindUntilEvent(ActivityEvent.DESTROY))
                 .compose(RxSchedulers.compose())
                 .subscribe(new XObserver<BaseData>() {

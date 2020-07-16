@@ -33,6 +33,7 @@ import com.netmi.workerbusiness.ui.home.commodity.coupon.CouponActivity;
 import com.netmi.workerbusiness.ui.home.commodity.offline.OfflineCommodityListActivity;
 import com.netmi.workerbusiness.ui.home.commodity.online.LineCommodityListActivity;
 import com.netmi.workerbusiness.ui.home.commodity.postage.PostageEditorActivity;
+import com.netmi.workerbusiness.ui.home.haibei.HaiBeiExchangeActivity;
 import com.netmi.workerbusiness.ui.home.offline.OfflineOrderActivity;
 import com.netmi.workerbusiness.ui.home.online.LineOrderActivity;
 import com.netmi.workerbusiness.ui.home.vip.VIPShareActivity;
@@ -169,6 +170,9 @@ public class MainFragment extends BaseFragment<FragmentMainBinding> {
             //1:邀请好友海报接口 2:获取店铺分享海报 3:分享收益海报
             JumpUtil.overlay(getContext(), VIPShareActivity.class,
                     VipParam.shareType, "1", VipParam.title, getString(R.string.sharemall_vip_invite_friend));
+        }else if(id == R.id.tv_haibei_convert){
+            //海贝兑换
+            JumpUtil.overlay(getContext(), HaiBeiExchangeActivity.class);
         }
     }
 

@@ -58,7 +58,7 @@
                 android:paddingHorizontal="46dp"
                 android:paddingTop="25dp"
                 android:paddingBottom="10dp"
-                android:text="线下商户"
+                android:text="实体商家"
                 android:textColor="#ff333333"
                 android:textSize="12sp" />
 

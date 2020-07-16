@@ -1,5 +1,6 @@
 package com.netmi.workerbusiness.ui.mine.wallet;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -44,8 +45,8 @@ public class MineWithdrawDetailActivity extends BaseActivity<ActivityMineWithdra
     private int type; //30 支付宝 ； 31  微信 ； 32 银行卡
     private int id;
     private double amount;
-    private static final int ALI_WITHDRAE = 1000;
-    private static final int WECHAT_WITHDRAE = 1001;
+    public static final int ALI_WITHDRAE = 1000;
+    public static final int WECHAT_WITHDRAE = 1001;
     private String account;
     private String name;
 
@@ -74,23 +75,32 @@ public class MineWithdrawDetailActivity extends BaseActivity<ActivityMineWithdra
     /**
      * 数据初始化
      */
+    @SuppressLint("SetTextI18n")
     @Override
     protected void initData() {
         doWithdrawMess();
         getAliInfo();
         if (type == 30) {
             mBinding.tvBankName.setText("请填写支付宝账户信息");
+            getTvTitle().setText("支付宝提现");
             account = WithdrawCache.getAliAccount();
             name = WithdrawCache.getAliName();
+            //为了获取头像
+            doGetShopInfo("0");
             if (!WithdrawCache.getAliAccount().isEmpty()) {
-                mBinding.tvBankName.setText(WithdrawCache.getAliAccount());
+                mBinding.tvBankNameLeft.setText(WithdrawCache.getAliName()+"      "+WithdrawCache.getAliAccount());
+                mBinding.tvBankName.setText("");
             }
         } else if (type == 31) {
             mBinding.tvBankName.setText("请填写微信信息");
+            getTvTitle().setText("微信提现");
             account = WithdrawCache.getWechatAccount();
             name = WithdrawCache.getWechatName();
+            //为了获取头像
+            doGetShopInfo("0");
             if (!WithdrawCache.getWechatAccount().isEmpty()) {
-                mBinding.tvBankName.setText(WithdrawCache.getWechatAccount());
+                mBinding.tvBankNameLeft.setText(WithdrawCache.getAliName()+"      "+WithdrawCache.getAliAccount());
+                mBinding.tvBankName.setText("");
             }
         } else if (type == 32) {
             getBankList();
@@ -168,13 +178,17 @@ public class MineWithdrawDetailActivity extends BaseActivity<ActivityMineWithdra
                 mBinding.tvConfirm.setClickable(true);
                 mBinding.tvConfirm.setBackgroundColor(getResources().getColor(R.color.red_D81E06));
             } else if (requestCode == ALI_WITHDRAE) { //支付宝
-                name = data.getStringExtra(NAME_WITHDRAW);
-                account = data.getStringExtra(ACCOUNT_WITHDRAW);
-                mBinding.tvBankName.setText(account);
+                Bundle pay = data.getBundleExtra("pay");
+                name = pay.getString(NAME_WITHDRAW);
+                account = pay.getString(ACCOUNT_WITHDRAW);
+                mBinding.tvBankNameLeft.setText(name+"    "+account);
+                mBinding.tvBankName.setText("");
             } else if (requestCode == WECHAT_WITHDRAE) {//微信
-                name = data.getStringExtra(NAME_WITHDRAW);
-                account = data.getStringExtra(ACCOUNT_WITHDRAW);
-                mBinding.tvBankName.setText(account);
+                Bundle pay = data.getBundleExtra("pay");
+                name = pay.getString(NAME_WITHDRAW);
+                account = pay.getString(ACCOUNT_WITHDRAW);
+                mBinding.tvBankNameLeft.setText(name+"    "+account);
+                mBinding.tvBankName.setText("");
             }
         }
     }
@@ -268,7 +282,10 @@ public class MineWithdrawDetailActivity extends BaseActivity<ActivityMineWithdra
                 .subscribe(new XObserver<BaseData<ShopInfoEntity>>() {
                     @Override
                     public void onSuccess(BaseData<ShopInfoEntity> data) {
-                        doWithdraw(data.getData().getId(), type);
+                        mBinding.setModel(data.getData());
+                        if(!type.equals("0")){
+                            doWithdraw(data.getData().getId(), type);
+                        }
                     }
                 });
     }
@@ -287,13 +304,15 @@ public class MineWithdrawDetailActivity extends BaseActivity<ActivityMineWithdra
                                 if (data.getData().get(i).getType().equals("0")) {
                                     name = data.getData().get(i).getName();
                                     account = data.getData().get(i).getPhone();
-                                    mBinding.tvBankName.setText(account);
+                                    mBinding.tvBankNameLeft.setText(name+"    "+account);
+                                    mBinding.tvBankName.setText("");
                                 }
                             } else if (type == 31) {
                                 if (data.getData().get(i).getType().equals("1")) {
                                     name = data.getData().get(i).getName();
                                     account = data.getData().get(i).getPhone();
-                                    mBinding.tvBankName.setText(account);
+                                    mBinding.tvBankNameLeft.setText(name+"    "+account);
+                                    mBinding.tvBankName.setText("");
                                 }
                             }
                         }
