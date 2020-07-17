@@ -185,8 +185,8 @@ public class HaibeiSpareActivity extends BaseActivity<ActivityHaibeiSpareBinding
 
                             if (data.getData().getList().size() > 0) {
                                 for (int i = 0; i < data.getData().getList().size(); i++) {
-                                    listY.add(data.getData().getList().get(i).getConfidence());
-                                    listY1.add(data.getData().getList().get(i).getSynthesize());
+                                    listY.add(String.valueOf(data.getData().getList().get(i).getConfidence()));
+                                    listY1.add(String.valueOf(data.getData().getList().get(i).getSynthesize()));
 //                                    listX.add(entity.getTime());
                                     if (type.equals("1")) {
                                         listX.add(MyTimeUtil.getStringTime3(data.getData().getList().get(i).getTime()));

@@ -156,7 +156,8 @@ public class MainFragment extends BaseFragment<FragmentMainBinding> {
         } else if (id == R.id.tv_haibei_home || id == R.id.tv_haibei_home2) {  //海贝之家
 //            JumpUtil.overlay(getContext(), HaibeiHomeActivity.class);
             //该页面同步用户端图表数据
-            JumpUtil.overlay(getContext(), HaibeiSpareActivity.class);
+//            JumpUtil.overlay(getContext(), HaibeiSpareActivity.class);
+            JumpUtil.overlay(getContext(), HaibeiSpareTabActivity.class);
         } else if (id == R.id.tv_merchant_loan || id == R.id.tv_merchant_loan2) { //商家贷
             JumpUtil.overlay(getContext(), MerchantLoanActivity.class);
         } else if (id == R.id.tv_live) { //商家直播

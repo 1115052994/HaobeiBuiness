@@ -130,6 +130,7 @@
         <activity android:name=".ui.mine.PaymentActivity" />
         <activity android:name=".ui.mine.StoreInfoActivity" />
         <activity android:name=".ui.mine.RenewalFeeActivity" />
+        <activity android:name=".ui.home.HaibeiSpareTabActivity" />
         <activity android:name=".ui.home.commodity.category.spec.CategorySpecificationCompleteActivity" />
         <activity android:name=".ui.home.commodity.category.spec.SelectCategorySpecificationActivity" />
         <activity

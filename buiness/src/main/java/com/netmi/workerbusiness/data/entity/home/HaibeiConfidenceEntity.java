@@ -13,17 +13,17 @@ public class HaibeiConfidenceEntity {
      * synthesize : 8843.2302
      */
 
-    private String confidence;
+    private double confidence;
     private String time;
-    private String synthesize;
+    private double synthesize;
     private String one;
     private String two;
 
-    public String getConfidence() {
+    public double getConfidence() {
         return confidence;
     }
 
-    public void setConfidence(String confidence) {
+    public void setConfidence(double confidence) {
         this.confidence = confidence;
     }
 
@@ -35,11 +35,11 @@ public class HaibeiConfidenceEntity {
         this.time = time;
     }
 
-    public String getSynthesize() {
+    public double getSynthesize() {
         return synthesize;
     }
 
-    public void setSynthesize(String synthesize) {
+    public void setSynthesize(double synthesize) {
         this.synthesize = synthesize;
     }
 
