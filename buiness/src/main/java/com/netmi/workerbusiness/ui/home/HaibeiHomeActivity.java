@@ -219,11 +219,11 @@ public class HaibeiHomeActivity extends BaseActivity<ActivityHaibeiHomeBinding> 
         values.clear();
         if (type.equals("1")) {
             for (int i = 6; i >= 0; i--) {
-                values.add(0, new Entry(i, (float) list.get(i).getConfidence()));
+                values.add(0, new Entry(i, Float.valueOf(list.get(i).getConfidence())));
             }
         } else {
             for (int i = 11; i >= 0; i--) {
-                values.add(0, new Entry(i,(float) list.get(i).getConfidence()));
+                values.add(0, new Entry(i,Float.valueOf(list.get(i).getConfidence())));
 //             整个图像左右翻转
 //            values.add(0, new Entry(i, list.get(6 - i).getPrice()));
             }
@@ -309,11 +309,11 @@ public class HaibeiHomeActivity extends BaseActivity<ActivityHaibeiHomeBinding> 
         values.clear();
         if (type.equals("1")) {
             for (int i = 6; i >= 0; i--) {
-                values.add(0, new Entry(i,(float)list.get(i).getSynthesize()));
+                values.add(0, new Entry(i,Float.valueOf(list.get(i).getSynthesize())));
             }
         } else {
             for (int i = 11; i >= 0; i--) {
-                values.add(0, new Entry(i,(float)list.get(i).getSynthesize()));
+                values.add(0, new Entry(i,Float.valueOf(list.get(i).getSynthesize())));
 //             整个图像左右翻转
 //            values.add(0, new Entry(i, list.get(6 - i).getPrice()));
             }

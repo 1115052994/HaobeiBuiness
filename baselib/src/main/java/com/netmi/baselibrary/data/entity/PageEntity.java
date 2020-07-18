@@ -156,6 +156,7 @@ public class PageEntity<T> extends BaseEntity {
         return list;
     }
 
+
     public void setList(List<T> list) {
         this.list = list;
     }
@@ -234,5 +235,28 @@ public class PageEntity<T> extends BaseEntity {
         public void setAll_no_readnum(int all_no_readnum) {
             this.all_no_readnum = all_no_readnum;
         }
+    }
+
+    @Override
+    public String toString() {
+        return "PageEntity{" +
+                "total_pages=" + total_pages +
+                ", is_next=" + is_next +
+                ", purchase='" + purchase + '\'' +
+                ", read_data=" + read_data +
+                ", total_count='" + total_count + '\'' +
+                ", now_num=" + now_num +
+                ", page_num=" + page_num +
+                ", is_prev=" + is_prev +
+                ", all_balance='" + all_balance + '\'' +
+                ", confidence='" + confidence + '\'' +
+                ", synthesize='" + synthesize + '\'' +
+                ", max_confidence='" + max_confidence + '\'' +
+                ", min_confidence='" + min_confidence + '\'' +
+                ", max_synthesize='" + max_synthesize + '\'' +
+                ", min_synthesize='" + min_synthesize + '\'' +
+                ", total_income=" + total_income +
+                ", list=" + list +
+                '}';
     }
 }

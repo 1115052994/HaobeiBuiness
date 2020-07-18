@@ -13,17 +13,17 @@ public class HaibeiConfidenceEntity {
      * synthesize : 8843.2302
      */
 
-    private double confidence;
+    private String confidence;
     private String time;
-    private double synthesize;
+    private String synthesize;
     private String one;
     private String two;
 
-    public double getConfidence() {
+    public String getConfidence() {
         return confidence;
     }
 
-    public void setConfidence(double confidence) {
+    public void setConfidence(String confidence) {
         this.confidence = confidence;
     }
 
@@ -35,11 +35,11 @@ public class HaibeiConfidenceEntity {
         this.time = time;
     }
 
-    public double getSynthesize() {
+    public String getSynthesize() {
         return synthesize;
     }
 
-    public void setSynthesize(double synthesize) {
+    public void setSynthesize(String synthesize) {
         this.synthesize = synthesize;
     }
 
@@ -57,5 +57,16 @@ public class HaibeiConfidenceEntity {
 
     public void setTwo(String two) {
         this.two = two;
+    }
+
+    @Override
+    public String toString() {
+        return "HaibeiConfidenceEntity{" +
+                "confidence=" + confidence +
+                ", time='" + time + '\'' +
+                ", synthesize=" + synthesize +
+                ", one='" + one + '\'' +
+                ", two='" + two + '\'' +
+                '}';
     }
 }

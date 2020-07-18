@@ -36,7 +36,7 @@ public class LineChartMarkView extends MarkerView {
     public void refreshContent(Entry e, Highlight highlight) {
         //展示自定义X轴值 后的X轴内容
         tvDate.setText(xAxisValueFormatter.getFormattedValue(e.getX(), null));
-        tvValue.setText("我的收益：" + df.format(e.getY() * 100) + "%");
+        tvValue.setText("分数：" + e.getY());
         super.refreshContent(e, highlight);
     }
 
