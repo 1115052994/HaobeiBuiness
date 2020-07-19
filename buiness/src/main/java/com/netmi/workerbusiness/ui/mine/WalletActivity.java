@@ -87,6 +87,8 @@ public class WalletActivity extends BaseActivity<ActivityWalletBinding> {
                     @Override
                     public void onSuccess(BaseData<WalletEntity> data) {
                         mBinding.tvMineBalance.setText("¥" + data.getData().getBalance());
+
+
                     }
                 });
     }
@@ -105,6 +107,7 @@ public class WalletActivity extends BaseActivity<ActivityWalletBinding> {
                         mBinding.tvWaitTwo.setText("待结算：" + data.getData().getFreeze_price() );
                         mBinding.tvEarn.setText("海贝兑换预估：" + data.getData().getHand_yugu()+ "元");
                         mBinding.tvCanChange.setText("可转换：" + data.getData().getConversion() + "（≈" + data.getData().getConversion_price() + "元）");
+
                         ratio = data.getData().getRatio();
                     }
                 });

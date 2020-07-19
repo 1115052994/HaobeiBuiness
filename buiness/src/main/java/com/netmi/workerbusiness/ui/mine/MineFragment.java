@@ -166,8 +166,9 @@ public class MineFragment extends BaseFragment<FragmentMineBinding> {
                 .subscribe(new XObserver<BaseData<com.netmi.workerbusiness.data.entity.walllet.WalletEntity>>() {
                     @Override
                     public void onSuccess(BaseData<com.netmi.workerbusiness.data.entity.walllet.WalletEntity> data) {
-                        mBinding.tvHaibeiBalance.setText(data.getData().getHand_balance()+"≈" + data.getData().getMoney() + "元");
+                        mBinding.tvHaibeiBalance.setText("≈" +data.getData().getHand_balance()+"元");
                         mBinding.tvWaitOne.setText("待结算：" + data.getData().getShop_freeze_price());
+                        mBinding.tvHaibeiBalanceEstimate.setText(data.getData().getHand_yugu()+"元");
                     }
                 });
     }
