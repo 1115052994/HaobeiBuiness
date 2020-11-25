@@ -18,8 +18,10 @@ import android.support.v4.app.NotificationCompat;
 import android.text.TextUtils;
 import android.widget.CompoundButton;
 
+import com.example.voicebroadcast.UtilsVoice;
+import com.iflytek.cloud.SpeechConstant;
+import com.iflytek.cloud.SpeechUtility;
 import com.igexin.sdk.PushManager;
-import com.igexin.sdk.PushService;
 import com.netmi.baselibrary.data.Constant;
 import com.netmi.baselibrary.data.cache.AccessTokenCache;
 import com.netmi.baselibrary.data.cache.AppConfigCache;
@@ -36,7 +38,6 @@ import com.tencent.android.tpush.XGIOperateCallback;
 import com.tencent.android.tpush.XGNotifaction;
 import com.tencent.android.tpush.XGPushManager;
 import com.tencent.bugly.beta.Beta;
-
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -55,7 +56,8 @@ import static com.netmi.baselibrary.data.Constant.PUSH_PREFIX;
  * 修改备注：
  */
 public abstract class BaseMainActivity<T extends ViewDataBinding> extends BaseActivity<T> implements CompoundButton.OnCheckedChangeListener {
-    protected CompoundButton selectView;
+    protected static CompoundButton selectView;
+
 
     protected boolean canRegisterEventBus() {
         return false;
@@ -83,10 +85,15 @@ public abstract class BaseMainActivity<T extends ViewDataBinding> extends BaseAc
             // XyPushIntentService 为第三方自定义的推送服务事件接收类
             PushManager.getInstance().registerPushIntentService(getApplicationContext(), XyPushIntentService.class);
 
+
+            //讯飞初始化
+            SpeechUtility.createUtility(this, SpeechConstant.APPID + "=5f51a4d2");
+            UtilsVoice.init(BaseMainActivity.this);
+
             initData();
         }
         //检查更新
-        Beta.checkUpgrade(false, true);
+        Beta.checkUpgrade(false, false);
     }
 
     protected abstract void onNotify(XGNotifaction xgNotifaction);
@@ -105,7 +112,12 @@ public abstract class BaseMainActivity<T extends ViewDataBinding> extends BaseAc
             EventBus.getDefault().unregister(this);
         if (appexitTask != null)
             appexitTask.dispose();
+
+        UtilsVoice.dis();
+
     }
+
+
 
     /**
      * 信鸽推送注册

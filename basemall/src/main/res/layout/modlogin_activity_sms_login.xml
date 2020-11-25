@@ -55,7 +55,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:contentDescription="@null"
-                android:src="@mipmap/icon_company"
+                android:src="@mipmap/icon_login_logo"
                 android:layout_marginTop="@dimen/d_27"
                 />
 

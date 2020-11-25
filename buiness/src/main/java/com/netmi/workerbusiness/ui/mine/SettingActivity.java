@@ -1,7 +1,6 @@
 package com.netmi.workerbusiness.ui.mine;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import com.liemi.basemall.ui.NormalDialog;
@@ -12,17 +11,21 @@ import com.netmi.baselibrary.data.base.BaseObserver;
 import com.netmi.baselibrary.data.base.RetrofitApiFactory;
 import com.netmi.baselibrary.data.base.RxSchedulers;
 import com.netmi.baselibrary.data.base.XObserver;
+import com.netmi.baselibrary.data.cache.LoginInfoCache;
 import com.netmi.baselibrary.data.entity.AgreementEntity;
 import com.netmi.baselibrary.data.entity.BaseData;
+import com.netmi.baselibrary.data.entity.LoginInfoEntity;
 import com.netmi.baselibrary.ui.BaseActivity;
 import com.netmi.baselibrary.ui.BaseWebviewActivity;
 import com.netmi.baselibrary.ui.MApplication;
 import com.netmi.baselibrary.utils.JumpUtil;
-import com.netmi.baselibrary.utils.SPs;
+import com.netmi.baselibrary.widget.SwitchButton;
 import com.netmi.workerbusiness.R;
 import com.netmi.workerbusiness.data.cache.TelCache;
 import com.netmi.workerbusiness.data.cache.WithdrawCache;
 import com.netmi.workerbusiness.data.entity.mine.ShopInfoEntity;
+import com.netmi.workerbusiness.databinding.ActivitySettingBinding;
+import com.netmi.workerbusiness.ui.login.LoginActivity;
 import com.netmi.workerbusiness.utils.PushUtils;
 import com.trello.rxlifecycle2.android.ActivityEvent;
 
@@ -31,7 +34,7 @@ import static com.netmi.baselibrary.ui.BaseWebviewActivity.WEBVIEW_TITLE;
 import static com.netmi.baselibrary.ui.BaseWebviewActivity.WEBVIEW_TYPE;
 import static com.netmi.baselibrary.ui.BaseWebviewActivity.WEBVIEW_TYPE_CONTENT;
 
-public class SettingActivity extends BaseActivity {
+public class SettingActivity extends BaseActivity<ActivitySettingBinding> {
     private ShopInfoEntity shopInfoEntity;
 
     @Override
@@ -42,6 +45,24 @@ public class SettingActivity extends BaseActivity {
     @Override
     protected void initUI() {
         getTvTitle().setText("设置");
+        LoginInfoEntity loginInfoEntity = LoginInfoCache.get();
+        if(loginInfoEntity.isOpen()){
+            mBinding.switchButton.setToggleOn(true);//打开
+        }else mBinding.switchButton.setToggleOn(false);//关闭
+        mBinding.switchButton.setOnToggleChanged(new SwitchButton.OnToggleChanged() {
+            @Override
+            public void onToggle(boolean on) {
+                if(on){
+                    showError("语音播报已开启");
+                    loginInfoEntity.setOpen(true);
+
+                }else {
+                    showError("语音播报已关闭");
+                    loginInfoEntity.setOpen(false);
+                }
+                LoginInfoCache.put(loginInfoEntity);
+            }
+        });
     }
 
     @Override
@@ -89,6 +110,8 @@ public class SettingActivity extends BaseActivity {
             doAgreement(111);
         } else if (id == R.id.tv_secret_two) {//点击隐私协议
             doAgreement(127);
+        }else if (id == R.id.tv_customer_equipment) {//点击外部设备
+            JumpUtil.overlay(SettingActivity.this,ExternalEquipmentActivity.class);
         }
     }
 
@@ -114,7 +137,9 @@ public class SettingActivity extends BaseActivity {
             //个推解绑
             PushUtils.unbindPush();
             WithdrawCache.clear();
-            MApplication.getInstance().gotoLogin();
+            MApplication.getInstance().gotoLogin("");
+            JumpUtil.overlay(getActivity(), LoginActivity.class);
+
         });
 
     }

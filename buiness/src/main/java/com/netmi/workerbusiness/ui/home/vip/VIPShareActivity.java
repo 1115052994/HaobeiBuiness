@@ -1,11 +1,8 @@
 package com.netmi.workerbusiness.ui.home.vip;
 
 import android.Manifest;
-import android.graphics.BitmapFactory;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
@@ -14,10 +11,8 @@ import com.netmi.baselibrary.data.base.RetrofitApiFactory;
 import com.netmi.baselibrary.data.base.RxSchedulers;
 import com.netmi.baselibrary.data.base.XObserver;
 import com.netmi.baselibrary.data.entity.BaseData;
-import com.netmi.baselibrary.data.entity.ShareEntity;
 import com.netmi.baselibrary.ui.BaseActivity;
 import com.netmi.baselibrary.utils.KeyboardUtils;
-import com.netmi.baselibrary.utils.Strings;
 import com.netmi.baselibrary.utils.ToastUtils;
 import com.netmi.baselibrary.widget.SlidingTextTabLayout;
 import com.netmi.workerbusiness.R;
@@ -27,6 +22,7 @@ import com.netmi.workerbusiness.data.api.VipParam;
 import com.netmi.workerbusiness.data.entity.VIPShareImgEntity;
 import com.netmi.workerbusiness.databinding.ActivityVipshareBinding;
 import com.netmi.workerbusiness.presenter.FileDownloadPresenterImpl;
+import com.netmi.workerbusiness.share.ShareUtilsTop;
 import com.netmi.workerbusiness.utils.ControlShareUtil;
 import com.tbruyelle.rxpermissions2.Permission;
 import com.tbruyelle.rxpermissions2.RxPermissions;
@@ -38,7 +34,6 @@ import java.util.List;
 
 import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.PlatformActionListener;
-import cn.sharesdk.framework.ShareSDK;
 import cn.sharesdk.wechat.friends.Wechat;
 import cn.sharesdk.wechat.moments.WechatMoments;
 import io.reactivex.Observable;
@@ -47,7 +42,7 @@ import io.reactivex.functions.Consumer;
 public class VIPShareActivity extends BaseActivity<ActivityVipshareBinding> implements PlatformActionListener, FileDownloadContract.View {
     private String url;
     private String type;       //1:邀请好友海报接口 2:获取店铺分享海报 3:分享收益海报
-    private ShareEntity entity;
+    private ShareUtilsTop shareUtilsTop;
     private String inviteCode;
     private List<String> imageList;
     private List<String> image = new ArrayList<>();
@@ -84,11 +79,8 @@ public class VIPShareActivity extends BaseActivity<ActivityVipshareBinding> impl
 
             @Override
             public void onPageSelected(int position) {
-                if (fragmentList != null
-                        && !fragmentList.isEmpty()) {
+                if (fragmentList != null && !fragmentList.isEmpty()) {
                     url = ((VIPShareFragment) fragmentList.get(position)).getImage();
-                    entity.setLinkUrl(url);
-                    entity.setImgUrl(url);
                 }
             }
 
@@ -107,38 +99,16 @@ public class VIPShareActivity extends BaseActivity<ActivityVipshareBinding> impl
     protected void initData() {
         type = getIntent().getStringExtra(VipParam.shareType);
         //1:邀请好友海报接口 2:获取店铺分享海报 3:分享收益海报
-
-        switch (type) {
-            case "1":
-                entity = new ShareEntity();
-                entity.setTitle("客商e宝");
-                entity.setContent("一站式商家营销服务 超优惠用户消费体系 接入全网平台海量优惠券 为商家、消费者提供最舒适的商业服务");
-                break;
-            default:
-                entity = new ShareEntity();
-                entity.setTitle("客商e宝");
-                entity.setContent("一站式商家营销服务 超优惠用户消费体系 接入全网平台海量优惠券 为商家、消费者提供最舒适的商业服务");
-                break;
-        }
+        shareUtilsTop = new ShareUtilsTop();
         doGetImgUrl();
     }
 
     private void shareToPlatform(String platformName) {
-        if (entity != null) {
-            showProgress("");
-            Platform.ShareParams shareParams = new Platform.ShareParams();
-            shareParams.setShareType(Platform.SHARE_IMAGE);
-            shareParams.setTitle(entity.getTitle());
-            shareParams.setUrl(entity.getLinkUrl());
-            shareParams.setText(entity.getContent());
-            if (Strings.isEmpty(entity.getImgUrl())) {
-                shareParams.setImageData(BitmapFactory.decodeResource(getResources(), R.mipmap.app_logo));       //微信专用
-            } else {
-                shareParams.setImageUrl(entity.getImgUrl());
-            }
-            Platform platform = ShareSDK.getPlatform(platformName);
-            platform.setPlatformActionListener(this);
-            platform.share(shareParams);
+        if(platformName.equals(Wechat.NAME)){
+            shareUtilsTop.weiXin(VIPShareActivity.this,url,"客商e宝","客商e宝",url,0);
+
+        }else if(platformName.equals(WechatMoments.NAME)){
+            shareUtilsTop.weixinCircle(VIPShareActivity.this,url,"客商e宝","客商e宝",url,0);
         } else {
             Toast.makeText(getContext(), "请先初始化数据", Toast.LENGTH_SHORT).show();
         }
@@ -199,10 +169,12 @@ public class VIPShareActivity extends BaseActivity<ActivityVipshareBinding> impl
             }
 
         } else if (i == R.id.tv_share_moment) {
+            showProgress("");
             ControlShareUtil.controlWechatMomentsShare(false);
             shareToPlatform(WechatMoments.NAME);
 //            showError("敬请期待");
         } else if (i == R.id.tv_share_wechat) {
+            showProgress("");
             ControlShareUtil.controlWechatShare(false);
             shareToPlatform(Wechat.NAME);
 //            showError("敬请期待");
@@ -233,8 +205,6 @@ public class VIPShareActivity extends BaseActivity<ActivityVipshareBinding> impl
                             mBinding.tvInviteCode.setText(inviteCode);
                         }
                         url = data.getData().getImg_url();
-                        entity.setLinkUrl(url);
-                        entity.setImgUrl(url);
                         /*GlideShowImageUtils.displayNetImage(getContext(), url, mBinding.ivShare,
                                 R.drawable.baselib_bg_null);*/
 

@@ -15,9 +15,9 @@
     </data>
 
     <LinearLayout
+        android:background="#F4F1F4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
         android:orientation="vertical">
 
         <TextView
@@ -33,7 +33,6 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
             android:background="@drawable/bg_white_8dp"
             android:onClick="@{doClick}">
 
@@ -41,7 +40,7 @@
                 android:id="@+id/tv_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="14dp"
+                android:layout_marginHorizontal="14dp"
                 android:layout_marginTop="20dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
@@ -52,16 +51,31 @@
                     android:layout_height="@dimen/dp_36" />
 
                 <TextView
+                    android:id="@+id/tv_left_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:ellipsize="end"
                     android:maxLines="1"
                     android:paddingRight="30dp"
+                    android:textColor="#333333"
+                    android:textSize="16sp"
+                    android:text="你有一笔新的订单"
+                    tools:text="你有一笔新的订单" />
+                <View
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"/>
+                <TextView
+                    android:id="@+id/tv_right_sub"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
                     android:text="@{item.title}"
                     android:textColor="#333333"
                     android:textSize="16sp"
-                    tools:text="你有一笔新的订单" />
+                    tools:text="买家已付款" />
 
             </LinearLayout>
 
@@ -73,7 +87,6 @@
                 android:layout_marginLeft="14dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="15dp"
-                android:text="@{item.title}"
                 android:textColor="#ff666666"
                 android:textSize="14sp"
                 tools:text="恭喜您，有一笔活动补贴入账99元。" />
@@ -85,25 +98,21 @@
                 android:layout_below="@id/tv_remark"
                 android:background="#EAEAEA" />
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/line"
-                android:orientation="horizontal"
                 android:paddingVertical="10dp">
 
                 <TextView
+                    android:id="@+id/tv_click_to_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="14dp"
-                    android:text="查看详情"
+                    android:text="点击查看"
                     android:textColor="#007AFF"
                     android:textSize="14sp" />
 
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1" />
 
                 <TextView
                     android:id="@+id/tv_right"
@@ -113,7 +122,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginRight="15dp"
                     android:drawableRight="@mipmap/ic_right_gray" />
-            </LinearLayout>
+            </RelativeLayout>
 
 
         </RelativeLayout>

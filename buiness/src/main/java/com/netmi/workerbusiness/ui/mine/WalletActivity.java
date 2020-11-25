@@ -3,19 +3,26 @@ package com.netmi.workerbusiness.ui.mine;
 import android.os.Bundle;
 import android.view.View;
 
+import com.netmi.baselibrary.data.Constant;
+import com.netmi.baselibrary.data.api.LoginApi;
+import com.netmi.baselibrary.data.base.ApiException;
+import com.netmi.baselibrary.data.base.BaseObserver;
 import com.netmi.baselibrary.data.base.RetrofitApiFactory;
 import com.netmi.baselibrary.data.base.RxSchedulers;
 import com.netmi.baselibrary.data.base.XObserver;
-import com.netmi.baselibrary.data.cache.UserInfoCache;
+import com.netmi.baselibrary.data.entity.AgreementEntity;
 import com.netmi.baselibrary.data.entity.BaseData;
-import com.netmi.baselibrary.data.entity.UserInfoEntity;
 import com.netmi.baselibrary.ui.BaseActivity;
+import com.netmi.baselibrary.ui.BaseWebviewActivity;
 import com.netmi.baselibrary.utils.JumpUtil;
 import com.netmi.workerbusiness.R;
+import com.netmi.workerbusiness.data.api.HaibeiConvertApi;
 import com.netmi.workerbusiness.data.api.MineApi;
 import com.netmi.workerbusiness.data.api.WalletApi;
+import com.netmi.workerbusiness.data.entity.haibei.HaibeiData;
 import com.netmi.workerbusiness.data.entity.mine.WalletEntity;
 import com.netmi.workerbusiness.databinding.ActivityWalletBinding;
+import com.netmi.workerbusiness.ui.home.haibei.HaiBeiWithdrawDepositActivity;
 import com.netmi.workerbusiness.ui.mine.wallet.ETHWalletDetailActivity;
 import com.netmi.workerbusiness.ui.mine.wallet.HaibeiChangeActivity;
 import com.netmi.workerbusiness.ui.mine.wallet.HaibeiRechargeActivity;
@@ -23,8 +30,14 @@ import com.netmi.workerbusiness.ui.mine.wallet.HaibeiTransferActivity;
 import com.netmi.workerbusiness.ui.mine.wallet.HaibeiWithdrawActivity;
 import com.netmi.workerbusiness.ui.mine.wallet.MineCollectionActivity;
 import com.netmi.workerbusiness.ui.mine.wallet.MineWithdrawActivity;
-import com.netmi.workerbusiness.ui.mine.wallet.SetPayPassActivity;
 import com.trello.rxlifecycle2.android.ActivityEvent;
+
+import io.reactivex.annotations.NonNull;
+
+import static com.netmi.baselibrary.ui.BaseWebviewActivity.WEBVIEW_CONTENT;
+import static com.netmi.baselibrary.ui.BaseWebviewActivity.WEBVIEW_TITLE;
+import static com.netmi.baselibrary.ui.BaseWebviewActivity.WEBVIEW_TYPE;
+import static com.netmi.baselibrary.ui.BaseWebviewActivity.WEBVIEW_TYPE_CONTENT;
 
 public class WalletActivity extends BaseActivity<ActivityWalletBinding> {
 
@@ -38,11 +51,19 @@ public class WalletActivity extends BaseActivity<ActivityWalletBinding> {
     @Override
     protected void initUI() {
         getTvTitle().setText("钱包");
+        getRightImage().setImageResource(R.mipmap.say_help);
+        getRightImage().setVisibility(View.VISIBLE);
+        int shop_user_type = getIntent().getIntExtra("SHOP_USER_TYPE", -1);
+        if(shop_user_type==1||shop_user_type==4){
+            mBinding.layoutRight.setVisibility(View.GONE);
+            mBinding.llMineWithdrawSeckill.setVisibility(View.GONE);
+        }
+
     }
 
     @Override
     protected void initData() {
-
+        initdata();
     }
 
     @Override
@@ -73,8 +94,14 @@ public class WalletActivity extends BaseActivity<ActivityWalletBinding> {
             JumpUtil.overlay(getContext(), MineCollectionActivity.class);
         } else if (id == R.id.tv_haibei_detail) { //海贝明细
             JumpUtil.overlay(getContext(), ETHWalletDetailActivity.class);
-        } else if (id == R.id.tv_mine_detail) { //我的明细
+        } else if (id == R.id.tv_mine_detail) { //我的余额
             JumpUtil.overlay(getContext(), TransactionDetailsActivity.class);
+        } else if (id == R.id.layout_right) { //奖励金
+            JumpUtil.overlay(getContext(), TransactionBountyActivity.class);
+        }else if (id == R.id.ll_mine_withdraw_seckill) { //奖励金提现
+            JumpUtil.overlay(getContext(), HaiBeiWithdrawDepositActivity.class);
+        }else if(id == R.id.iv_setting){
+            doAgreement(52);
         }
     }
 
@@ -87,8 +114,6 @@ public class WalletActivity extends BaseActivity<ActivityWalletBinding> {
                     @Override
                     public void onSuccess(BaseData<WalletEntity> data) {
                         mBinding.tvMineBalance.setText("¥" + data.getData().getBalance());
-
-
                     }
                 });
     }
@@ -113,10 +138,61 @@ public class WalletActivity extends BaseActivity<ActivityWalletBinding> {
                 });
     }
 
+    private void initdata() {
+        RetrofitApiFactory.createApi(HaibeiConvertApi.class)
+                .getHaibeiConvert("")
+                .compose(RxSchedulers.compose())
+                .compose((this).bindUntilEvent(ActivityEvent.DESTROY))
+                .subscribe(new XObserver<BaseData<HaibeiData>>() {
+                    @Override
+                    public void onSuccess(@NonNull BaseData<HaibeiData> data) {
+                        mBinding.setData1(data.getData());
+                    }
+                });
+    }
+
+
     @Override
     protected void onResume() {
         super.onResume();
         getWallet();  //我的钱包信息
         getWalletInfo(); //区块链钱包信息
+    }
+
+    //我的钱包问号
+    private void doAgreement(int type) {
+        showProgress("");
+        RetrofitApiFactory.createApi(LoginApi.class)
+                .getAgreement(type)
+                .compose(this.<BaseData<AgreementEntity>>bindUntilEvent(ActivityEvent.DESTROY))
+                .compose(RxSchedulers.<BaseData<AgreementEntity>>compose())
+                .subscribe(new BaseObserver<BaseData<AgreementEntity>>() {
+                    @Override
+                    public void onNext(BaseData<AgreementEntity> agreementEntityBaseData) {
+                        if (agreementEntityBaseData.getErrcode() == Constant.SUCCESS_CODE) {
+                            if (agreementEntityBaseData.getData() != null && agreementEntityBaseData.getData().getContent() != null && agreementEntityBaseData.getData().getTitle() != null) {
+                                Bundle bundle = new Bundle();
+                                bundle.putString(WEBVIEW_TITLE, agreementEntityBaseData.getData().getTitle());
+                                bundle.putInt(WEBVIEW_TYPE, WEBVIEW_TYPE_CONTENT);
+                                bundle.putString(WEBVIEW_CONTENT, agreementEntityBaseData.getData().getContent());
+                                JumpUtil.overlay(getContext(), BaseWebviewActivity.class, bundle);
+                            }
+                        } else {
+                            showError(agreementEntityBaseData.getErrmsg());
+                        }
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        hideProgress();
+                    }
+
+                    @Override
+                    protected void onError(ApiException ex) {
+                        hideProgress();
+                        showError(ex.getMessage());
+                    }
+                });
+
     }
 }

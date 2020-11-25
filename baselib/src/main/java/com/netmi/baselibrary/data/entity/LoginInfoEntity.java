@@ -41,6 +41,20 @@ public class LoginInfoEntity {
      * 微信登录
      */
     private String openid;
+    /**
+     * 是否开启语音播报
+     */
+    private boolean isOpen = true;
+
+
+
+    public boolean isOpen() {
+        return isOpen;
+    }
+
+    public void setOpen(boolean open) {
+        isOpen = open;
+    }
 
     /**
      * 登录状态

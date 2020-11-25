@@ -122,12 +122,14 @@
 
                 <!--配送地址-->
                 <include
+                    android:id="@+id/logistics_information"
                     layout="@layout/sharemall_layout_mine_order_details_address"
                     bind:address="@{detailsEntity.addressEntity}" />
 
 
                 <!--卖家留言-->
                 <RelativeLayout
+                    android:id="@+id/logistics_information2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
@@ -550,7 +552,6 @@
                 android:text="@{detailsEntity.rightButtonStr}"
                 android:textColor="@color/white"
                 android:textSize="14sp"
-                android:visibility="@{Strings.isEmpty(detailsEntity.rightButtonStr) ? View.GONE : View.VISIBLE}"
                 tools:text="立即付款" />
 
         </LinearLayout>

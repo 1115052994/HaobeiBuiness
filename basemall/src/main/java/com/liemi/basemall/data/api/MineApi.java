@@ -42,6 +42,8 @@ public interface MineApi {
                                   @Field("imgs[]") List<String> imgs);
 
 
+
+
     /**
      * 修改个人资料
      */

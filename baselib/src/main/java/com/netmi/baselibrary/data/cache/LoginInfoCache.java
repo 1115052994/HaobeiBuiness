@@ -14,12 +14,16 @@ public class LoginInfoCache {
     /**
      * 缓存用户信息
      */
-    private static LoginInfoEntity loginInfo;
+    public static LoginInfoEntity loginInfo;
     /**
      * 用户账号
      */
     public static final String LOGIN = "login";
 
+    /**
+     * 用户账号
+     */
+    public static final String OPEN = "open";
     /**
      * 用户密码
      */
@@ -35,13 +39,14 @@ public class LoginInfoCache {
      */
     private static final String STATE = "logoutState";
 
+
     /**
      * 保存登陆用户信息
      *
      * @param loginInfo
      */
     public static void put(LoginInfoEntity loginInfo) {
-
+        PrefCache.putData(OPEN, loginInfo.isOpen());
         PrefCache.putData(LOGIN, loginInfo.getLogin());
         PrefCache.putData(PASSWORD, loginInfo.getPassword());
         PrefCache.putData(OPENID, loginInfo.getOpenid());
@@ -59,6 +64,7 @@ public class LoginInfoCache {
             loginInfo.setLogin((String) PrefCache.getData(LOGIN, ""));
             loginInfo.setPassword((String) PrefCache.getData(PASSWORD, ""));
             loginInfo.setOpenid((String) PrefCache.getData(OPENID, ""));
+            loginInfo.setOpen((Boolean) PrefCache.getData(OPEN, true));
         }
         return loginInfo;
 

@@ -21,13 +21,12 @@ public class Constant {
 
     public static final String BASE_HTML = AppUtils.getBaseHtml();
 
-    //正式
-//    public static final String BASE_API_RELEASE = "http://hb-api.haobeitech.com";
-    public static final String BASE_API_RELEASE = "http://hb-api-test.haobeitech.com";
+    //正式服   新   http://hb-api.ksebao.com/   老http://hb-api.haobeitech.com/
+    //测试服   新   http://hb-api-test.ksebao.com/  老http://hb-api-test.haobeitech.com/
+    public static final String BASE_API_RELEASE = "http://hb-api.ksebao.com/";
     //测试
-    public static final String BASE_API_DEBUG = "http://hb-api-test.haobeitech.com";
+    public static final String BASE_API_DEBUG = "http://hb-api-test.ksebao.com/";
 
-//    public static final String BASE_API_DEBUG = "http://api-test.haobeitech.com";  明泽测试服：http://hb-api-test.haobeitech.com
 
     public static final String BASE_HTML_DEBUG = BASE_API_DEBUG;
 
@@ -76,7 +75,7 @@ public class Constant {
     /**
      * 默认一页的条数
      */
-    public static final int PAGE_ROWS = 10;
+    public static final int PAGE_ROWS = 20;
 
     /**
      * 得到当前外部存储设备的目录

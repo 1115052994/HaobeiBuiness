@@ -16,14 +16,8 @@ import android.util.Log;
 import com.netmi.baselibrary.BuildConfig;
 import com.netmi.baselibrary.data.Constant;
 
-import java.io.ByteArrayInputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.InputStream;
-import java.security.KeyStore;
-import java.security.cert.CertificateException;
-import java.security.cert.CertificateFactory;
-import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
@@ -59,6 +53,7 @@ public class AppUtils {
     public static String getBaseHtml() {
         return isDebug() ? Constant.BASE_HTML_DEBUG : Constant.BASE_HTML_RELEASE;
     }
+
 
     /**
      * 提示 APP 功能未开放

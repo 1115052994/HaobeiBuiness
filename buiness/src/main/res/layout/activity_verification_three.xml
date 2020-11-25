@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data></data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff"
+        android:orientation="vertical">
+
+        <include layout="@layout/layout_title_shadow" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10sp"
+            android:layout_marginVertical="10dp"
+            android:background="#ffffff"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/et_sms_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text=""
+                android:background="@null"
+                android:hint="请输入验证码" />
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:alpha="0.8"
+                android:background="#999999" />
+
+            <TextView
+                android:id="@+id/tv_login_three"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/d_30"
+                android:layout_marginTop="35dp"
+                android:background="@mipmap/dl_button_three"
+                android:enabled="true"
+                android:gravity="center"
+                android:onClick="doClick"
+                android:text="验证"
+                android:textColor="@color/white"
+                android:textSize="@dimen/s_14" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="注：如没有邀请码可以联系"
+                    android:textColor="#333333"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/tv_service_three"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="官方客服"
+                    android:onClick="doClick"
+                    android:textColor="#FF330B"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="获取"
+                    android:textColor="#333333"
+                    android:textSize="12dp" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</layout>

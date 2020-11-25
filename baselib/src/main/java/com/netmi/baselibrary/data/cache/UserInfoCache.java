@@ -38,7 +38,15 @@ public class UserInfoCache {
      *缴费状态
      */
     private static final String SHOP_PAY_STATUS = "shop_pay_status";
+    /***
+     *用户手机号
+     */
+    private static final String PHONE = "phone";
 
+    /***
+     *音响设备绑定id
+     */
+    private static final String AUDIODEVICE = "audio_device_id";
 
     /**
      * 保存登陆用户信息
@@ -58,6 +66,11 @@ public class UserInfoCache {
             PrefCache.putData(SHOP_APPLY_STATUS, entity.getShop_apply_status());
         if (!TextUtils.isEmpty(entity.getShop_pay_status()))
             PrefCache.putData(SHOP_PAY_STATUS, entity.getShop_pay_status());
+        if (!TextUtils.isEmpty(entity.getPhone()))
+            PrefCache.putData(PHONE, entity.getPhone());
+
+        PrefCache.putData(AUDIODEVICE, entity.getAudio_device_id());
+
         UserInfoCache.userInfoEntity = entity;
         setBankInfo();
     }
@@ -82,6 +95,7 @@ public class UserInfoCache {
         userInfoEntity.setInvite_code((String) PrefCache.getData(INVITE_CODE, ""));
         userInfoEntity.setShop_apply_status((String) PrefCache.getData(SHOP_APPLY_STATUS, ""));
         userInfoEntity.setShop_pay_status((String) PrefCache.getData(SHOP_PAY_STATUS, ""));
+        userInfoEntity.setPhone((String) PrefCache.getData(PHONE, ""));
     }
 
     public static void clear() {

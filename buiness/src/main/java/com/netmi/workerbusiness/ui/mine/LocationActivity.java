@@ -387,10 +387,10 @@ public class LocationActivity extends BaseActivity<ActivityLocationBinding> impl
      * 更新用户信息
      */
     private void doUpdateShopInfo(Integer id, String logo_url, String name, String remark, String opening_hours, String longitude, String latitude
-            , String p_name, String c_name, String d_name, String address, String img_url) {
+            , String p_name, String c_name, String d_name, String address, String img_url, String p_id, String c_id, String d_id) {
         showProgress("");
         RetrofitApiFactory.createApi(MineApi.class)
-                .doUpdateShopInfo(id, logo_url, name, remark, opening_hours, longitude, latitude, p_name, c_name, d_name, address, img_url)
+                .doUpdateShopInfo(id, logo_url, name, remark, opening_hours, longitude, latitude, p_name, c_name, d_name, address, img_url, p_id, c_id, d_id)
                 .compose(this.<BaseData>bindUntilEvent(ActivityEvent.DESTROY))
                 .compose(RxSchedulers.<BaseData>compose())
                 .subscribe(new XObserver<BaseData>() {

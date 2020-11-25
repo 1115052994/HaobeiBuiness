@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="item"
+            type="com.netmi.workerbusiness.data.entity.haibei.HaibeiOrderList" />
+
+    </data>
+
+    <LinearLayout
+        android:onClick="@{doClick}"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:paddingLeft="24dp"
+            android:paddingRight="20dp"
+            android:paddingVertical="14dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_white_8dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{item.nickname}"
+                android:textColor="#1D1E1F"
+                android:textSize="14dp"
+                tools:text="一点点" />
+
+            <TextView
+                android:id="@+id/tv_remark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="31dp"
+                android:textColor="#1D1E1F"
+                android:textSize="14sp"
+                android:text="@{@string/haibei_convert_number(item.haibei_amount)}"
+                tools:text="海贝：10000 枚" />
+            <TextView
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{item.pay_time}"
+                android:textColor="#1D1E1F"
+                android:textSize="14dp"
+                tools:text="2020-07-01" />
+
+            <TextView
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="31dp"
+                android:textColor="#D2350D"
+                android:textSize="14sp"
+                android:text="@{@string/haibei_pay_number(item.amount)}"
+                tools:text="实付￥1000.00" />
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</layout>

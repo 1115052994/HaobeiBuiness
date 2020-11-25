@@ -36,6 +36,8 @@
     </style>
 
 
+
+
     <!-- 只允许输入数字和字母的编辑框 -->
     <style name="EditTextDigitsLetter">
         <item name="android:digits">@string/input_letter_number</item>

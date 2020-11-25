@@ -2,41 +2,23 @@ package com.netmi.workerbusiness.ui.login;
 
 import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 
-import com.netmi.baselibrary.data.Constant;
 import com.netmi.baselibrary.data.api.LoginApi;
 import com.netmi.baselibrary.data.base.ApiException;
-import com.netmi.baselibrary.data.base.BaseObserver;
 import com.netmi.baselibrary.data.base.RetrofitApiFactory;
 import com.netmi.baselibrary.data.base.RxSchedulers;
 import com.netmi.baselibrary.data.base.XObserver;
-import com.netmi.baselibrary.data.cache.AccessTokenCache;
-import com.netmi.baselibrary.data.cache.LoginInfoCache;
-import com.netmi.baselibrary.data.cache.UserInfoCache;
-import com.netmi.baselibrary.data.entity.AgreementEntity;
 import com.netmi.baselibrary.data.entity.BaseData;
-import com.netmi.baselibrary.data.entity.LoginInfoEntity;
-import com.netmi.baselibrary.data.entity.UserInfoEntity;
 import com.netmi.baselibrary.ui.BaseActivity;
-import com.netmi.baselibrary.ui.BaseWebviewActivity;
 import com.netmi.baselibrary.utils.InputListenView;
-import com.netmi.baselibrary.utils.JumpUtil;
 import com.netmi.baselibrary.utils.MD5;
 import com.netmi.baselibrary.utils.Strings;
-import com.netmi.baselibrary.utils.ToastUtils;
 import com.netmi.baselibrary.utils.dialog.MessagesHintDialog;
 import com.netmi.workerbusiness.R;
 import com.netmi.workerbusiness.databinding.ActivityForgetPasswordBinding;
 import com.trello.rxlifecycle2.android.ActivityEvent;
-
-import static com.netmi.baselibrary.ui.BaseWebviewActivity.WEBVIEW_CONTENT;
-import static com.netmi.baselibrary.ui.BaseWebviewActivity.WEBVIEW_TITLE;
-import static com.netmi.baselibrary.ui.BaseWebviewActivity.WEBVIEW_TYPE;
-import static com.netmi.baselibrary.ui.BaseWebviewActivity.WEBVIEW_TYPE_CONTENT;
 
 public class ForgetPasswordActivity extends BaseActivity<ActivityForgetPasswordBinding> implements MessagesHintDialog.ClickBindPhoneListener {
 

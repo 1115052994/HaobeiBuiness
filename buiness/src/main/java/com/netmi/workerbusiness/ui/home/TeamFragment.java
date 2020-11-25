@@ -1,12 +1,9 @@
 package com.netmi.workerbusiness.ui.home;
 
 import android.app.Activity;
-import android.content.Context;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 
 import com.netmi.baselibrary.data.Constant;
@@ -19,26 +16,17 @@ import com.netmi.baselibrary.ui.BaseRViewAdapter;
 import com.netmi.baselibrary.ui.BaseViewHolder;
 import com.netmi.baselibrary.ui.BaseXRecyclerFragment;
 import com.netmi.baselibrary.utils.AppManager;
-import com.netmi.baselibrary.utils.JumpUtil;
 import com.netmi.baselibrary.utils.PageUtil;
-import com.netmi.baselibrary.utils.ToastUtils;
 import com.netmi.workerbusiness.R;
 import com.netmi.workerbusiness.data.api.CouponApi;
 import com.netmi.workerbusiness.data.entity.home.TeamEntity;
-import com.netmi.workerbusiness.data.entity.home.offlineorder.OfflineOrderListEntity;
-import com.netmi.workerbusiness.data.event.LocationEvent;
 import com.netmi.workerbusiness.data.event.TeamEvent;
 import com.netmi.workerbusiness.databinding.FragmentListBinding;
-import com.netmi.workerbusiness.databinding.ItemOfflineOrderViewBinding;
-import com.netmi.workerbusiness.ui.home.offline.OfflineEvaluationActivity;
-import com.netmi.workerbusiness.ui.home.offline.OfflineOrderDetailActivity;
+import com.netmi.workerbusiness.databinding.ItemTeamBinding;
 import com.netmi.workerbusiness.ui.home.offline.OfflineOrderViewFragment;
-import com.trello.rxlifecycle2.android.ActivityEvent;
 import com.trello.rxlifecycle2.android.FragmentEvent;
 
 import org.greenrobot.eventbus.EventBus;
-
-import static android.content.Intent.getIntent;
 
 /**
  * 类描述：
@@ -112,8 +100,13 @@ public class TeamFragment extends BaseXRecyclerFragment<FragmentListBinding, Tea
 
                     @Override
                     public void bindData(TeamEntity item) {
+                        getBinding().setType(type);
                         super.bindData(item);//不能删
 
+                    }
+                    @Override
+                    public ItemTeamBinding getBinding() {
+                        return (ItemTeamBinding) super.getBinding();
                     }
 
                     @Override

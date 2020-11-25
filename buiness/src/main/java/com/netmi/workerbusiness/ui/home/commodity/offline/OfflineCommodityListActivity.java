@@ -9,21 +9,14 @@ import android.view.View;
 
 import com.netmi.baselibrary.ui.BaseActivity;
 import com.netmi.baselibrary.utils.JumpUtil;
-import com.netmi.baselibrary.utils.KeyboardUtils;
 import com.netmi.workerbusiness.R;
 import com.netmi.workerbusiness.data.event.LineCommoditySearchEvent;
 import com.netmi.workerbusiness.databinding.ActivityOfflineCommodityListBinding;
-import com.netmi.workerbusiness.ui.home.commodity.online.CreateCommodityActivity;
-import com.netmi.workerbusiness.ui.home.commodity.online.LineCommodityListFragment;
 import com.netmi.workerbusiness.ui.utils.MyFragmentPageAdapterWithTabs;
 
 import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
-
-import static com.netmi.workerbusiness.ui.home.commodity.online.CreateCommodityActivity.CREATE_GOOD_FROM;
-import static com.netmi.workerbusiness.ui.home.commodity.online.CreateCommodityActivity.SHOP_ID;
-import static com.netmi.workerbusiness.ui.home.commodity.online.CreateCommodityActivity.STORE_RESULT;
 
 public class OfflineCommodityListActivity extends BaseActivity<ActivityOfflineCommodityListBinding> implements ViewPager.OnPageChangeListener {
     /**
@@ -105,11 +98,11 @@ public class OfflineCommodityListActivity extends BaseActivity<ActivityOfflineCo
     @Override
     public void doClick(View view) {
         super.doClick(view);
+
         if (view.getId() == R.id.tv_setting) {
             Bundle bundle = new Bundle();
             //TYPE表示从哪个页面进入 1表示创建商品 2表示编辑商品
             bundle.putInt(JumpUtil.TYPE, 1);
-
             JumpUtil.overlay(getContext(), CreateOfflineCommodityActivity.class, bundle);
         }
     }

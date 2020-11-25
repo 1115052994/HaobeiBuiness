@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:id="@+id/ll_tankuang"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tankuang_title"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="新增标签"
+            android:textColor="#000000"
+            android:textSize="@dimen/s_16" />
+
+        <LinearLayout
+            android:id="@+id/tankuang_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:background="@drawable/sobot_bg_title_custom_login_c4c4c4"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingVertical="5dp">
+
+            <EditText
+                android:id="@+id/tankuang_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:background="@null"
+                android:hint="请输入关键词：1-4个字符"
+                android:layout_marginVertical="6dp"
+                android:textColor="@color/gray_66"
+                android:textColorHint="#ffb9b9b9"
+                android:textSize="@dimen/s_15" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="35dp"
+            android:layout_marginVertical="10dp"
+            android:alpha="0.5"
+            android:text="例如：火锅，自助餐，超市......"
+            android:textSize="@dimen/s_12"
+            android:textColor="#999999" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_gravity="bottom"
+            android:gravity="center"
+            android:layout_marginHorizontal="20dp">
+
+            <Button
+                android:id="@+id/tankuang_positiveButton"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@mipmap/dl_button_three"
+                android:gravity="center"
+                android:text="@string/ok"
+                android:textColor="#ffffff" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

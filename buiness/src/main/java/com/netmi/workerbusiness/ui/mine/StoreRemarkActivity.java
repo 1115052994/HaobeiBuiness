@@ -1,8 +1,5 @@
 package com.netmi.workerbusiness.ui.mine;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 
 import com.netmi.baselibrary.data.base.RetrofitApiFactory;
@@ -19,10 +16,6 @@ import com.netmi.workerbusiness.databinding.ActivityStoreRemarkBinding;
 import com.trello.rxlifecycle2.android.ActivityEvent;
 
 import org.greenrobot.eventbus.EventBus;
-
-import static com.liemi.basemall.ui.personal.address.AddressManageActivity.ADDRESS_ENTITY;
-import static com.netmi.baselibrary.data.Constant.SUCCESS_CODE;
-import static com.netmi.workerbusiness.ui.mine.StoreInfoActivity.REQUEST_CHANGE_REMARK;
 
 public class StoreRemarkActivity extends BaseActivity<ActivityStoreRemarkBinding> {
 
@@ -65,12 +58,11 @@ public class StoreRemarkActivity extends BaseActivity<ActivityStoreRemarkBinding
     /**
      * 更新用户信息
      */
-    private void doUpdateShopInfo(Integer id, String logo_url, String name, String remark, String opening_hours, String longitude, String latitude,
-                                  String p_name, String c_name, String d_name, String address, String img_url
-    ) {
+    private void doUpdateShopInfo(Integer id, String logo_url, String name, String remark, String opening_hours, String longitude, String latitude
+            , String p_name, String c_name, String d_name, String address, String img_url,String p_id, String c_id, String d_id) {
         showProgress("");
         RetrofitApiFactory.createApi(MineApi.class)
-                .doUpdateShopInfo(id, logo_url, name, remark, opening_hours, longitude, latitude, p_name, c_name, d_name, address, img_url)
+                .doUpdateShopInfo(id, logo_url, name, remark, opening_hours, longitude, latitude, p_name, c_name, d_name,address, img_url ,p_id,c_id,d_id)
                 .compose(this.<BaseData>bindUntilEvent(ActivityEvent.DESTROY))
                 .compose(RxSchedulers.<BaseData>compose())
                 .subscribe(new XObserver<BaseData>() {

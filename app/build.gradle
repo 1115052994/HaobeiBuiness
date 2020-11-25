@@ -8,8 +8,8 @@ android {
         applicationId "com.netmi.haobeibuiness"
         minSdkVersion 16
         targetSdkVersion 28
-        versionCode 9
-        versionName "1.0.9"
+        versionCode 36
+        versionName "1.3.6"
         testInstrumentationRunner "android.support.test.runner.AndroidJUgenerateBuildConfignitRunner"
 
         // 开启multidex
@@ -53,6 +53,7 @@ android {
             exclude 'lib/x86_64/librsjni.so'
             exclude 'lib/x86_64/libRSSupport.so'
         }
+        flavorDimensions "客商e宝商户端"  // 这里的名字好像随意，不是很清楚作用 -。-！
     }
 
     dataBinding {
@@ -109,8 +110,24 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-}
 
+    // 打包重命名
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            if (variant.buildType.name.equals('release')) {
+                outputFileName = "客商e宝商户端正式版_V${variant.versionName}_${releaseTime()}.apk"
+            }else if(variant.buildType.name.equals('debug')){
+                outputFileName = "客商e宝商户端测试版_V${variant.versionName}_${debugTime()}.apk"
+            }
+        }
+    }
+}
+def releaseTime() {
+    return new Date().format("yyyyMMdd", TimeZone.getTimeZone("UTC+8"))
+}
+def debugTime() {
+    return new Date().format("MMdd HH.mm", TimeZone.getTimeZone("UTC+8"))
+}
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:28.0.0'

@@ -347,7 +347,7 @@ public class HaibeiSpareTabActivity extends BaseActivity<ActivityHaibeiSpareTabB
             //设置显示十字线，必须显示十字线，否则MarkerView不生效
             set.setHighlightEnabled(true);
             //设置是否在数据点中间显示一个孔
-            set.setDrawCircleHole(false);
+            set.setDrawCircleHole(true);
 
             //设置填充
             //设置允许填充

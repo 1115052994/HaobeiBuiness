@@ -31,8 +31,7 @@
                 android:id="@+id/iv_img"
                 civPath="@{model.logo_url}"
                 android:layout_width="35dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="20dp" />
+                android:layout_height="match_parent" />
 
             <TextView
                 android:paddingVertical="17dp"

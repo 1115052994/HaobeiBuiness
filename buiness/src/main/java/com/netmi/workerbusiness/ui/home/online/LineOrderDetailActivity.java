@@ -37,7 +37,6 @@ import com.netmi.workerbusiness.R;
 import com.netmi.workerbusiness.data.api.OrderApi;
 import com.netmi.workerbusiness.data.entity.home.lineorder.LineOrderDetailEntity;
 import com.netmi.workerbusiness.data.entity.home.lineorder.LineOrderListEntity;
-import com.netmi.workerbusiness.data.entity.home.lineorder.LogisticEntity;
 import com.netmi.workerbusiness.databinding.ActivityLineOrderDetailBinding;
 import com.netmi.workerbusiness.databinding.SharemallItemOrderDetailsGoodBinding;
 import com.netmi.workerbusiness.databinding.SharemallLayoutMineOrderDetailsLogisticsBinding;
@@ -71,6 +70,7 @@ public class LineOrderDetailActivity extends BaseActivity<ActivityLineOrderDetai
     private int status;
     //请求物流信息订单id
     private String order_no;
+    private int type=0;
 
 
     @Override
@@ -83,6 +83,7 @@ public class LineOrderDetailActivity extends BaseActivity<ActivityLineOrderDetai
     protected void initUI() {
         getTvTitle().setText("订单详情");
         mOrderId = getIntent().getExtras().getInt(ORDER_DETAILS_ID);
+        type = getIntent().getExtras().getInt("type");
         mLogisticsViewStub = mBinding.vsLogistics.getViewStub();
         mLogisticsViewStub.setOnInflateListener(new ViewStub.OnInflateListener() {
             @Override
@@ -150,6 +151,7 @@ public class LineOrderDetailActivity extends BaseActivity<ActivityLineOrderDetai
         }
         mOrderId = getIntent().getIntExtra(ORDER_DETAILS_ID, -1);
         doGetOrderDetails();
+
     }
 
     boolean canJump = true;
@@ -277,6 +279,15 @@ public class LineOrderDetailActivity extends BaseActivity<ActivityLineOrderDetai
                         if (data.getErrcode() == Constant.SUCCESS_CODE) {
                             if (data.getData() != null) {
                                 showData(data.getData());
+                                if(type==1){
+                                    mBinding.tvOrderFunction2.setVisibility(View.GONE);
+                                }else {
+                                    if(data.getData().getRightButtonStr().isEmpty()){
+                                        mBinding.tvOrderFunction2.setVisibility(View.GONE);
+                                    }else {
+                                        mBinding.tvOrderFunction2.setVisibility(View.VISIBLE);
+                                    }
+                                }
                                 status = data.getData().getStatus();
                                 doGetCountdown();
                                 mBinding.tvOrderNum.setText(data.getData().getMainOrders().get(0).getOrder_no());
@@ -306,7 +317,9 @@ public class LineOrderDetailActivity extends BaseActivity<ActivityLineOrderDetai
                 .subscribe(new BaseObserver<BaseData<List<com.liemi.basemall.data.entity.order.LogisticEntity>>>() {
                     @Override
                     protected void onError(ApiException ex) {
-                        showError(ex.getMessage());
+//                        showError(ex.getMessage());
+                        mBinding.logisticsInformation2.setVisibility(View.GONE);
+                        mBinding.logisticsInformation.logisticsInformation3.setVisibility(View.GONE);
                     }
 
                     @Override
@@ -319,7 +332,9 @@ public class LineOrderDetailActivity extends BaseActivity<ActivityLineOrderDetai
                                 }
                             }
                         } else {
-                            showError(data.getErrmsg());
+//                            showError(data.getErrmsg());
+                            mBinding.logisticsInformation2.setVisibility(View.GONE);
+                            mBinding.logisticsInformation.logisticsInformation3.setVisibility(View.GONE);
                         }
                     }
 

@@ -4,7 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+        <variable
+            name="data1"
+            type="com.netmi.workerbusiness.data.entity.haibei.HaibeiData" />
     </data>
 
     <LinearLayout
@@ -14,28 +19,167 @@
         tools:context=".ui.home.haibei.HaiBeiExchangeActivity">
         <include
             android:id="@+id/layout_title"
-            layout="@layout/layout_title_shadow" />
+            layout="@layout/baselib_include_title_bar" />
         <LinearLayout
+            android:visibility="gone"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:background="@color/white"
+                android:layout_marginTop="8dp"
+                android:paddingVertical="18dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content">
+                <TextView
+                    tools:text="￥15666"
+                    android:textColor="#D2350D"
+                    android:textSize="14dp"
+                    android:text="@{data1.bonus}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:textColor="#1D1E1F"
+                    android:layout_marginTop="6dp"
+                    android:textSize="14dp"
+                    android:text="奖励金"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:background="@color/white"
+                android:layout_marginTop="8dp"
+                android:paddingVertical="18dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content">
+                <TextView
+                    tools:text="￥15666"
+                    android:textColor="#D2350D"
+                    android:textSize="14dp"
+                    android:text="@{data1.bonus_quota}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:textColor="#1D1E1F"
+                    android:layout_marginTop="6dp"
+                    android:textSize="14dp"
+                    android:text="提现额度"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:background="@color/white"
+                android:layout_marginTop="8dp"
+                android:paddingVertical="18dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/tv_have_sell"
+                    tools:text="￥15666"
+                    android:text="￥0"
+                    android:textColor="#D2350D"
+                    android:textSize="14dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:textColor="#1D1E1F"
+                    android:layout_marginTop="6dp"
+                    android:textSize="14dp"
+                    android:text="已兑换海贝数"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:background="@color/white"
+                android:layout_marginTop="8dp"
+                android:paddingVertical="18dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content">
+                <TextView
+                    tools:text="￥15666"
+                    android:textColor="#D2350D"
+                    android:textSize="14dp"
+                    android:text="@{data1.total_amount}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:textColor="#1D1E1F"
+                    android:layout_marginTop="6dp"
+                    android:textSize="14dp"
+                    android:text="总交易额"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
             android:background="@color/white"
             android:layout_marginTop="8dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="88dp">
             <TextView
-                android:paddingVertical="19dp"
-                android:paddingLeft="22dp"
-                android:textColor="#010101"
-                android:textSize="16dp"
-                android:text="海贝："
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <EditText
-                android:maxLines="1"
-                android:background="@null"
-                android:hint="请输入海贝数"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:visibility="gone"
+                android:id="@+id/withdraw_deposit"
+                android:drawableTop="@mipmap/withdraw_haibei"
+                android:gravity="center"
+                android:paddingVertical="15dp"
+                android:textColor="#1D1E1F"
+                android:textSize="14dp"
+                android:text="提现"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:onClick="@{doClick}"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:id="@+id/haibei_code_conversion"
+                android:onClick="@{doClick}"
+                android:drawableTop="@mipmap/haibei_redeem_code"
+                android:gravity="center"
+                android:paddingVertical="15dp"
+                android:textSize="14dp"
+                android:textColor="#1D1E1F"
+                android:text="海贝兑换码"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
 
         </LinearLayout>
+        <TextView
+            android:paddingVertical="11dp"
+            android:gravity="center"
+            android:textSize="16dp"
+            android:textColor="#1D1E1F"
+            android:text="订单列表"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <com.netmi.baselibrary.widget.MyXRecyclerView
+            android:id="@+id/xrv_data"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </com.netmi.baselibrary.widget.MyXRecyclerView>
         
 
     </LinearLayout>

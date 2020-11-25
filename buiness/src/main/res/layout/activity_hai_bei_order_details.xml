@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+        <variable
+            name="item"
+            type="com.netmi.workerbusiness.data.entity.haibei.HaibeiOrderList" />
+
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.home.haibei.HaiBeiExchangeActivity">
+        <include
+            android:id="@+id/layout_title"
+            layout="@layout/layout_title_shadow" />
+            <RelativeLayout
+                android:orientation="vertical"
+                android:background="@color/white"
+                android:layout_marginTop="8dp"
+                android:paddingVertical="18dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                //civPath="@{model2.logo_url}"
+                <ImageView
+                    android:id="@+id/image_order"
+                    android:layout_marginLeft="16dp"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_centerVertical="true"
+                    android:scaleType="centerCrop"
+                    android:transitionName="@string/transition_store"
+                    civPath="@{item.head_url}"
+                    android:contentDescription="@null"
+                    tools:ignore="MissingConstraints" />
+
+                <TextView
+                    android:layout_marginLeft="12dp"
+                    android:layout_toRightOf="@+id/image_order"
+                    android:layout_alignTop="@+id/image_order"
+                    tools:text="派大星"
+                    android:textColor="#1D1E1F"
+                    android:textSize="14dp"
+                    android:text="@{item.nickname}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:ignore="MissingConstraints" />
+                <TextView
+                    android:layout_alignBottom="@+id/image_order"
+                    android:layout_toRightOf="@+id/image_order"
+                    android:layout_marginLeft="12dp"
+                    android:textSize="12dp"
+                    android:text="@{@string/haibei_order_id(item.user_id)}"
+                    android:hint="账户ID：15062645914"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:ignore="MissingConstraints" />
+
+            </RelativeLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:background="@color/white"
+            android:layout_marginTop="1dp"
+            android:padding="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/top_name_order"
+                android:textColor="#1D1E1F"
+                android:textSize="14dp"
+                android:text="订单信息"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                tools:ignore="MissingConstraints" />
+            <TextView
+                android:id="@+id/order_message_number"
+                app:layout_constraintTop_toBottomOf="@+id/top_name_order"
+                android:gravity="center"
+                android:textColor="#555555"
+                android:textSize="14dp"
+                android:layout_marginTop="13dp"
+                android:text="@{@string/haibei_order_message(item.order_no)}"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                tools:text="订单信息：2020121255645448"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/order_message_time"
+                app:layout_constraintTop_toBottomOf="@+id/order_message_number"
+                android:gravity="center"
+                android:textColor="#555555"
+                android:textSize="14dp"
+                android:layout_marginTop="9dp"
+                android:text="@{@string/haibei_pay_time(item.pay_time)}"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                tools:text="付款时间：2020-07-01 13：24：45"
+                tools:ignore="MissingConstraints" />
+            <TextView
+                android:id="@+id/haibei_number"
+                app:layout_constraintTop_toBottomOf="@+id/order_message_time"
+                android:gravity="center"
+                android:textColor="#555555"
+                android:textSize="14dp"
+                android:layout_marginTop="9dp"
+                android:text="@{@string/haibei_number(item.haibei_amount)}"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                tools:text="海贝数：100000 枚"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                app:layout_constraintTop_toBottomOf="@+id/haibei_number"
+                android:gravity="center"
+                android:textColor="#555555"
+                android:textSize="14dp"
+                android:layout_marginTop="9dp"
+                android:text="@{@string/haibei_pay_money(item.amount)}"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                tools:text="付款金额：￥1500.00"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/copy_order_message"
+                android:background="@drawable/order_text_border"
+                android:layout_marginLeft="19dp"
+                app:layout_constraintLeft_toRightOf="@+id/order_message_number"
+                app:layout_constraintBottom_toBottomOf="@+id/order_message_number"
+                app:layout_constraintTop_toTopOf="@+id/order_message_number"
+                android:paddingHorizontal="4dp"
+                android:paddingVertical="3dp"
+                android:textColor="#999999"
+                android:textSize="9dp"
+                android:text="复制"
+                android:onClick="doClick"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:ignore="MissingConstraints" />
+
+        </android.support.constraint.ConstraintLayout>
+
+
+        
+
+    </LinearLayout>
+</layout>

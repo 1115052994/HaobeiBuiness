@@ -8,6 +8,7 @@
     <string name="please_input_hint_phone">请输入手机号</string>
     <string name="input_hint_password">请输入密码</string>
     <string name="forget_password">忘记密码?</string>
+    <string name="forget_password_three">忘记密码</string>
     <string name="go_register">没有账号，去注册</string>
     <string name="login">登录</string>
     <string name="confirm">确定</string>
@@ -449,4 +450,17 @@
     <string name="sharemall_new_version_tips">APP有新版本可以使用了</string>
     <string name="zero">0.00</string>
 
+    <string name="haibei_convert_number">海贝: %1$s枚</string>
+    <string name="haibei_pay_number">实付￥%1$s</string>
+    <string name="haibei_order_id">账户ID: %1$s</string>
+    <string name="haibei_order_message">订单信息: %1$s</string>
+    <string name="haibei_pay_time">付款时间: %1$s</string>
+    <string name="haibei_number">海贝数: %1$s</string>
+    <string name="haibei_pay_money">付款金额: %1$s</string>
+    <string name="haibei_max_hint">本次最多可转换 %1$s元</string>
+    <string name="haibei_max_hint_withdrawal_amount">可转换额度: %1$s</string>
+    <string name="haibei_dialog_check">店铺信息待完善，请注意查看补充</string>
+    <string name="haibei_dialog_contrac">合同信息未签署，请前往签署</string>
+    <string name="haibei_bank_contrac">未绑定银行卡</string>
+    <string name="sharemall_initialize_data_first">请先初始化数据</string>
 </resources>

@@ -33,4 +33,12 @@
         <!-- 右边文本颜色 -->
         <attr name="ttRightTextColor" format="reference"/>
     </declare-styleable>
+
+    <declare-styleable name="CodeEditText">
+        <attr name="strokeLength" format="integer" />
+        <attr name="strokeWidth" format="dimension" />
+        <attr name="strokeHeight" format="dimension" />
+        <attr name="strokePadding" format="dimension" />
+        <attr name="strokeBackground" format="reference" />
+    </declare-styleable>
 </resources>

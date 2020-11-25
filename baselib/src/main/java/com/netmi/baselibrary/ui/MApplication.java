@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.netmi.baselibrary.data.cache.AccessTokenCache;
@@ -69,8 +68,7 @@ public class MApplication extends Application {
         ARouter.init(this);
 
         //前往bugly平台申请APP_ID，并配置
-        Bugly.init(getApplicationContext(), "b4c085ce50", true);
-
+        Bugly.init(getApplicationContext(), "b4c085ce50", false);
 
         //云信IM初始化
         initIM();
@@ -124,6 +122,27 @@ public class MApplication extends Application {
             ARouter.getInstance()
                     .build(ModLogin_ThirdLoginActivity)
                     .navigation();
+        }
+
+    }
+
+
+    /**
+     * 退出当前登录，跳转到登录界面
+     */
+    public void gotoLogin(String name) {
+        if (logoutListener != null) {
+            logoutListener.logout();
+        } else {
+            //清除本地用户数据
+            LoginInfoCache.clear();
+            AccessTokenCache.clear();
+            UserInfoCache.clear();
+//            appManager.finishAllActivity();
+            //转到登录界面
+//            ARouter.getInstance()
+//                    .build(ModLogin_ThirdLoginActivity)
+//                    .navigation();
         }
 
     }

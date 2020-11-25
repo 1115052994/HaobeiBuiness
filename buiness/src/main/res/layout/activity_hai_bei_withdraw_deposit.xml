@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+        <variable
+            name="hint"
+            type="String" />
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.home.haibei.HaiBeiExchangeActivity">
+        <include
+            android:id="@+id/layout_title"
+            layout="@layout/layout_title_shadow" />
+        <LinearLayout
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:id="@+id/pay_left_layout"
+                android:paddingTop="13dp"
+                android:paddingBottom="5dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:background="@color/white"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:onClick="doClick"
+                android:layout_height="wrap_content">
+                <TextView
+                    tools:text="转换至我的余额"
+                    android:textColor="@drawable/sharemall_selector_tab_txt_d81e06"
+                    android:textSize="14dp"
+                    android:text="转换至我的余额"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <View
+
+                    android:id="@+id/bottom_view1"
+                    android:layout_marginTop="7dp"
+                    android:background="#FF3366"
+                    android:layout_width="20dp"
+                    android:layout_height="3dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/pay_righ_layout"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:background="@color/white"
+                android:paddingTop="13dp"
+                android:paddingBottom="5dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:onClick="doClick"
+                android:layout_height="wrap_content">
+                <TextView
+                    tools:text="提现到支付宝"
+                    android:textColor="@drawable/sharemall_selector_tab_txt_d81e06"
+                    android:textSize="14dp"
+                    android:text="提现到支付宝"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <View
+                    android:id="@+id/bottom_view2"
+                    android:visibility="invisible"
+                    android:layout_marginTop="7dp"
+                    android:background="#FF3366"
+                    android:layout_width="20dp"
+                    android:layout_height="3dp"/>
+
+            </LinearLayout>
+        </LinearLayout>
+        <RelativeLayout
+            android:id="@+id/pay_left_layout_money"
+            android:background="@color/white"
+            android:paddingHorizontal="21dp"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_marginTop="20dp"
+                    tools:text="转换金额（元）"
+                    android:textColor="#1D1E1F"
+                    android:textSize="16dp"
+                    android:text="转出金额（元）"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/left_money"
+                    android:layout_marginTop="60dp"
+                    android:textSize="30dp"
+                    android:textColor="#1D1E1F"
+                    android:text="￥"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            <EditText
+                android:digits="0123456789"
+                android:id="@+id/ed_withdraw_deposit_money"
+                android:layout_alignTop="@+id/left_money"
+                android:maxLines="1"
+                android:layout_marginRight="16dp"
+                android:layout_toLeftOf="@+id/tv_all_money"
+                android:layout_marginBottom="13dp"
+                android:layout_toRightOf="@+id/left_money"
+                android:textSize="16dp"
+                android:textColor="#999999"
+                android:hint="@{@string/haibei_max_hint(hint)}"
+                android:paddingTop="18dp"
+                android:paddingBottom="20dp"
+                android:paddingLeft="21dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tv_all_money"
+                android:layout_alignParentRight="true"
+                android:layout_alignBottom="@+id/left_money"
+                android:text="全部"
+                android:onClick="doClick"
+                android:textSize="16dp"
+                android:textColor="#108EE9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/pay_right_layout_top"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:onClick="doClick"
+                android:id="@+id/tv_add_alipay"
+                android:textColor="#1D1E1F"
+                android:background="@color/white"
+                android:paddingLeft="20dp"
+                android:paddingVertical="13dp"
+                android:text="支付宝账号 "
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="20dp"
+                android:drawableRight="@mipmap/add_pay_icon"/>
+            <LinearLayout
+                android:paddingVertical="11dp"
+                android:paddingHorizontal="20dp"
+                android:background="@color/white"
+                android:layout_marginTop="1dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="当前可提现金额"
+                    android:textSize="14dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <View
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"/>
+                <TextView
+                    android:text="1000.00元"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+        </LinearLayout>
+        <RelativeLayout
+            android:visibility="gone"
+            android:id="@+id/pay_right_layout_bottom"
+            android:paddingHorizontal="21dp"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                tools:text="请输入提现金额"
+                android:textColor="#1D1E1F"
+                android:textSize="16dp"
+                android:text="转出金额（元）"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/left_money2"
+                android:layout_toLeftOf="@+id/edit_money"
+                android:layout_marginTop="60dp"
+                android:textSize="30dp"
+                android:textColor="#1D1E1F"
+                android:text="￥"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:id="@+id/edit_money"
+                android:layout_marginTop="60dp"
+                android:layout_centerHorizontal="true"
+                android:maxLines="1"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="13dp"
+                android:textSize="16dp"
+                android:textColor="#999999"
+                android:hint="本次最多可提现1000元"
+                android:paddingTop="18dp"
+                android:paddingBottom="20dp"
+                android:paddingLeft="21dp"
+                android:minWidth="193dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_toRightOf="@+id/edit_money"
+                android:id="@+id/tv_all_money2"
+                android:layout_alignBottom="@+id/left_money2"
+                android:text="全部"
+                android:textSize="16dp"
+                android:textColor="#108EE9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+        <TextView
+            android:id="@+id/tv_up_apy"
+            android:layout_marginTop="96dp"
+            android:layout_marginHorizontal="24dp"
+            android:background="#D4340D"
+            android:paddingVertical="11dp"
+            android:gravity="center"
+            android:textSize="18dp"
+            android:textColor="@color/white"
+            android:text="确认转换"
+            android:onClick="doClick"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+</layout>

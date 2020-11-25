@@ -8,39 +8,27 @@ import android.widget.TextView;
 
 import com.gyf.barlibrary.ImmersionBar;
 import com.liemi.basemall.ui.NormalDialog;
+import com.netmi.baselibrary.data.Constant;
 import com.netmi.baselibrary.data.base.RetrofitApiFactory;
 import com.netmi.baselibrary.data.base.RxSchedulers;
 import com.netmi.baselibrary.data.base.XObserver;
 import com.netmi.baselibrary.data.entity.BaseData;
 import com.netmi.baselibrary.data.entity.PageEntity;
-import com.netmi.baselibrary.ui.BaseFragment;
 import com.netmi.baselibrary.ui.BaseRViewAdapter;
 import com.netmi.baselibrary.ui.BaseViewHolder;
-import com.netmi.baselibrary.ui.BaseWebviewActivity;
 import com.netmi.baselibrary.ui.BaseXRecyclerFragment;
-import com.netmi.baselibrary.ui.MApplication;
-import com.netmi.baselibrary.utils.AppUtils;
 import com.netmi.baselibrary.utils.JumpUtil;
 import com.netmi.baselibrary.utils.PageUtil;
 import com.netmi.baselibrary.utils.ToastUtils;
-import com.netmi.baselibrary.widget.MyXRecyclerView;
 import com.netmi.workerbusiness.R;
 import com.netmi.workerbusiness.data.api.MessApi;
 import com.netmi.workerbusiness.data.entity.mess.PublicNoticeEntity;
 import com.netmi.workerbusiness.databinding.FragmentMessageBinding;
 import com.netmi.workerbusiness.databinding.ItemOfficialPushBinding;
-import com.netmi.workerbusiness.ui.home.offline.OfflineOrderDetailActivity;
 import com.netmi.workerbusiness.ui.home.online.LineOrderDetailActivity;
-import com.trello.rxlifecycle2.android.ActivityEvent;
 import com.trello.rxlifecycle2.android.FragmentEvent;
 
 import io.reactivex.annotations.NonNull;
-
-import static com.netmi.baselibrary.ui.BaseWebviewActivity.WEBVIEW_CONTENT;
-import static com.netmi.baselibrary.ui.BaseWebviewActivity.WEBVIEW_TITLE;
-import static com.netmi.baselibrary.ui.BaseWebviewActivity.WEBVIEW_TYPE;
-import static com.netmi.baselibrary.ui.BaseWebviewActivity.WEBVIEW_TYPE_CONTENT;
-import static com.netmi.baselibrary.ui.BaseWebviewActivity.WEBVIEW_TYPE_URL;
 
 /**
  * 类描述：
@@ -48,9 +36,9 @@ import static com.netmi.baselibrary.ui.BaseWebviewActivity.WEBVIEW_TYPE_URL;
  * 创建时间：2019/8/29
  * 修改备注：
  */
-public class MessageFragment extends BaseXRecyclerFragment<FragmentMessageBinding,PublicNoticeEntity> {
+public class MessageFragment extends BaseXRecyclerFragment<FragmentMessageBinding, PublicNoticeEntity> {
     public static final String TAG = MessageFragment.class.getName();
-    protected MyXRecyclerView xRecyclerView;
+
 
     @Override
     protected int getContentView() {
@@ -60,8 +48,12 @@ public class MessageFragment extends BaseXRecyclerFragment<FragmentMessageBindin
     @Override
     protected void initUI() {
         initImmersionBar();
-        ((TextView) mBinding.getRoot().findViewById(R.id.tv_title)).setText("消息");
+        ((TextView) mBinding.getRoot().findViewById(R.id.tv_title)).setText("信息");
+//        String[] titles = new String[]{"全部",
+//                "订单信息", "平台通知"};
+     //   mBinding.tlVerification.setViewPager();
         mBinding.setDoClick(this);
+
         initRecyclerView();
     }
 
@@ -71,13 +63,19 @@ public class MessageFragment extends BaseXRecyclerFragment<FragmentMessageBindin
         xRecyclerView.refresh();
     }
 
+    @Override
     public void onRefresh() {
-        NoReadNum();
-        xRecyclerView.refreshComplete();
+        super.onRefresh();
+        if (LOADING_TYPE == Constant.PULL_REFRESH) {
+            xRecyclerView.refreshComplete();
+        } else {
+            xRecyclerView.loadMoreComplete();
+        }
     }
 
     @Override
     protected void doListData() {
+        showProgress("");
         RetrofitApiFactory.createApi(MessApi.class)
                 .getNotice(new Integer[]{2}, String.valueOf(PageUtil.toPage(startPage)), "10")
                 .compose(RxSchedulers.compose())
@@ -86,6 +84,7 @@ public class MessageFragment extends BaseXRecyclerFragment<FragmentMessageBindin
                     @Override
                     public void onSuccess(@NonNull BaseData<PageEntity<PublicNoticeEntity>> data) {
                         showData(data.getData());
+                        hideProgress();
                     }
                 });
     }
@@ -96,6 +95,9 @@ public class MessageFragment extends BaseXRecyclerFragment<FragmentMessageBindin
         NoReadNum();
     }
 
+    public void redata() {
+        xRecyclerView.refresh();
+    }
 
     @Override
     public void onHiddenChanged(boolean hidden) {
@@ -115,7 +117,7 @@ public class MessageFragment extends BaseXRecyclerFragment<FragmentMessageBindin
     @Override
     public void onClick(View view) {
         super.onClick(view);
-        // type_arr  1 平台公告(改为3)  2订单通知  5 系统通知
+        // type_arr  1 平台公告(改为3)  2订单通知  5 规则中心
         Bundle args = new Bundle();
         if (view.getId() == R.id.ll_notice) { //平台公告
             args.putInt(JumpUtil.TYPE, 3);
@@ -123,7 +125,7 @@ public class MessageFragment extends BaseXRecyclerFragment<FragmentMessageBindin
         } else if (view.getId() == R.id.ll_order) { //订单消息
             args.putInt(JumpUtil.TYPE, 2);
             JumpUtil.overlay(getContext(), PublicNoticeActivity.class, args);
-        } else if (view.getId() == R.id.ll_system) { //系统通知
+        } else if (view.getId() == R.id.ll_system) { //规则中心
             args.putInt(JumpUtil.TYPE, 5);
             JumpUtil.overlay(getContext(), PublicNoticeActivity.class, args);
         } else if (view.getId() == R.id.tv_setting) {
@@ -223,6 +225,7 @@ public class MessageFragment extends BaseXRecyclerFragment<FragmentMessageBindin
                 });
 
     }
+
     private void initRecyclerView() {
         xRecyclerView = mBinding.xrvData;
         xRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -254,12 +257,17 @@ public class MessageFragment extends BaseXRecyclerFragment<FragmentMessageBindin
                         super.doClick(view);
                         if (entity.getLink_type().equals("4")) {
                             Bundle bundle = new Bundle();
-                            if (entity.getOrder_type().equals("11")) {//* order_type :  "11", //0表示普通消息；11表示线下订单消息
-                                bundle.putString(JumpUtil.ID, entity.getParam());
-                                JumpUtil.overlay(getActivity(), OfflineOrderDetailActivity.class, bundle);
+                            if (entity.getOrder_type().equals("11") || entity.getOrder_type().equals("12")) {//* order_type :  "11，12", //0表示普通消息；11，12表示线下订单消息
+//                                bundle.putString(JumpUtil.ID, entity.getParam());
+//                                JumpUtil.overlay(getActivity(), OfflineOrderDetailActivity.class, bundle);
+                                bundle.putInt(LineOrderDetailActivity.ORDER_DETAILS_ID, Integer.valueOf(entity.getParam()));
+                                bundle.putInt("type", 1);
+                                JumpUtil.overlay(getActivity(), LineOrderDetailActivity.class, bundle);
                             } else {
+                                bundle.putInt("type", 2);
                                 bundle.putInt(LineOrderDetailActivity.ORDER_DETAILS_ID, Integer.valueOf(entity.getParam()));
                                 JumpUtil.overlay(getActivity(), LineOrderDetailActivity.class, bundle);
+
                             }
                         }
                         xRecyclerView.refresh();

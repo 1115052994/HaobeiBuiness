@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.netmi.workerbusiness.data.entity.mine.GetApplyInfo" />
+
+        <variable
+            name="idTop"
+            type="String" />
+
+        <variable
+            name="idTopRight"
+            type="String" />
+
+        <variable
+            name="idBottom"
+            type="String" />
+
+        <variable
+            name="idBottom2"
+            type="String" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F2F2F2"
+        android:orientation="vertical">
+
+        <include layout="@layout/layout_title_shadow" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/gray_F6F6F7"
+            android:overScrollMode="never"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:paddingBottom="24dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginTop="20dp"
+                        android:text="主题信息"
+                        android:textColor="#333333"
+                        android:textSize="14dp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="店铺名称："
+                            android:textSize="14dp" />
+
+                        <EditText
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:text="@{model.name}"
+                            android:textSize="14dp"
+                            android:focusable="false"
+                            tools:text="一点点旗舰店" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:background="@color/white"
+                    android:paddingLeft="25dp"
+                    android:paddingTop="20dp"
+                    android:text="入驻人证件信息"
+                    android:textColor="#333333"
+                    android:textSize="14dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:paddingVertical="8dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="*"
+                            android:textColor="#EA312F" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="入驻人姓名"
+                            android:textSize="14dp" />
+
+                    </LinearLayout>
+
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1" />
+
+                    <EditText
+                        android:layout_width="190dp"
+                        android:layout_height="20dp"
+                        android:layout_marginRight="25dp"
+                        android:background="@drawable/bg_radius_8dp_d81e062"
+                        android:gravity="center"
+                        android:singleLine="true"
+                        android:focusable="false"
+                        android:text="@{model.real_name}"
+                        android:textColor="#B9B9B9"
+                        android:textSize="13dp"
+                        tools:text="德国" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:paddingVertical="8dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="*"
+                            android:textColor="#EA312F" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="入驻人身份证号"
+                            android:textSize="14dp" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1" />
+
+                    <EditText
+                        android:layout_width="190dp"
+                        android:layout_height="20dp"
+                        android:layout_marginRight="25dp"
+                        android:background="@drawable/bg_radius_8dp_d81e062"
+                        android:gravity="center"
+                        android:singleLine="true"
+                        android:text="@{model.idcard}"
+                        android:textColor="#B9B9B9"
+                        android:focusable="false"
+                        android:textSize="14dp"
+                        tools:text="341126199801237018" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:paddingVertical="8dp"
+                    android:paddingLeft="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="*"
+                        android:textColor="#EA312F" />
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="入驻人身份证正面照"
+                        android:textSize="14dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="26dp"
+                    android:paddingBottom="7dp">
+
+                    <RelativeLayout
+                        android:id="@+id/round_image_car1_layout"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/dp_120"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_camera"
+                        android:onClick="doClick">
+
+                        <com.netmi.baselibrary.widget.RoundImageView
+                            android:id="@+id/round_image_car1"
+                            ivPath="@{model.front_card_url}"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_vertical"
+                            android:scaleType="fitXY"
+                            app:riv_corner_radius="4dp" />
+
+                        <TextView
+                            android:id="@+id/tv_text_car1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:focusable="false"
+                            android:text="正面照" />
+                    </RelativeLayout>
+
+
+                    <View
+                        android:layout_width="4dp"
+                        android:layout_height="0dp" />
+
+                    <RelativeLayout
+                        android:id="@+id/round_image_car1_layout2"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/dp_120"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_camera">
+
+                        <com.netmi.baselibrary.widget.RoundImageView
+                            android:id="@+id/round_image_car2"
+                            ivPath="@{model.back_card_url}"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_vertical"
+                            android:scaleType="fitXY"
+                            app:riv_corner_radius="4dp" />
+
+                        <TextView
+                            android:id="@+id/tv_text_car2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:focusable="false"
+                            android:text="背面照" />
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="26dp"
+                    android:paddingBottom="26dp">
+
+                    <RelativeLayout
+                        android:id="@+id/re_hold_car"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/dp_120"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_camera">
+
+                        <com.netmi.baselibrary.widget.RoundImageView
+                            android:id="@+id/round_image_car3"
+                            ivPath="@{model.hold_card_url}"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_vertical"
+                            android:scaleType="fitXY"
+                            app:riv_corner_radius="4dp" />
+
+                        <TextView
+                            android:id="@+id/tv_text_car3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:text="手持身份证照" />
+                        android:focusable="false"
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="4dp"
+                        android:layout_height="1dp" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:background="@color/white"
+                    android:paddingLeft="25dp"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="16dp"
+                    android:text="营业执照信息"
+                    android:textColor="#333333"
+                    android:textSize="14dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:paddingVertical="8dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="*"
+                            android:textColor="#EA312F" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="营业执照编号"
+                            android:textSize="14dp" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1" />
+
+                    <EditText
+                        android:layout_width="220dp"
+                        android:layout_height="20dp"
+                        android:layout_marginRight="25dp"
+                        android:background="@drawable/bg_radius_8dp_d81e062"
+                        android:gravity="center"
+                        android:singleLine="true"
+                        android:text="@{model.license_num}"
+                        android:textColor="#B9B9B9"
+                        android:focusable="false"
+                        android:textSize="14dp"
+                        tools:text="341126199801237018" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:paddingVertical="8dp"
+                    android:paddingLeft="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="*"
+                        android:textColor="#EA312F" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="营业执照"
+                        android:textSize="14dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="26dp"
+                    android:paddingBottom="26dp">
+
+                    <RelativeLayout
+                        android:id="@+id/round_image_license_layout"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/dp_120"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_camera">
+
+                        <com.netmi.baselibrary.widget.RoundImageView
+                            android:id="@+id/round_image_license"
+                            ivPath="@{model.license_url}"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_vertical"
+                            android:scaleType="fitXY"
+                            app:riv_corner_radius="4dp" />
+
+                        <TextView
+                            android:id="@+id/tv_text_license"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:focusable="false"
+                            android:text="营业执照" />
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="4dp"
+                        android:layout_height="1dp" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
+
+    </LinearLayout>
+
+</layout>

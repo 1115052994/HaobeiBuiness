@@ -69,8 +69,8 @@
 
         <ImageView
             android:id="@+id/iv_setting"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:contentDescription="@null"
             android:onClick="doClick"

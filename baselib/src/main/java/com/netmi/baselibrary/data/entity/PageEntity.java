@@ -43,6 +43,7 @@ public class PageEntity<T> extends BaseEntity {
     private String min_synthesize;
 
 
+
     private totalIncomeBean total_income;
 
     public totalIncomeBean getTotal_income() {

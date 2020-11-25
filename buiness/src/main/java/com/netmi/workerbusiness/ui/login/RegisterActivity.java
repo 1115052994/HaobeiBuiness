@@ -1,13 +1,11 @@
 package com.netmi.workerbusiness.ui.login;
 
+import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 
-import com.liemi.basemall.utils.PushUtils;
 import com.netmi.baselibrary.data.Constant;
 import com.netmi.baselibrary.data.api.LoginApi;
 import com.netmi.baselibrary.data.base.ApiException;
@@ -27,7 +25,6 @@ import com.netmi.baselibrary.ui.BaseWebviewActivity;
 import com.netmi.baselibrary.utils.InputListenView;
 import com.netmi.baselibrary.utils.JumpUtil;
 import com.netmi.baselibrary.utils.MD5;
-import com.netmi.baselibrary.utils.SPs;
 import com.netmi.baselibrary.utils.Strings;
 import com.netmi.baselibrary.utils.ToastUtils;
 import com.netmi.workerbusiness.R;
@@ -123,6 +120,8 @@ public class RegisterActivity extends BaseActivity<ActivityRegisterBinding> {
             doAgreement(111);
         } else if (id == R.id.tv_secret) {//点击隐私协议
             doAgreement(127);
+        }else if (id == R.id.iv_back){
+            onBackPressed();
         }
     }
 
@@ -131,14 +130,18 @@ public class RegisterActivity extends BaseActivity<ActivityRegisterBinding> {
         code = mBinding.etCode.getText().toString();
         password = mBinding.etPassword.getText().toString();
         passwordAgain = mBinding.etPasswordAgain.getText().toString();
-        inviteCode = mBinding.etInviteCode.getText().toString();
+
+        inviteCode = getIntent().getStringExtra("code");
+//        inviteCode = mBinding.etInviteCode.getText().toString();
         if (TextUtils.isEmpty(phone)) {
             showError("请输入手机号");
         } else if (!Strings.isPhone(phone)) {
             showError("请输入正确的手机号");
-        } else if (TextUtils.isEmpty(code)) {
+        }
+        else if (TextUtils.isEmpty(code)) {
             showError("请输入验证码");
-        } else if (TextUtils.isEmpty(password)) {
+        }
+        else if (TextUtils.isEmpty(password)) {
             showError("请输入密码");
         } else if (TextUtils.isEmpty(passwordAgain)) {
             showError("请再次输入密码");
@@ -146,9 +149,11 @@ public class RegisterActivity extends BaseActivity<ActivityRegisterBinding> {
             showError("密码必须大于6位，请重新输入");
         } else if (!password.equals(passwordAgain)) {
             showError("两次输入的密码不同，请重新输入");
-        } else if (TextUtils.isEmpty(inviteCode)) {
-            showError("请填写邀请码");
-        } else if (!mBinding.getIsCheck()) {
+        }
+//        else if (TextUtils.isEmpty(inviteCode)) {
+//            showError("请填写邀请码");
+//        }
+        else if (!mBinding.getIsCheck()) {
             showError("请勾选《服务条约》");
         } else {
             doRegister(phone, inviteCode, code, MD5.GetMD5Code(password, true), MD5.GetMD5Code(password, true), "register_phone", null);

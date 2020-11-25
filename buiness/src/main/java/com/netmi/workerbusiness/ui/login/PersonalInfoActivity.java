@@ -26,8 +26,6 @@ import com.netmi.baselibrary.data.entity.OssConfigureEntity;
 import com.netmi.baselibrary.data.entity.UserInfoEntity;
 import com.netmi.baselibrary.ui.BaseActivity;
 import com.netmi.baselibrary.ui.MApplication;
-
-
 import com.netmi.baselibrary.utils.DateUtil;
 import com.netmi.baselibrary.utils.ImageUploadUtils;
 import com.netmi.baselibrary.utils.InputListenView;
@@ -47,10 +45,7 @@ import com.netmi.workerbusiness.ui.MainActivity;
 import com.netmi.workerbusiness.ui.mine.StoreRemarkActivity;
 import com.netmi.workerbusiness.ui.mine.wallet.BaiduMapActivity;
 import com.netmi.workerbusiness.ui.utils.PermissionUtils;
-
-
 import com.trello.rxlifecycle2.android.ActivityEvent;
-
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -59,12 +54,11 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Objects;
 
 import static com.netmi.workerbusiness.ui.login.CategoryVerifyActivity.CATEGORY_ID;
 import static com.netmi.workerbusiness.ui.login.CategoryVerifyActivity.CATEGORY_NAME;
 import static com.netmi.workerbusiness.ui.mine.StoreInfoActivity.REQUEST_CHANGE_REMARK;
-
+//线上
 public class PersonalInfoActivity extends BaseActivity<ActivityPersonalInfoBinding> {
 
     //身份证正面 请求打开相册的requestCode
@@ -134,7 +128,7 @@ public class PersonalInfoActivity extends BaseActivity<ActivityPersonalInfoBindi
 
     @Override
     protected void initUI() {
-        getTvTitle().setText("实体商家");
+        getTvTitle().setText("线上商家入驻信息");
         new InputListenView(mBinding.tvConfirm, mBinding.etShopName, mBinding.etName, mBinding.etIdCard) {
 
         };
@@ -216,6 +210,9 @@ public class PersonalInfoActivity extends BaseActivity<ActivityPersonalInfoBindi
         }
         else if (id == R.id.ll_remark) {
             JumpUtil.startForResult(this, StoreRemarkActivity.class, REQUEST_CHANGE_REMARK, args);
+        }else if (id == R.id.ll_label) {
+            showError("跳转");
+            JumpUtil.overlay(getContext(), LabelActivity.class);
         }
         else if (id == R.id.ll_time_choose) {
             showTimePicker();
@@ -290,7 +287,8 @@ public class PersonalInfoActivity extends BaseActivity<ActivityPersonalInfoBindi
         super.onActivityResult(requestCode, resultCode, data);
         if (data != null) {
             ArrayList<ImageItem> images = (ArrayList<ImageItem>) data.getSerializableExtra(ImagePicker.EXTRA_RESULT_ITEMS);
-            ImageUploadUtils.uploadByOss(images, this, urls -> {
+
+            ImageUploadUtils.uploadByOssZip(images, this, urls -> {
                 if (currentCode == REQUEST_OPEN_ALBUM_POSITIVE) {
                     positiveUrl = urls.get(0);
 
@@ -469,7 +467,7 @@ public class PersonalInfoActivity extends BaseActivity<ActivityPersonalInfoBindi
                             mBinding.llTimeChoose.setVisibility(View.GONE);
                             mBinding.llLocation.setVisibility(View.GONE);
                         } else if (user_type_event.equals("0")) {
-                            if (data.getData().getShop_user_type().equals("1")) {//	用户选择商户类型 0:未选择类型 1:线上 2:线下
+                            if (data.getData().getShop_user_type().equals("2")) {//	用户选择商户类型 0:未选择类型 1:线上 2:线下
 //                                mBinding.llShopPic.setVisibility(View.GONE);
                                 mBinding.llEnvironmentPic.setVisibility(View.GONE);
 //                                mBinding.llRemark.setVisibility(View.GONE);

@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.netmi.workerbusiness.data.entity.mine.GetApplyInfo" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/layout_title_shadow" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/sobot_bg_title_custom_login"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:minHeight="45dp"
+                android:onClick="doClick"
+                android:orientation="horizontal"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:layout_width="112dp"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="16dp"
+                    android:text="姓名"
+                    android:textColor="@color/gray_33"
+                    android:textSize="@dimen/sp_13" />
+
+                <EditText
+                    android:id="@+id/et_bankok_three"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="1dp"
+                    android:background="@drawable/sobot_bg_title_custom_login_c4c4c4"
+                    android:focusable="false"
+                    android:gravity="center_vertical"
+                    android:hint="例如：王小小"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="6dp"
+                    android:singleLine="true"
+                    android:textColor="@color/gray_66"
+                    android:textColorHint="#ffb9b9b9"
+                    android:textSize="@dimen/sp_12" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:minHeight="45dp"
+                android:onClick="doClick"
+                android:orientation="horizontal"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:layout_width="112dp"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="16dp"
+                    android:text="身份证号"
+                    android:textColor="@color/gray_33"
+                    android:textSize="@dimen/sp_13" />
+
+                <EditText
+                    android:id="@+id/et_bankok_identity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="1dp"
+                    android:background="@drawable/sobot_bg_title_custom_login_c4c4c4"
+                    android:focusable="false"
+                    android:gravity="center_vertical"
+                    android:hint="747894568511236547"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="6dp"
+                    android:singleLine="true"
+                    android:textColor="@color/gray_66"
+                    android:textColorHint="#ffb9b9b9"
+                    android:textSize="@dimen/sp_12" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:minHeight="45dp"
+                android:onClick="doClick"
+                android:orientation="horizontal"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:layout_width="112dp"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="16dp"
+                    android:text="银行卡号"
+                    android:textColor="@color/gray_33"
+                    android:textSize="@dimen/sp_13" />
+
+                <EditText
+                    android:id="@+id/et_bankok_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="1dp"
+                    android:background="@drawable/sobot_bg_title_custom_login_c4c4c4"
+                    android:focusable="false"
+                    android:gravity="center_vertical"
+                    android:hint="1478554554547845541"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="6dp"
+                    android:singleLine="true"
+                    android:textColor="@color/gray_66"
+                    android:textColorHint="#ffb9b9b9"
+                    android:textSize="@dimen/sp_12" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:minHeight="45dp"
+                android:onClick="doClick"
+                android:orientation="horizontal"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:layout_width="112dp"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="16dp"
+                    android:text="开户银行"
+                    android:textColor="@color/gray_33"
+                    android:textSize="@dimen/sp_13" />
+
+                <EditText
+                    android:id="@+id/et_bankok_bank"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="1dp"
+                    android:background="@drawable/sobot_bg_title_custom_login_c4c4c4"
+                    android:focusable="false"
+                    android:gravity="center_vertical"
+                    android:hint="招商银行"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="6dp"
+                    android:singleLine="true"
+                    android:textColor="@color/gray_66"
+                    android:textColorHint="#ffb9b9b9"
+                    android:textSize="@dimen/sp_12" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:minHeight="45dp"
+                android:onClick="doClick"
+                android:orientation="horizontal"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:layout_width="112dp"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="16dp"
+                    android:text="手机号"
+                    android:textColor="@color/gray_33"
+                    android:textSize="@dimen/sp_13" />
+
+                <EditText
+                    android:id="@+id/et_bankok_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="1dp"
+                    android:background="@drawable/sobot_bg_title_custom_login_c4c4c4"
+                    android:gravity="center_vertical"
+                    android:hint="请输入手机号"
+                    android:maxLength="11"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="6dp"
+                    android:singleLine="true"
+                    android:textColor="@color/gray_66"
+                    android:textColorHint="#ffb9b9b9"
+                    android:textSize="@dimen/sp_12" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:minHeight="45dp"
+                android:onClick="doClick"
+                android:orientation="vertical"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:layout_width="112dp"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="16dp"
+                    android:text="信息验证"
+                    android:textColor="@color/gray_33"
+                    android:textSize="@dimen/sp_13" />
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginVertical="10dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/et_bankok_verify"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_toLeftOf="@+id/tv_bankok_verify"
+                        android:background="@null"
+                        android:maxLength="6"
+                        android:gravity="center_vertical"
+                        android:hint="请输入6位验证码"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="6dp"
+                        android:singleLine="true"
+                        android:textColor="@color/gray_66"
+                        android:textColorHint="#ffb9b9b9"
+                        android:textSize="@dimen/sp_13" />
+
+                    <TextView
+                        android:id="@+id/tv_bankok_verify"
+                        android:layout_width="@dimen/d_50"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginVertical="5dp"
+                        android:background="@mipmap/dl_button_three"
+                        android:gravity="center"
+                        android:onClick="doClick"
+                        android:text="验证"
+                        android:textColor="#ffffff"
+                        android:textSize="@dimen/sp_12" />
+
+
+                        <TextView
+                            android:visibility="gone"
+                            android:id="@+id/tv_three_code"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:onClick="doClick"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="1dp"
+                            android:enabled="false"
+                            android:gravity="center"
+                            android:background="@mipmap/dl_button_three"
+                            android:layout_gravity="center_vertical|center"
+                            android:text="59s"
+                            android:textColor="#ffffff"
+                            android:textSize="@dimen/s_10" />
+
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_bank_ok"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="30dp"
+                android:background="@mipmap/dl_button_three"
+                android:gravity="center"
+                android:onClick="doClick"
+                android:paddingVertical="12dp"
+                android:text="信息确认"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/sp_15" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

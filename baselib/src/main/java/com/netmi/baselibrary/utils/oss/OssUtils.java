@@ -16,8 +16,10 @@ import com.alibaba.sdk.android.oss.model.PutObjectRequest;
 import com.alibaba.sdk.android.oss.model.PutObjectResult;
 import com.netmi.baselibrary.data.entity.OssConfigureEntity;
 import com.netmi.baselibrary.ui.MApplication;
+import com.netmi.baselibrary.utils.BitmapUtil;
 import com.netmi.baselibrary.utils.Logs;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -100,6 +102,38 @@ public class OssUtils {
         return OssUtils.OSS_HOST + objectKey;
     }
 
+    //压缩上传
+    public void putObjectSyncZip(String uploadFilePath, OSSCompletedCallback<PutObjectRequest, PutObjectResult> listen) {
+        //压缩操作
+        String[] split = uploadFilePath.split("[.]");
+        String path = "";
+        for (int i = 0; i <split.length ; i++) {
+            if(i<split.length){
+                path=path+split[i]+".";
+            }else {
+                path= path+split[i];
+            }
+        }
+        File file = new File(path);
+        BitmapUtil.pixeCompressBitmap(uploadFilePath,file);
+        String zipPath = file.toString();
+
+
+        String fileExt = zipPath.substring(zipPath.lastIndexOf(".") + 1); // 文件后缀名
+        String objectKey = setOssFileName(fileExt);
+        // 构造上传请求
+        PutObjectRequest put = new PutObjectRequest(OSS_BUCKET, objectKey, zipPath);
+        // 异步上传时可以设置进度回调
+        put.setProgressCallback(new OSSProgressCallback<PutObjectRequest>() {
+            @Override
+            public void onProgress(PutObjectRequest request, long currentSize, long totalSize) {
+                Logs.e("PutObject", "currentSize: " + currentSize + " totalSize: " + totalSize);
+            }
+        });
+        OSSAsyncTask task = oss.asyncPutObject(put, listen);
+    }
+
+
     public void putObjectSync(String uploadFilePath, OSSCompletedCallback<PutObjectRequest, PutObjectResult> listen) {
 
         String fileExt = uploadFilePath.substring(uploadFilePath.lastIndexOf(".") + 1); // 文件后缀名
@@ -154,5 +188,7 @@ public class OssUtils {
         var4 = var4.substring(0, 8) + var4.substring(9, 13) + var4.substring(14, 18) + var4.substring(19, 23) + var4.substring(24);
         return var3 + "/" + var4 + "." + var0;
     }
+
+
 
 }

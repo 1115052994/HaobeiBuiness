@@ -2,7 +2,8 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <LinearLayout
-        android:layout_width="270dp"
+        android:layout_marginHorizontal="@dimen/dp_60"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/baselib_bg_white_radius_4"
         android:gravity="center_horizontal"
@@ -10,39 +11,44 @@
         android:paddingTop="22dp">
 
         <TextView
+            android:textStyle="bold"
             android:id="@+id/tv_hint_dialog_tips"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="提示"
             android:textColor="#FF333333"
-            android:textSize="16sp" />
+            android:textSize="@dimen/sp_15" />
 
         <TextView
             android:id="@+id/tv_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="15dp"
+            android:layout_marginHorizontal="30dp"
             android:layout_marginTop="15dp"
             android:gravity="center_horizontal"
-            android:lineSpacingExtra="5dp"
-            android:text="您的信息正在认证中，请通过认证后再次操作，如有问题请联系管理员0571-88888888"
+            android:lineSpacingExtra="8dp"
+            android:text="你的信息正在审核中，请通过审核后再次操作，如有问题请\n联系平台客服"
             android:textColor="#FF333333"
-            android:textSize="14sp" />
+            android:textSize="@dimen/sp_14" />
 
         <View
+            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#FFDDDDDD" />
 
         <TextView
+            android:layout_marginVertical="20dp"
+            android:layout_marginHorizontal="30dp"
             android:id="@+id/tv_confirm"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:paddingVertical="15dp"
-            android:text="确定"
-            android:textColor="#FF108EE9"
-            android:textSize="14sp" />
+            android:background="@drawable/baselib_bg_color77b529022"
+            android:paddingVertical="10dp"
+            android:text="提交"
+            android:textColor="#FFF"
+            android:textSize="@dimen/sp_14" />
 
     </LinearLayout>
 

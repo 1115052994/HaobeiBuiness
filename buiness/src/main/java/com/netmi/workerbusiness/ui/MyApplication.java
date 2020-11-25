@@ -5,6 +5,7 @@ import android.support.multidex.MultiDex;
 import android.text.TextUtils;
 
 import com.baidu.mapapi.SDKInitializer;
+import com.bumptech.glide.request.target.ViewTarget;
 import com.netease.nim.uikit.api.NimUIKit;
 import com.netease.nim.uikit.api.UIKitOptions;
 import com.netease.nim.uikit.business.contact.core.query.PinYin;
@@ -18,6 +19,7 @@ import com.netmi.baselibrary.ui.MApplication;
 import com.netmi.baselibrary.utils.JumpUtil;
 import com.netmi.baselibrary.utils.ToastUtils;
 import com.netmi.baselibrary.utils.language.MultiLanguageUtil;
+import com.netmi.workerbusiness.R;
 import com.netmi.workerbusiness.im.DemoCache;
 import com.netmi.workerbusiness.im.NIMInitManager;
 import com.netmi.workerbusiness.im.NimDemoLocationProvider;
@@ -31,8 +33,10 @@ import com.netmi.workerbusiness.im.session.SessionHelper;
 import com.netmi.workerbusiness.ui.login.LoginActivity;
 import com.netmi.workerbusiness.ui.login.PersonalInfoActivity;
 import com.sobot.chat.SobotApi;
-import com.tencent.android.tpush.XGPushConfig;
 import com.tencent.android.tpush.XGPushManager;
+import com.umeng.commonsdk.UMConfigure;
+import com.umeng.socialize.PlatformConfig;
+import com.umeng.socialize.UMShareAPI;
 
 import static com.netmi.baselibrary.data.Constant.PUSH_PREFIX;
 
@@ -47,10 +51,15 @@ public class MyApplication extends MApplication {
 //        XGPushConfig.enableDebug(this, true);
 //
         //智齿客服初始化
-//        SobotApi.initSobotSDK(this, "f96f28f095e64d589d5438571d9c272b", UserInfoCache.get().getUid());
+        SobotApi.initSobotSDK(this, "f96f28f095e64d589d5438571d9c272b", UserInfoCache.get().getUid());
 
         //百度地图初始化
         SDKInitializer.initialize(getApplicationContext());
+        //友盟初始化
+        UMShareAPI.get(this);//初始化sdk
+        UMConfigure.setLogEnabled(true);//查看友盟运行日志   在log里面看  方便定位错误
+        //友盟申请的appKey
+        UMConfigure.init(this, "5f927efa8a5de91db33ea51d", "Umeng", UMConfigure.DEVICE_TYPE_PHONE, "");
 
 
         //监听退出登录
@@ -69,6 +78,18 @@ public class MyApplication extends MApplication {
             JumpUtil.overlay(appManager.currentActivity(), LoginActivity.class);
             MyApplication.getInstance().appManager.finishAllActivity(LoginActivity.class);
         };
+
+        ViewTarget.setTagId(R.id.tag_parent);
+    }
+
+    //各个平台的配置
+    {
+        //微信
+        PlatformConfig.setWeixin("wx79e05e452118fc21", "715623e68f0a92f27a64ce73578b933c");
+//        //新浪微博(第三个参数为回调地址)
+//        PlatformConfig.setSinaWeibo("3921700954", "04b48b094faeb16683c32669824ebdad","http://sns.whalecloud.com/sina2/callback");
+//        //QQ
+//        PlatformConfig.setQQZone("100424468", "c7394704798a158208a74ab60104f0ba");
     }
 
     @Override

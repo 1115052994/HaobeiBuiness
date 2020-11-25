@@ -1,2 +1,2 @@
-include ':app', ':sobotsdk', ':buiness', ':uikit', ':baselib', ':basemall'
+include ':app', ':sobotsdk', ':buiness', ':uikit', ':baselib', ':basemall', ':voicebroadcast', ':ymshare', ':umeng-asms-armeabi-v1.1.3', ':umeng-crash-armeabi-v0.0.5'
 rootProject.name='HaobeiBuiness'

@@ -41,7 +41,8 @@
             android:text="@{item.price}"
             android:textColor="@color/theme_text_black"
             android:textSize="@dimen/sp_14"
-            tools:text="10%" />
+            tools:text="10%"
+            android:visibility="gone"/>
 
 
     </RelativeLayout>

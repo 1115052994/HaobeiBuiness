@@ -1,7 +1,6 @@
 package com.netmi.workerbusiness.data.entity.home;
 
 import com.netmi.baselibrary.data.entity.BaseEntity;
-import com.netmi.baselibrary.utils.FloatUtils;
 
 /**
  * 类描述：
@@ -22,6 +21,12 @@ public class BusinessOverviewEntity extends BaseEntity {
      * on_sale_item	array	已上架商品数量
      * out_sale_item	array	已下架商品数量
      * total_sale_item	array	总商品数量
+     */
+
+
+    /**
+     * on_line_data : {"count_order":{"yesterday":"0","today":"0"},"user_num":{"yesterday":"0","today":"0"},"order_money":{"yesterday":"0.00","today":"0.00"},"pay_money":{"yesterday":"0.00","today":"0.00"},"on_sale_item":"20","out_sale_item":"0","total_sale_item":"20","page_view":{"today":"0","yesterday":"0","thirty_days":"2"}}
+     * out_line_data : {"count_order":{"yesterday":"0","today":"0"},"user_num":{"yesterday":"0","today":"0"},"order_money":{"yesterday":"0.00","today":"0.00"},"pay_money":{"yesterday":"0.00","today":"0.00"},"on_sale_item":"0","out_sale_item":"0","total_sale_item":"0","page_view":{"today":"0","yesterday":"0","thirty_days":"0"}}
      */
 
     private OnLineDataBean on_line_data;
@@ -46,19 +51,23 @@ public class BusinessOverviewEntity extends BaseEntity {
     public static class OnLineDataBean {
         /**
          * count_order : {"yesterday":"0","today":"0"}
-         * order_money : {"yesterday":"0","today":"0"}
-         * pay_money : {"yesterday":"0","today":"0"}
-         * on_sale_item : 0
+         * user_num : {"yesterday":"0","today":"0"}
+         * order_money : {"yesterday":"0.00","today":"0.00"}
+         * pay_money : {"yesterday":"0.00","today":"0.00"}
+         * on_sale_item : 20
          * out_sale_item : 0
-         * total_sale_item : 0
+         * total_sale_item : 20
+         * page_view : {"today":"0","yesterday":"0","thirty_days":"2"}
          */
 
         private CountOrderBean count_order;
+        private UserNumBean user_num;
         private OrderMoneyBean order_money;
         private PayMoneyBean pay_money;
         private String on_sale_item;
         private String out_sale_item;
         private String total_sale_item;
+        private PageViewBean page_view;
 
         public CountOrderBean getCount_order() {
             return count_order;
@@ -66,6 +75,14 @@ public class BusinessOverviewEntity extends BaseEntity {
 
         public void setCount_order(CountOrderBean count_order) {
             this.count_order = count_order;
+        }
+
+        public UserNumBean getUser_num() {
+            return user_num;
+        }
+
+        public void setUser_num(UserNumBean user_num) {
+            this.user_num = user_num;
         }
 
         public OrderMoneyBean getOrder_money() {
@@ -108,7 +125,41 @@ public class BusinessOverviewEntity extends BaseEntity {
             this.total_sale_item = total_sale_item;
         }
 
+        public PageViewBean getPage_view() {
+            return page_view;
+        }
+
+        public void setPage_view(PageViewBean page_view) {
+            this.page_view = page_view;
+        }
+
         public static class CountOrderBean {
+            /**
+             * yesterday : 0
+             * today : 0
+             */
+
+            private String yesterday;
+            private String today;
+
+            public String getYesterday() {
+                return yesterday;
+            }
+
+            public void setYesterday(String yesterday) {
+                this.yesterday = yesterday;
+            }
+
+            public String getToday() {
+                return today;
+            }
+
+            public void setToday(String today) {
+                this.today = today;
+            }
+        }
+
+        public static class UserNumBean {
             /**
              * yesterday : 0
              * today : 0
@@ -136,15 +187,15 @@ public class BusinessOverviewEntity extends BaseEntity {
 
         public static class OrderMoneyBean {
             /**
-             * yesterday : 0
-             * today : 0
+             * yesterday : 0.00
+             * today : 0.00
              */
 
             private String yesterday;
             private String today;
 
             public String getYesterday() {
-                return String.valueOf(FloatUtils.formatDouble(yesterday));
+                return yesterday;
             }
 
             public void setYesterday(String yesterday) {
@@ -152,7 +203,7 @@ public class BusinessOverviewEntity extends BaseEntity {
             }
 
             public String getToday() {
-                return String.valueOf(FloatUtils.formatDouble(today));
+                return today;
             }
 
             public void setToday(String today) {
@@ -162,15 +213,15 @@ public class BusinessOverviewEntity extends BaseEntity {
 
         public static class PayMoneyBean {
             /**
-             * yesterday : 0
-             * today : 0
+             * yesterday : 0.00
+             * today : 0.00
              */
 
             private String yesterday;
             private String today;
 
             public String getYesterday() {
-                return String.valueOf(FloatUtils.formatDouble(yesterday));
+                return yesterday;
             }
 
             public void setYesterday(String yesterday) {
@@ -178,11 +229,47 @@ public class BusinessOverviewEntity extends BaseEntity {
             }
 
             public String getToday() {
-                return String.valueOf(FloatUtils.formatDouble(today));
+                return today;
             }
 
             public void setToday(String today) {
                 this.today = today;
+            }
+        }
+
+        public static class PageViewBean {
+            /**
+             * today : 0
+             * yesterday : 0
+             * thirty_days : 2
+             */
+
+            private String today;
+            private String yesterday;
+            private String thirty_days;
+
+            public String getToday() {
+                return today;
+            }
+
+            public void setToday(String today) {
+                this.today = today;
+            }
+
+            public String getYesterday() {
+                return yesterday;
+            }
+
+            public void setYesterday(String yesterday) {
+                this.yesterday = yesterday;
+            }
+
+            public String getThirty_days() {
+                return thirty_days;
+            }
+
+            public void setThirty_days(String thirty_days) {
+                this.thirty_days = thirty_days;
             }
         }
     }
@@ -190,19 +277,23 @@ public class BusinessOverviewEntity extends BaseEntity {
     public static class OutLineDataBean {
         /**
          * count_order : {"yesterday":"0","today":"0"}
-         * order_money : {"yesterday":"0","today":"0"}
-         * pay_money : {"yesterday":"0","today":"0"}
+         * user_num : {"yesterday":"0","today":"0"}
+         * order_money : {"yesterday":"0.00","today":"0.00"}
+         * pay_money : {"yesterday":"0.00","today":"0.00"}
          * on_sale_item : 0
          * out_sale_item : 0
          * total_sale_item : 0
+         * page_view : {"today":"0","yesterday":"0","thirty_days":"0"}
          */
 
         private CountOrderBeanX count_order;
+        private UserNumBeanX user_num;
         private OrderMoneyBeanX order_money;
         private PayMoneyBeanX pay_money;
         private String on_sale_item;
         private String out_sale_item;
         private String total_sale_item;
+        private PageViewBeanX page_view;
 
         public CountOrderBeanX getCount_order() {
             return count_order;
@@ -210,6 +301,14 @@ public class BusinessOverviewEntity extends BaseEntity {
 
         public void setCount_order(CountOrderBeanX count_order) {
             this.count_order = count_order;
+        }
+
+        public UserNumBeanX getUser_num() {
+            return user_num;
+        }
+
+        public void setUser_num(UserNumBeanX user_num) {
+            this.user_num = user_num;
         }
 
         public OrderMoneyBeanX getOrder_money() {
@@ -252,7 +351,41 @@ public class BusinessOverviewEntity extends BaseEntity {
             this.total_sale_item = total_sale_item;
         }
 
+        public PageViewBeanX getPage_view() {
+            return page_view;
+        }
+
+        public void setPage_view(PageViewBeanX page_view) {
+            this.page_view = page_view;
+        }
+
         public static class CountOrderBeanX {
+            /**
+             * yesterday : 0
+             * today : 0
+             */
+
+            private String yesterday;
+            private String today;
+
+            public String getYesterday() {
+                return yesterday;
+            }
+
+            public void setYesterday(String yesterday) {
+                this.yesterday = yesterday;
+            }
+
+            public String getToday() {
+                return today;
+            }
+
+            public void setToday(String today) {
+                this.today = today;
+            }
+        }
+
+        public static class UserNumBeanX {
             /**
              * yesterday : 0
              * today : 0
@@ -280,15 +413,15 @@ public class BusinessOverviewEntity extends BaseEntity {
 
         public static class OrderMoneyBeanX {
             /**
-             * yesterday : 0
-             * today : 0
+             * yesterday : 0.00
+             * today : 0.00
              */
 
             private String yesterday;
             private String today;
 
             public String getYesterday() {
-                return String.valueOf(FloatUtils.formatDouble(yesterday));
+                return yesterday;
             }
 
             public void setYesterday(String yesterday) {
@@ -296,7 +429,7 @@ public class BusinessOverviewEntity extends BaseEntity {
             }
 
             public String getToday() {
-                return String.valueOf(FloatUtils.formatDouble(today));
+                return today;
             }
 
             public void setToday(String today) {
@@ -306,15 +439,15 @@ public class BusinessOverviewEntity extends BaseEntity {
 
         public static class PayMoneyBeanX {
             /**
-             * yesterday : 0
-             * today : 0
+             * yesterday : 0.00
+             * today : 0.00
              */
 
             private String yesterday;
             private String today;
 
             public String getYesterday() {
-                return String.valueOf(FloatUtils.formatDouble(yesterday));
+                return yesterday;
             }
 
             public void setYesterday(String yesterday) {
@@ -322,12 +455,53 @@ public class BusinessOverviewEntity extends BaseEntity {
             }
 
             public String getToday() {
-                return String.valueOf(FloatUtils.formatDouble(today));
+                return today;
             }
 
             public void setToday(String today) {
                 this.today = today;
             }
         }
+
+        public static class PageViewBeanX {
+            /**
+             * today : 0
+             * yesterday : 0
+             * thirty_days : 0
+             */
+
+            private String today;
+            private String yesterday;
+            private String thirty_days;
+
+            public String getToday() {
+                return today;
+            }
+
+            public void setToday(String today) {
+                this.today = today;
+            }
+
+            public String getYesterday() {
+                return yesterday;
+            }
+
+            public void setYesterday(String yesterday) {
+                this.yesterday = yesterday;
+            }
+
+            public String getThirty_days() {
+                return thirty_days;
+            }
+
+            public void setThirty_days(String thirty_days) {
+                this.thirty_days = thirty_days;
+            }
+        }
     }
+
+
+
+
+
 }

@@ -2,25 +2,20 @@ package com.netmi.workerbusiness.ui.mine.wallet;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 
 import com.liemi.basemall.ui.personal.digitalasset.PropertyTakeOutConfirmDialog;
 import com.netmi.baselibrary.data.base.RetrofitApiFactory;
 import com.netmi.baselibrary.data.base.RxSchedulers;
 import com.netmi.baselibrary.data.base.XObserver;
-import com.netmi.baselibrary.data.cache.UserInfoCache;
 import com.netmi.baselibrary.data.entity.BaseData;
 import com.netmi.baselibrary.ui.BaseActivity;
 import com.netmi.baselibrary.utils.AppManager;
 import com.netmi.baselibrary.utils.JumpUtil;
-import com.netmi.baselibrary.utils.SPs;
 import com.netmi.workerbusiness.R;
 import com.netmi.workerbusiness.data.api.MineApi;
-import com.netmi.workerbusiness.data.cache.TelCache;
 import com.netmi.workerbusiness.data.cache.WithdrawCache;
 import com.netmi.workerbusiness.data.entity.mine.BankListEntity;
 import com.netmi.workerbusiness.data.entity.mine.ShopInfoEntity;
@@ -28,14 +23,10 @@ import com.netmi.workerbusiness.data.entity.mine.WithdrawMessEntity;
 import com.netmi.workerbusiness.data.entity.walllet.AliWechatEntity;
 import com.netmi.workerbusiness.databinding.ActivityMineWithdrawDetailBinding;
 import com.netmi.workerbusiness.ui.mine.BankListActivity;
-import com.netmi.workerbusiness.ui.mine.MessCodeActivity;
-import com.netmi.workerbusiness.ui.mine.WithdrawActivity;
 import com.trello.rxlifecycle2.android.ActivityEvent;
-import com.trello.rxlifecycle2.android.FragmentEvent;
 
 import java.util.List;
 
-import static com.netmi.workerbusiness.ui.login.CategoryVerifyActivity.CATEGORY_ID;
 import static com.netmi.workerbusiness.ui.mine.BankListActivity.BANK_MESS;
 import static com.netmi.workerbusiness.ui.mine.BankListActivity.FROM_WITHDRAW;
 import static com.netmi.workerbusiness.ui.mine.wallet.InputAliWechatActivity.ACCOUNT_WITHDRAW;
@@ -204,7 +195,8 @@ public class MineWithdrawDetailActivity extends BaseActivity<ActivityMineWithdra
                     public void onSuccess(BaseData<WithdrawMessEntity> data) {
                         mBinding.tvBalance.setText(data.getData().getWithdraw_money());
                         amount = Double.valueOf(data.getData().getWithdraw_money());
-                        mBinding.tvMess.setText(data.getData().getShop_setting());
+//                        mBinding.tvMess.setText(data.getData().getShop_setting());
+                        mBinding.tvMess.setText("1.当前提现没有手续费\n2.微信提现：需店主实名认证的微信关注“客商e宝”公众号\n3.银行分账系统上线前，9：00—16：00  提现当天到账  16：00后提现第二天到账");
                     }
                 });
     }

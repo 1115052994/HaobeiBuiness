@@ -6,15 +6,19 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.InputFilter;
+import android.text.Spanned;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
 
-
-import com.netmi.baselibrary.databinding.DialogMessageHintBinding;
 import com.netmi.baselibrary.utils.ToastUtils;
 import com.netmi.workerbusiness.R;
 import com.netmi.workerbusiness.databinding.DialogPayMessageBinding;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 /**
@@ -27,14 +31,17 @@ public class Pay_Message_Dialog extends Dialog implements View.OnClickListener {
 
     private ClickBindPhoneListener clickBindMessageListener;
     private DialogPayMessageBinding dialogPayMessageBinding;
+    private int type;
 
     public Pay_Message_Dialog(@NonNull Context context) {
         super(context);
     }
 
-    public Pay_Message_Dialog(@NonNull Context context, int themeResId) {
-        super(context, themeResId);
+    public Pay_Message_Dialog(@NonNull Context context, int type) {
+        super(context);
+        this.type=type;
     }
+
 
     protected Pay_Message_Dialog(@NonNull Context context, boolean cancelable, @Nullable OnCancelListener cancelListener) {
         super(context, cancelable, cancelListener);
@@ -50,6 +57,9 @@ public class Pay_Message_Dialog extends Dialog implements View.OnClickListener {
         dialogPayMessageBinding = DataBindingUtil.inflate(LayoutInflater.from(getContext()), R.layout.dialog_pay_message, null, false);
         setContentView(dialogPayMessageBinding.getRoot());
         dialogPayMessageBinding.setClick(this);
+
+        dialogPayMessageBinding.etPayPhone.setHint(type==30?"请输入支付宝账号":"请输入微信账号");
+        setEditTextInhibitInputSpeChat(dialogPayMessageBinding.etPayPhone);
 
     }
 
@@ -72,6 +82,9 @@ public class Pay_Message_Dialog extends Dialog implements View.OnClickListener {
                 }else if(TextUtils.isEmpty(phone)){
                     ToastUtils.showLong("请输入账号");
                     return;
+                }else if(phone.length()<11){
+                    ToastUtils.showLong("请输入11位的手机号");
+                    return;
                 }
                 clickBindMessageListener.clickBindMessageCon(name,phone);
             }
@@ -85,4 +98,34 @@ public class Pay_Message_Dialog extends Dialog implements View.OnClickListener {
         void clickBindMessageCan();
         void clickBindMessageCon(String name,String phone);
     }
+
+    /**
+     * 禁止EditText输入特殊字符
+     * @param editText
+     */
+    public static void setEditTextInhibitInputSpeChat(EditText editText){
+        InputFilter filter=new InputFilter() {
+            @Override
+            public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
+                if(source.equals(" "))return "";
+                if(dest.toString().contains(".")){
+                    if(source.toString().equals(".")){
+                        return "";
+                    }
+                }
+                if(dest.toString().contains("@")){
+                    if(source.toString().equals("@")){
+                        return "";
+                    }
+                }
+                String speChat="[`~!#$%^&*()+=|{}':;',\\\\[\\\\]<>/?~！#￥%……&*（）——+|{}【】‘；：”“'。，、？]";
+                Pattern pattern = Pattern.compile(speChat);
+                Matcher matcher = pattern.matcher(source.toString());
+                if(matcher.find())return "";
+                else return null;
+            }
+        };
+        editText.setFilters(new InputFilter[]{filter});
+    }
+
 }

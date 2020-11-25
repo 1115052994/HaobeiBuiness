@@ -1,27 +1,36 @@
 package com.netmi.baselibrary.ui;
 
-import android.app.Activity;
+import android.annotation.TargetApi;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.support.annotation.RequiresApi;
 import android.support.annotation.StringRes;
+import android.support.v4.app.NotificationManagerCompat;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.gyf.barlibrary.ImmersionBar;
 import com.netmi.baselibrary.R;
 import com.netmi.baselibrary.presenter.BasePresenter;
-import com.netmi.baselibrary.utils.AppManager;
 import com.netmi.baselibrary.utils.ImmersionBarUtils;
 import com.netmi.baselibrary.utils.ToastUtils;
 import com.netmi.baselibrary.utils.dialog.MessagesHintDialog;
 import com.netmi.baselibrary.utils.language.MultiLanguageUtil;
-import com.netmi.baselibrary.widget.MyXRecyclerView;
 import com.netmi.baselibrary.widget.MLoadingDialog;
+import com.netmi.baselibrary.widget.MyXRecyclerView;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 /**
@@ -130,7 +139,13 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends RxAppCompa
         if (basePresenter != null) {
             basePresenter.resume();
         }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            checkNotificationEnabled();
+        }
     }
+
+
 
     @Override
     protected void onPause() {
@@ -147,6 +162,27 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends RxAppCompa
             basePresenter.stop();
         }
     }
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    private void checkNotificationEnabled() {
+        boolean isEnabled = isNotificationEnabled(this);
+        Log.i(TAG, "is notification enabled: " + isEnabled);
+        if (!isEnabled) {
+            showMissingPermissionDialog(1);
+        }
+    }
+
+
+
+
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public boolean isNotificationEnabled(Context context) {
+        NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(context);
+        return notificationManagerCompat.areNotificationsEnabled();
+    }
+
+
 
     //显示对话框
     protected void showMessageHintDialog(final String message){
@@ -198,6 +234,70 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends RxAppCompa
     public BaseActivity getActivity() {
         return instance;
     }
+    /**
+     * 判断是否需要检测，防止不停的弹框
+     */
+    private boolean isNeedCheck = true;
+    private static final int PERMISSON_REQUESTCODE = 0;
+    @TargetApi(23)
+    public void onRequestPermissionsResult(int requestCode,
+                                           String[] permissions, int[] paramArrayOfInt) {
+        if (requestCode == PERMISSON_REQUESTCODE) {
+            if (!verifyPermissions(paramArrayOfInt)) {
+                showMissingPermissionDialog(0);
+                isNeedCheck = false;
+            }
+        }
+    }
+
+    /**
+     * 检测是否所有的权限都已经授权
+     *
+     * @param grantResults
+     * @return
+     * @since 2.5.0
+     */
+    private boolean verifyPermissions(int[] grantResults) {
+        for (int result : grantResults) {
+            if (result != PackageManager.PERMISSION_GRANTED) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * 显示提示信息
+     *
+     * @since 2.5.0
+     * type:0.普通权限 1.消息通知权限
+     */
+    private void showMissingPermissionDialog(int type) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("提示");
+        builder.setMessage(type == 0 ? "当前应用缺少必要权限。\\n\\n请点击\\\"设置\\\"-\\\"权限\\\"-打开所需权限。"
+                : "检测到您的通知权限已关闭，暂无法接收通知消息，请前往开启");
+
+        // 拒绝, 退出应用
+        builder.setNegativeButton("取消",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }                });
+
+        builder.setPositiveButton("设置",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        startAppSettings(type);
+                    }
+                });
+
+        builder.setCancelable(false);
+
+        builder.show();
+    }
 
 
     @Override
@@ -233,7 +333,7 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends RxAppCompa
     }
 
     public void doClick(View view) {
-        if (view.getId() == R.id.ll_back) {
+        if (view.getId() == R.id.ll_back ) {
             onBackPressed();
         }
     }
@@ -247,6 +347,10 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends RxAppCompa
 
     public TextView getRightSetting() {
         return findViewById(R.id.tv_setting);
+    }
+
+    public ImageView getRightImage() {
+        return findViewById(R.id.iv_setting);
     }
 
     public TextView getLeftSetting() {
@@ -267,4 +371,40 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends RxAppCompa
             }
         }
     }
+
+
+    /**
+     * 启动应用的设置
+     *
+     * @since 2.5.0
+     */
+    private void startAppSettings(int type) {
+        if (type == 0) {
+            Intent intent = new Intent(
+                    Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+            intent.setData(Uri.parse("package:" + getPackageName()));
+            startActivity(intent);
+        } else {
+            Intent intent = new Intent();
+            if (Build.VERSION.SDK_INT >= 26) {
+                // android 8.0引导
+                intent.setAction("android.settings.APP_NOTIFICATION_SETTINGS");
+                intent.putExtra("android.provider.extra.APP_PACKAGE", getPackageName());
+            } else if (Build.VERSION.SDK_INT >= 21) {
+                // android 5.0-7.0
+                intent.setAction("android.settings.APP_NOTIFICATION_SETTINGS");
+                intent.putExtra("app_package", getPackageName());
+                intent.putExtra("app_uid", getApplicationInfo().uid);
+            } else {
+                // 其他
+                intent.setAction("android.settings.APPLICATION_DETAILS_SETTINGS");
+                intent.setData(Uri.fromParts("package", getPackageName(), null));
+            }
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        }
+    }
+
+
+
 }

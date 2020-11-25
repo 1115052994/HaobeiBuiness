@@ -1,7 +1,6 @@
 package com.netmi.workerbusiness.ui.home.commodity.offline;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.text.TextUtils;
@@ -24,20 +23,13 @@ import com.netmi.baselibrary.data.base.RxSchedulers;
 import com.netmi.baselibrary.data.entity.BaseData;
 import com.netmi.baselibrary.ui.BaseActivity;
 import com.netmi.baselibrary.utils.JumpUtil;
-import com.netmi.baselibrary.utils.KeyboardUtils;
 import com.netmi.baselibrary.utils.ToastUtils;
 import com.netmi.workerbusiness.R;
 import com.netmi.workerbusiness.data.api.OfflineGoodApi;
-import com.netmi.workerbusiness.data.api.StoreApi;
-import com.netmi.workerbusiness.data.entity.home.linecommodity.createcommofity.CreateGoodCommand;
 import com.netmi.workerbusiness.data.entity.home.offlinecommodity.OfflineGoodDetailEntity;
-import com.netmi.workerbusiness.data.event.ShelfUpdateEvent;
 import com.netmi.workerbusiness.databinding.ActivityCreateOfflineCommodityBinding;
-import com.netmi.workerbusiness.ui.home.commodity.online.CreateCommodityActivity;
 import com.netmi.workerbusiness.ui.home.commodity.online.GoodDetailRichTextActivity;
 import com.trello.rxlifecycle2.android.ActivityEvent;
-
-import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,9 +38,7 @@ import io.reactivex.annotations.NonNull;
 
 import static com.lzy.imagepicker.ImagePicker.REQUEST_CODE_PREVIEW;
 import static com.lzy.imagepicker.ImagePicker.REQUEST_CODE_SELECT;
-import static com.netmi.workerbusiness.ui.home.commodity.category.SetTagActivity.TAG_NAME;
 import static com.netmi.workerbusiness.ui.home.commodity.offline.PurchaseNotesActivity.PURCHASENOTE;
-import static com.netmi.workerbusiness.ui.home.commodity.online.CreateCommodityActivity.RICHTEXT_DETAIL;
 import static com.netmi.workerbusiness.ui.home.commodity.online.GoodDetailRichTextActivity.RICH_TEXT_STR;
 
 public class CreateOfflineCommodityActivity extends BaseActivity<ActivityCreateOfflineCommodityBinding> implements FileContract.FilesUpView, CompressPresenterImpl.CompressView {
@@ -180,7 +170,7 @@ public class CreateOfflineCommodityActivity extends BaseActivity<ActivityCreateO
         } else if (id == R.id.tv_upper_shelf) {//上架待审核
             status = "2";
             if (checkContent()) {
-                Log.e("weng", images.toString());
+                Log.e("weng__", images.toString());
                 compressPresenter.compressFiles(images);
             }
         }

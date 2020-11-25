@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="logo_url"
+            type="String" />
+
+        <variable
+            name="code"
+            type="String" />
+
+        <variable
+            name="id"
+            type="String" />
+    </data>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/refresh_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F2F2F2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/rl_title_bar"
+                android:layout_width="match_parent"
+                android:layout_height="68dp"
+                android:background="@color/white"
+                android:paddingTop="24dp">
+
+                <ImageView
+                    android:paddingVertical="12dp"
+                    android:onClick="doClick"
+                    android:src="@mipmap/left_back"
+                    android:id="@+id/ll_back"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="14dp"/>
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="68dp"
+                    android:layout_marginRight="68dp"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:lines="1"
+                    android:textColor="#1D1E1F"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:transitionName="@string/transition_title_name"
+
+                    />
+
+                <TextView
+                    android:id="@+id/tv_setting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="15dp"
+                    android:gravity="center"
+                    android:onClick="doClick"
+                    android:textColor="#353535"
+                    android:textSize="15sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:src="@mipmap/back_haibei_code_icon"
+                    android:scaleType="centerCrop"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginTop="120dp"
+                    android:paddingBottom="40dp"
+                    android:background="@drawable/bg_radius_4dp_ffffff">
+                    <ImageView
+                        android:id="@+id/iv_code"
+                        ivPath="@{code}"
+                        android:layout_centerHorizontal="true"
+                        android:layout_width="178dp"
+                        android:layout_height="178dp"
+                        android:layout_marginTop="91dp"/>
+
+                    <TextView
+                        android:id="@+id/tv_haibei_code"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/iv_code"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="19dp"
+                        android:text="海贝兑换码"
+                        android:textColor="#ff333333"
+                        android:textSize="20sp" />
+                    <TextView
+                        android:textSize="13dp"
+                        android:text="请使用客商e宝用户端首页左上角扫码兑换 "
+                        android:layout_marginTop="20dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_below="@+id/tv_haibei_code"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:id="@+id/iv_head"
+                    civPath="@{logo_url}"
+                    android:layout_width="82dp"
+                    android:layout_height="82dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="79dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/iv_head"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:text="@{id}"
+                    android:textColor="#ff333333"
+                    android:textSize="18sp"
+                    tools:text="ID:111333" />
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+    </android.support.v4.widget.SwipeRefreshLayout>
+</layout>

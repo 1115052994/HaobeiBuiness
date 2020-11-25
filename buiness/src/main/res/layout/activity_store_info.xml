@@ -202,7 +202,7 @@
 
                 <LinearLayout
                     android:id="@+id/ll_location"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="1dp"
                     android:background="@color/white"
@@ -219,20 +219,27 @@
                         android:textColor="#ff4b545c"
                         android:textSize="14sp" />
 
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:layout_weight="1" />
-
-                    <TextView
-                        android:id="@+id/tv_address"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:maxLines="2"
-                        android:text="点击选择"
-                        android:textColor="#ffa9a9a9"
-                        android:textSize="14sp" />
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="20dp">
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_weight="1" />
 
+                        <TextView
+                            android:id="@+id/tv_address"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:maxLines="2"
+                            android:text="点击选择"
+                            android:textColor="#ffa9a9a9"
+                            android:textSize="14sp" />
+                    </LinearLayout>
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

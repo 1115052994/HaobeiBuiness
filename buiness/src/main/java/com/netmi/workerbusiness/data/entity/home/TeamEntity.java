@@ -40,6 +40,24 @@ public class TeamEntity extends BaseEntity {
     private String order_num;
     private String fans_num;
     private String share_code;
+    private String logo_url;
+    private String name;
+
+    public String getLogo_url() {
+        return logo_url;
+    }
+
+    public void setLogo_url(String logo_url) {
+        this.logo_url = logo_url;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getNickname() {
         return nickname;

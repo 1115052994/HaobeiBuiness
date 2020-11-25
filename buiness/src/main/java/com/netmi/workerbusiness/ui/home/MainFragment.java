@@ -10,17 +10,16 @@ import com.liemi.basemall.ui.personal.digitalasset.QRCodeScanActivity;
 import com.netmi.baselibrary.data.base.RetrofitApiFactory;
 import com.netmi.baselibrary.data.base.RxSchedulers;
 import com.netmi.baselibrary.data.base.XObserver;
-import com.netmi.baselibrary.data.cache.UserInfoCache;
 import com.netmi.baselibrary.data.entity.BaseData;
 import com.netmi.baselibrary.ui.BaseFragment;
 import com.netmi.baselibrary.utils.JumpUtil;
+import com.netmi.baselibrary.utils.ToastUtils;
 import com.netmi.workerbusiness.R;
 import com.netmi.workerbusiness.data.api.AfterSaleApi;
 import com.netmi.workerbusiness.data.api.LoginApi;
 import com.netmi.workerbusiness.data.api.MineApi;
 import com.netmi.workerbusiness.data.api.OfflineGoodApi;
 import com.netmi.workerbusiness.data.api.VipParam;
-import com.netmi.workerbusiness.data.cache.TelCache;
 import com.netmi.workerbusiness.data.entity.home.AfterSaleDataEntity;
 import com.netmi.workerbusiness.data.entity.home.BusinessOverviewEntity;
 import com.netmi.workerbusiness.data.entity.home.LineOrderDataEntity;
@@ -37,11 +36,11 @@ import com.netmi.workerbusiness.ui.home.haibei.HaiBeiExchangeActivity;
 import com.netmi.workerbusiness.ui.home.offline.OfflineOrderActivity;
 import com.netmi.workerbusiness.ui.home.online.LineOrderActivity;
 import com.netmi.workerbusiness.ui.home.vip.VIPShareActivity;
-import com.trello.rxlifecycle2.android.ActivityEvent;
+import com.netmi.workerbusiness.ui.mine.ExternalEquipmentActivity;
+import com.netmi.workerbusiness.ui.mine.StoreInfoActivity;
 import com.trello.rxlifecycle2.android.FragmentEvent;
 
 import static com.netmi.workerbusiness.ui.home.aftersales.AfterSalesActivity.ALL;
-import static com.netmi.workerbusiness.ui.home.aftersales.AfterSalesActivity.REFUND;
 import static com.netmi.workerbusiness.ui.home.aftersales.AfterSalesActivity.RETURN;
 import static com.netmi.workerbusiness.ui.home.commodity.online.CreateCommodityActivity.CATEGORY_OR_SPECIFICATION;
 import static com.netmi.workerbusiness.ui.home.commodity.postage.PostageEditorActivity.FROM_TEMPLE;
@@ -128,7 +127,7 @@ public class MainFragment extends BaseFragment<FragmentMainBinding> {
 //             * */
 //        }
         else if (id == R.id.tv_line_commodity_list||id == R.id.tv_line_commodity_list2) {
-            if(shop_user_type==1){
+            if(shop_user_type==1||shop_user_type==4){
                 //线上商品列表
                 JumpUtil.overlay(getContext(), LineCommodityListActivity.class);
             }else if(shop_user_type==2){
@@ -174,6 +173,15 @@ public class MainFragment extends BaseFragment<FragmentMainBinding> {
         }else if(id == R.id.tv_haibei_convert){
             //海贝兑换
             JumpUtil.overlay(getContext(), HaiBeiExchangeActivity.class);
+        }else if(id == R.id.iv_back){
+            //信息修改
+            if (mBinding.getModel2().getShop_apply_status() == 1) {
+                ToastUtils.showShort("你的信息正在审核中，请通过审核后再次操作，如有问题请\n联系平台客服" );
+            } else {
+                args.putString(JumpUtil.VALUE, mBinding.getModel2().getId());
+                JumpUtil.overlay(getContext(), StoreInfoActivity.class, args);
+            }
+
         }
     }
 
@@ -211,7 +219,7 @@ public class MainFragment extends BaseFragment<FragmentMainBinding> {
 
     private void setUI() {
         //1:线上 2:线下 3:线上+线下
-        if (shop_user_type == 1) {
+        if (shop_user_type == 1||shop_user_type==4) {
             mBinding.tvSetting.setVisibility(View.GONE);
             mBinding.llLineOrder.setVisibility(View.GONE);
         } else if (shop_user_type == 2) {
@@ -245,21 +253,28 @@ public class MainFragment extends BaseFragment<FragmentMainBinding> {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1002 && resultCode == 10002 && data != null) {
             String scanResult = data.getStringExtra("scan_result");
-            RetrofitApiFactory.createApi(OfflineGoodApi.class)
-                    .check(scanResult)
-                    .compose(RxSchedulers.compose())
-                    .compose((this).bindUntilEvent(FragmentEvent.DESTROY))
-                    .subscribe(new XObserver<BaseData>() {
-                        @Override
-                        public void onSuccess(BaseData data) {
-                            showError("核销成功");
-                        }
+            if(scanResult.startsWith("BOX")){
+                Bundle bundle = new Bundle();
+                bundle.putString("type",scanResult);
+                JumpUtil.overlay(getContext(), ExternalEquipmentActivity.class,bundle);
+            }else {
+                RetrofitApiFactory.createApi(OfflineGoodApi.class)
+                        .check(scanResult)
+                        .compose(RxSchedulers.compose())
+                        .compose((this).bindUntilEvent(FragmentEvent.DESTROY))
+                        .subscribe(new XObserver<BaseData>() {
+                            @Override
+                            public void onSuccess(BaseData data) {
+                                showError("核销成功");
+                            }
 
-                        @Override
-                        public void onFail(BaseData data) {
-                            showError(data.getErrmsg());
-                        }
-                    });
+                            @Override
+                            public void onFail(BaseData data) {
+                                showError(data.getErrmsg());
+                            }
+                        });
+            }
+
         }
     }
 

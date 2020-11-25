@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="expenditure"
+            type="String" />
+
+        <variable
+            name="income"
+            type="String" />
+
+
+    </data>
+
+
+    <LinearLayout
+        android:id="@+id/ll_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:orientation="vertical">
+
+        <include layout="@layout/layout_title_shadow" />
+
+        <View
+            android:layout_marginBottom="4dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/shape_colorf2f2f2_radius2dp" />
+        <LinearLayout
+
+            android:layout_margin="4dp"
+            android:layout_width="match_parent"
+            android:layout_height="45dp">
+            <LinearLayout
+                android:background="#FFFFFFFF"
+                android:id="@+id/left_layout_bounty"
+                android:onClick="doClick"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/tv_left_top_bounty"
+                    android:textStyle="bold"
+                    android:textSize="14dp"
+                    android:textColor="@drawable/bg_bounty"
+                    android:text="奖励金明细"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <RelativeLayout
+                    android:layout_marginTop="3dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <View
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@+id/tv_left_bounty"
+                        android:layout_marginRight="6dp"
+                        android:layout_marginLeft="16dp"
+                        android:background="#D6D6D6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0.5dp"/>
+                    <TextView
+                        android:layout_centerHorizontal="true"
+                        android:id="@+id/tv_left_bounty"
+                        android:textSize="5dp"
+                        android:textColor="@drawable/bg_bounty2"
+                        android:text="Bonus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <View
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/tv_left_bounty"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginLeft="6dp"
+                        android:background="#D6D6D6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0.5dp"/>
+                </RelativeLayout>
+
+            </LinearLayout>
+            <View
+                android:layout_width="4dp"
+                android:layout_height="match_parent"/>
+            <LinearLayout
+                android:background="#FFFFFFFF"
+                android:id="@+id/right_layout_bounty"
+                android:onClick="doClick"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/tv_right_top_bounty"
+                    android:textStyle="bold"
+                    android:textSize="14dp"
+                    android:textColor="@drawable/bg_bounty"
+                    android:text="奖励金额度明细"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <RelativeLayout
+
+                    android:layout_marginTop="3dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <View
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@+id/tv_right_bounty"
+                        android:layout_marginRight="6dp"
+                        android:layout_marginLeft="16dp"
+                        android:background="#D6D6D6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0.5dp"/>
+                    <TextView
+                        android:layout_centerHorizontal="true"
+                        android:id="@+id/tv_right_bounty"
+                        android:textSize="5dp"
+                        android:textColor="@drawable/bg_bounty2"
+                        android:text="Conversion quota"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <View
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/tv_right_bounty"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginLeft="6dp"
+                        android:background="#D6D6D6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0.5dp"/>
+                </RelativeLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="15dp"
+            android:paddingVertical="10dp">
+
+            <TextView
+                android:id="@+id/tv_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@mipmap/ic_date"
+                android:drawablePadding="10dp"
+                android:onClick="doClick"
+                android:paddingHorizontal="5dp"
+                android:paddingVertical="5dp"
+                android:textColor="#ff1d1e1f"
+                android:textSize="12sp"
+                tools:text="2019-09" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{@string/expenditure(expenditure)}"
+                tools:text="收入：¥1000.00" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:text="@{@string/income(income)}"
+                tools:text="支出：¥1000.00" />
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/shape_colorf2f2f2_radius2dp" />
+
+        <com.netmi.baselibrary.widget.MyXRecyclerView
+            android:background="#FFFFFFFF"
+            android:id="@+id/xrv_data"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:descendantFocusability="blocksDescendants"
+            android:overScrollMode="never" />
+
+    </LinearLayout>
+
+
+</layout>

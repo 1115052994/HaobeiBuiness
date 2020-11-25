@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:paddingHorizontal="32dp"
+        android:gravity="center_vertical"
+        android:textColor="@color/color_333333"
+        android:textSize="@dimen/d_14"
+        android:id="@+id/top_text_name1"
+        android:text="综合排序"
+        android:layout_width="match_parent"
+        android:layout_height="35dp" tools:ignore="MissingConstraints"/>
+</android.support.constraint.ConstraintLayout>

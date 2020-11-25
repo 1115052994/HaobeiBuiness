@@ -71,7 +71,9 @@ public abstract class XObserver<T extends BaseData> extends BaseObserver<T> {
     }
 
     public void onFail(T data) {
-        ToastUtils.showShort(data.getErrmsg());
+        if(data.getErrmsg().equals("店铺ID为空")){
+
+        }else ToastUtils.showShort(data.getErrmsg());
     }
 
     public abstract void onSuccess(T data);

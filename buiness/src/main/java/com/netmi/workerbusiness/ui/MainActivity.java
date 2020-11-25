@@ -1,8 +1,13 @@
 package com.netmi.workerbusiness.ui;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 import android.util.Log;
@@ -25,17 +30,18 @@ import com.netmi.baselibrary.data.entity.OssConfigureEntity;
 import com.netmi.baselibrary.ui.MApplication;
 import com.netmi.baselibrary.utils.Densitys;
 import com.netmi.baselibrary.utils.JumpUtil;
-import com.netmi.baselibrary.utils.dialog.MessagesHintDialog;
 import com.netmi.baselibrary.utils.oss.OssUtils;
 import com.netmi.workerbusiness.R;
 import com.netmi.workerbusiness.data.NotifyEvent;
 import com.netmi.workerbusiness.data.cache.HeadUrlCache;
 import com.netmi.workerbusiness.data.cache.TelCache;
+import com.netmi.workerbusiness.data.entity.mine.GetApplyInfo;
 import com.netmi.workerbusiness.data.entity.mine.ShopInfoEntity;
 import com.netmi.workerbusiness.databinding.ActivityMainBinding;
 import com.netmi.workerbusiness.databinding.DialogMineTipsBinding;
 import com.netmi.workerbusiness.ui.home.MainFragment;
 import com.netmi.workerbusiness.ui.login.PersonalInfoActivity;
+import com.netmi.workerbusiness.ui.login.PersonalOfflineInfoActivity;
 import com.netmi.workerbusiness.ui.message.MessageFragment;
 import com.netmi.workerbusiness.ui.mine.MineFragment;
 import com.netmi.workerbusiness.ui.mine.RenewalFeeActivity;
@@ -46,6 +52,8 @@ import org.greenrobot.eventbus.EventBus;
 
 public class MainActivity extends BaseMainActivity<ActivityMainBinding> {
     private String tel;
+    private GetApplyInfo getApplyInfo;
+    private dongtai dong;
 
     @Override
     protected int getContentView() {
@@ -56,6 +64,9 @@ public class MainActivity extends BaseMainActivity<ActivityMainBinding> {
     protected void onDestroy() {
         super.onDestroy();
         registerObservers(false);
+        if(dong!= null){
+            unregisterReceiver(dong);
+        }
     }
 
     @Override
@@ -76,12 +87,19 @@ public class MainActivity extends BaseMainActivity<ActivityMainBinding> {
         }
 //        mBinding.rbMine.setChecked(true);
         registerObservers(true);
+
+        //通知通道
+        IntentFilter inform = new IntentFilter("inform");
+        //得到动态广播
+         dong = new dongtai();
+        registerReceiver(dong, inform);
     }
 
     @Override
     protected void initData() {
         doInitOssConfigure();
     }
+
 
 
     @Override
@@ -121,56 +139,28 @@ public class MainActivity extends BaseMainActivity<ActivityMainBinding> {
         if (TextUtils.equals(tag, MainFragment.TAG)) {
             if (!UserInfoCache.get().getShop_apply_status().equals("2")) {
                 if (UserInfoCache.get().getShop_apply_status().equals("1")) {
-                    showTipsDialog("你的信息正在审核中，请通过审核后再次操作，如有问题请联系\n平台客服" + TelCache.get(),
-                            "确定","提示");
+                    showTipsDialog("你的信息正在审核中，请通过审核后再次操作，如有问题请\n联系平台客服",
+                            "确定", "提示");
                 }
                 return true;
-//            } else if (!UserInfoCache.get().getShop_pay_status().equals("2")) {
-//                //用户缴费审核状态 0:未申请 1:审核中 2:审核成功 3:审核失败
-//                if (UserInfoCache.get().getShop_pay_status().equals("0")) {
-//                    showTipsDialog("您的商家认证已经通过，请缴纳服务费", "确定");
-//                } else if (UserInfoCache.get().getShop_pay_status().equals("1")) {
-//                    showTipsDialog("您已经缴纳服务费，请等待审核通过", "确定");
-//                } else if (UserInfoCache.get().getShop_pay_status().equals("3")) {
-//                    showTipsDialog("您的缴纳服务费审核失败，请重新提交", "确定");
-//                }
-//                return true;
+
             }
         } else if (TextUtils.equals(tag, CodeFragment.TAG)) {
             if (!UserInfoCache.get().getShop_apply_status().equals("2")) {
                 if (UserInfoCache.get().getShop_apply_status().equals("1")) {
-                    showTipsDialog("你的信息正在审核中，请通过审核后再次操作，如有问题请联系\n平台客服" + TelCache.get(),
-                            "确定","提示");
+                    showTipsDialog("你的信息正在审核中，请通过审核后再次操作，如有问题请\n联系平台客服",
+                            "确定", "提示");
                 }
                 return true;
-//            } else if (!UserInfoCache.get().getShop_pay_status().equals("2")) {
-//                //用户缴费审核状态 0:未申请 1:审核中 2:审核成功 3:审核失败
-//                if (UserInfoCache.get().getShop_pay_status().equals("0")) {
-//                    showTipsDialog("您的商家认证已经通过，请缴纳服务费", "确定");
-//                } else if (UserInfoCache.get().getShop_pay_status().equals("1")) {
-//                    showTipsDialog("您已经缴纳服务费，请等待审核通过", "确定");
-//                } else if (UserInfoCache.get().getShop_pay_status().equals("3")) {
-//                    showTipsDialog("您的缴纳服务费审核失败，请重新提交", "确定");
-//                }
-//                return true;
+
             }
         } else if (TextUtils.equals(tag, MessageFragment.TAG)) {
             if (!UserInfoCache.get().getShop_apply_status().equals("2")) {
                 if (UserInfoCache.get().getShop_apply_status().equals("1")) {
-                    showTipsDialog("你的信息正在审核中，请通过审核后再次操作，如有问题请联系\n平台客服" + TelCache.get(),
-                            "确定","提示");
+                    showTipsDialog("你的信息正在审核中，请通过审核后再次操作，如有问题请\n联系平台客服",
+                            "确定", "提示");
                 }
                 return true;
-//            } else if (!UserInfoCache.get().getShop_pay_status().equals("2")) {
-//                //用户缴费审核状态 0:未申请 1:审核中 2:审核成功 3:审核失败
-//                if (UserInfoCache.get().getShop_pay_status().equals("0")) {
-//                    showTipsDialog("您的商家认证已经通过，请缴纳服务费", "确定");
-//                } else if (UserInfoCache.get().getShop_pay_status().equals("1")) {
-//                    showTipsDialog("您已经缴纳服务费，请等待审核通过", "确定");
-//                } else if (UserInfoCache.get().getShop_pay_status().equals("3")) {
-//                    showTipsDialog("您的缴纳服务费审核失败，请重新提交", "确定");
-//                }
-//                return true;
             }
         } else if (TextUtils.equals(tag, MineFragment.TAG)) {
             fullScreen();
@@ -201,14 +191,26 @@ public class MainActivity extends BaseMainActivity<ActivityMainBinding> {
                 .subscribe(new XObserver<BaseData<ShopInfoEntity>>() {
                     @Override
                     public void onSuccess(BaseData<ShopInfoEntity> data) {
-                        tel = data.getData().getShop_admin_tel();
                         TelCache.put(tel);
                         HeadUrlCache.put(data.getData().getLogo_url());
                         UserInfoCache.get().setShop_apply_status(String.valueOf(data.getData().getShop_apply_status()));
                         UserInfoCache.get().setShop_pay_status(String.valueOf(data.getData().getShop_pay_status()));
+
                         if (data.getData().getShop_user_type() == 2 || data.getData().getShop_user_type() == 3) {//用户选择商户类型 0:未选择类型 1:线上 2:线下 3:线上+线下
                             mBinding.rbCollection.setVisibility(View.VISIBLE);
                         }
+
+                        if(com.alibaba.android.arouter.utils.TextUtils.isEmpty(data.getData().getIs_apply())){
+                            if (data.getData().getIs_improve_info().equals("0")) {
+                                //跳转商家入驻
+                                JumpUtil.overlay(getContext(), PersonalOfflineInfoActivity.class);
+                            }
+                        }else if (data.getData().getIs_apply().equals("0")){
+                            return;
+                        }
+
+                        }
+
 //                        if (UserInfoCache.get().getShop_user_type().equals("0")) {
 //                            showError("请先选择商户类型");
 //                            JumpUtil.overlay(getContext(), BusinessTypeActivity.class);
@@ -217,12 +219,12 @@ public class MainActivity extends BaseMainActivity<ActivityMainBinding> {
 //                            showError("请提交商家入驻资料");
 //                            JumpUtil.overlay(getContext(), PersonalInfoActivity.class);
 //                        }
-                    }
+                   // }
                 });
     }
 
     //提示确认弹窗
-    private void showTipsDialog(String content, String confirmText,String dialogTitle) {
+    private void showTipsDialog(String content, String confirmText, String dialogTitle) {
         final DialogMineTipsBinding binding = DataBindingUtil.inflate(LayoutInflater.from(getContext()), R.layout.dialog_mine_tips, null, false);
         if (!TextUtils.isEmpty(confirmText)) {
             binding.tvConfirm.setText(confirmText);
@@ -251,11 +253,23 @@ public class MainActivity extends BaseMainActivity<ActivityMainBinding> {
             }
             if (TextUtils.equals(confirmText, "去提交")) {
                 JumpUtil.overlay(getContext(), PersonalInfoActivity.class);
-            }else if (TextUtils.equals(confirmText, "前往运营台")) {
+            } else if (TextUtils.equals(confirmText, "前往运营台")) {
                 mBinding.rbHome.setChecked(true);
             }
         });
 
+    }
+
+    public class dongtai extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            mBinding.rbMessage.setChecked(true);
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            MessageFragment fragmentByTag = (MessageFragment) fragmentManager.findFragmentByTag(MessageFragment.TAG);
+            if (fragmentByTag != null) {
+                fragmentByTag.redata();
+            }
+        }
     }
 
 }

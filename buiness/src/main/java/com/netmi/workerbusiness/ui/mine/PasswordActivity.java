@@ -1,8 +1,6 @@
 package com.netmi.workerbusiness.ui.mine;
 
 import android.os.CountDownTimer;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 
 import com.netmi.baselibrary.data.api.LoginApi;
@@ -148,6 +146,7 @@ public class PasswordActivity extends BaseActivity<ActivityPassowordBinding> {
                 .subscribe(new XObserver<BaseData>() {
                     @Override
                     public void onSuccess(BaseData data) {
+                        showError("修改成功");
                         finish();
                     }
                 });

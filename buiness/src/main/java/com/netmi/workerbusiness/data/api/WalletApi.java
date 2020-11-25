@@ -2,11 +2,9 @@ package com.netmi.workerbusiness.data.api;
 
 import com.netmi.baselibrary.data.entity.BaseData;
 import com.netmi.baselibrary.data.entity.PageEntity;
-import com.netmi.workerbusiness.data.entity.mine.ShopInfoEntity;
-import com.netmi.workerbusiness.data.entity.walllet.ETHDetailEntity;
 import com.netmi.workerbusiness.data.entity.walllet.EthDetailTwoEntity;
 import com.netmi.workerbusiness.data.entity.walllet.WalletEntity;
-
+import com.netmi.workerbusiness.data.entity.walllet.WalletInfoEntity;
 
 import io.reactivex.Observable;
 import retrofit2.http.Field;
@@ -20,6 +18,13 @@ import retrofit2.http.POST;
  * 修改备注：
  */
 public interface WalletApi {
+
+    /**
+     * 钱包信息
+     */
+    @FormUrlEncoded
+    @POST("/wallet/index/info")
+    Observable<BaseData<WalletInfoEntity>> doWalletInfo(@Field("param") String param);
 
     /**
      * 钱包信息

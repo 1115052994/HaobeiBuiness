@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data></data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/layout_title_shadow" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="10dp"
+                android:background="@drawable/sobot_bg_title_custom_login_c4c4c4"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/tv_binding_three"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:layout_toLeftOf="@+id/card_number_three"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="点击输入："
+                    android:inputType="number|numberDecimal"
+                    android:onClick="doClick"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="6dp"
+                    android:textColor="@color/gray_66"
+                    android:textColorHint="#ffb9b9b9"
+                    android:textSize="@dimen/sp_12" />
+
+                <TextView
+                    android:id="@+id/card_number_three"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:visibility="gone"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@mipmap/label_cha"
+                    android:gravity="center_vertical" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="6dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="#EA312F" />
+
+                <TextView
+                    android:id="@+id/tv_bank_three"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:hint="请选择银行"
+                    android:onClick="doClick"
+                    android:text=""
+                    android:textColor="#333333"
+                    android:textSize="@dimen/s_10" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="10dp"
+                android:gravity="center">
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_submit_three"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="30dp"
+                android:background="@mipmap/dl_button_three"
+                android:gravity="center"
+                android:onClick="doClick"
+                android:paddingVertical="12dp"
+                android:text="提交卡号"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/s_15" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

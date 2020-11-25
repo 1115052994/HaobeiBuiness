@@ -4,12 +4,9 @@ import android.content.Intent;
 import android.databinding.ViewDataBinding;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 
 import com.netmi.baselibrary.data.Constant;
-import com.netmi.baselibrary.data.base.ApiException;
-import com.netmi.baselibrary.data.base.BaseObserver;
 import com.netmi.baselibrary.data.base.RetrofitApiFactory;
 import com.netmi.baselibrary.data.base.RxSchedulers;
 import com.netmi.baselibrary.data.base.XObserver;
@@ -21,15 +18,9 @@ import com.netmi.baselibrary.ui.BaseViewHolder;
 import com.netmi.baselibrary.utils.JumpUtil;
 import com.netmi.workerbusiness.R;
 import com.netmi.workerbusiness.data.api.LoginApi;
-import com.netmi.workerbusiness.data.api.StoreApi;
 import com.netmi.workerbusiness.data.entity.CateGoryVerifyEntity;
-import com.netmi.workerbusiness.data.entity.home.category.GoodsOneCateEntity;
 import com.netmi.workerbusiness.databinding.ActivityCategoryVerifyBinding;
 import com.trello.rxlifecycle2.android.ActivityEvent;
-
-import java.util.List;
-
-import io.reactivex.annotations.NonNull;
 
 public class CategoryVerifyActivity extends BaseActivity<ActivityCategoryVerifyBinding> {
 
@@ -42,7 +33,7 @@ public class CategoryVerifyActivity extends BaseActivity<ActivityCategoryVerifyB
 
     private String id;
     private String name;
-
+    String edit = "0";
     //线上线下店铺选择页面传进来的type
     private String user_type_event = "0"; //1线上  2线下
 
@@ -60,7 +51,9 @@ public class CategoryVerifyActivity extends BaseActivity<ActivityCategoryVerifyB
     @Override
     protected void initUI() {
         getTvTitle().setText("经营类目");
+        edit = getIntent().getStringExtra("edit");
         user_type_event = getIntent().getExtras().getString(JumpUtil.TYPE);
+
         mBinding.tvConfirm.setVisibility(View.GONE);
         rvLeft = mBinding.rvLeft;
         rvRight = mBinding.rvRight;
@@ -125,18 +118,18 @@ public class CategoryVerifyActivity extends BaseActivity<ActivityCategoryVerifyB
      * 数据初始化
      */
     @Override
-    protected void initData() {
+    protected void initData() {//user_type_event = 1线上  2线下
         if (user_type_event.equals("2")) {
             doListCategory("0");
-        } else {
+        } else if (user_type_event.equals("1")) {
             doListCategory("1");
         }
     }
 
-    private void doListCategory(String type) {
-        //线上店铺 0： 线下店铺 默认： 1
+    private void doListCategory(String edit) {
+        //线上店铺 1： 线下店铺 默认： 2
         RetrofitApiFactory.createApi(LoginApi.class)
-                .getCategory(type)
+                .getCategory(edit)
                 .compose(RxSchedulers.compose())
                 .compose((this).bindUntilEvent(ActivityEvent.DESTROY))
                 .subscribe(new XObserver<BaseData<PageEntity<CateGoryVerifyEntity>>>() {

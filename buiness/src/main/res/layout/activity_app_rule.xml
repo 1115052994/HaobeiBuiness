@@ -42,6 +42,19 @@
             android:text="商家平台隐私协议"
             android:textColor="#ff4b545c"
             android:textSize="14sp" />
+        <TextView
+            android:id="@+id/tv_rule_secret_office"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:drawableRight="@mipmap/ic_right_gray"
+            android:onClick="doClick"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="16dp"
+            android:text="线下商家销售奖励政策"
+            android:textColor="#ff4b545c"
+            android:textSize="14sp" />
 <!--        <com.netmi.baselibrary.widget.MyXRecyclerView-->
 <!--            android:id="@+id/xrv_data"-->
 <!--            android:layout_width="match_parent"-->

@@ -1,16 +1,19 @@
 package com.netmi.workerbusiness.ui.login;
 
+import android.databinding.DataBindingUtil;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.annotation.DrawableRes;
+import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.LinearLayout;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.liemi.basemall.data.api.LoginApi;
-import com.netmi.baselibrary.utils.dialog.MessagesHintDialog;
 import com.netmi.baselibrary.data.Constant;
 import com.netmi.baselibrary.data.base.ApiException;
 import com.netmi.baselibrary.data.base.RetrofitApiFactory;
@@ -27,13 +30,17 @@ import com.netmi.baselibrary.router.BaseRouter;
 import com.netmi.baselibrary.ui.BaseWebviewActivity;
 import com.netmi.baselibrary.utils.AppManager;
 import com.netmi.baselibrary.utils.AppUtils;
+import com.netmi.baselibrary.utils.Densitys;
 import com.netmi.baselibrary.utils.InputListenView;
 import com.netmi.baselibrary.utils.JumpUtil;
 import com.netmi.baselibrary.utils.MD5;
 import com.netmi.baselibrary.utils.SPs;
 import com.netmi.baselibrary.utils.Strings;
 import com.netmi.workerbusiness.R;
+import com.netmi.workerbusiness.data.api.MineApi;
+import com.netmi.workerbusiness.data.entity.mine.ShopInfoEntity;
 import com.netmi.workerbusiness.databinding.ActivityLoginBinding;
+import com.netmi.workerbusiness.databinding.DialogMineTipsBinding;
 import com.netmi.workerbusiness.ui.MainActivity;
 import com.netmi.workerbusiness.utils.HTMLFormat;
 import com.netmi.workerbusiness.utils.PushUtils;
@@ -56,7 +63,8 @@ public class LoginActivity extends BaseIMLoginActivity<ActivityLoginBinding> {
     //登录方式  0为验证码登录  1位密码登录
     private int login_way = 1;
     //密码隐藏  显示图片
-    Drawable gone,visi,pass;
+    Drawable gone, visi, pass;
+    private AlertDialog alertDialog;
 
     @Override
     protected int getContentView() {
@@ -67,7 +75,7 @@ public class LoginActivity extends BaseIMLoginActivity<ActivityLoginBinding> {
     protected void initUI() {
 
         //检查版本更新
-        Beta.checkUpgrade(false, true);
+        Beta.checkUpgrade(false, false);
         if (!TextUtils.equals((String) SPs.get(getContext(), LOGIN_DISPLAY, ""), AppUtils.getAppVersionName()) ||
                 !SPs.getBoolean(getContext(), LOGIN_USER_AGREE, false)) {
             SPs.put(getContext(), LOGIN_DISPLAY, AppUtils.getAppVersionName());
@@ -143,7 +151,10 @@ public class LoginActivity extends BaseIMLoginActivity<ActivityLoginBinding> {
                 doSendSMS(mBinding.etAccount.getText().toString(), "login");
             }
         } else if (id == R.id.change_login_way) {  //去注册
-            JumpUtil.overlay(getContext(), RegisterActivity.class);
+            //验证码页面
+            JumpUtil.overlay(getContext(), VerificationActivity.class);
+//            JumpUtil.overlay(getContext(), RegisterActivity.class);
+
         } else if (id == R.id.tv_forget_password) {
             JumpUtil.overlay(getContext(), ForgetPasswordActivity.class);
         } else if (id == R.id.tv_phone_register) {
@@ -227,27 +238,29 @@ public class LoginActivity extends BaseIMLoginActivity<ActivityLoginBinding> {
                     public void onSuccess(BaseData<UserInfoEntity> data) {
                         showError("登录成功");
                         if (scenario.equals(Constant.LOGIN_CODE) || scenario.equals(Constant.LOGIN_PHONE)) {
-                            LoginInfoCache.put(new LoginInfoEntity(phone));
+                            LoginInfoEntity loginInfoEntity = new LoginInfoEntity(phone);
+                            loginInfoEntity.setOpen(true);
+                            LoginInfoCache.put(loginInfoEntity);
                         }
-//                        if (scenario.equals(Constant.LOGIN_DEFAULT)) {
-//                            LoginInfoCache.put(new LoginInfoEntity(userName, password));
-//                        } else if (scenario.equals(Constant.LOGIN_PHONE)) {
-//                            LoginInfoCache.put(new LoginInfoEntity(phone, password));
-//                        } else if (scenario.equals(Constant.LOGIN_WECHAT)) {
-//                            LoginInfoCache.put(new LoginInfoEntity(openId));
-//                        }
                         //保存Token
                         AccessTokenCache.put(data.getData().getToken());
                         //保存用户信息
                         UserInfoCache.put(data.getData());
-//                        //查看是否需要注册信鸽推送
-//                        if (SPs.isOpenPushStatus()) {
-//                            PushUtils.registerPush();
-//                        }
+
                         //绑定个推
                         PushUtils.bindPush();
+                        String shop_user_type = data.getData().getShop_user_type();
+                        String shop_apply_status = data.getData().getShop_apply_status();
+                        if (shop_user_type.equals("0") || shop_apply_status.equals("0")) {
+                            //选择商户类型
+                            JumpUtil.overlay(getContext(), BusinessTypeActivity.class);
+                        } else if (shop_user_type.equals("1")) {
+                            //跳首页
+                            toMain();
+                        } else if (shop_user_type.equals("2")) {
+                            getShop();
+                        }
 
-                        loginSuccessFinish();
                     }
 
                     @Override
@@ -326,32 +339,105 @@ public class LoginActivity extends BaseIMLoginActivity<ActivityLoginBinding> {
     //密码显示隐藏
     public void onDrawableRightClick() {
         int inputType = mBinding.etPassword.getInputType();
-        if (gone==null){
-            gone = getdra(R.mipmap.password_gone);
+        if (gone == null) {
+            gone = getdra(R.mipmap.password_gone_three);
         }
-        if (visi==null){
-            visi = getdra(R.mipmap.password_visible);
+        if (visi == null) {
+            visi = getdra(R.mipmap.password_visible_three);
         }
-        if (pass==null){
-            pass = getdra(R.mipmap.user_password);
-        }
-        if(inputType==0x81){
-            mBinding.etPassword.setCompoundDrawables(pass,null,visi,null);
+//        if (pass==null){
+//            pass = getdra(R.mipmap.user_password);
+//        }
+        if (inputType == 0x81) {
+            mBinding.etPassword.setCompoundDrawables(pass, null, visi, null);
             mBinding.etPassword.setInputType(0x90);
 //            mBinding.etPassword.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD | InputType.TYPE_CLASS_TEXT);
 
-        }else{
-            mBinding.etPassword.setCompoundDrawables(pass,null,gone,null);
+        } else {
+            mBinding.etPassword.setCompoundDrawables(pass, null, gone, null);
             mBinding.etPassword.setInputType(0x81);
 //            mBinding.etPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
 
         }
     }
 
-    public Drawable getdra(@DrawableRes int id){
+    public Drawable getdra(@DrawableRes int id) {
         Drawable rightVi = getResources().getDrawable(id);
-        rightVi.setBounds(0,0,rightVi.getMinimumWidth(),rightVi.getMinimumHeight());
+        rightVi.setBounds(0, 0, rightVi.getMinimumWidth(), rightVi.getMinimumHeight());
         return rightVi;
+    }
+
+    public void getShop() {
+        RetrofitApiFactory.createApi(MineApi.class)
+                .shopInfo("")
+                .compose(RxSchedulers.compose())
+                .compose((this).bindUntilEvent(ActivityEvent.DESTROY))
+                .subscribe(new XObserver<BaseData<ShopInfoEntity>>() {
+                    @Override
+                    public void onSuccess(BaseData<ShopInfoEntity> data) {
+                        ShopInfoEntity data1 = data.getData();
+                        if (data1.getId() == null) {//新用户
+                            if (data1.getIs_bind_bank().equals("0")) {//绑定银行卡
+                                //跳转银行卡绑定
+                                JumpUtil.overlay(getContext(), BindingThreeActivity.class, "name", data1.getReal_name(), "idcard", data1.getIdcard(), "phone", data1.getPhone());
+                            } else {
+                                //跳首页
+                                toMain();
+                            }
+                        } else {
+                            //跳首页
+                            toMain();
+                        }
+
+                    }
+
+                    @Override
+                    public void onFail(BaseData data) {
+                        super.onFail(data);
+                        if (data.getErrcode() == 20001) {
+                            JumpUtil.overlay(getContext(), BusinessTypeActivity.class);
+                        }
+                    }
+                });
+    }
+
+    //提示确认弹窗
+    private void showTipsDialog(String content, String confirmText, String contentTitle) {
+        final DialogMineTipsBinding binding = DataBindingUtil.inflate(LayoutInflater.from(getContext()), R.layout.dialog_mine_tips, null, false);
+        if (!TextUtils.isEmpty(confirmText)) {
+            binding.tvConfirm.setText(confirmText);
+        }
+        if (!TextUtils.isEmpty(contentTitle)) {
+            binding.tvHintDialogTips.setText(contentTitle);
+        }
+        if (!TextUtils.isEmpty(content)) {
+            binding.tvContent.setText(content);
+        }
+        if (alertDialog == null) {
+            alertDialog = new AlertDialog.Builder(getContext(), R.style.showDialog)
+                    .setView(binding.getRoot())
+                    .show();
+            //此处设置位置窗体大小
+            if (alertDialog.getWindow() != null) {
+                alertDialog.getWindow().setLayout(Densitys.dp2px(getContext(), 350), LinearLayout.LayoutParams.WRAP_CONTENT);
+            }
+        } else {
+            if (!alertDialog.isShowing()) {
+                alertDialog.show();
+            }
+        }
+        binding.tvConfirm.setOnClickListener((View v) -> {
+            alertDialog.dismiss();
+            Bundle args = new Bundle();
+            if (content.equals(getString(R.string.haibei_dialog_contrac))) {//合同
+                JumpUtil.overlay(getContext(), ContractOfflineListActivity.class);
+            }
+        });
+    }
+
+    public void toMain() {
+        JumpUtil.overlay(getContext(), MainActivity.class);
+        AppManager.getInstance().finishAllActivity(MainActivity.class);
     }
 
 }

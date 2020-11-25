@@ -9,6 +9,8 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 允许程序读写手机状态和身份 -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- 允许程序访问CellID或WiFi热点来获取粗略的位置 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- 权限声明 -->
+    <uses-permission android:name="android.permission.BAIDU_LOCATION_SERVICE" />
+    <uses-permission android:name="android.permission.CALL_PHONE"/><!-- 电话权限 -->
     <!-- 控制呼吸灯，振动器等，用于新消息提醒 -->
     <uses-permission android:name="android.permission.FLASHLIGHT" />
     <uses-permission android:name="android.permission.VIBRATE" /> <!-- 外置存储存取权限 -->
@@ -30,17 +32,8 @@
     <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
     <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" /> <!-- 个推 -->
-    <!-- <uses-permission android:name="android.permission.INTERNET" /> -->
-    <!-- <uses-permission android:name="android.permission.READ_PHONE_STATE" /> -->
-    <!-- <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> -->
-    <!-- <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> -->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" /> <!-- <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> -->
-    <!-- <uses-permission android:name="android.permission.VIBRATE" /> -->
     <uses-permission android:name="android.permission.GET_TASKS" /> <!-- <uses-permission android:name="android.permission.BLUETOOTH" /> -->
-    <!-- <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" /> -->
-    <!-- <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" /> -->
-    <!-- <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> -->
-    <!-- <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> -->
     <uses-feature
         android:glEsVersion="0x00020000"
         android:required="true" /> <!-- SDK 权限申明, 第三方 APP 接入时，请将 com.netease.nim.demo 替换为自己的包名 -->
@@ -57,7 +50,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.home.haibei.HaiBeiExchangeActivity"></activity>
+        <activity android:name=".ui.home.haibei.HaiBeiExchangeActivity"/>
+        <activity android:name=".ui.home.haibei.HaiBeiWithdrawDepositActivity" />
+        <activity android:name=".ui.home.haibei.HaiBeiShowResultActivity"/>
+        <activity android:name=".ui.home.haibei.HaiBeiOrderDetailsActivity"/>
         <activity android:name=".ui.mine.wallet.HaibeiChangeActivity" />
         <activity android:name=".ui.home.vip.VIPShareActivity" />
         <activity android:name=".ui.mine.wallet.InputAliWechatActivity" />
@@ -65,6 +61,7 @@
             android:name=".ui.home.HaibeiSpareActivity"
             android:hardwareAccelerated="false" />
         <activity android:name=".ui.login.CategoryVerifyActivity" />
+        <activity android:name=".ui.home.haibei.HaiBeiRedeemCodeActivity" />
         <activity android:name=".ui.home.MerchantLoanActivity" />
         <activity android:name=".ui.mine.wallet.SetPayPassActivity" />
         <activity android:name=".ui.mine.wallet.ETHWalletDetailActivity" />
@@ -81,10 +78,12 @@
         <activity android:name=".ui.home.TeamActivity" />
         <activity android:name=".ui.mine.PasswordActivity" />
         <activity android:name=".ui.mine.PassChooseActivity" />
+        <activity android:name=".ui.login.ContractOfflineListActivity" android:launchMode="singleTask"/>
+        <activity android:name=".ui.mine.ContractExamineListActivity" />
+        <activity android:name=".ui.mine.ExternalEquipmentActivity" />
+        <activity android:name=".ui.mine.MessageActivity" />
+        <activity android:name=".ui.mine.MessageOfflineActivity" />
         <activity android:name=".ui.mine.AccountSecurityActivity" /> <!-- android:icon="@mipmap/app_logo" -->
-        <!-- android:label="@string/app_name" -->
-        <!-- android:roundIcon="@mipmap/ic_launcher_round" -->
-        <!-- <application android:largeHeap="true"> -->
         <activity android:name=".ui.login.ForgetPasswordActivity" />
         <activity
             android:name=".ui.home.offline.OfflineEvaluationActivity"
@@ -96,6 +95,7 @@
         <activity android:name=".ui.home.offline.OfflineOrderActivity" />
         <activity android:name=".ui.mine.TimeChooseActivity" />
         <activity android:name=".ui.mine.TransactionDetailsActivity" />
+        <activity android:name=".ui.mine.TransactionBountyActivity" />
         <activity android:name=".ui.home.commodity.offline.PurchaseNotesActivity" />
         <activity
             android:name=".ui.home.commodity.offline.CreateOfflineCommodityActivity"
@@ -126,7 +126,7 @@
         <activity android:name=".ui.mine.UntiedBankActivity" />
         <activity android:name=".ui.mine.AddBankActivity" />
         <activity android:name=".ui.mine.BankListActivity" />
-        <activity android:name=".ui.mine.WalletActivity" />
+        <activity android:name=".ui.mine.WalletActivity" android:launchMode="singleTask" />
         <activity android:name=".ui.mine.PaymentActivity" />
         <activity android:name=".ui.mine.StoreInfoActivity" />
         <activity android:name=".ui.mine.RenewalFeeActivity" />
@@ -158,7 +158,9 @@
         <activity android:name=".ui.login.BusinessTypeActivity" />
         <activity android:name=".ui.login.RegisterActivity" />
         <activity android:name=".ui.login.PersonalInfoActivity" />
-        <activity android:name=".ui.login.LoginActivity" /> <!-- <activity -->
+        <activity android:name=".ui.login.PersonalOfflineInfoActivity" />
+        <activity android:name=".ui.login.PersonalOfflineInfoRestrictionsActivity" />
+        <activity android:name=".ui.login.LoginActivity" android:launchMode="singleTask"/> <!-- <activity -->
         <!-- android:name=".ui.SplashActivity" -->
         <!-- android:launchMode="singleTask" -->
         <!-- android:theme="@style/AppTheme"> -->
@@ -232,6 +234,11 @@
         <service
             android:name="com.netease.nimlib.service.NimService"
             android:process=":core" /> <!-- 运行后台辅助服务 -->
+
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote"></service><!-- 百度地图 -->
         <service
             android:name="com.netease.nimlib.service.NimService$Aux"
             android:process=":core" /> <!-- 声明云信后台辅助服务 -->
@@ -317,6 +324,54 @@
         <service
             android:name=".service.XyPushIntentService"
             android:permission="android.permission.BIND_JOB_SERVICE" />
+
+
+        <!--微信-->
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:launchMode="singleInstance"/>
+        <!--新浪微博-->
+        <activity android:name="com.umeng.socialize.media.WBShareCallBackActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:exported="false"
+            android:configChanges="keyboardHidden|orientation|screenSize">
+            <intent-filter>
+                <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <!--qq精简版-->
+        <activity android:name="com.tencent.tauth.AuthActivity" android:launchMode="singleTask" android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="tencent101830139"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.login.LabelActivity"/>
+        <activity android:name=".ui.login.BindingThreeActivity"/>
+        <activity android:name=".ui.login.BankThreeActivity"/>
+        <activity android:name=".ui.login.BankOkActivity"/>
+        <activity android:name=".ui.login.VerificationActivity"/>
+
+        <activity android:name="com.tencent.connect.common.AssistActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden|screenSize"/>
+        <!--分享编辑页-->
+        <activity android:name="com.umeng.socialize.editorpage.ShareActivity"
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:excludeFromRecents="true"/>
+        <!--友盟-->
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="5f927efa8a5de91db33ea51d">
+        </meta-data>
+        <!--     分割线    -->
+
     </application>
 
 </manifest>

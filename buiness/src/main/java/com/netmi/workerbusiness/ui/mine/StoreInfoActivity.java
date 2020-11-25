@@ -63,13 +63,15 @@ public class StoreInfoActivity extends BaseActivity<ActivityStoreInfoBinding> im
     private int shopId;
     private String logo_url;
     private String shop_url;
-    private String remark;
 
     private String longitude;
     private String latitude;
     private String p_name;
     private String c_name;
     private String d_name;
+    private String p_id;
+    private String c_id;
+    private String d_id;
     private String address;
 
     @Override
@@ -103,19 +105,23 @@ public class StoreInfoActivity extends BaseActivity<ActivityStoreInfoBinding> im
         } else if (id == R.id.ll_time_choose) {
             showTimePicker();
         } else if (id == R.id.ll_location) {
+            //地理位置
             args.putInt(JumpUtil.ID, shopId);
             args.putString(JumpUtil.TYPE, logo_url);
             args.putString(JumpUtil.VALUE, mBinding.etName.getText().toString());
-            args.putString(JumpUtil.CODE, remark);
+            args.putString(JumpUtil.CODE, mBinding.tvRemark.getText().toString());
             args.putString(JumpUtil.FLAG, time);
             args.putString(JumpUtil.UID, shop_url);
 //            JumpUtil.overlay(getContext(), LocationActivity.class, args);
             JumpUtil.overlay(getContext(), BaiduMapActivity.class);
+
+
         } else if (id == R.id.ll_shop_pic) {
             dialogTyp = 1;
             showChangeHeadDialog();
         } else if (id == R.id.tv_confirm) {
-            doUpdateShopInfo(shopId, logo_url, mBinding.etName.getText().toString(), remark, time, longitude, latitude, p_name, c_name, d_name, address, shop_url);
+            doUpdateShopInfo(shopId, logo_url, mBinding.etName.getText().toString(), mBinding.tvRemark.getText().toString(), time, longitude, latitude, p_name, c_name, d_name, address, shop_url, p_id, c_id, d_id);
+
         }
     }
 
@@ -238,10 +244,10 @@ public class StoreInfoActivity extends BaseActivity<ActivityStoreInfoBinding> im
      * 更新用户信息
      */
     private void doUpdateShopInfo(Integer id, String logo_url, String name, String remark, String opening_hours, String longitude, String latitude
-            , String p_name, String c_name, String d_name, String address, String img_url) {
+            , String p_name, String c_name, String d_name, String address, String img_url,String p_id, String c_id, String d_id) {
         showProgress("");
         RetrofitApiFactory.createApi(MineApi.class)
-                .doUpdateShopInfo(id, logo_url, name, remark, opening_hours, longitude, latitude, p_name, c_name, d_name, address, img_url)
+                .doUpdateShopInfo(id, logo_url, name, remark, opening_hours, longitude, latitude, p_name, c_name, d_name,address, img_url ,p_id,c_id,d_id)
                 .compose(this.<BaseData>bindUntilEvent(ActivityEvent.DESTROY))
                 .compose(RxSchedulers.<BaseData>compose())
                 .subscribe(new XObserver<BaseData>() {
@@ -266,19 +272,25 @@ public class StoreInfoActivity extends BaseActivity<ActivityStoreInfoBinding> im
                         mBinding.setLogoUrl(logo_url);
                         mBinding.setShopUrl(shop_url);
                         mBinding.tvAddress.setText(data.getData().getFull_name());
+
                         time = data.getData().getOpening_hours();
-                        remark = data.getData().getRemark();
+                        mBinding.tvRemark.setText(data.getData().getRemark());
                         longitude = data.getData().getLongitude();
                         latitude = data.getData().getLatitude();
                         p_name = data.getData().getP_name();
                         c_name = data.getData().getC_name();
                         d_name = data.getData().getD_name();
+                        p_id = data.getData().getP_id();
+                        c_id = data.getData().getC_id();
+                        d_id = data.getData().getD_id();
                         address = data.getData().getAddress();
                         if (data.getData().getShop_user_type() == 1) {
                             mBinding.llTimeChoose.setVisibility(View.GONE);
                             mBinding.llLocation.setVisibility(View.GONE);
                         }
                         HeadUrlCache.put(data.getData().getLogo_url());
+
+
                     }
                 });
     }
@@ -296,7 +308,11 @@ public class StoreInfoActivity extends BaseActivity<ActivityStoreInfoBinding> im
         p_name = event.getP_name();
         c_name = event.getC_name();
         d_name = event.getD_name();
+        p_id = event.getP_id();
+        c_id = event.getC_id();
+        d_id = event.getD_id();
         address = event.getAddress();
+        mBinding.tvAddress.setText(c_name+""+d_name+"  "+address);
     }
 
     @Override

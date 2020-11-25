@@ -1,19 +1,16 @@
 package com.netmi.workerbusiness.ui.message;
 
-import android.content.Intent;
 import android.databinding.ViewDataBinding;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
-import android.text.TextUtils;
 import android.view.View;
+import android.widget.RelativeLayout;
 
 import com.netmi.baselibrary.data.base.RetrofitApiFactory;
 import com.netmi.baselibrary.data.base.RxSchedulers;
 import com.netmi.baselibrary.data.base.XObserver;
 import com.netmi.baselibrary.data.entity.BaseData;
 import com.netmi.baselibrary.data.entity.PageEntity;
-import com.netmi.baselibrary.ui.BaseActivity;
 import com.netmi.baselibrary.ui.BaseRViewAdapter;
 import com.netmi.baselibrary.ui.BaseViewHolder;
 import com.netmi.baselibrary.ui.BaseWebviewActivity;
@@ -23,8 +20,6 @@ import com.netmi.baselibrary.utils.JumpUtil;
 import com.netmi.baselibrary.utils.PageUtil;
 import com.netmi.workerbusiness.R;
 import com.netmi.workerbusiness.data.api.MessApi;
-import com.netmi.workerbusiness.data.cache.HeadUrlCache;
-import com.netmi.workerbusiness.data.cache.TelCache;
 import com.netmi.workerbusiness.data.entity.mess.PublicNoticeEntity;
 import com.netmi.workerbusiness.data.entity.mine.ShopInfoEntity;
 import com.netmi.workerbusiness.databinding.ActivityPublicNoticeBinding;
@@ -34,11 +29,8 @@ import com.netmi.workerbusiness.ui.home.online.LineOrderDetailActivity;
 import com.netmi.workerbusiness.ui.mine.StoreCreditScoreActivity;
 import com.trello.rxlifecycle2.android.ActivityEvent;
 
-import java.util.ArrayList;
-
 import io.reactivex.annotations.NonNull;
 
-import static com.liemi.basemall.data.entity.floor.NewFloorEntity.FLOOR_TYPE_WEB_CONTENT;
 import static com.netmi.baselibrary.ui.BaseWebviewActivity.WEBVIEW_CONTENT;
 import static com.netmi.baselibrary.ui.BaseWebviewActivity.WEBVIEW_TITLE;
 import static com.netmi.baselibrary.ui.BaseWebviewActivity.WEBVIEW_TYPE;
@@ -48,7 +40,7 @@ import static com.netmi.baselibrary.ui.BaseWebviewActivity.WEBVIEW_TYPE_URL;
 
 public class PublicNoticeActivity extends BaseXRecyclerActivity<ActivityPublicNoticeBinding, PublicNoticeEntity> {
 
-    // type_arr  1 平台公告（改为3）  2订单通知  5 系统通知
+    // type_arr  1 平台公告（改为3）  2订单通知  5 规则中心
     private int type;
     private String title;
 
@@ -65,7 +57,7 @@ public class PublicNoticeActivity extends BaseXRecyclerActivity<ActivityPublicNo
         } else if (type == 2) {
             title = "订单通知";
         } else if (type == 5) {
-            title = "系统通知";
+            title = "规则中心";
         }
         getTvTitle().setText(title);
         initRecyclerView();
@@ -108,10 +100,24 @@ public class PublicNoticeActivity extends BaseXRecyclerActivity<ActivityPublicNo
                         //type_arr  1 平台公告  2订单通知  5 系统通知
                         if (type == 3) {
                             itemOfficialPushBinding.ivLogo.setImageResource(R.mipmap.ic_app_notice);
+                            itemOfficialPushBinding.tvRightSub.setVisibility(View.GONE);
+                            itemOfficialPushBinding.tvLeftTitle.setText(entity.getTitle());
+                            itemOfficialPushBinding.tvRemark.setText(entity.getRemark());
+                            RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) itemOfficialPushBinding.tvClickToView.getLayoutParams();
+                            lp.addRule(RelativeLayout.CENTER_HORIZONTAL);
+                            itemOfficialPushBinding.tvClickToView.setLayoutParams(lp);
+
                         } else if (type == 2) {
                             itemOfficialPushBinding.ivLogo.setImageResource(R.mipmap.ic_order_notice);
+                            itemOfficialPushBinding.tvRemark.setText(entity.getTitle());
                         } else if (type == 5) {
                             itemOfficialPushBinding.ivLogo.setImageResource(R.mipmap.ic_system_notice);
+                            itemOfficialPushBinding.tvRightSub.setVisibility(View.GONE);
+                            itemOfficialPushBinding.tvLeftTitle.setText(entity.getTitle());
+                            itemOfficialPushBinding.tvRemark.setText(entity.getRemark());
+                            RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) itemOfficialPushBinding.tvClickToView.getLayoutParams();
+                            lp.addRule(RelativeLayout.CENTER_HORIZONTAL);
+                            itemOfficialPushBinding.tvClickToView.setLayoutParams(lp);
                         }
                     }
 

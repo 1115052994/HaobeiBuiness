@@ -47,6 +47,16 @@ public class UserInfoEntity implements Serializable {
     private String date_birth;
     //年龄
     private int age;
+    //设备绑定id
+    private String audio_device_id;
+
+    public String getAudio_device_id() {
+        return audio_device_id;
+    }
+
+    public void setAudio_device_id(String audio_device_id) {
+        this.audio_device_id = audio_device_id;
+    }
 
     //身份证号
     private String id_card;
@@ -138,6 +148,7 @@ public class UserInfoEntity implements Serializable {
      */
     private String cid;
     private String yun_token;
+
 
 
     public String getShop_user_type() {

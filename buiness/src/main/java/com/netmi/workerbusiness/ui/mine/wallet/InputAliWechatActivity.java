@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
-import com.liemi.basemall.data.entity.user.WalletDetailsEntity;
 import com.netmi.baselibrary.data.base.ApiException;
 import com.netmi.baselibrary.data.base.RetrofitApiFactory;
 import com.netmi.baselibrary.data.base.RxSchedulers;
@@ -18,19 +17,13 @@ import com.netmi.baselibrary.ui.BaseXRecyclerActivity;
 import com.netmi.baselibrary.utils.JumpUtil;
 import com.netmi.workerbusiness.R;
 import com.netmi.workerbusiness.data.api.MineApi;
-import com.netmi.workerbusiness.data.cache.WithdrawCache;
-import com.netmi.workerbusiness.data.entity.mess.PublicNoticeEntity;
 import com.netmi.workerbusiness.data.entity.walllet.AliWechatEntity;
 import com.netmi.workerbusiness.databinding.ActivityInputAliWechatBinding;
-import com.netmi.workerbusiness.databinding.ItemOfficialPushBinding;
 import com.netmi.workerbusiness.databinding.ItemPayMessageBinding;
 import com.netmi.workerbusiness.ui.dialog.Pay_Message_Dialog;
 import com.trello.rxlifecycle2.android.ActivityEvent;
 
 import java.util.List;
-
-import static com.netmi.workerbusiness.ui.mine.wallet.MineWithdrawDetailActivity.ALI_WITHDRAE;
-import static com.netmi.workerbusiness.ui.mine.wallet.MineWithdrawDetailActivity.WECHAT_WITHDRAE;
 
 //支付宝和微信添加
 public class InputAliWechatActivity extends BaseXRecyclerActivity<ActivityInputAliWechatBinding, AliWechatEntity> implements Pay_Message_Dialog.ClickBindPhoneListener {
@@ -58,7 +51,7 @@ public class InputAliWechatActivity extends BaseXRecyclerActivity<ActivityInputA
         getTvTitle().setText("提现信息管理");
         initRecyclerView();
         type = getIntent().getExtras().getInt(JumpUtil.TYPE);
-        pay_message_dialog = new Pay_Message_Dialog(this);
+        pay_message_dialog = new Pay_Message_Dialog(this,type);
         pay_message_dialog.setClickBindMessageListener(this);
 
 

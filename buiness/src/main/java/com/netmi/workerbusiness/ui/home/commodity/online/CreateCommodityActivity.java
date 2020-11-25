@@ -25,22 +25,18 @@ import com.netmi.baselibrary.data.base.RxSchedulers;
 import com.netmi.baselibrary.data.entity.BaseData;
 import com.netmi.baselibrary.ui.BaseActivity;
 import com.netmi.baselibrary.utils.JumpUtil;
-import com.netmi.baselibrary.utils.KeyboardUtils;
 import com.netmi.baselibrary.utils.ToastUtils;
 import com.netmi.workerbusiness.R;
 import com.netmi.workerbusiness.data.api.StoreApi;
 import com.netmi.workerbusiness.data.entity.home.linecommodity.createcommofity.CreateGoodCommand;
 import com.netmi.workerbusiness.data.entity.home.store.SpecDetailEntity;
-import com.netmi.workerbusiness.data.event.ShelfUpdateEvent;
 import com.netmi.workerbusiness.databinding.ActivityCreatCommodityBinding;
 import com.netmi.workerbusiness.ui.home.commodity.category.SelectCategoryActivity;
-import com.netmi.workerbusiness.ui.home.commodity.category.spec.SelectCategorySpecificationActivity;
 import com.netmi.workerbusiness.ui.home.commodity.category.SetTagActivity;
+import com.netmi.workerbusiness.ui.home.commodity.category.spec.SelectCategorySpecificationActivity;
 import com.netmi.workerbusiness.ui.home.commodity.coupon.ServiceDesciptionActivity;
 import com.netmi.workerbusiness.ui.home.commodity.postage.PostageEditorActivity;
 import com.trello.rxlifecycle2.android.ActivityEvent;
-
-import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -146,7 +142,10 @@ public class CreateCommodityActivity extends BaseActivity<ActivityCreatCommodity
                 }
                 mBinding.tvCategroy.setText(createGoodCommand.getCategoryStr());
 //                mBinding.tvGroup.setText(createGoodCommand.getGroup_name());
-                mBinding.tvPostageTemplate.setText(createGoodCommand.getTemplate_list().getTemplate_name());
+                if(createGoodCommand.getTemplate_list()!=null){
+                    mBinding.tvPostageTemplate.setText(createGoodCommand.getTemplate_list().getTemplate_name());
+                }
+
                 createGoodCommand.setItem_id(getIntent().getStringExtra(GOOD_ID));
                 String label = createGoodCommand.getMeLabel();
                 mBinding.tvTagOne.setText(label);

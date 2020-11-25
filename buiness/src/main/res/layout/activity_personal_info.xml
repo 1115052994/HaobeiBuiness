@@ -264,6 +264,7 @@
                     android:background="@color/white"
                     android:gravity="center_vertical"
                     android:onClick="doClick"
+
                     android:orientation="horizontal">
 
                     <TextView
@@ -278,7 +279,8 @@
                     <View
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:layout_marginLeft="5dp" />
 
                     <TextView
                         android:id="@+id/tv_address"
@@ -624,7 +626,8 @@
                     android:id="@+id/ll_environment_pic"
                     android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                   >
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

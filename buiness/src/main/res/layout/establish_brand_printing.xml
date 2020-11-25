@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+
+        <variable
+            name="logo_url"
+            type="String" />
+
+        <variable
+            name="code"
+            type="String" />
+        <variable
+            name="id"
+            type="String" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:id="@+id/establish_relayout"
+            android:layout_centerInParent="true"
+            android:layout_width="match_parent"
+            android:layout_height="683dp">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/rl_title_bar"
+                    android:src="@mipmap/establish_background"
+                    android:scaleType="fitXY"
+                    android:layout_width="375dp"
+                    android:layout_height="683dp" />
+
+                <RelativeLayout
+                    android:id="@+id/center_relayout"
+                    android:layout_marginTop="273dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:scaleType="centerCrop"
+                        android:id="@+id/iv_code"
+                        ivPath="@{code}"
+                        android:layout_width="210dp"
+                        android:layout_height="200dp" />
+                    <ImageView
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/sobot_bbuton_info_rounded1_wh"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp" />
+                    <ImageView
+                        android:layout_centerInParent="true"
+                        android:id="@+id/iv_head"
+                        civPath="@{logo_url}"
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        />
+
+                </RelativeLayout>
+                <TextView
+                    android:includeFontPadding="false"
+                    android:gravity="center"
+                    android:layout_alignRight="@+id/center_relayout"
+                    android:layout_alignLeft="@+id/center_relayout"
+                    android:layout_below="@+id/center_relayout"
+                    android:textSize="16dp"
+                    android:textColor="#666"
+                    android:text="@{id}"
+                    android:id="@+id/tv_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>

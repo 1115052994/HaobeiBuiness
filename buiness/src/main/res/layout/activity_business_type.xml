@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -8,85 +9,136 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#FFFFFF"
+        android:background="#F4F4F4"
         android:orientation="vertical">
 
-        <include layout="@layout/layout_title_shadow" />
+        <RelativeLayout
+            android:id="@+id/rl_title_bar"
+            android:layout_width="match_parent"
+            android:layout_height="68dp"
+            android:background="@color/white"
+            android:paddingTop="24dp">
 
-        <RadioGroup
-            android:id="@+id/rgType"
+            <LinearLayout
+                android:id="@+id/ll_back"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:onClick="doClick"
+                android:orientation="horizontal"
+                android:paddingLeft="14dp">
+
+                <ImageView
+                    android:id="@+id/iv_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@null"
+                    android:src="@mipmap/icon_back_new" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="68dp"
+                android:layout_marginRight="68dp"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:lines="1"
+                android:textColor="#1D1E1F"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:transitionName="@string/transition_title_name"
+
+                />
+
+            <TextView
+                android:id="@+id/tv_setting"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="15dp"
+                android:gravity="center"
+                android:onClick="doClick"
+                android:textColor="#F7635B"
+                android:textSize="@dimen/s_12" />
+
+
+        </RelativeLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="25dp"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal">
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginVertical="10dp"
+            android:orientation="vertical">
 
-            <RadioButton
-                android:id="@+id/rb_line"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bg_radiobutton"
-                android:button="@null"
-                android:checked="true"
-                android:drawableTop="@mipmap/ic_line_store"
-                android:drawableBottom="@drawable/bg_checkbox"
-                android:drawablePadding="12dp"
-                android:gravity="center"
-                android:paddingHorizontal="46dp"
-                android:paddingTop="25dp"
-                android:paddingBottom="10dp"
-                android:text="线上商户"
-                android:textColor="#ff333333"
-                android:textSize="12sp" />
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
-
-            <RadioButton
-                android:id="@+id/rb_out_line"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bg_radiobutton"
-                android:button="@null"
-                android:checked="false"
-                android:drawableTop="@mipmap/ic_outline_store"
-                android:drawableBottom="@drawable/bg_checkbox"
-                android:drawablePadding="12dp"
-                android:gravity="center"
-                android:paddingHorizontal="46dp"
-                android:paddingTop="25dp"
-                android:paddingBottom="10dp"
-                android:text="实体商家"
-                android:textColor="#ff333333"
-                android:textSize="12sp" />
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
+            <RadioGroup
+                android:id="@+id/rgType"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:visibility="gone" />
+                android:orientation="horizontal">
 
-            <RadioButton
-                android:id="@+id/rb_both"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bg_radiobutton"
-                android:button="@null"
-                android:checked="false"
-                android:drawableTop="@mipmap/ic_all_store"
-                android:drawableBottom="@drawable/bg_checkbox"
-                android:drawablePadding="12dp"
-                android:gravity="center"
-                android:paddingHorizontal="20dp"
-                android:paddingTop="25dp"
-                android:paddingBottom="10dp"
-                android:text="综合商户"
-                android:textColor="#ff333333"
-                android:textSize="12sp"
-                android:visibility="gone" />
-        </RadioGroup>
+                <com.netmi.baselibrary.widget.MDMRadioButton
+                    android:id="@+id/rb_line"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="start"
+                    android:layout_weight="1"
+                    android:background="#ffffff"
+                    android:button="@null"
+                    android:checked="true"
+                    android:drawableLeft="@drawable/bg_img_three"
+                    android:drawablePadding="10dp"
+                    android:gravity="center"
+                    tools:ignore="RtlCompat" />
+
+                <com.netmi.baselibrary.widget.MDMRadioButton
+                    android:id="@+id/rb_out_line"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:layout_weight="1"
+                    android:background="#ffffff"
+                    android:button="@null"
+                    android:checked="false"
+                    android:drawableStart="@drawable/bg_img_three2"
+                    android:drawablePadding="12dp"
+                    android:gravity="center_horizontal"
+                    tools:ignore="RtlCompat" />
+
+            </RadioGroup>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="1"
+                    android:background="#ffffff"
+                    android:gravity="center"
+                    android:paddingVertical="10dp"
+                    android:text="实体商家"
+                    android:textColor="#333333" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="1"
+                    android:background="#ffffff"
+                    android:gravity="center"
+                    android:paddingVertical="10dp"
+                    android:text="线上商家"
+                    android:textColor="#333333" />
+            </LinearLayout>
+        </LinearLayout>
 
 
         <TextView
@@ -95,7 +147,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="25dp"
             android:layout_marginTop="152dp"
-            android:background="#D81E06"
+            android:background="@mipmap/dl_button_three"
             android:gravity="center"
             android:onClick="doClick"
             android:paddingVertical="12dp"

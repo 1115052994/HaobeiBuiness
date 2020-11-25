@@ -1,41 +1,26 @@
 package com.netmi.workerbusiness.ui.mine;
 
-import android.app.Activity;
-import android.databinding.ViewDataBinding;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
 import com.netmi.baselibrary.data.base.RetrofitApiFactory;
 import com.netmi.baselibrary.data.base.RxSchedulers;
 import com.netmi.baselibrary.data.base.XObserver;
-import com.netmi.baselibrary.data.cache.UserInfoCache;
 import com.netmi.baselibrary.data.entity.BaseData;
-import com.netmi.baselibrary.data.entity.PageEntity;
 import com.netmi.baselibrary.ui.BaseActivity;
-import com.netmi.baselibrary.ui.BaseRViewAdapter;
-import com.netmi.baselibrary.ui.BaseViewHolder;
 import com.netmi.baselibrary.ui.BaseWebviewActivity;
-import com.netmi.baselibrary.ui.BaseXRecyclerActivity;
-import com.netmi.baselibrary.utils.AppUtils;
 import com.netmi.baselibrary.utils.JumpUtil;
 import com.netmi.workerbusiness.R;
 import com.netmi.workerbusiness.data.api.MineApi;
 import com.netmi.workerbusiness.data.entity.mine.ContentEntity;
-import com.netmi.workerbusiness.data.entity.mine.ShopInfoEntity;
 import com.netmi.workerbusiness.databinding.ActivityAppRuleBinding;
 import com.netmi.workerbusiness.utils.HTMLFormat;
 import com.trello.rxlifecycle2.android.ActivityEvent;
-import com.trello.rxlifecycle2.android.FragmentEvent;
-
-import java.lang.reflect.Type;
 
 import static com.netmi.baselibrary.ui.BaseWebviewActivity.WEBVIEW_CONTENT;
 import static com.netmi.baselibrary.ui.BaseWebviewActivity.WEBVIEW_TITLE;
 import static com.netmi.baselibrary.ui.BaseWebviewActivity.WEBVIEW_TYPE;
 import static com.netmi.baselibrary.ui.BaseWebviewActivity.WEBVIEW_TYPE_CONTENT;
-import static com.netmi.baselibrary.ui.BaseWebviewActivity.WEBVIEW_TYPE_URL;
 
 public class AppRuleActivity extends BaseActivity<ActivityAppRuleBinding> {
     private ContentEntity entity;
@@ -95,6 +80,8 @@ public class AppRuleActivity extends BaseActivity<ActivityAppRuleBinding> {
             service(38);
         } else if (id == R.id.tv_rule_secret) {    //隐私协议
             service(33);
+        } else if (id == R.id.tv_rule_secret_office) {    //线下商家销售奖励政策
+            service(53);
         }
     }
 

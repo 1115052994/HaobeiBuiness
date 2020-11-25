@@ -66,6 +66,7 @@
                     android:transitionName="@string/transition_title_name" />
 
                 <TextView
+                    android:onClick="@{doClick}"
                     android:text="客服"
                     android:id="@+id/tv_setting"
                     android:layout_width="wrap_content"
@@ -73,7 +74,6 @@
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="21dp"
                     android:gravity="center"
-                    android:onClick="doClick"
                     android:textColor="#1F1F1F"
                     android:textSize="15sp" />
 
@@ -82,7 +82,7 @@
 
             <RelativeLayout
                 android:paddingBottom="7dp"
-                android:layout_marginTop="4dp"
+                android:layout_margin="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_radius_4dp_ffffff">
@@ -90,12 +90,13 @@
                 <ImageView
                     android:id="@+id/iv_img"
                     civPath="@{model.logo_url}"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
                     android:layout_marginVertical="15dp"
-                    android:layout_marginLeft="20dp" />
+                    android:layout_marginLeft="10dp" />
 
                 <TextView
+                    android:maxLength="8"
                     android:id="@+id/tv_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -111,16 +112,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignTop="@id/tv_name"
-                    android:layout_alignBottom="@+id/tv_name"
-                    android:layout_marginLeft="6dp"
+                    android:layout_marginLeft="20dp"
                     android:layout_toRightOf="@+id/tv_name"
                     android:background="@drawable/bg_radius_8dp_d81e06"
                     android:gravity="center"
-                    android:paddingHorizontal="5dp"
-                    android:paddingVertical="3dp"
+                    android:paddingHorizontal="10dp"
                     android:text="@{model.shop_apply_status_str}"
                     android:textColor="#ffffffff"
-                    android:textSize="8sp"
+                    android:textSize="@dimen/sp_10"
                     tools:text="认证中" />
                 <TextView
                     android:id="@+id/tv_phone"
@@ -145,14 +144,15 @@
                     android:textSize="12sp"
                     tools:text="邀请码:111111" />
                 <TextView
+                    android:layout_marginTop="2dp"
+                    android:textColor="@color/gray_66"
                     android:id="@+id/tv_copy"
-                    android:background="@drawable/bg_radius_1dp_999999"
+                    android:background="@drawable/bg_radius_1dp_9999992"
                     android:layout_below="@id/tv_phone"
-                    android:layout_marginLeft="40dp"
+                    android:layout_marginLeft="20dp"
                     android:layout_toRightOf="@+id/tv_id"
-                    android:paddingVertical="2dp"
-                    android:paddingHorizontal="4dp"
-                    android:textSize="9dp"
+                    android:paddingHorizontal="9dp"
+                    android:textSize="@dimen/s_10"
                     android:text="复制"
                     android:onClick="@{doClick}"
                     android:layout_width="wrap_content"
@@ -172,16 +172,14 @@
                     android:visibility="gone"
                     tools:text="到期时间：2020/3/3" />
 
-                <TextView
-                    android:layout_marginRight="21dp"
-                    android:id="@+id/iv_edit_info"
-                    android:background="@drawable/bg_radius_1dp_999999"
+                <ImageView
                     android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:paddingVertical="2dp"
-                    android:paddingHorizontal="4dp"
-                    android:textSize="9dp"
-                    android:text="编辑"
+                    android:layout_marginLeft="11dp"
+                    android:layout_alignTop="@+id/tv_phone"
+                    android:layout_alignBottom="@+id/tv_phone"
+                    android:src="@mipmap/compile_icon"
+                    android:layout_marginRight="10dp"
+                    android:id="@+id/iv_edit_info"
                     android:onClick="@{doClick}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -224,15 +222,15 @@
 
 
             <LinearLayout
+                android:layout_marginHorizontal="10dp"
                 android:id="@+id/ll_wallet"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:background="@color/white"
+                android:background="@drawable/sobot_bg_title_custom_login"
                 android:gravity="center_vertical"
                 android:onClick="@{doClick}"
                 android:orientation="horizontal"
-                android:paddingHorizontal="20dp"
+                android:paddingHorizontal="10dp"
                 android:paddingVertical="8dp">
 
                 <TextView
@@ -249,20 +247,33 @@
                     android:layout_weight="1" />
 
                 <TextView
+                    android:drawablePadding="5dp"
                     android:text="进入我的钱包"
                     android:drawableRight="@mipmap/ic_right_gray"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
-            <View
-                android:background="@color/gray_EE"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"/>
             <LinearLayout
                 android:background="@color/white"
+                android:layout_marginHorizontal="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <View
+                    android:layout_marginHorizontal="10dp"
+                    android:background="@color/gray_EE"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:onClick="@{doClick}"
+                android:id="@+id/lilayout_centent"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/sobot_bg_title_custom_login2"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <LinearLayout
                     android:paddingBottom="@dimen/dp_17"
                     android:gravity="center"
@@ -277,10 +288,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                     <TextView
+                        android:gravity="center"
                         android:id="@+id/tv_mine_balance"
                         android:layout_marginTop="9dp"
                         android:textColor="#D81E06"
-                        android:text="￥1512.00"
+                        android:text="￥0.00"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                     <TextView
@@ -310,7 +322,9 @@
                         android:id="@+id/tv_haibei_balance"
                         android:layout_marginTop="9dp"
                         android:textColor="#D81E06"
-                        android:text="≈151366元"
+                        tools:text="0元"
+                        android:text="0元"
+                        android:gravity="center"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
@@ -330,10 +344,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                     <TextView
+                        android:gravity="center"
                         android:id="@+id/tv_haibei_balance_estimate"
                         android:layout_marginTop="9dp"
                         android:textColor="#D81E06"
-                        android:text="151366元"
+                        android:text="0.00元"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
@@ -376,12 +391,13 @@
                 android:id="@+id/ll_rule"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:background="@color/white"
+                android:layout_marginTop="10dp"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/sobot_bg_title_custom_login"
                 android:gravity="center_vertical"
                 android:onClick="@{doClick}"
                 android:orientation="horizontal"
-                android:paddingHorizontal="20dp"
+                android:paddingHorizontal="10dp"
                 android:paddingVertical="16dp">
 
                 <TextView
@@ -401,17 +417,109 @@
                     android:layout_height="wrap_content"
                     android:src="@mipmap/ic_right_gray" />
             </LinearLayout>
-
             <LinearLayout
-                android:id="@+id/ll_setting"
+                android:background="@color/white"
+                android:layout_marginHorizontal="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <View
+                    android:layout_marginHorizontal="10dp"
+                    android:background="@color/gray_EE"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_message_management"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginHorizontal="10dp"
                 android:background="@color/white"
                 android:gravity="center_vertical"
                 android:onClick="@{doClick}"
                 android:orientation="horizontal"
-                android:paddingHorizontal="20dp"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="信息管理"
+                    android:textColor="#ff4b545c"
+                    android:textSize="14sp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ic_right_gray" />
+            </LinearLayout>
+            <LinearLayout
+                android:background="@color/white"
+                android:layout_marginHorizontal="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <View
+                    android:layout_marginHorizontal="10dp"
+                    android:background="@color/gray_EE"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_contract"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:onClick="@{doClick}"
+                android:orientation="horizontal"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="16dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="合同管理"
+                    android:textColor="#ff4b545c"
+                    android:textSize="14sp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ic_right_gray" />
+            </LinearLayout>
+            <LinearLayout
+                android:background="@color/white"
+                android:layout_marginHorizontal="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <View
+                    android:layout_marginHorizontal="10dp"
+                    android:background="@color/gray_EE"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
+            </LinearLayout>
+
+             <LinearLayout
+                android:id="@+id/ll_setting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:gravity="center_vertical"
+                android:background="@drawable/sobot_bg_title_custom_login2"
+                android:onClick="@{doClick}"
+                android:orientation="horizontal"
+                android:paddingHorizontal="10dp"
                 android:paddingVertical="16dp">
 
                 <TextView

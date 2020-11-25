@@ -84,6 +84,53 @@ public class ImageUploadUtils {
         }
     }
 
+
+    /**
+     * Oss 图片上传再次封装  带压缩
+     *
+     * @param images                图片来源
+     * @param view                  如果view不为空，上传时出提示框，成功或失败会有提示语句
+     * @param successLisentner      成功时回调对象
+     * @param uploadfailedLisentner 失败时回调对象
+     */
+    public static void uploadByOssZip(ArrayList<ImageItem> images, BaseView view, UploadSuccessListener successLisentner, OssUploadfailedLitsener uploadfailedLisentner) {
+        List<String> resultUrls = new ArrayList<>();
+        if (view != null)
+            view.showProgress("");
+
+        if (images != null && !images.isEmpty()) {
+            for (int i = 0; i < images.size(); i++) {
+                new OssUtils().initOss().putObjectSyncZip(images.get(i).path, new OSSCompletedCallback<PutObjectRequest, PutObjectResult>() {
+                    @Override
+                    public void onSuccess(PutObjectRequest request, PutObjectResult result) {
+                        String url = OssUtils.OSS_HOST + request.getObjectKey();
+                        Logs.e(url);
+                        resultUrls.add(url);
+
+                        if (successLisentner != null && resultUrls.size() == images.size()) {
+                            if (view != null)
+                                view.showError(ResourceUtil.getString(R.string.upload_success));
+                            successLisentner.onSuccess(resultUrls);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(PutObjectRequest request, ClientException clientException, ServiceException serviceException) {
+                        if (view != null)
+                            view.showError(ResourceUtil.getString(R.string.upload_failed));
+                        if (uploadfailedLisentner != null)
+                            uploadfailedLisentner.onFailed(request, clientException, serviceException);
+                        return;
+                    }
+                });
+            }
+
+        } else {
+            if (view != null)
+                view.hideProgress();
+        }
+    }
+
     /**
      * 后台图片上传
      *

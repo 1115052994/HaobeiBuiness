@@ -5,6 +5,7 @@
     <!--订单Item页面-->
     <data>
 
+
         <import type="com.netmi.baselibrary.utils.Strings" />
 
         <import type="android.view.View" />
@@ -13,6 +14,9 @@
             name="doClick"
             type="android.view.View.OnClickListener" />
 
+        <variable
+            name="type"
+            type="int" />
 
         <!--订单信息-->
         <variable
@@ -32,7 +36,7 @@
 
         <ImageView
             android:id="@+id/iv_head_url"
-            civPath="@{item.head_url}"
+            civPath="@{type==1?item.head_url:item.logo_url}"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginVertical="16dp"
@@ -45,7 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/iv_head_url"
             android:layout_toRightOf="@id/iv_head_url"
-            android:text="@{item.nickname}"
+            android:text="@{type==1?item.nickname:item.name}"
             android:textColor="#ff1d1e1f"
             android:textSize="14sp"
             tools:text="夏梦颖" />

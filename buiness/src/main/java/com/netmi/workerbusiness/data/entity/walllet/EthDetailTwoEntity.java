@@ -25,7 +25,15 @@ public class EthDetailTwoEntity extends BaseEntity {
     //提现状态 1：待审核 2：审核通过 3：审核失败； 4：提现处理中 5：提现到帐 6：提现失败
     private String status;
     private String statuStr;
+    private String is_haibei;
 
+    public String getIs_haibei() {
+        return is_haibei;
+    }
+
+    public void setIs_haibei(String is_haibei) {
+        this.is_haibei = is_haibei;
+    }
 
     public String getId() {
         return id;

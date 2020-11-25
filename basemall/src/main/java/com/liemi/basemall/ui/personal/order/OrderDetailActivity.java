@@ -55,7 +55,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.Observable;
-import io.reactivex.annotations.NonNull;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
@@ -184,6 +183,7 @@ public class OrderDetailActivity extends BaseActivity<ActivityOrderDetailBinding
                             ItemOrderBinding itemOrderBinding = (ItemOrderBinding) getBinding();
                             itemOrderBinding.setHiddenFooter(true);
                             RecyclerView rvGoods = itemOrderBinding.rvGoods;
+
                             rvGoods.setLayoutManager(new LinearLayoutManager(context));
                             goodAdapter = new BaseRViewAdapter<OrderDetailsEntity.MeOrdersBean, BaseViewHolder>(getContext()) {
                                 @Override

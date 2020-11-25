@@ -38,6 +38,16 @@ public class AccessToken {
      */
     private String uid;
 
+    private String phone;
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     public AccessToken(){}
 
     public AccessToken(String token){
@@ -96,9 +106,12 @@ public class AccessToken {
     public String toString() {
         return "AccessToken{" +
                 "token='" + token + '\'' +
+                ", yunxin_token='" + yunxin_token + '\'' +
+                ", accid='" + accid + '\'' +
                 ", start_time='" + start_time + '\'' +
                 ", end_time='" + end_time + '\'' +
                 ", uid='" + uid + '\'' +
+                ", phone='" + phone + '\'' +
                 '}';
     }
 }

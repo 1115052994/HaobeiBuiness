@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
+
+    </data>
+
+
+
+        <LinearLayout
+            android:id="@+id/top_lilayout"
+            android:paddingTop="10dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="MissingConstraints">
+
+            <RelativeLayout
+                android:onClick="@{doClick}"
+                android:id="@+id/top_relayout"
+                android:background="@drawable/sobot_bg_title_custom_login"
+                android:layout_marginHorizontal="10dp"
+                android:paddingHorizontal="20dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:ignore="MissingConstraints">
+
+                <TextView
+                    android:id="@+id/tv_text"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="10dp"
+                    android:textSize="@dimen/s_16"
+                    android:textColor="#333333"
+                    android:text="商家入驻协议"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:text="查看"
+                    android:textSize="@dimen/sp_12"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/gray_66"
+                    android:id="@+id/cb_service"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <View
+                    android:background="#f4f4f4"
+                    android:layout_below="@+id/tv_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:onClick="@{doClick}"
+                android:id="@+id/bottom_relayout"
+                android:background="@drawable/sobot_bg_title_custom_login2"
+                android:layout_marginHorizontal="10dp"
+                android:paddingHorizontal="20dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:ignore="MissingConstraints">
+
+                <TextView
+                    android:id="@+id/tv_text_time"
+                    android:paddingBottom="15dp"
+                    android:paddingTop="10dp"
+                    android:textSize="@dimen/s_12"
+                    android:textColor="#999"
+                    android:text="签署时间：2020-07-18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:text="下载"
+                    android:textSize="@dimen/sp_12"
+                    android:layout_marginTop="10dp"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/gray_66"
+                    android:id="@+id/cb_down"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </RelativeLayout>
+        </LinearLayout>
+
+</layout>

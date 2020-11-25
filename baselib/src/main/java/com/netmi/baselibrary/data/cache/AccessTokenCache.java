@@ -52,6 +52,10 @@ public class AccessTokenCache {
      * 用户uid
      */
     public static final String UID = "user_uid";
+    /***
+     *用户手机号
+     */
+    private static final String PHONE = "phone";
 
     public static final Object object = new Object();
 
@@ -62,6 +66,7 @@ public class AccessTokenCache {
         PrefCache.putData(START_TIME, accessToken.getStart_time());
         PrefCache.putData(END_TIME, accessToken.getEnd_time());
         PrefCache.putData(UID, accessToken.getUid());
+        PrefCache.putData(PHONE,accessToken.getPhone());
         AccessTokenCache.accessToken = accessToken;
     }
 
@@ -72,6 +77,7 @@ public class AccessTokenCache {
         PrefCache.removeData(START_TIME);
         PrefCache.removeData(END_TIME);
         PrefCache.removeData(UID);
+        PrefCache.removeData(PHONE);
         accessToken = null;
     }
 
@@ -84,6 +90,7 @@ public class AccessTokenCache {
             accessToken.setStart_time((String) PrefCache.getData(START_TIME, ""));
             accessToken.setEnd_time((String) PrefCache.getData(END_TIME, ""));
             accessToken.setUid((String) PrefCache.getData(UID, ""));
+            accessToken.setPhone((String) PrefCache.getData(PHONE, ""));
         }
         return accessToken;
     }

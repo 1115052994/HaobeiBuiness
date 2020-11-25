@@ -1,11 +1,16 @@
 package com.netmi.workerbusiness.data.api;
 
 import com.netmi.baselibrary.data.entity.BaseData;
+import com.netmi.baselibrary.data.entity.PageBonusEntity;
 import com.netmi.baselibrary.data.entity.PageEntity;
 import com.netmi.workerbusiness.data.entity.VIPShareImgEntity;
+import com.netmi.workerbusiness.data.entity.haibei.HaiBeiConfidenceEntity;
+import com.netmi.workerbusiness.data.entity.haibei.HaibeiBonus;
 import com.netmi.workerbusiness.data.entity.mine.BankListEntity;
+import com.netmi.workerbusiness.data.entity.mine.BountyEntity;
 import com.netmi.workerbusiness.data.entity.mine.ChooseBankEntity;
 import com.netmi.workerbusiness.data.entity.mine.ContentEntity;
+import com.netmi.workerbusiness.data.entity.mine.GetApplyInfo;
 import com.netmi.workerbusiness.data.entity.mine.ShopInfoEntity;
 import com.netmi.workerbusiness.data.entity.mine.ShopPayRecordEntity;
 import com.netmi.workerbusiness.data.entity.mine.ShopScoreEntity;
@@ -35,6 +40,22 @@ public interface MineApi {
     @FormUrlEncoded
     @POST("shop/shop-api/view")
     Observable<BaseData<ShopInfoEntity>> shopInfo(@Field("parm") String parm);
+
+    /**
+     * 兑换二维码
+     */
+    @FormUrlEncoded
+    @POST("haibei/haibei-api/haibei-qr-code")
+    Observable<BaseData<HaibeiBonus>> haibeiQrCode(@Field("parm") String parm);
+
+    /**
+     * 获取商家信息
+     */
+    @FormUrlEncoded
+    @POST("/shop/shop-apply-record-api/get-apply-info")
+    Observable<BaseData<GetApplyInfo>> getApplyInfo(@Field("parm") String parm);
+
+
 
     /**
      * 商家缴费详情
@@ -78,7 +99,10 @@ public interface MineApi {
                                           @Field("c_name") String c_name,
                                           @Field("d_name") String d_name,
                                           @Field("address") String address,
-                                          @Field("img_url") String img_url);
+                                          @Field("img_url") String img_url,
+                                          @Field("p_id") String p_id,
+                                          @Field("c_id") String c_id,
+                                          @Field("d_id") String d_id);
 
     /**
      * 我的余额
@@ -113,6 +137,23 @@ public interface MineApi {
     Observable<BaseData<PageEntity<TransactionEntity>>> transactionDetails(@Field("time") String time,
                                                                            @Field("start_page") int start_page,
                                                                            @Field("pages") int pages);
+    /**
+     * 奖励金明细
+     */
+    @FormUrlEncoded
+    @POST("active/bonus-api/get-bonus-list")
+    Observable<BaseData<PageBonusEntity<BountyEntity>>> getBounsList(@Field("time") String time,
+                                                                @Field("start_page") int start_page,
+                                                                @Field("pages") int pages);
+    /**
+     * 奖励金额度明细
+     */
+    @FormUrlEncoded
+    @POST("active/bonus-api/get-bonus-quota-log-list")
+    Observable<BaseData<PageBonusEntity<BountyEntity>>> getBounsQuotaList(@Field("time") String time,
+                                                                          @Field("start_page") int start_page,
+                                                                          @Field("pages") int pages);
+
 
     /**
      * /**
@@ -177,8 +218,8 @@ public interface MineApi {
     @FormUrlEncoded
     @POST("contact/contact-api/add")
     Observable<BaseData> addAliInfo(@Field("type") String type,
-                                    @Field("phone") String phone,
-                                    @Field("name") String name);
+                                    @Field("name") String phone,
+                                    @Field("phone") String name);
 
     /**
      * 获取支付宝微信账号信息
@@ -325,5 +366,13 @@ public interface MineApi {
     @FormUrlEncoded
     @POST("shop/shop-api/tan")
     Observable<BaseData> commit(@Field("shop_id") String shop_id);
+
+
+    /**
+     * 我的海贝信心指数
+     */
+    @FormUrlEncoded
+    @POST("order/order-api/hai")
+    Observable<BaseData<HaiBeiConfidenceEntity>> getMinHai(@Field("type") int type);
 
 }

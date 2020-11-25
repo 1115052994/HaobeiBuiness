@@ -59,11 +59,77 @@ public class ShopInfoEntity extends BaseEntity {
     private String p_name;
     private String c_name;
     private String d_name;
+    private String p_id;
+    private String c_id;
+    private String d_id;
     private String address;
     private String service_prove;   //服务费证明图片
     private String deposit_prove;   //押金证明图片
     private String reason;   //押金证明图片
     private String is_popup;   //押金证明图片
+
+    private String is_sign_contract;//判断是否跳转合同列表
+    private String is_improve_info;//显示弹框  店铺信息待完善，请注意查看补充
+    private String is_bind_bank;
+    private String district;
+
+    private String real_name;
+    private String idcard;
+    private String is_apply;
+    private String phone;
+
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+    public String getIs_apply() {
+        return is_apply;
+    }
+
+    public void setIs_apply(String is_apply) {
+        this.is_apply = is_apply;
+    }
+    public String getReal_name() {
+        return real_name;
+    }
+
+    public void setReal_name(String real_name) {
+        this.real_name = real_name;
+    }
+    public String getIdcard() {
+        return idcard;
+    }
+
+    public void setIdcard(String idcard) {
+        this.idcard = idcard;
+    }
+
+    public String getIs_improve_info() {
+        return is_improve_info;
+    }
+
+    public void setIs_improve_info(String is_improve_info) {
+        this.is_improve_info = is_improve_info;
+    }
+    public String getIs_bind_bank() {
+        return is_bind_bank;
+    }
+
+    public void setIs_bind_bank(String is_bind_bank) {
+        this.is_bind_bank = is_bind_bank;
+    }
+
+    public String getIs_sign_contract() {
+        return is_sign_contract;
+    }
+
+    public void setIs_sign_contract(String is_sign_contract) {
+        this.is_sign_contract = is_sign_contract;
+    }
 
     public String getId() {
         return id;
@@ -111,6 +177,13 @@ public class ShopInfoEntity extends BaseEntity {
 
     public void setFull_name(String full_name) {
         this.full_name = full_name;
+    }
+    public String getDistrictistrict() {
+        return district;
+    }
+
+    public void setDistrictistrict(String district) {
+        this.district = district;
     }
 
     public String getSum_item() {
@@ -322,6 +395,30 @@ public class ShopInfoEntity extends BaseEntity {
 
     public void setD_name(String d_name) {
         this.d_name = d_name;
+    }
+
+    public String getP_id() {
+        return p_id;
+    }
+
+    public void setP_id(String p_id) {
+        this.p_id = p_id;
+    }
+
+    public String getC_id() {
+        return c_id;
+    }
+
+    public void setC_id(String c_id) {
+        this.c_id = c_id;
+    }
+
+    public String getD_id() {
+        return d_id;
+    }
+
+    public void setD_id(String d_id) {
+        this.d_id = d_id;
     }
 
     public String getAddress() {

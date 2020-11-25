@@ -3,7 +3,9 @@
     xmlns:tl="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+            name="doClick"
+            type="android.view.View.OnClickListener" />
     </data>
 
     <LinearLayout

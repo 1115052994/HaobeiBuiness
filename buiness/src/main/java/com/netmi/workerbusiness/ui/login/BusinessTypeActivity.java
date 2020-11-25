@@ -20,8 +20,8 @@ import com.trello.rxlifecycle2.android.ActivityEvent;
 
 public class BusinessTypeActivity extends BaseIMLoginActivity<ActivityBusinessTypeBinding> {
 
-    private String type = "1";
-
+    private String type = "2";
+    private int shop_user_type;//用户选择商户类型 0:未选择类型 1:线上 2:线下 3:线上+线下
     @Override
     protected int getContentView() {
         return R.layout.activity_business_type;
@@ -29,20 +29,20 @@ public class BusinessTypeActivity extends BaseIMLoginActivity<ActivityBusinessTy
 
     @Override
     protected void initUI() {
-        getTvTitle().setText("入驻类型");
+        getTvTitle().setText("选择入住类型");
+        mBinding.tvConfirm.setText("下一步");
 
         mBinding.rgType.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 if (i == R.id.rb_line) {
-                    type = "1";
-                } else if (i == R.id.rb_out_line) {
                     type = "2";
-                } else if (i == R.id.rb_both) {
-                    type = "3";
+                } else if (i == R.id.rb_out_line) {
+                    type = "1";
                 }
             }
         });
+
     }
 
     @Override
@@ -72,7 +72,11 @@ public class BusinessTypeActivity extends BaseIMLoginActivity<ActivityBusinessTy
                         if (UserInfoCache.get().getShop_apply_status().equals("0")) {
                             Bundle args = new Bundle();
                             args.putString(JumpUtil.VALUE, type);
-                            JumpUtil.overlay(getContext(), PersonalInfoActivity.class, args);
+                           if (type.equals("1")) {//线上：线上商家
+                                JumpUtil.overlay(getContext(),PersonalOfflineInfoActivity .class,args);
+                            } else if (type.equals("2")) {//线下:实体商家
+                               JumpUtil.overlay(getContext(), PersonalOfflineInfoRestrictionsActivity.class,args);
+                            }
                         } else {
 //                            loginYunXin(UserInfoCache.get().getToken());
                             JumpUtil.overlay(getContext(), MainActivity.class);

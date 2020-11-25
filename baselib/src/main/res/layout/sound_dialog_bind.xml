@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_marginHorizontal="@dimen/d_30"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+        <RelativeLayout
+            android:background="@drawable/baselib_bg_colorb5290222"
+            android:paddingVertical="20dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_centerVertical="true"
+                android:id="@+id/tv_he"
+                android:layout_centerHorizontal="true"
+                android:textColor="#000"
+                android:text="云音响设备"
+                android:textSize="@dimen/s_12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:background="@drawable/baselib_bg_default_pic2"
+
+            android:paddingTop="@dimen/d_20"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_marginHorizontal="@dimen/d_15"
+                android:layout_centerVertical="true"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_marginRight="@dimen/d_8"
+                    android:textSize="@dimen/s_12"
+                    android:text="设备ID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:textColor="@color/gray_99"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="10dp"
+                    android:id="@+id/ed_sound_id"
+                    android:background="@drawable/bg_color334b545c_radius8dp"
+                    android:textSize="@dimen/s_12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+
+            <View
+                android:layout_marginTop="23dp"
+                android:background="#F4F4F4"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+            <LinearLayout
+                android:layout_marginBottom="@dimen/d_20"
+                android:layout_marginTop="20dp"
+                android:paddingHorizontal="@dimen/d_15"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/tv_dismis"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/baselib_sound_color77b5290223"
+                    android:gravity="center"
+                    android:onClick="doClick"
+                    android:paddingVertical="12dp"
+                    android:text="取消"
+                    android:textColor="#ffffffff"
+                    android:textSize="@dimen/s_14" />
+                <View
+                    android:layout_width="@dimen/d_18"
+                    android:layout_height="0dp"/>
+                <TextView
+                    android:id="@+id/tv_confirm"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/baselib_sound_color77b529022"
+                    android:gravity="center"
+                    android:onClick="doClick"
+                    android:paddingVertical="12dp"
+                    android:text="确认"
+                    android:textColor="#ffffffff"
+                    android:textSize="@dimen/s_14" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

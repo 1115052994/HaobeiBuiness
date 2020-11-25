@@ -62,6 +62,7 @@
                     android:orientation="horizontal">
 
                     <ImageView
+                        android:onClick="@{doClick}"
                         android:id="@+id/iv_back"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -116,7 +117,7 @@
                     <!--上方基础数据-->
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="174dp"
                         android:background="@drawable/bg_radius_4dp_ffffff"
                         android:gravity="center_horizontal"
                         android:orientation="vertical">
@@ -124,7 +125,8 @@
                         <LinearLayout
                             android:id="@+id/ll_line"
                             android:layout_width="match_parent"
-                            android:layout_height="50dp"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
                             android:orientation="horizontal"
                             android:paddingHorizontal="15dp">
 
@@ -142,7 +144,7 @@
                                     android:layout_height="wrap_content"
                                     android:textColor="#ff242424"
                                     android:textSize="12sp"
-                                    android:text="0"
+                                    android:text="@{model.out_line_data.page_view.today}"
                                     tools:text="1000" />
 
                                 <TextView
@@ -174,7 +176,7 @@
                                     android:layout_height="wrap_content"
                                     android:textColor="#ff242424"
                                     android:textSize="15sp"
-                                    android:text="0"
+                                    android:text="@{model.on_line_data.user_num.today}"
                                     tools:text="50" />
 
                                 <TextView
@@ -230,7 +232,8 @@
                         <LinearLayout
                             android:id="@+id/ll_outline"
                             android:layout_width="match_parent"
-                            android:layout_height="50dp"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
                             android:orientation="horizontal"
                             android:paddingHorizontal="15dp">
 
@@ -279,14 +282,14 @@
                                     android:layout_height="wrap_content"
                                     android:textColor="#ff242424"
                                     android:textSize="15sp"
-                                    android:text="0.00"
+                                    android:text="@{model.out_line_data.page_view.yesterday}"
                                     tools:text="100.00" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="4dp"
-                                    android:text="今日线下成交额"
+                                    android:text="昨日店铺PV"
                                     android:textColor="#ff666666"
                                     android:textSize="10sp" />
 
@@ -312,14 +315,14 @@
                                     android:layout_height="wrap_content"
                                     android:textColor="#ff242424"
                                     android:textSize="15sp"
-                                    android:text="0.00"
+                                    android:text="@{model.on_line_data.user_num.yesterday}"
                                     tools:text="100.00" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="4dp"
-                                    android:text="今日线下支付额"
+                                    android:text="昨日下单买家数"
                                     android:textColor="#ff666666"
                                     android:textSize="10sp" />
 
@@ -336,7 +339,8 @@
                             android:layout_marginHorizontal="15dp"
                             android:id="@+id/ll_line_commodity"
                             android:layout_width="match_parent"
-                            android:layout_height="50dp"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
                             android:gravity="center_horizontal"
                             android:orientation="horizontal">
 
@@ -413,7 +417,7 @@
                                     android:id="@+id/tv_outline_last_days"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="0"
+                                    android:text="@{model.out_line_data.page_view.thirty_days}"
                                     android:textColor="#ff242424"
                                     android:textSize="15sp"
                                     tools:text="501266" />
@@ -645,6 +649,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:layout_marginBottom="20dp"
                             android:id="@+id/offline_order_management_bottom"
                             android:orientation="vertical"
                             android:layout_width="match_parent"
@@ -700,17 +705,18 @@
                                         android:textColor="#ff666666"
                                         android:textSize="10sp" />
                                     <TextView
-                                        android:id="@+id/tv_haibei_convert"
+                                        android:id="@+id/tv_haibei_home"
                                         android:layout_width="0dp"
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
-                                        android:drawableTop="@mipmap/ic_format"
+                                        android:drawableTop="@mipmap/ic_haibei_home"
                                         android:drawablePadding="7dp"
                                         android:gravity="center"
                                         android:onClick="@{doClick}"
-                                        android:text="海贝兑换"
+                                        android:text="海贝之家"
                                         android:textColor="#ff666666"
                                         android:textSize="10sp" />
+
 
 
 
@@ -745,18 +751,7 @@
                                 android:background="@color/white"
                                 android:orientation="horizontal"
                                 android:paddingTop="15dp">
-                                <TextView
-                                    android:id="@+id/tv_haibei_home"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:drawableTop="@mipmap/ic_haibei_home"
-                                    android:drawablePadding="7dp"
-                                    android:gravity="center"
-                                    android:onClick="@{doClick}"
-                                    android:text="海贝之家"
-                                    android:textColor="#ff666666"
-                                    android:textSize="10sp" />
+
                                 <TextView
                                     android:id="@+id/tv_team_manage"
                                     android:layout_width="0dp"
@@ -782,6 +777,7 @@
                                     android:textColor="#ff666666"
                                     android:textSize="10sp" />
                                 <TextView
+                                    android:visibility="gone"
                                     android:id="@+id/tv_merchant_loan"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
@@ -791,6 +787,31 @@
                                     android:gravity="center"
                                     android:onClick="@{doClick}"
                                     android:text="商家贷"
+                                    android:textColor="#ff666666"
+                                    android:textSize="10sp" />
+                                <TextView
+                                    android:id="@+id/tv_haibei_convert"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:drawableTop="@mipmap/ic_format"
+                                    android:drawablePadding="7dp"
+                                    android:gravity="center"
+                                    android:onClick="@{doClick}"
+                                    android:text="海贝兑换"
+                                    android:textColor="#ff666666"
+                                    android:textSize="10sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_live"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:drawableTop="@mipmap/ic_live"
+                                    android:drawablePadding="7dp"
+                                    android:gravity="center"
+                                    android:onClick="@{doClick}"
+                                    android:text="商家直播"
                                     android:textColor="#ff666666"
                                     android:textSize="10sp" />
 
@@ -812,6 +833,7 @@
 
                             </LinearLayout>
                             <LinearLayout
+                                android:visibility="gone"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="20dp"
@@ -819,18 +841,8 @@
                                 android:orientation="horizontal"
                                 android:paddingTop="15dp"
                                 android:paddingBottom="20dp">
-                                <TextView
-                                    android:id="@+id/tv_live"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:drawableTop="@mipmap/ic_live"
-                                    android:drawablePadding="7dp"
-                                    android:gravity="center"
-                                    android:onClick="@{doClick}"
-                                    android:text="商家直播"
-                                    android:textColor="#ff666666"
-                                    android:textSize="10sp" />
+
+
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
@@ -1183,6 +1195,7 @@
                                     android:textColor="#ff666666"
                                     android:textSize="10sp" />
                                 <TextView
+                                    android:visibility="gone"
                                     android:id="@+id/tv_merchant_loan2"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
@@ -1194,6 +1207,10 @@
                                     android:text="商家贷"
                                     android:textColor="#ff666666"
                                     android:textSize="10sp" />
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1" />
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"

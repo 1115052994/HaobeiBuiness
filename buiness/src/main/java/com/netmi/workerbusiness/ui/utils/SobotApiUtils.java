@@ -1,12 +1,9 @@
 package com.netmi.workerbusiness.ui.utils;
 
 import android.content.Context;
-import android.text.TextUtils;
 
 import com.liemi.basemall.data.entity.good.GoodsDetailedEntity;
 import com.netmi.baselibrary.data.Constant;
-import com.netmi.baselibrary.data.entity.UserInfoEntity;
-import com.netmi.workerbusiness.data.entity.mess.CustomerEntity;
 import com.netmi.workerbusiness.data.entity.mine.ShopInfoEntity;
 import com.sobot.chat.SobotApi;
 import com.sobot.chat.api.model.ConsultingContent;
@@ -16,7 +13,7 @@ public class SobotApiUtils {
 
 
     public static SobotApiUtils getInstance() {
-        return SobotApiUtils.SingletonHolder.instance;
+        return SingletonHolder.instance;
     }
 
     /**
@@ -28,10 +25,10 @@ public class SobotApiUtils {
 
 
     //跳转到智齿客服页面
-    public void toCustomServicePage(Context context, ShopInfoEntity shopInfoEntity, GoodsDetailedEntity goodEntity, CustomerEntity customerEntity) {
+    public void toCustomServicePage(Context context, ShopInfoEntity shopInfoEntity, GoodsDetailedEntity goodEntity) {
 
         Information information = new Information();
-        information.setAppkey("f96f28f095e64d589d5438571d9c272b");
+        information.setAppkey("27f869ca811b4b0ebae13e23d2344188");
         //设置返回时弹出用户满意度评价
         information.setShowSatisfaction(true);
         //设置要咨询的商品信息
@@ -42,11 +39,12 @@ public class SobotApiUtils {
             //咨询内容图片
             content.setSobotGoodsImgUrl(goodEntity.getImg_url());
             //咨询来源页
-            if (customerEntity != null && !TextUtils.isEmpty(customerEntity.getImg())) {
-                content.setSobotGoodsFromUrl(customerEntity.getImg());
-            } else {
-                content.setSobotGoodsFromUrl(Constant.SHARE_GOOD + goodEntity.getItem_id());
-            }
+//            if (customerEntity != null && !TextUtils.isEmpty(customerEntity.getImg())) {
+//                content.setSobotGoodsFromUrl(customerEntity.getImg());
+//            } else {
+//                content.setSobotGoodsFromUrl(Constant.SHARE_GOOD + goodEntity.getItem_id());
+//            }
+            content.setSobotGoodsFromUrl(Constant.SHARE_GOOD + goodEntity.getItem_id());
             //描述
             content.setSobotGoodsDescribe(goodEntity.getRemark());
             //标签
@@ -64,11 +62,11 @@ public class SobotApiUtils {
 
         //转接类型(0-可转入其他客服，1-必须转入指定客服)
         information.setTranReceptionistFlag(0);
-        if (customerEntity != null
-                && customerEntity.getToken() != null
-                && !TextUtils.isEmpty(customerEntity.getToken())) {
-            information.setReceptionistId(customerEntity.getToken());
-        }
+//        if (customerEntity != null
+//                && customerEntity.getToken() != null
+//                && !TextUtils.isEmpty(customerEntity.getToken())) {
+//            information.setReceptionistId(customerEntity.getToken());
+//        }
 
         //1仅机器人 2仅人工 3机器人优先 4人工优先
         information.setInitModeType(3);

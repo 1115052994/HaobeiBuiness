@@ -26,12 +26,12 @@
 
             <TextView
                 android:id="@+id/text_l_message"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="37dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginLeft="20dp"
                 android:lineSpacingExtra="10dp"
                 style="@style/maxWidthCenterTextView"
-                android:layout_marginTop="21dp"
+                android:layout_marginTop="16dp"
                 android:text="@string/please_input_new_password_error"
                 android:textColor="@color/color_333333"
                 android:textSize="14sp"

@@ -62,8 +62,6 @@
             android:onClick="doClick"
             android:textColor="#353535"
             android:textSize="15sp" />
-
-
     </RelativeLayout>
 
 </layout>

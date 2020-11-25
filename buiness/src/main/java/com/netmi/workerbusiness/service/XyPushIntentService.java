@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
 
+import com.example.voicebroadcast.UtilsVoice;
 import com.google.gson.Gson;
 import com.igexin.sdk.GTIntentService;
 import com.igexin.sdk.PushConsts;
@@ -20,9 +21,10 @@ import com.igexin.sdk.message.UnBindAliasCmdMessage;
 import com.liemi.basemall.utils.NotificationUtils;
 import com.netmi.baselibrary.data.Constant;
 import com.netmi.baselibrary.data.cache.AccessTokenCache;
+import com.netmi.baselibrary.data.cache.LoginInfoCache;
 import com.netmi.baselibrary.data.cache.UserInfoCache;
-import com.netmi.baselibrary.data.entity.UserInfoEntity;
 import com.netmi.baselibrary.ui.MApplication;
+import com.netmi.baselibrary.utils.AppUtils;
 import com.netmi.baselibrary.utils.Strings;
 import com.netmi.workerbusiness.R;
 import com.netmi.workerbusiness.data.entity.PushMessageEntity;
@@ -45,8 +47,10 @@ public class XyPushIntentService extends GTIntentService {
     @Override
     public void onReceiveClientId(Context context, String clientid) {
         Log.e(TAG, "onReceiveClientId -> " + "clientid = " + clientid);
-        boolean b = PushManager.getInstance().bindAlias(getApplicationContext(), Constant.PUSH_PREFIX + AccessTokenCache.get().getUid(), PushConsts.BIND_ALIAS_RESULT + "");
-        Log.e(TAG, "onReceiveClientId -> " + "aliadid = " + Constant.PUSH_PREFIX + AccessTokenCache.get().getUid() + "====" + b);
+//        boolean b = PushManager.getInstance().bindAlias(getApplicationContext(), Constant.PUSH_PREFIX + AccessTokenCache.get().getUid(), PushConsts.BIND_ALIAS_RESULT + "");
+        boolean b = PushManager.getInstance().bindAlias(MApplication.getAppContext(), AppUtils.isAppDebug() ? "haibei_test_" + UserInfoCache.get().getPhone() : "haibei_" + UserInfoCache.get().getPhone(),
+                PushConsts.BIND_ALIAS_RESULT + "");
+        Log.e(TAG, "XyPushIntentService.Class   onReceiveClientId -> " + "aliadid = " + Constant.PUSH_PREFIX + AccessTokenCache.get().getUid() + "====" + b+"====Phone:"+UserInfoCache.get().getPhone());
     }
 
     //处理透传消息
@@ -69,8 +73,11 @@ public class XyPushIntentService extends GTIntentService {
         } else {
             String data = new String(payload);
             Log.d(TAG, "receiver payload = " + data);
+            if(LoginInfoCache.get().isOpen()){
+                UtilsVoice.startVoice(data);
+            }
             //TODO:个推消息设置标题
-            getNotification(data, messageid, "客商e宝商家端");
+//            getNotification(data, messageid, "客商e宝商家端");
         }
     }
 
@@ -104,12 +111,18 @@ public class XyPushIntentService extends GTIntentService {
         Log.e(TAG, "onNotificationMessageArrived -> " + "gtNotificationMessage = " + gtNotificationMessage.getTitle());
         GTNotificationMessage gtNotificationMessage1 = gtNotificationMessage;
         String content = gtNotificationMessage1.getContent();
+
     }
 
     // 通知点击，只有个推通道下发的通知会回调此方法
     @Override
     public void onNotificationMessageClicked(Context context, GTNotificationMessage gtNotificationMessage) {
         Log.e(TAG, "onNotificationMessageClicked -> " + "gtNotificationMessage = " + gtNotificationMessage.toString());
+
+        //跳转到指定通道
+        Intent intent = new Intent("inform");
+        //向这个通道的广播发送    就会调用dongtai这个类
+        sendBroadcast(intent);
     }
 
     private void setTagResult(SetTagCmdMessage setTagCmdMsg) {
